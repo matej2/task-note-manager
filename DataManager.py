@@ -12,6 +12,6 @@ class DataManager:
         self.file_manager = FileManager()
         yaml.add_representer(NoteEntry, note_entry_representer)
 
-    def get_value(self):
+    def get_value(self, event=None):
         e_text = self.things_done.get()
         self.file_manager.add_entry(e_text, datetime.datetime.now())
