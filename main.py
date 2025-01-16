@@ -3,24 +3,33 @@ import tkinter
 from DataManager import DataManager
 
 
-def main():
-    master = tkinter.Tk()
+class Application(tkinter.Frame):
+    def __init__(self):
+        self.root = tkinter.Tk()
+        self.root.geometry("300x200")
+        tkinter.Frame.__init__(self, self.root)
 
-    tkinter.Label(master, text="First Name").grid(row=0)
-    things_done = tkinter.Entry(master)
-    things_done.grid(row=0, column=1)
-    things_done.focus_set()
+        self.create_input_widgets()
 
-    data_manager = DataManager(things_done)
+        self.data_manager = DataManager(self.things_done)
+        self.root.bind('<Return>', self.data_manager.get_value)
 
-    button = tkinter.Button(master, text="Enter", command=data_manager.get_value)
-    button.grid(row=1, column=0)
+        self.create_buttons()
 
-    # Key shortcuts
-    master.bind('<Return>', data_manager.get_value)
+    def create_input_widgets(self):
+        tkinter.Label(self.root, text="First Name").grid(row=0)
 
-    master.mainloop()
+        self.things_done = tkinter.Entry(self.root)
+        self.things_done.grid(row=0, column=1)
+        self.things_done.focus_set()
+
+    def create_buttons(self):
+        self.button = tkinter.Button(self.root, text="Enter", command=self.data_manager.get_value)
+        self.button.grid(row=1, column=0)
+
+    def start(self):
+        self.root.mainloop()
 
 
 if __name__ == "__main__":
-    main()
+    Application().start()
