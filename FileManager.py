@@ -2,6 +2,10 @@ import datetime
 import os
 import typing
 
+import yaml
+
+from models.NoteEntry import NoteEntry
+
 
 class FileManager:
 
@@ -12,5 +16,6 @@ class FileManager:
 
     def add_entry(self, changes: str, date: datetime.datetime):
         f = open(self.full_path, "a")
-        f.write(f"{date} {changes}\n")
+        file_line = yaml.dump(NoteEntry(date, changes))
+        f.write(f"{file_line}\n")
         f.close()
