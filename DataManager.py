@@ -1,10 +1,11 @@
 import datetime
 import tkinter
+
 import yaml
+
 from FileManager import FileManager
 from StringUtils import StringUtils
-from models.NoteEntry import NoteEntry, note_entry_representer
-from models.NoteList import NoteList
+from models.NoteEntry import NoteEntry
 from utils.YamlUtils import YamlUtils
 
 
@@ -17,7 +18,7 @@ class DataManager:
         self.status = status
 
         self.file_manager = FileManager()
-        yaml.add_representer(NoteEntry, note_entry_representer)
+        yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
     def get_status(self):
         with self.file_manager.get_read_instance() as file:

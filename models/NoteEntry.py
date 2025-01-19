@@ -9,12 +9,3 @@ class NoteEntry:
         self.problems = problems
 
 
-def note_entry_representer(dumper, data: NoteEntry):
-    return dumper.represent_dict(
-        {
-            'date': data.date,
-            'things_done': data.things_done,
-            'to_be_done': data.to_be_done,
-            'problems': data.problems
-        }
-    )
