@@ -40,8 +40,7 @@ class DataManager:
 
         self.add_entry(done, to_be_done, problems, datetime.datetime.now())
 
-        #self.get_status()
-        #self.write_status(event)
+        self.write_status(event)
 
     def add_entry(self, changes: str, to_be_done: str, problems: str, date: datetime.datetime):
         with (self.file_manager.get_write_instance() as file):
