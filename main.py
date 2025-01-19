@@ -6,12 +6,13 @@ from DataManager import DataManager
 class Application(tkinter.Frame):
     def __init__(self):
         self.root = tkinter.Tk()
-        self.root.geometry("300x200")
         tkinter.Frame.__init__(self, self.root)
 
         self.create_input_widgets()
+        self.create_status_widgets()
 
-        self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems)
+        # Data manager needs to be initialized after input widgets are created
+        self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.status)
         self.root.bind('<Return>', self.data_manager.get_value)
 
         self.create_action_widgets()
@@ -29,6 +30,10 @@ class Application(tkinter.Frame):
         tkinter.Label(self.root, text="Any problems: ").grid(row=2, column=0)
         self.problems = tkinter.Entry(self.root)
         self.problems.grid(row=2, column=1)
+
+    def create_status_widgets(self):
+        self.status = tkinter.Label(self.root, text="Task status")
+        self.status.grid(row=0, column=2)
 
     def create_action_widgets(self):
         self.button = tkinter.Button(self.root, text="Enter", command=self.data_manager.get_value)
