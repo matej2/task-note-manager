@@ -13,5 +13,5 @@ class FileManager:
         return open(self.full_path, "r")
 
     def get_write_instance(self) -> typing.TextIO:
-        return open(self.full_path, "a")
+        return open(self.full_path, "w")
 

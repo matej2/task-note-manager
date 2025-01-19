@@ -1,5 +1,6 @@
 import yaml
 
+from models import NoteList
 from models.NoteEntry import NoteEntry
 
 
@@ -14,7 +15,7 @@ class YamlUtils:
         return loader
 
     @staticmethod
-    def note_entry_representer(dumper, data: NoteEntry):
+    def note_entry_representer(dumper, data: NoteList):
         return dumper.represent_dict(
             {
                 'date': data.date,
@@ -23,3 +24,6 @@ class YamlUtils:
                 'problems': data.problems
             }
         )
+
+    @staticmethod
+    def note_entry2_representer(dumper, data: NoteList): return dumper.represent_mapping(u'tag:yaml.org,2002:map', data.__dict__)
