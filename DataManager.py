@@ -19,7 +19,9 @@ class DataManager:
         self.status = status
 
         self.file_manager = FileManager()
-        yaml.add_representer(NoteList, YamlUtils.note_entry2_representer)
+
+        yaml.add_representer(NoteList, YamlUtils.note_list_representer)
+        yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
     def get_status(self):
         with self.file_manager.get_read_instance() as file:
@@ -44,9 +46,6 @@ class DataManager:
     def add_entry(self, changes: str, to_be_done: str, problems: str, date: datetime.datetime):
         with (self.file_manager.get_write_instance() as file):
             entry = NoteEntry(date, changes, to_be_done, problems)
-            entry2 = NoteEntry(date, changes, to_be_done, problems)
+            note_list = NoteList([entry])
 
-            note_list = NoteList()
-            note_list.notes.append(entry)
-            note_list.notes.append(entry2)
             yaml.dump(note_list, file)

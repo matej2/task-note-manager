@@ -26,4 +26,9 @@ class YamlUtils:
         )
 
     @staticmethod
-    def note_entry2_representer(dumper, data: NoteList): return dumper.represent_mapping(u'tag:yaml.org,2002:map', data.__dict__)
+    def note_list_representer(dumper, data: NoteList): return dumper.represent_mapping(u'tag:yaml.org,2002:map', data.__dict__)
+
+    @staticmethod
+    def note_entry_representer(dumper, data: NoteEntry): return dumper.represent_mapping(u'tag:yaml.org,2002:map',
+                                                                                         data.__dict__)
+

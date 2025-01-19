@@ -1,11 +1,5 @@
 notes:
-- !!python/object:models.NoteEntry.NoteEntry
-  date: &id001 2025-01-19 23:38:13.753531
-  problems: ''
-  things_done: ''
-  to_be_done: ''
-- !!python/object:models.NoteEntry.NoteEntry
-  date: *id001
-  problems: ''
-  things_done: ''
-  to_be_done: ''
+- date: 2025-01-19 23:44:20.536525
+  problems: tttt
+  things_done: test
+  to_be_done: tt
