@@ -12,7 +12,7 @@ class Application(tkinter.Frame):
         self.create_status_widgets()
 
         # Data manager needs to be initialized after input widgets are created
-        self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.status)
+        self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list)
 
         self.create_key_shortcuts()
         self.create_action_widgets()
@@ -40,8 +40,11 @@ class Application(tkinter.Frame):
         self.problems.grid(row=2, column=1)
 
     def create_status_widgets(self):
-        self.status = tkinter.Label(self.root, text="Task status")
-        self.status.grid(row=0, column=2)
+        self.task_status = tkinter.Label(self.root, text="Task status")
+        self.task_status.grid(row=0, column=2)
+
+        self.task_list = tkinter.Label(self.root, text="Task list")
+        self.task_list.grid(row=1, column=2)
 
     def create_action_widgets(self):
         self.submit_button = tkinter.Button(self.root, text="Enter", command=self.on_click_submit_button)
@@ -54,9 +57,11 @@ class Application(tkinter.Frame):
         self.data_manager.add_value()
         self.list_data()
 
+        self.task_status.config(text="Task created")
+
     def list_data(self):
         note_list = self.data_manager.read_data()
-        self.status.config(text=str(note_list))
+        self.task_list.config(text=str(note_list))
 
     def start(self):
         self.root.mainloop()
