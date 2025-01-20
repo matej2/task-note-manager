@@ -36,11 +36,16 @@ class Application(tkinter.Frame):
         self.status.grid(row=0, column=2)
 
     def create_action_widgets(self):
-        self.button = tkinter.Button(self.root, text="Enter", command=self.on_click_submit_button)
-        self.button.grid(row=3, column=0)
+        self.submit_button = tkinter.Button(self.root, text="Enter", command=self.on_click_submit_button)
+        self.submit_button.grid(row=3, column=0)
+
+        self.list_button = tkinter.Button(self.root, text="List", command=self.on_click_list_button)
+        self.list_button.grid(row=3, column=1)
 
     def on_click_submit_button(self):
         self.data_manager.add_value()
+
+    def on_click_list_button(self):
         self.data_manager.write_status()
 
     def start(self):
