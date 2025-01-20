@@ -23,11 +23,13 @@ class DataManager:
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
-    def get_status(self):
+     def read_data(self):
         with self.file_manager.get_read_instance() as file:
-            data = yaml.load(file, Loader=YamlUtils.get_loader())
-            status = StringUtils.format_status(data)
-        return status
+            data = yaml.load(file, Loader=YamlUtils.get_loaders())
+        return data
+
+    def get_status(self):
+        return StringUtils.format_status(self.read_data())
 
     def write_status(self):
         status_data = self.get_status()
