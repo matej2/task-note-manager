@@ -8,6 +8,8 @@ class Application(tkinter.Frame):
         self.root = tkinter.Tk()
         tkinter.Frame.__init__(self, self.root)
 
+        self.note_list_output = []
+
         self.create_input_widgets()
         self.create_status_widgets()
 
@@ -44,7 +46,7 @@ class Application(tkinter.Frame):
         self.task_status.grid(row=0, column=2)
 
         self.task_list = tkinter.Label(self.root, text="Task list")
-        self.task_list.grid(row=1, column=2)
+        self.task_list.grid(row=1, column=2, rowspan=4)
 
     def create_action_widgets(self):
         self.submit_button = tkinter.Button(self.root, text="Enter", command=self.on_click_submit_button)
@@ -52,6 +54,9 @@ class Application(tkinter.Frame):
 
         self.list_button = tkinter.Button(self.root, text="List", command=self.list_data)
         self.list_button.grid(row=3, column=1)
+
+        self.open_file = tkinter.Button(self.root, text="Open file", command=self.data_manager.file_manager.open_file)
+        self.open_file.grid(row=4, column=0)
 
     def on_click_submit_button(self):
         self.data_manager.add_value()

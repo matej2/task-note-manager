@@ -1,5 +1,6 @@
 import os
 import typing
+import webbrowser
 
 
 class FileManager:
@@ -17,4 +18,7 @@ class FileManager:
 
     def get_write_instance(self) -> typing.TextIO:
         return open(self.full_path, "w")
+
+    def open_file(self):
+        webbrowser.open(self.full_path)
 
