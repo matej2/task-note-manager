@@ -1,7 +1,7 @@
 import yaml
 
-from models import NoteList
 from models.NoteEntry import NoteEntry
+from models.NoteList import NoteList
 
 
 class YamlUtils:
@@ -16,20 +16,8 @@ class YamlUtils:
     @staticmethod
     def get_loaders() -> yaml.loader.SafeLoader:
         loader = yaml.SafeLoader
-        #loader.add_constructor("!", YamlUtils.note_entry_constructor)
-        loader.add_constructor("!", YamlUtils.note_entry_list_constructor)
+        loader.add_constructor("tag:yaml.org,2002:map", YamlUtils.note_entry_list_constructor)
         return loader
-
-    @staticmethod
-    def note_entry_representer(dumper, data: NoteList):
-        return dumper.represent_dict(
-            {
-                'date': data.date,
-                'things_done': data.things_done,
-                'to_be_done': data.to_be_done,
-                'problems': data.problems
-            }
-        )
 
     @staticmethod
     def note_list_representer(dumper, data: NoteList): return dumper.represent_mapping(u'tag:yaml.org,2002:map', data.__dict__)

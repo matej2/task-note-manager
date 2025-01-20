@@ -23,7 +23,7 @@ class DataManager:
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
-     def read_data(self):
+    def read_data(self):
         with self.file_manager.get_read_instance() as file:
             data = yaml.load(file, Loader=YamlUtils.get_loaders())
         return data
