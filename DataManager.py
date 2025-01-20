@@ -29,16 +29,18 @@ class DataManager:
         return data
 
     def add_value(self):
-        note_list = self.read_data()
+        existing_data = self.read_data()
+        if existing_data is None:
+            existing_data = NoteList()
 
         done = self.things_done.get()
         to_be_done = self.things_in_progress.get()
         problems = self.problems.get()
 
         new_note = NoteEntry(datetime.datetime.now(), done, to_be_done, problems)
-        note_list.notes.append(new_note)
+        existing_data.notes.append(new_note)
 
-        self.write_data(note_list)
+        self.write_data(existing_data)
 
     def write_data(self, note_list: NoteList):
         with (self.file_manager.get_write_instance() as file):
