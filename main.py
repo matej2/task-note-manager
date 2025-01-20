@@ -13,7 +13,7 @@ class Application(tkinter.Frame):
 
         # Data manager needs to be initialized after input widgets are created
         self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.status)
-        self.root.bind('<Return>', self.data_manager.get_value)
+        self.root.bind('<Return>', self.data_manager.add_value)
 
         self.create_action_widgets()
 
@@ -36,8 +36,12 @@ class Application(tkinter.Frame):
         self.status.grid(row=0, column=2)
 
     def create_action_widgets(self):
-        self.button = tkinter.Button(self.root, text="Enter", command=self.data_manager.get_value)
+        self.button = tkinter.Button(self.root, text="Enter", command=self.on_click_submit_button)
         self.button.grid(row=3, column=0)
+
+    def on_click_submit_button(self):
+        self.data_manager.add_value()
+        self.data_manager.write_status()
 
     def start(self):
         self.root.mainloop()

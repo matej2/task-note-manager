@@ -29,18 +29,16 @@ class DataManager:
             status = StringUtils.format_status(data)
         return status
 
-    def write_status(self, event=None):
+    def write_status(self):
         status_data = self.get_status()
         self.status.config(text=status_data)
 
-    def get_value(self, event=None):
+    def add_value(self):
         done = self.things_done.get()
         to_be_done = self.things_in_progress.get()
         problems = self.problems.get()
 
         self.add_entry(done, to_be_done, problems, datetime.datetime.now())
-
-        self.write_status(event)
 
     def add_entry(self, changes: str, to_be_done: str, problems: str, date: datetime.datetime):
         with (self.file_manager.get_write_instance() as file):
