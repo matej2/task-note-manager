@@ -28,13 +28,9 @@ class DataManager:
             data = yaml.load(file, Loader=YamlUtils.get_loader())
         return data
 
-    def get_status(self):
-        #return StringUtils.format_status(self.read_data())
+    def get_note_list(self) -> NoteList:
+        data = self.read_data()
         return self.read_data()
-
-    def write_status(self):
-        status_data = self.get_status()
-        self.status.config(text=status_data)
 
     def add_value(self):
         done = self.things_done.get()
