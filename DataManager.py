@@ -23,25 +23,23 @@ class DataManager:
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
-    def read_data(self):
+    def read_data(self) -> NoteList:
         with self.file_manager.get_read_instance() as file:
             data = yaml.load(file, Loader=YamlUtils.get_loader())
         return data
 
-    def get_note_list(self) -> NoteList:
-        data = self.read_data()
-        return self.read_data()
-
     def add_value(self):
+        note_list = self.read_data()
+
         done = self.things_done.get()
         to_be_done = self.things_in_progress.get()
         problems = self.problems.get()
 
-        self.add_entry(done, to_be_done, problems, datetime.datetime.now())
+        new_note = NoteEntry(datetime.datetime.now(), done, to_be_done, problems)
+        note_list.notes.append(new_note)
 
-    def add_entry(self, changes: str, to_be_done: str, problems: str, date: datetime.datetime):
+        self.write_data(note_list)
+
+    def write_data(self, note_list: NoteList):
         with (self.file_manager.get_write_instance() as file):
-            entry = NoteEntry(date, changes, to_be_done, problems)
-            note_list = NoteList([entry])
-
             yaml.dump(note_list, file)

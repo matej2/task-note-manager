@@ -8,7 +8,7 @@ class NoteList:
         self.notes = notes
 
     def __str__(self):
-        output = ""
+        output = "\n\n"
         for note in self.notes:
-            output += f'Date: {note.date}\nThings done: {note.things_done}\nTo be done: {note.to_be_done}\nProblems: {note.problems}'
+            output += f'Date: {note.date}\nThings done: {note.things_done}\nTo be done: {note.to_be_done}\nProblems: {note.problems}\n'
         return output

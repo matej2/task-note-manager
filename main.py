@@ -46,8 +46,8 @@ class Application(tkinter.Frame):
         self.data_manager.add_value()
 
     def on_click_list_button(self):
-        note_list = self.data_manager.get_note_list()
-        self.status.config(text=note_list)
+        note_list = self.data_manager.read_data()
+        self.status.config(text=str(note_list))
 
     def start(self):
         self.root.mainloop()
