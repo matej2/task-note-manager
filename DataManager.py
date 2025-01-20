@@ -25,11 +25,12 @@ class DataManager:
 
     def read_data(self):
         with self.file_manager.get_read_instance() as file:
-            data = yaml.load(file, Loader=YamlUtils.get_loaders())
+            data = yaml.load(file, Loader=YamlUtils.get_loader())
         return data
 
     def get_status(self):
-        return StringUtils.format_status(self.read_data())
+        #return StringUtils.format_status(self.read_data())
+        return self.read_data()
 
     def write_status(self):
         status_data = self.get_status()
