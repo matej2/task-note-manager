@@ -10,5 +10,5 @@ class NoteList:
     def __str__(self):
         output = "\n\n"
         for note in self.notes:
-            output += f'Date: {note.date}\nThings done: {note.things_done}\nTo be done: {note.to_be_done}\nProblems: {note.problems}\n'
+            output += f'Date: {note.date.strftime("%d %b, %Y")}\nThings done: {note.things_done}\nTo be done: {note.to_be_done}\nProblems: {note.problems}\n\n'
         return output

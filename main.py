@@ -17,6 +17,11 @@ class Application(tkinter.Frame):
 
         self.create_action_widgets()
 
+        self.initialize()
+
+    def initialize(self):
+        self.list_data()
+
     def create_input_widgets(self):
         tkinter.Label(self.root, text="What was done: ").grid(row=0, column=0)
         self.things_done = tkinter.Entry(self.root)
@@ -39,13 +44,14 @@ class Application(tkinter.Frame):
         self.submit_button = tkinter.Button(self.root, text="Enter", command=self.on_click_submit_button)
         self.submit_button.grid(row=3, column=0)
 
-        self.list_button = tkinter.Button(self.root, text="List", command=self.on_click_list_button)
+        self.list_button = tkinter.Button(self.root, text="List", command=self.list_data)
         self.list_button.grid(row=3, column=1)
 
     def on_click_submit_button(self):
         self.data_manager.add_value()
+        self.list_data()
 
-    def on_click_list_button(self):
+    def list_data(self):
         note_list = self.data_manager.read_data()
         self.status.config(text=str(note_list))
 
