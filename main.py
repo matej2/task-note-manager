@@ -13,14 +13,17 @@ class Application(tkinter.Frame):
 
         # Data manager needs to be initialized after input widgets are created
         self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.status)
-        self.root.bind('<Return>', self.data_manager.add_value)
 
+        self.create_key_shortcuts()
         self.create_action_widgets()
 
         self.initialize()
 
     def initialize(self):
         self.list_data()
+
+    def create_key_shortcuts(self):
+        self.root.bind('<Return>', self.data_manager.add_value)
 
     def create_input_widgets(self):
         tkinter.Label(self.root, text="What was done: ").grid(row=0, column=0)
