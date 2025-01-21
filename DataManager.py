@@ -37,7 +37,7 @@ class DataManager:
         to_be_done = self.things_in_progress.get("1.0", "end-1c")
         problems = self.problems.get("1.0", "end-1c")
 
-        new_note = NoteEntry(datetime.datetime.now(), done, to_be_done, problems)
+        new_note = NoteEntry(datetime.date.today(), done, to_be_done, problems)
         existing_data.notes.append(new_note)
 
         self.write_data(existing_data)

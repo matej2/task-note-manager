@@ -3,3 +3,4 @@ class ConfigManager:
         self.font_family = "Arial"
         self.font_size_small = 9
         self.font_size_normal = 12
+        self.date_format = "%d %b, %Y"
