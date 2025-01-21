@@ -2,68 +2,34 @@ import tkinter
 
 from ConfigManager import ConfigManager
 from DataManager import DataManager
+from UI import UI
 
 
-class Application(tkinter.Frame):
+class Application(UI):
     def __init__(self):
-        self.root = tkinter.Tk()
-        tkinter.Frame.__init__(self, self.root)
+        self.config_manager = ConfigManager()
+
+        super().__init__(self.config_manager)
 
         self.note_list_output = []
 
-        self.config_manager = ConfigManager()
-        self.create_input_widgets()
-        self.create_status_widgets()
 
         # Data manager needs to be initialized after input widgets are created
         self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list)
-
-        self.create_key_shortcuts()
-        self.create_action_widgets()
+        self.configure_widgets()
 
         self.initialize()
 
     def initialize(self):
         self.list_data()
 
+    def configure_widgets(self):
+        self.submit_button.config(command=self.on_click_submit_button)
+        self.open_file.config(command=self.data_manager.file_manager.open_file)
+        self.list_button.config(command=self.list_data)
+
     def create_key_shortcuts(self):
         self.root.bind('<Return>', self.data_manager.add_value)
-
-    def create_input_widgets(self):
-        tkinter.Label(self.root, text="What was done: ").grid(row=0, column=0)
-        self.things_done = tkinter.Entry(self.root)
-        self.things_done.grid(row=0, column=1)
-        self.things_done.focus_set()
-
-        tkinter.Label(self.root, text="What needs to be done: ").grid(row=1, column=0)
-        self.things_in_progress = tkinter.Entry(self.root)
-        self.things_in_progress.grid(row=1, column=1)
-
-        tkinter.Label(self.root, text="Any problems: ").grid(row=2, column=0)
-        self.problems = tkinter.Entry(self.root)
-        self.problems.grid(row=2, column=1)
-
-    def create_status_widgets(self):
-        self.task_status = tkinter.Label(self.root, text="Task status")
-        self.task_status.grid(row=0, column=2)
-
-        text = tkinter.StringVar(value="Task list")
-        self.task_list = tkinter.Entry(self.root, textvariable=text, state='readonly')
-        self.task_list.grid(row=1, column=2, rowspan=4)
-        self.task_list.config(font=(self.config_manager.font_family, self.config_manager.font_size_task_list))
-
-        myscroll = tkinter.Scrollbar(self.root, orient='horizontal', command=self.task_list.xview)
-        self.task_list.config(xscrollcommand=myscroll.set)
-
-    def create_action_widgets(self):
-        self.submit_button = tkinter.Button(self.root, text="Submit", command=self.on_click_submit_button)
-        self.submit_button.grid(row=3, column=1)
-
-        self.list_button = tkinter.Button(self.root, text="List", command=self.list_data)
-        self.list_button.grid(row=4, column=1)
-
-        self.open_file = tkinter.Button(self.root, text="Open file", command=self.data_manager.file_manager.open_file)
-        self.open_file.grid(row=4, column=0)
 
     def on_click_submit_button(self):
         self.data_manager.add_value()
@@ -76,6 +42,7 @@ class Application(tkinter.Frame):
         text = tkinter.StringVar(value=str(note_list))
 
         self.task_list.config(textvariable=text)
+
 
     def start(self):
         self.root.mainloop()
