@@ -17,9 +17,9 @@ class UI(tkinter.Frame):
 
         self.task_list = tkinter.Label(self.root)
 
-        self.things_done = tkinter.Entry(self.root)
-        self.things_in_progress = tkinter.Entry(self.root)
-        self.problems = tkinter.Entry(self.root)
+        self.things_done = tkinter.Text(self.root)
+        self.things_in_progress = tkinter.Text(self.root)
+        self.problems = tkinter.Text(self.root)
 
         self.configure_button_widgets()
         self.configure_input_widgets()
@@ -37,12 +37,15 @@ class UI(tkinter.Frame):
     def configure_input_widgets(self):
         tkinter.Label(self.root, text="What was done: ").grid(row=0, column=0)
         self.things_done.grid(row=0, column=1)
+        self.things_done.config(height=4, width=20, font=(self.config_manager.font_family, 10))
         self.things_done.focus_set()
 
         tkinter.Label(self.root, text="What needs to be done: ").grid(row=1, column=0)
+        self.things_in_progress.config(height=4, width=20, font=(self.config_manager.font_family, 10))
         self.things_in_progress.grid(row=1, column=1)
 
         tkinter.Label(self.root, text="Any problems: ").grid(row=2, column=0)
+        self.problems.config(height=4, width=20, font=(self.config_manager.font_family, 10))
         self.problems.grid(row=2, column=1)
 
     def configure_status_widgets(self):
