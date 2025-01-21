@@ -12,7 +12,7 @@ from utils.YamlUtils import YamlUtils
 
 class DataManager:
 
-    def __init__(self, things_done: tkinter.Entry, things_in_progress: tkinter.Entry, problems: tkinter.Entry, status: tkinter.Label) -> None:
+    def __init__(self, things_done: tkinter.Text, things_in_progress: tkinter.Text, problems: tkinter.Text, status: tkinter.Label) -> None:
         self.things_done = things_done
         self.things_in_progress = things_in_progress
         self.problems = problems
@@ -33,9 +33,9 @@ class DataManager:
         if existing_data is None:
             existing_data = NoteList()
 
-        done = self.things_done.get()
-        to_be_done = self.things_in_progress.get()
-        problems = self.problems.get()
+        done = self.things_done.get("1.0", "end-1c")
+        to_be_done = self.things_in_progress.get("1.0", "end-1c")
+        problems = self.problems.get("1.0", "end-1c")
 
         new_note = NoteEntry(datetime.datetime.now(), done, to_be_done, problems)
         existing_data.notes.append(new_note)
