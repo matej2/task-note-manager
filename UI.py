@@ -34,9 +34,6 @@ class UI(tkinter.Frame):
         self.open_file.config(text="Open file")
         self.open_file.grid(row=0, column=1)
 
-        self.list_button.config(text="List")
-        self.list_button.grid(row=0, column=2)
-
     def configure_input_widgets(self):
         tkinter.Label(self.root, text="What was done: ").grid(row=0, column=0)
         self.things_done.grid(row=0, column=1)

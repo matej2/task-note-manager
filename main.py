@@ -21,7 +21,6 @@ class Application(UI):
     def configure_widgets(self):
         self.submit_button.config(command=self.on_click_submit_button)
         self.open_file.config(command=self.data_manager.file_manager.open_file)
-        self.list_button.config(command=self.list_data)
 
     def create_key_shortcuts(self):
         self.root.bind('<Return>', self.data_manager.add_value)
