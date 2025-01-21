@@ -14,7 +14,6 @@ class UI(tkinter.Frame):
         self.open_file = tkinter.Button(self.root)
         self.list_button = tkinter.Button(self.root)
 
-        self.task_status = tkinter.Label(self.root)
         self.task_list = tkinter.Label(self.root)
 
         self.things_done = tkinter.Entry(self.root)
@@ -47,8 +46,5 @@ class UI(tkinter.Frame):
         self.problems.grid(row=2, column=1)
 
     def configure_status_widgets(self):
-        self.task_status.config(text="Task status")
-        self.task_status.grid(row=0, column=2)
-
         self.task_list.grid(row=1, column=2, rowspan=4)
         self.task_list.config(font=(self.config_manager.font_family, self.config_manager.font_size_task_list))

@@ -30,8 +30,6 @@ class Application(UI):
         self.data_manager.add_value()
         self.list_data()
 
-        self.task_status.config(text="Task created")
-
     def list_data(self):
         note_list = self.data_manager.read_data()
         last_note_index = len(note_list.notes) - 1
