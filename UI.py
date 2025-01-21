@@ -10,9 +10,10 @@ class UI(tkinter.Frame):
         tkinter.Frame.__init__(self, self.root)
         self.config_manager = config
 
-        self.submit_button = tkinter.Button(self.root)
-        self.open_file = tkinter.Button(self.root)
-        self.list_button = tkinter.Button(self.root)
+        self.button_container = tkinter.Frame(self.root)
+        self.submit_button = tkinter.Button(self.button_container)
+        self.open_file = tkinter.Button(self.button_container)
+        self.list_button = tkinter.Button(self.button_container)
 
         self.task_list = tkinter.Label(self.root)
 
@@ -25,14 +26,16 @@ class UI(tkinter.Frame):
         self.configure_status_widgets()
 
     def configure_button_widgets(self):
+        self.button_container.grid(row=3, column=0, columnspan=2)
+
         self.submit_button.config(text="Submit")
-        self.submit_button.grid(row=3, column=1)
+        self.submit_button.grid(row=0, column=0, padx=30)
 
         self.open_file.config(text="Open file")
-        self.open_file.grid(row=4, column=0)
+        self.open_file.grid(row=0, column=1)
 
         self.list_button.config(text="List")
-        self.list_button.grid(row=4, column=1)
+        self.list_button.grid(row=0, column=2)
 
     def configure_input_widgets(self):
         tkinter.Label(self.root, text="What was done: ").grid(row=0, column=0)
