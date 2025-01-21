@@ -31,8 +31,11 @@ class Application(UI):
 
     def list_data(self):
         note_list = self.data_manager.read_data()
-        last_note_index = len(note_list.notes) - 1
-        text = tkinter.StringVar(value=str(note_list.notes[last_note_index]))
+        if note_list is None:
+            text = tkinter.StringVar(value="No data")
+        else:
+            last_note_index = len(note_list.notes) - 1
+            text = tkinter.StringVar(value=str(note_list.notes[last_note_index]))
 
         self.task_list.config(textvariable=text)
 
