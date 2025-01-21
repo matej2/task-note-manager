@@ -8,4 +8,6 @@ class NoteEntry:
         self.to_be_done = to_be_done
         self.problems = problems
 
+    def __str__(self):
+        return f'Date: {self.date.strftime("%d %b, %Y")}\nThings done: {self.things_done}\nTo be done: {self.to_be_done}\nProblems: {self.problems}\n\n'
 

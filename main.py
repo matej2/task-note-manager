@@ -8,13 +8,8 @@ from UI import UI
 class Application(UI):
     def __init__(self):
         self.config_manager = ConfigManager()
-
         super().__init__(self.config_manager)
 
-        self.note_list_output = []
-
-
-        # Data manager needs to be initialized after input widgets are created
         self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list)
         self.configure_widgets()
 
@@ -39,10 +34,10 @@ class Application(UI):
 
     def list_data(self):
         note_list = self.data_manager.read_data()
-        text = tkinter.StringVar(value=str(note_list))
+        last_note_index = len(note_list.notes) - 1
+        text = tkinter.StringVar(value=str(note_list.notes[last_note_index]))
 
         self.task_list.config(textvariable=text)
-
 
     def start(self):
         self.root.mainloop()
