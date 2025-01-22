@@ -44,15 +44,15 @@ class UI(tkinter.Frame):
     def configure_input_widgets(self):
         tkinter.Label(self.root, text="What was done: ", font=self.get_font_config()).grid(row=1, column=0)
         self.things_done.grid(row=1, column=1)
-        self.things_done.config(font=self.get_font_config(), height=4, width=30)
+        self.things_done.config(font=self.get_font_config(), height=4, width=30, wrap=tkinter.WORD)
         self.things_done.focus_set()
 
         tkinter.Label(self.root, text="What needs to be done: ", font=self.get_font_config()).grid(row=2, column=0)
-        self.things_in_progress.config(font=self.get_font_config(), height=4, width=30)
+        self.things_in_progress.config(font=self.get_font_config(), height=4, width=30, wrap=tkinter.WORD)
         self.things_in_progress.grid(row=2, column=1)
 
         tkinter.Label(self.root, text="Any problems: ", font=self.get_font_config()).grid(row=3, column=0)
-        self.problems.config(font=self.get_font_config(), height=4, width=30)
+        self.problems.config(font=self.get_font_config(), height=4, width=30, wrap=tkinter.WORD)
         self.problems.grid(row=3, column=1)
 
     def configure_status_widgets(self):
