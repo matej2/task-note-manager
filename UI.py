@@ -29,40 +29,37 @@ class UI(tkinter.Frame):
         self.configure_status_widgets()
         self.configure_instructions()
 
-    def configure_font(self, widget: tkinter.Widget):
-        widget.config(font=(self.config_manager.font_family, self.config_manager.font_size_normal))
+    def get_font_config(self) -> tuple:
+        return self.config_manager.font_family, self.config_manager.font_size_normal
 
     def configure_button_widgets(self):
         self.button_container.grid(row=4, column=0, columnspan=2)
 
-        self.submit_button.config(text="Submit")
+        self.submit_button.config(text="Submit", font=self.get_font_config())
         self.submit_button.grid(row=0, column=0, padx=30)
-        self.configure_font(self.submit_button)
 
-        self.open_file.config(text="Open file")
+        self.open_file.config(text="Open file", font=self.get_font_config())
         self.open_file.grid(row=0, column=1)
-        self.configure_font(self.open_file)
 
     def configure_input_widgets(self):
-        tkinter.Label(self.root, text="What was done: ").grid(row=1, column=0)
-        self.configure_font(self.things_done)
+        tkinter.Label(self.root, text="What was done: ", font=self.get_font_config()).grid(row=1, column=0)
         self.things_done.grid(row=1, column=1)
-        self.things_done.config(height=4, width=20)
+        self.things_done.config(font=self.get_font_config(), height=4, width=30)
         self.things_done.focus_set()
 
-        tkinter.Label(self.root, text="What needs to be done: ").grid(row=2, column=0)
-        self.configure_font(self.things_in_progress)
-        self.things_in_progress.config(height=4, width=20)
+        tkinter.Label(self.root, text="What needs to be done: ", font=self.get_font_config()).grid(row=2, column=0)
+        self.things_in_progress.config(font=self.get_font_config(), height=4, width=30)
         self.things_in_progress.grid(row=2, column=1)
 
-        tkinter.Label(self.root, text="Any problems: ").grid(row=3, column=0)
-        self.configure_font(self.problems)
-        self.problems.config(height=4, width=20)
+        tkinter.Label(self.root, text="Any problems: ", font=self.get_font_config()).grid(row=3, column=0)
+        self.problems.config(font=self.get_font_config(), height=4, width=30)
         self.problems.grid(row=3, column=1)
 
     def configure_status_widgets(self):
         self.task_list.grid(row=2, column=2, rowspan=4)
         self.task_list.config(font=(self.config_manager.font_family, self.config_manager.font_size_small))
+
+        tkinter.Label(self.root, text="Last note: ", font=self.get_font_config()).grid(row=0, column=2)
 
     def configure_instructions(self):
         title = tkinter.Label(self.instruction_container)
