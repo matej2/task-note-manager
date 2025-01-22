@@ -78,3 +78,6 @@ fabric.properties
 
 # Project specific
 *.txt
+
+# PyInstaller
+dist/
