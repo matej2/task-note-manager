@@ -31,7 +31,7 @@ class Application(UI):
 
     def list_data(self):
         note_list = self.data_manager.read_data()
-        if note_list is None:
+        if note_list is None or note_list.notes is None:
             text = tkinter.StringVar(value="No data")
         else:
             last_note_index = len(note_list.notes) - 1

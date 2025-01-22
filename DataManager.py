@@ -1,5 +1,6 @@
 import datetime
 import tkinter
+import typing
 
 import yaml
 
@@ -23,9 +24,14 @@ class DataManager:
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
+    def check_datatype(self, value: object, class_name: type):
+        if not isinstance(value, class_name):
+            raise RuntimeError(f'Wrong datatype, expected {type}')
+
     def read_data(self) -> NoteList:
         with self.file_manager.get_read_instance() as file:
             data = yaml.load(file, Loader=YamlUtils.get_loader())
+        self.check_datatype(data, NoteList)
         return data
 
     def add_value(self):
