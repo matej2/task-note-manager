@@ -8,9 +8,26 @@ from models.NoteList import NoteList
 
 
 class YamlUtils:
+    _allowed_nodes = [
+        "date",
+        "problems",
+        "things_done",
+        "to_be_done"
+    ]
+
+    @staticmethod
+    def remove_unknown_keys(value: dict) -> dict:
+        result = {}
+        for key, value in value.items():
+            if key in YamlUtils._allowed_nodes:
+                result[key] = value
+        return result
+
     @staticmethod
     def note_entry_constructor(loader: yaml.SafeLoader, node: yaml.nodes.MappingNode) -> NoteEntry:
-        return NoteEntry(**loader.construct_mapping(node))
+        yaml_nodes = YamlUtils.remove_unknown_keys(loader.construct_mapping(node))
+
+        return NoteEntry(**yaml_nodes)
 
     @staticmethod
     def note_entry_list_constructor(loader: yaml.SafeLoader, node: yaml.nodes.MappingNode) -> NoteList:
