@@ -33,7 +33,7 @@ class UI(tkinter.Frame):
         return self.config_manager.font_family, self.config_manager.font_size_normal
 
     def configure_button_widgets(self):
-        self.button_container.grid(row=4, column=0, columnspan=2)
+        self.button_container.grid(row=4, column=0, columnspan=2, sticky='e')
 
         self.submit_button.config(text="Submit", font=self.get_font_config())
         self.submit_button.grid(row=0, column=0, padx=30)
@@ -56,14 +56,14 @@ class UI(tkinter.Frame):
         self.problems.grid(row=3, column=1)
 
     def configure_status_widgets(self):
-        self.task_list.grid(row=2, column=2, rowspan=4)
-        self.task_list.config(font=(self.config_manager.font_family, self.config_manager.font_size_small))
+        tkinter.Label(self.root, text="Latest note: ", font=self.get_font_config()).grid(row=0, column=2)
 
-        tkinter.Label(self.root, text="Last note: ", font=self.get_font_config()).grid(row=0, column=2)
+        self.task_list.grid(row=1, column=2, rowspan=3, sticky='n')
+        self.task_list.config(justify=tkinter.LEFT, font=(self.config_manager.font_family, self.config_manager.font_size_small))
 
     def configure_instructions(self):
         title = tkinter.Label(self.instruction_container)
-        title.config(text="Instructions and information", font=(self.config_manager.font_family, self.config_manager.font_size_large))
+        title.config(text="Task note manager", font=(self.config_manager.font_family, self.config_manager.font_size_large))
         title.grid(row=0, column=0)
 
         instructions = tkinter.Label(self.instruction_container)
