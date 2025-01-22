@@ -24,6 +24,10 @@ class Application(UI):
 
     def create_key_shortcuts(self):
         self.root.bind('<Return>', self.data_manager.add_value)
+        self.things_done.bind('<Return>', self.data_manager.add_value)
+        self.things_done.bind("<Tab>", self.focus_next_widget)
+        self.things_in_progress.bind("<Tab>", self.focus_next_widget)
+        self.problems.bind("<Tab>", self.focus_next_widget)
 
     def on_click_submit_button(self):
         self.data_manager.add_value()
@@ -38,6 +42,10 @@ class Application(UI):
             text = tkinter.StringVar(value=str(note_list.notes[last_note_index]))
 
         self.task_list.config(textvariable=text)
+
+    def focus_next_widget(self, event):
+        event.widget.tk_focusNext().focus()
+        return ("break")
 
     def start(self):
         self.root.mainloop()
