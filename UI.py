@@ -67,7 +67,7 @@ class UI(tkinter.Frame):
         title.grid(row=0, column=0)
 
         instructions = tkinter.Label(self.instruction_container)
-        instructions.config(text="Application will ask you 3 question about your daily work. \nQuestions are designed so that the data you provide is suitable for reports, meetings and notes. \nApplication will save this data to a yaml file, which you can see by clicking 'Open file' button. \nYou can further edit data in this file to adapt it to your requrements.")
+        instructions.config(text="Application asks you 3 question about your daily work. \nQuestions are designed so that the data you provide is useful for reports, meetings and notes. \nApplication will save this data to a yaml file, which you can see by clicking 'Open file' button. \nYou can further edit data in this file to adapt it to your requrements.")
         instructions.grid(row=1, column=0)
 
         self.instruction_container.grid(row=0, column=0, columnspan=2)
