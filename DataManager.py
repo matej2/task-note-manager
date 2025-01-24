@@ -28,10 +28,19 @@ class DataManager:
         if not isinstance(value, class_name):
             raise RuntimeError(f'Wrong datatype, expected {type}')
 
+    def get_today_data(self) -> list[NoteEntry] | list[None]:
+        result = []
+        note_list = self.read_data()
+        if note_list is not None:
+            for note in note_list.notes:
+                if note.date == datetime.date.today().strftime("%d.%m.%Y"):
+                    result.append(note)
+        return result
+
     def read_data(self) -> NoteList:
         with self.file_manager.get_read_instance() as file:
             data = yaml.load(file, Loader=YamlUtils.get_loader())
-        self.check_datatype(data, NoteList)
+        #self.check_datatype(data, NoteList)
         return data
 
     def add_value(self):
@@ -43,7 +52,9 @@ class DataManager:
         to_be_done = self.things_in_progress.get("1.0", "end-1c")
         problems = self.problems.get("1.0", "end-1c")
 
-        new_note = NoteEntry(datetime.date.today(), done, to_be_done, problems)
+        current_date = datetime.date.today().strftime("%d.%m.%Y")
+
+        new_note = NoteEntry(current_date, done, to_be_done, problems)
         existing_data.notes.append(new_note)
 
         self.write_data(existing_data)

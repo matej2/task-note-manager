@@ -34,12 +34,11 @@ class Application(UI):
         self.list_data()
 
     def list_data(self):
-        note_list = self.data_manager.read_data()
-        if note_list is None or note_list.notes is None:
+        note_list = self.data_manager.get_today_data()
+        if len(note_list) == 0:
             text = tkinter.StringVar(value="No data")
         else:
-            last_note_index = len(note_list.notes) - 1
-            text = tkinter.StringVar(value=str(note_list.notes[last_note_index]))
+            text = tkinter.StringVar(value=note_list)
 
         self.task_list.config(textvariable=text)
 
