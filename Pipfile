@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 tk = "*"
 pyyaml = "*"
+apscheduler = "*"
 
 [dev-packages]
 pyinstaller = "*"
