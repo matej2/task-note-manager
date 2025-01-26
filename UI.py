@@ -1,5 +1,6 @@
 import tkinter
 import typing
+from tkinter import RIGHT, Y, NONE, BOTTOM, X, END, TOP
 
 from ConfigManager import ConfigManager
 
@@ -18,7 +19,8 @@ class UI(tkinter.Frame):
 
         self.instruction_container = tkinter.Frame(self.root)
 
-        self.task_list = tkinter.Label(self.root)
+        self.task_list_container = tkinter.Frame(self.root)
+        self.task_list = tkinter.Text(self.task_list_container)
 
         self.things_done = tkinter.Text(self.root)
         self.things_in_progress = tkinter.Text(self.root)
@@ -56,10 +58,22 @@ class UI(tkinter.Frame):
         self.problems.grid(row=3, column=1)
 
     def configure_status_widgets(self):
-        tkinter.Label(self.root, text="Latest note: ", font=self.get_font_config()).grid(row=0, column=2)
+        tkinter.Label(self.task_list_container, text="Latest note: ", font=self.get_font_config()).grid(row=0, column=0)
 
-        self.task_list.grid(row=1, column=2, rowspan=3, sticky='n')
-        self.task_list.config(justify=tkinter.LEFT, font=(self.config_manager.font_family, self.config_manager.font_size_small))
+        h = tkinter.Scrollbar(self.task_list_container, orient='horizontal', borderwidth=2, relief="groove")
+        h.grid(row=2, column=0, sticky='nsew')
+        v = tkinter.Scrollbar(self.task_list_container, borderwidth=2, relief="groove")
+        v.grid(row=1, column=1, sticky='nsew')
+
+        self.task_list.config(width=15, height=15, wrap=NONE,
+            xscrollcommand=h.set,
+            yscrollcommand=v.set)
+        self.task_list.grid(row=1, column=0)
+
+        h.config(command=self.task_list.xview)
+        v.config(command=self.task_list.yview)
+
+        self.task_list_container.grid(row=1, column=2, rowspan=3, sticky='n')
 
     def configure_instructions(self):
         title = tkinter.Label(self.instruction_container)

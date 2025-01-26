@@ -1,4 +1,5 @@
 import tkinter
+ from tkinter import END
 
 from ConfigManager import ConfigManager
 from DataManager import DataManager
@@ -10,7 +11,7 @@ class Application(UI):
         self.config_manager = ConfigManager()
         super().__init__(self.config_manager)
 
-        self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list)
+        self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list_container)
         self.configure_widgets()
 
         self.initialize()
@@ -33,14 +34,19 @@ class Application(UI):
         self.data_manager.add_value()
         self.list_data()
 
+    @staticmethod
+    def set_input(text: tkinter.Text, value: str):
+        text.delete(1.0, END)
+        text.insert(END, value)
+
     def list_data(self):
         note_list = self.data_manager.get_today_data()
         if len(note_list) == 0:
-            text = tkinter.StringVar(value="No data")
+            text = "No data"
         else:
-            text = tkinter.StringVar(value=note_list)
+            text = note_list
 
-        self.task_list.config(textvariable=text)
+        Application.set_input(self.task_list, text)
 
     def focus_next_widget(self, event):
         event.widget.tk_focusNext().focus()
