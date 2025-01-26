@@ -1,6 +1,6 @@
 import tkinter
 import typing
-from tkinter import RIGHT, Y, NONE, BOTTOM, X, END, TOP
+from tkinter import RIGHT, Y, NONE, BOTTOM, X, END, TOP, CENTER
 
 from ConfigManager import ConfigManager
 
@@ -65,15 +65,16 @@ class UI(tkinter.Frame):
         v = tkinter.Scrollbar(self.task_list_container, borderwidth=2, relief="groove")
         v.grid(row=1, column=1, sticky='nsew')
 
-        self.task_list.config(width=15, height=15, wrap=NONE,
+        self.task_list.config(width=30, height=15, wrap=NONE,
             xscrollcommand=h.set,
-            yscrollcommand=v.set)
+            yscrollcommand=v.set,
+            font=self.get_font_config())
         self.task_list.grid(row=1, column=0)
 
         h.config(command=self.task_list.xview)
         v.config(command=self.task_list.yview)
 
-        self.task_list_container.grid(row=1, column=2, rowspan=3, sticky='n')
+        self.task_list_container.grid(row=1, column=2, rowspan=3, sticky='n', padx=10)
 
     def configure_instructions(self):
         title = tkinter.Label(self.instruction_container)
@@ -81,8 +82,12 @@ class UI(tkinter.Frame):
         title.grid(row=0, column=0)
 
         instructions = tkinter.Label(self.instruction_container)
-        instructions.config(text="Application asks you 3 question about your daily work. \nQuestions are designed so that the data you provide is useful for reports, meetings and notes. \nApplication will save this data to a yaml file, which you can see by clicking 'Open file' button. \nYou can further edit data in this file to adapt it to your requrements.")
+        instructions.config(
+            text="Application asks you 3 question about your daily work. Questions are designed so that the data you provide is useful for reports, meetings and notes. Application will save this data to a yaml file, which you can see by clicking 'Open file' button. You can further edit data in this file to adapt it to your requrements.",
+            wraplength=400,
+            justify=CENTER
+        )
         instructions.grid(row=1, column=0)
 
-        self.instruction_container.grid(row=0, column=0, columnspan=2)
+        self.instruction_container.grid(row=0, column=0, columnspan=3)
 
