@@ -1,5 +1,5 @@
 import tkinter
-from tkinter import END
+from tkinter import END, NORMAL, DISABLED
 
 from ConfigManager import ConfigManager
 from DataManager import DataManager
@@ -36,8 +36,10 @@ class Application(UI):
 
     @staticmethod
     def set_input(text: tkinter.Text, value: str):
+        text.configure(state=NORMAL)
         text.delete(1.0, END)
         text.insert(END, value)
+        text.configure(state=DISABLED)
 
     def list_data(self):
         note_list = self.data_manager.get_today_data()

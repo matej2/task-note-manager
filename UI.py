@@ -1,6 +1,6 @@
 import tkinter
 import typing
-from tkinter import RIGHT, Y, NONE, BOTTOM, X, END, TOP, CENTER
+from tkinter import RIGHT, Y, NONE, BOTTOM, X, END, TOP, CENTER, DISABLED
 
 from ConfigManager import ConfigManager
 
@@ -68,7 +68,8 @@ class UI(tkinter.Frame):
         self.task_list.config(width=30, height=15, wrap=NONE,
             xscrollcommand=h.set,
             yscrollcommand=v.set,
-            font=self.get_font_config())
+            font=self.get_font_config(),
+            state=DISABLED)
         self.task_list.grid(row=1, column=0)
 
         h.config(command=self.task_list.xview)
