@@ -1,5 +1,5 @@
 import tkinter
- from tkinter import END
+from tkinter import END
 
 from ConfigManager import ConfigManager
 from DataManager import DataManager
