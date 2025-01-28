@@ -26,6 +26,10 @@ class Application(UI):
         self.submit_button.config(command=self.on_click_submit_button)
         self.open_file.config(command=self.data_manager.file_manager.open_file)
 
+        sv = tkinter.StringVar()
+        sv.trace_add("write", lambda var, index, mode: print("write", var, index, mode))
+        self.scheduler_frequency.configure(textvariable=sv)
+
     def create_key_shortcuts(self):
         self.root.bind('<Return>', self.data_manager.add_value)
         self.things_done.bind('<Return>', self.data_manager.add_value)
@@ -38,6 +42,10 @@ class Application(UI):
         self.list_data()
 
         self.notification.config(text="")
+
+    @staticmethod
+    def on_change_frequency(var, index, mode):
+        print(var, index, mode)
 
     @staticmethod
     def set_input(text: tkinter.Text, value: str):

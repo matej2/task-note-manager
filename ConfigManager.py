@@ -5,3 +5,4 @@ class ConfigManager:
         self.font_size_normal = 10
         self.font_size_large = 12
         self.date_format = "%d %b, %Y"
+        self.frequency = 3

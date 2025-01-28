@@ -14,25 +14,33 @@ class UI(tkinter.Frame):
         tkinter.Frame.__init__(self, self.root)
         self.config_manager = config
 
+        # Buttons
         self.button_container = tkinter.Frame(self.root)
         self.submit_button = tkinter.Button(self.button_container)
         self.open_file = tkinter.Button(self.button_container)
         self.list_button = tkinter.Button(self.button_container)
-        self.notification = tkinter.Label(self.button_container)
 
         self.instruction_container = tkinter.Frame(self.root)
 
         self.task_list_container = tkinter.Frame(self.root)
         self.task_list = tkinter.Text(self.task_list_container)
 
+        # Input fields
         self.things_done = tkinter.Text(self.root)
         self.things_in_progress = tkinter.Text(self.root)
         self.problems = tkinter.Text(self.root)
+
+        # Scheduler
+        self.notification = tkinter.Label(self.button_container)
+
+        self.scheduler_config_container = tkinter.Frame(self.root)
+        self.scheduler_frequency = tkinter.Entry(self.scheduler_config_container)
 
         self.configure_button_widgets()
         self.configure_input_widgets()
         self.configure_status_widgets()
         self.configure_instructions()
+        self.configure_scheduler_widgets()
 
     def get_font_config(self) -> tuple:
         return self.config_manager.font_family, self.config_manager.font_size_normal
@@ -105,4 +113,11 @@ class UI(tkinter.Frame):
 
         self.instruction_container.grid(row=0, column=0, columnspan=3)
 
+    def configure_scheduler_widgets(self):
+        self.scheduler_config_container.grid(row=5, column=0, columnspan=2, pady=10)
+        text = tkinter.Label(self.scheduler_config_container)
+        text.configure(text="Scheduler frequency (in hours)", font=self.get_font_config())
+        text.grid(row=0, column=0)
 
+        self.scheduler_frequency.configure(font=self.get_font_config())
+        self.scheduler_frequency.grid(row=0, column=1)
