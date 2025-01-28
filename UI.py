@@ -16,6 +16,7 @@ class UI(tkinter.Frame):
         self.submit_button = tkinter.Button(self.button_container)
         self.open_file = tkinter.Button(self.button_container)
         self.list_button = tkinter.Button(self.button_container)
+        self.notification = tkinter.Label(self.button_container)
 
         self.instruction_container = tkinter.Frame(self.root)
 
@@ -42,6 +43,9 @@ class UI(tkinter.Frame):
 
         self.open_file.config(text="Open file", font=self.get_font_config())
         self.open_file.grid(row=0, column=1)
+
+        self.notification.config(highlightcolor="red", fg="red", font=self.get_font_config())
+        self.notification.grid(row=0, column=2)
 
     def configure_input_widgets(self):
         tkinter.Label(self.root, text="What was done: ", font=self.get_font_config()).grid(row=1, column=0)
@@ -90,5 +94,14 @@ class UI(tkinter.Frame):
         )
         instructions.grid(row=1, column=0)
 
+        scheduler_description = tkinter.Label(self.instruction_container)
+        scheduler_description.config(
+            text="Each time application is run, it will notify you to enter data after 3 hours. This is to help you to keep track of your daily tasks.",
+            wraplength=400,
+            justify=CENTER
+        )
+        scheduler_description.grid(row=2, column=0)
+
         self.instruction_container.grid(row=0, column=0, columnspan=3)
+
 

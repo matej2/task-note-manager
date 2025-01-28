@@ -3,6 +3,7 @@ from tkinter import END, NORMAL, DISABLED
 
 from ConfigManager import ConfigManager
 from DataManager import DataManager
+from Scheduler import Scheduler
 from UI import UI
 
 
@@ -12,6 +13,8 @@ class Application(UI):
         super().__init__(self.config_manager)
 
         self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list_container)
+        self.scheduler = Scheduler(self.trigger_notification)
+
         self.configure_widgets()
 
         self.initialize()
@@ -34,6 +37,8 @@ class Application(UI):
         self.data_manager.add_value()
         self.list_data()
 
+        self.notification.config(text="")
+
     @staticmethod
     def set_input(text: tkinter.Text, value: str):
         text.configure(state=NORMAL)
@@ -53,6 +58,14 @@ class Application(UI):
     def focus_next_widget(self, event):
         event.widget.tk_focusNext().focus()
         return ("break")
+
+    def trigger_notification(self):
+        self.root.deiconify()
+        self.root.focus_force()
+        self.notify()
+
+    def notify(self):
+        self.notification.config(text="Daily notification to enter data")
 
     def start(self):
         self.root.mainloop()
