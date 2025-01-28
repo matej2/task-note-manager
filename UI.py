@@ -9,6 +9,8 @@ class UI(tkinter.Frame):
 
     def __init__(self, config: ConfigManager):
         self.root = tkinter.Tk()
+        self.root.title("Task note manager")
+
         tkinter.Frame.__init__(self, self.root)
         self.config_manager = config
 
@@ -82,23 +84,22 @@ class UI(tkinter.Frame):
         self.task_list_container.grid(row=1, column=2, rowspan=3, sticky='n', padx=10)
 
     def configure_instructions(self):
-        title = tkinter.Label(self.instruction_container)
-        title.config(text="Task note manager", font=(self.config_manager.font_family, self.config_manager.font_size_large))
-        title.grid(row=0, column=0)
 
         instructions = tkinter.Label(self.instruction_container)
         instructions.config(
-            text="Application asks you 3 question about your daily work. Questions are designed so that the data you provide is useful for reports, meetings and notes. Application will save this data to a yaml file, which you can see by clicking 'Open file' button. You can further edit data in this file to adapt it to your requrements.",
+            text="Application is designed to keep track of your daily work. It will asl you 3 question. These are designed so that the data you provide is useful for reports, meetings and notes. Application will save this data to a yaml file, which you can see by clicking 'Open file' button. You can further edit data in this file to adapt it to your requrements.",
             wraplength=400,
-            justify=CENTER
+            justify=CENTER,
+            font=(self.config_manager.font_family, self.config_manager.font_size_small)
         )
         instructions.grid(row=1, column=0)
 
         scheduler_description = tkinter.Label(self.instruction_container)
         scheduler_description.config(
-            text="Each time application is run, it will notify you to enter data after 3 hours. This is to help you to keep track of your daily tasks.",
+            text="When application is running, it will notify you to enter data every 3 hours. You can set appliation to run automatically at startup.",
             wraplength=400,
-            justify=CENTER
+            justify=CENTER,
+            font=(self.config_manager.font_family, self.config_manager.font_size_small)
         )
         scheduler_description.grid(row=2, column=0)
 
