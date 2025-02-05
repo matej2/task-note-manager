@@ -33,14 +33,11 @@ class UI(tkinter.Frame):
         # Scheduler
         self.notification = tkinter.Label(self.button_container)
 
-        self.scheduler_config_container = tkinter.Frame(self.root)
-        self.scheduler_frequency = tkinter.Entry(self.scheduler_config_container)
 
         self.configure_button_widgets()
         self.configure_input_widgets()
         self.configure_status_widgets()
         self.configure_instructions()
-        self.configure_scheduler_widgets()
 
     def get_font_config(self) -> tuple:
         return self.config_manager.font_family, self.config_manager.font_size_normal
@@ -112,12 +109,3 @@ class UI(tkinter.Frame):
         scheduler_description.grid(row=2, column=0)
 
         self.instruction_container.grid(row=0, column=0, columnspan=3)
-
-    def configure_scheduler_widgets(self):
-        self.scheduler_config_container.grid(row=5, column=0, columnspan=2, pady=10)
-        text = tkinter.Label(self.scheduler_config_container)
-        text.configure(text="Scheduler frequency (in hours)", font=self.get_font_config())
-        text.grid(row=0, column=0)
-
-        self.scheduler_frequency.configure(font=self.get_font_config())
-        self.scheduler_frequency.grid(row=0, column=1)
