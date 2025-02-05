@@ -101,7 +101,7 @@ class UI(tkinter.Frame):
 
         scheduler_description = tkinter.Label(self.instruction_container)
         scheduler_description.config(
-            text="When application is running, it will notify you to enter data every 3 hours. You can set appliation to run automatically at startup.",
+            text="When application is running, it will notify you to enter data every 6 hours. You can set appliation to run automatically at startup.",
             wraplength=400,
             justify=CENTER,
             font=(self.config_manager.font_family, self.config_manager.font_size_small)
