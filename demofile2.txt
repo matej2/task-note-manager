@@ -1,5 +1,0 @@
-notes:
-- date: 2025-01-19 23:44:20.536525
-  problems: tttt
-  things_done: test
-  to_be_done: tt
