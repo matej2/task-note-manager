@@ -43,7 +43,7 @@ class UI(tkinter.Frame):
         return self.config_manager.font_family, self.config_manager.font_size_normal
 
     def configure_button_widgets(self):
-        self.button_container.grid(row=4, column=0, columnspan=2, sticky='e')
+        self.button_container.grid(row=4, column=0, columnspan=2, sticky='e', pady=(10, 20))
 
         self.submit_button.config(text="Submit", font=self.get_font_config())
         self.submit_button.grid(row=0, column=0, padx=30)
@@ -69,7 +69,7 @@ class UI(tkinter.Frame):
         self.problems.grid(row=3, column=1)
 
     def configure_status_widgets(self):
-        tkinter.Label(self.task_list_container, text="Latest note: ", font=self.get_font_config()).grid(row=0, column=0)
+        tkinter.Label(self.task_list_container, text="Todays notes: ", font=self.get_font_config()).grid(row=0, column=0)
 
         h = tkinter.Scrollbar(self.task_list_container, orient='horizontal', borderwidth=2, relief="groove")
         h.grid(row=2, column=0, sticky='nsew')
@@ -106,6 +106,6 @@ class UI(tkinter.Frame):
             justify=CENTER,
             font=(self.config_manager.font_family, self.config_manager.font_size_small)
         )
-        scheduler_description.grid(row=2, column=0)
+        scheduler_description.grid(row=2, column=0, pady=(0, 10))
 
         self.instruction_container.grid(row=0, column=0, columnspan=3)
