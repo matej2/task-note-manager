@@ -3,6 +3,7 @@ import tkinter
 import typing
 
 import yaml
+from DataManagerBase import DataManagerBase
 
 from FileManager import FileManager
 from StringUtils import StringUtils
@@ -11,22 +12,17 @@ from models.NoteList import NoteList
 from utils.YamlUtils import YamlUtils
 
 
-class DataManager:
+class DataManager(DataManagerBase):
 
-    def __init__(self, things_done: tkinter.Text, things_in_progress: tkinter.Text, problems: tkinter.Text, status: tkinter.Label) -> None:
+    def __init__(self, things_done: tkinter.Text, things_in_progress: tkinter.Text, problems: tkinter.Text, status: tkinter.Label, file_manager: FileManager) -> None:
+        super().__init__(file_manager)
         self.things_done = things_done
         self.things_in_progress = things_in_progress
         self.problems = problems
         self.status = status
 
-        self.file_manager = FileManager()
-
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
-
-    def check_datatype(self, value: object, class_name: type):
-        if not isinstance(value, class_name):
-            raise RuntimeError(f'Wrong datatype, expected {type}')
 
     def get_today_data(self) -> list[NoteEntry] | list[None]:
         result = []
@@ -37,13 +33,7 @@ class DataManager:
                     result.append(note)
         return result
 
-    def read_data(self) -> NoteList:
-        with self.file_manager.get_read_instance() as file:
-            data = yaml.load(file, Loader=YamlUtils.get_loader())
-        #self.check_datatype(data, NoteList)
-        return data
-
-    def add_value(self):
+    def write_value(self) -> None:
         existing_data = self.read_data()
         if existing_data is None:
             existing_data = NoteList()
@@ -59,6 +49,3 @@ class DataManager:
 
         self.write_data(existing_data)
 
-    def write_data(self, note_list: NoteList):
-        with (self.file_manager.get_write_instance() as file):
-            yaml.dump(note_list, file)

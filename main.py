@@ -3,6 +3,7 @@ from tkinter import END, NORMAL, DISABLED
 
 from ConfigManager import ConfigManager
 from DataManager import DataManager
+from FileManager import FileManager
 from Scheduler import Scheduler
 from UI import UI
 
@@ -10,9 +11,10 @@ from UI import UI
 class Application(UI):
     def __init__(self):
         self.config_manager = ConfigManager()
+        self.file_manager = FileManager()
         super().__init__(self.config_manager)
 
-        self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list_container)
+        self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list_container, self.file_manager)
         self.scheduler = Scheduler(self.trigger_notification)
 
         self.configure_widgets()
@@ -28,14 +30,14 @@ class Application(UI):
 
 
     def create_key_shortcuts(self):
-        self.root.bind('<Return>', self.data_manager.add_value)
-        self.things_done.bind('<Return>', self.data_manager.add_value)
+        self.root.bind('<Return>', self.data_manager.write_value)
+        self.things_done.bind('<Return>', self.data_manager.write_value)
         self.things_done.bind("<Tab>", self.focus_next_widget)
         self.things_in_progress.bind("<Tab>", self.focus_next_widget)
         self.problems.bind("<Tab>", self.focus_next_widget)
 
     def on_click_submit_button(self):
-        self.data_manager.add_value()
+        self.data_manager.write_value()
         self.list_data()
 
         self.notification.config(text="")
