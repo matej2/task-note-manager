@@ -35,9 +35,9 @@ jobs:
       - name: Get virtual environment path
         id: pipenv
         run: |
-          VENV_PATH=$(pipenv --venv)
-          echo "Virtual environment path: $VENV_PATH"
-          echo "::set-output name=venv_path::$VENV_PATH"
+          set VENV_PATH=%pipenv --venv%
+          echo "Virtual environment path: %VENV_PATH%"
+          echo "::set-output name=venv_path::%VENV_PATH%"
 
       # Step 6: Build the application using PyInstaller
       - name: Build with PyInstaller
