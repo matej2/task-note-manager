@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu environment
+    runs-on: windows-latest  # Use the latest Windows environment
 
     steps:
       # Step 1: Check out the repository
@@ -42,11 +42,11 @@ jobs:
       # Step 6: Build the application using PyInstaller
       - name: Build with PyInstaller
         run: |
-          pipenv run pyinstaller --paths "${{ steps.pipenv.outputs.venv_path }}" --noconsole --onefile main.py
+          pipenv run pyinstaller --paths "${{ steps.pipenv.outputs.venv_path }}" --noconsole --windowed --onefile main.py
 
       # Step 7: Upload the built executable as an artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: TkinterApp
+          name: Task note manager - Windows
           path: dist/  # PyInstaller outputs the executable in the 'dist' folder
