@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "67b5a30b30cf88f6abc30651d43d736a5dcc86919bd85e59b479f994da6420f7"
+            "sha256": "826bd3543b60cc7330833587be1ec48e233c89f9f14db15768eb8f028f899589"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.11"
+            "python_version": "3.11.4"
         },
         "sources": [
             {
@@ -152,11 +152,11 @@
         },
         "pyinstaller-hooks-contrib": {
             "hashes": [
-                "sha256:3c0623799c3f81a37293127f485d65894c20fd718f722cb588785a3e52581ad1",
-                "sha256:6dc0b55a1acaab2ffee36ed4a05b073aa0a22e46f25fb5c66a31e217454135ed"
+                "sha256:130818f9e9a0a7f2261f1fd66054966a3a50c99d000981c5d1db11d3ad0c6ab2",
+                "sha256:d3c799470cbc0bda60dcc8e6b4ab976777532b77621337f2037f558905e3a8e9"
             ],
             "markers": "python_version >= '3.8'",
-            "version": "==2025.0"
+            "version": "==2025.1"
         },
         "pywin32-ctypes": {
             "hashes": [

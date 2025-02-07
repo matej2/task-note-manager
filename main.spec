@@ -3,7 +3,7 @@
 
 a = Analysis(
     ['main.py'],
-    pathex=['C:UsersMatej.virtualenvstask-note-manager-1o97gwPa'],
+    pathex=[],
     binaries=[],
     datas=[],
     hiddenimports=[],

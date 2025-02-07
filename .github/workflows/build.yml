@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: ' 3.11.4'
 
       # Step 3: Install Pipenv
       - name: Install Pipenv
@@ -31,20 +31,12 @@ jobs:
         run: |
           pipenv install --dev  # Install both regular and dev dependencies
 
-      # Step 5: Get the virtual environment path
-      - name: Get virtual environment path
-        id: pipenv
-        run: |
-          set VENV_PATH=%pipenv --venv%
-          echo "Virtual environment path: %VENV_PATH%"
-          echo "::set-output name=venv_path::%VENV_PATH%"
-
-      # Step 6: Build the application using PyInstaller
+      # Step 5: Build the application using PyInstaller
       - name: Build with PyInstaller
         run: |
-          pipenv run pyinstaller --paths "${{ steps.pipenv.outputs.venv_path }}" --noconsole --windowed --onefile main.py
+          pipenv run pyinstaller --noconsole --windowed --onefile main.py
 
-      # Step 7: Upload the built executable as an artifact
+      # Step 6: Upload the built executable as an artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
