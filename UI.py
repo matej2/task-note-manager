@@ -19,8 +19,7 @@ class UI(tkinter.Frame):
         self.submit_button = tkinter.Button(self.button_container)
         self.open_file = tkinter.Button(self.button_container)
         self.list_button = tkinter.Button(self.button_container)
-
-        self.instruction_container = tkinter.Frame(self.root)
+        self.instructions_button = tkinter.Button(self.button_container)
 
         self.task_list_container = tkinter.Frame(self.root)
         self.task_list = tkinter.Text(self.task_list_container)
@@ -33,11 +32,9 @@ class UI(tkinter.Frame):
         # Scheduler
         self.notification = tkinter.Label(self.button_container)
 
-
         self.configure_button_widgets()
         self.configure_input_widgets()
         self.configure_status_widgets()
-        self.configure_instructions()
 
     def get_font_config(self) -> tuple:
         return self.config_manager.font_family, self.config_manager.font_size_normal
@@ -53,6 +50,9 @@ class UI(tkinter.Frame):
 
         self.notification.config(highlightcolor="red", fg="red", font=self.get_font_config())
         self.notification.grid(row=0, column=2)
+
+        self.instructions_button.configure(text="Instructions", font=self.get_font_config(), command=self.open_information_popup)
+        self.instructions_button.grid(row=0, column=3, padx=30)
 
     def configure_input_widgets(self):
         tkinter.Label(self.root, text="What was done: ", font=self.get_font_config()).grid(row=1, column=0)
@@ -88,24 +88,29 @@ class UI(tkinter.Frame):
 
         self.task_list_container.grid(row=1, column=2, rowspan=3, sticky='n', padx=10)
 
-    def configure_instructions(self):
+    def open_information_popup(self):
+        top = tkinter.Toplevel(self.root)
+        top.title("About application")
+        top.config(padx=10, pady=10)
 
-        instructions = tkinter.Label(self.instruction_container)
+        instructions = tkinter.Label(top)
         instructions.config(
-            text="Application is designed to keep track of your daily work. It will asl you 3 question. These are designed so that the data you provide is useful for reports, meetings and notes. Application will save this data to a yaml file, which you can see by clicking 'Open file' button. You can further edit data in this file to adapt it to your requrements.",
+            text="""
+Goal of this application is to keep track of your daily work. It will ask you 3 question. These are designed so that the data you provide is useful for reports, meetings and notes. 
+
+Application will save this data to a yaml file, which you can see by clicking 'Open file' button. You can further edit data in this file to adapt it to your requrements.
+            """,
             wraplength=400,
             justify=CENTER,
             font=(self.config_manager.font_family, self.config_manager.font_size_small)
         )
-        instructions.grid(row=1, column=0)
+        instructions.grid(row=0, column=0)
 
-        scheduler_description = tkinter.Label(self.instruction_container)
+        scheduler_description = tkinter.Label(top)
         scheduler_description.config(
             text="When application is running, it will notify you to enter data every 6 hours. You can set appliation to run automatically at startup.",
             wraplength=400,
             justify=CENTER,
             font=(self.config_manager.font_family, self.config_manager.font_size_small)
         )
-        scheduler_description.grid(row=2, column=0, pady=(0, 10))
-
-        self.instruction_container.grid(row=0, column=0, columnspan=3)
+        scheduler_description.grid(row=1, column=0)
