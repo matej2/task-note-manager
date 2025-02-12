@@ -12,7 +12,7 @@ from UI import UI
 class Application(UI):
     def __init__(self):
         self.config_manager = ConfigManager()
-        self.file_manager = FileManager()
+        self.file_manager = FileManager(self.config_manager)
         super().__init__(self.config_manager)
 
         self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list_container, self.file_manager)

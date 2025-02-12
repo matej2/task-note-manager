@@ -2,13 +2,13 @@ import os
 import typing
 import webbrowser
 
+from ConfigManager import ConfigManager
+
 
 class FileManager:
 
-    def __init__(self) -> None:
-        self.current_dir = os.path.dirname(os.path.realpath(__file__))
-        self.full_path = os.path.join(self.current_dir, "demofile2.txt")
-
+    def __init__(self, config: ConfigManager) -> None:
+        self.full_path = config.full_path
         # Creates a file if it does not exist
         with open(self.full_path, "a") as f:
             f.write("")
