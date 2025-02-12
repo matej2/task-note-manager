@@ -8,6 +8,8 @@ class ConfigManager:
         self.frequency = 6
 
     def __str__(self):
-        return f"""
-        Frequency: {{self.frequency}}
-        """
+        return """
+Font family: {}
+Font size: {}
+Date format: {}
+Frequency: {}""".format(self.font_family, self.font_size_normal, self.date_format, self.frequency)

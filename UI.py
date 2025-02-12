@@ -1,7 +1,7 @@
 import tkinter
 import typing
 from datetime import datetime, timedelta, timezone
-from tkinter import RIGHT, Y, NONE, BOTTOM, X, END, TOP, CENTER, DISABLED
+from tkinter import RIGHT, Y, NONE, BOTTOM, X, END, TOP, CENTER, DISABLED, LEFT
 
 from ConfigManager import ConfigManager
 
@@ -130,6 +130,7 @@ Application will save this data to a yaml file, which you can see by clicking 'O
         )
         instructions.grid(row=0, column=0)
 
+
         scheduler_description = tkinter.Label(top)
         scheduler_description.config(
             text="When application is running, it will notify you to enter data every 6 hours. You can set appliation to run automatically at startup.",
@@ -138,3 +139,13 @@ Application will save this data to a yaml file, which you can see by clicking 'O
             font=(self.config_manager.font_family, self.config_manager.font_size_small)
         )
         scheduler_description.grid(row=1, column=0)
+
+
+        config_list = tkinter.Label(top)
+        config_list.config(
+            text="Configuration:\n" + str(self.config_manager),
+            wraplength=400,
+            justify=LEFT,
+            font="TkFixedFont"
+        )
+        config_list.grid(row=2, column=0)
