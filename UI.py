@@ -1,5 +1,6 @@
 import tkinter
 import typing
+from datetime import datetime, timedelta, timezone
 from tkinter import RIGHT, Y, NONE, BOTTOM, X, END, TOP, CENTER, DISABLED
 
 from ConfigManager import ConfigManager
@@ -30,11 +31,14 @@ class UI(tkinter.Frame):
         self.problems = tkinter.Text(self.root)
 
         # Scheduler
-        self.notification = tkinter.Label(self.button_container)
+        self.scheduler_container = tkinter.Frame(self.root)
+        self.counter = tkinter.Label(self.scheduler_container)
+        self.notification = tkinter.Label(self.scheduler_container)
 
         self.configure_button_widgets()
         self.configure_input_widgets()
         self.configure_status_widgets()
+        self.configure_scheduler_widgets()
 
     def get_font_config(self) -> tuple:
         return self.config_manager.font_family, self.config_manager.font_size_normal
@@ -47,9 +51,6 @@ class UI(tkinter.Frame):
 
         self.open_file.config(text="Open file", font=self.get_font_config())
         self.open_file.grid(row=0, column=1)
-
-        self.notification.config(highlightcolor="red", fg="red", font=self.get_font_config())
-        self.notification.grid(row=0, column=2)
 
         self.instructions_button.configure(text="Instructions", font=self.get_font_config(), command=self.open_information_popup)
         self.instructions_button.grid(row=0, column=3, padx=30)
@@ -87,6 +88,29 @@ class UI(tkinter.Frame):
         v.config(command=self.task_list.yview)
 
         self.task_list_container.grid(row=1, column=2, rowspan=3, sticky='n', padx=10)
+
+    def configure_scheduler_widgets(self):
+        self.scheduler_container.grid(row=5, column=0)
+        self.counter.config(font=self.get_font_config(), text="Remaining time: --:--")
+        self.counter.grid(row=0, column=0)
+
+        self.notification.config(highlightcolor="red", fg="red", font=self.get_font_config())
+        self.notification.grid(row=0, column=1)
+
+    def update_time_until_next_run(self, next_run_time: datetime):
+        if next_run_time:
+            now = datetime.now(timezone.utc)
+            time_until_next_run = next_run_time - now
+
+            # Format the time difference
+            hours, remainder = divmod(time_until_next_run.seconds, 3600)
+            minutes, seconds = divmod(remainder, 60)
+            time_str = f"{hours:02}:{minutes:02}"
+
+            # Update the label in the Tkinter GUI
+            self.counter.config(text=f"Notification in: {time_str} hours")
+        else:
+            self.counter.config(text="No upcoming notification")
 
     def open_information_popup(self):
         top = tkinter.Toplevel(self.root)

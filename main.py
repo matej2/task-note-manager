@@ -1,4 +1,5 @@
 import tkinter
+from datetime import datetime, timedelta, timezone
 from tkinter import END, NORMAL, DISABLED
 
 from ConfigManager import ConfigManager
@@ -15,7 +16,9 @@ class Application(UI):
         super().__init__(self.config_manager)
 
         self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list_container, self.file_manager)
-        self.scheduler = Scheduler(self.trigger_notification)
+
+        self.update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency))
+        self.scheduler = Scheduler(self.trigger_notification, self.update_time_until_next_run, self.config_manager)
 
         self.configure_widgets()
 

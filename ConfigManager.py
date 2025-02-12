@@ -5,4 +5,9 @@ class ConfigManager:
         self.font_size_normal = 10
         self.font_size_large = 12
         self.date_format = "%d %b, %Y"
-        self.frequency = 3
+        self.frequency = 6
+
+    def __str__(self):
+        return f"""
+        Frequency: {{self.frequency}}
+        """
