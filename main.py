@@ -46,21 +46,27 @@ class Application(UI):
         self.notification.config(text="")
         self.clear_inputs()
 
+        self.task_list.see(tkinter.END)
+
     def clear_inputs(self):
-        self.set_input(self.things_done, "")
-        self.set_input(self.things_in_progress, "")
-        self.set_input(self.problems, "")
+        self.fill_input_value(self.things_done, "")
+        self.fill_input_value(self.things_in_progress, "")
+        self.fill_input_value(self.problems, "")
 
     @staticmethod
     def on_change_frequency(var, index, mode):
         print(var, index, mode)
 
     @staticmethod
-    def set_input(text: tkinter.Text, value: str):
+    def set_input_disabled(text: tkinter.Text, value: str):
         text.configure(state=NORMAL)
+        Application.fill_input_value(text, value)
+        text.configure(state=DISABLED)
+
+    @staticmethod
+    def fill_input_value(text: tkinter.Text, value: str):
         text.delete(1.0, END)
         text.insert(END, value)
-        text.configure(state=DISABLED)
 
     def list_data(self):
         note_list = self.data_manager.get_today_data()
@@ -69,7 +75,7 @@ class Application(UI):
         else:
             text = note_list
 
-        Application.set_input(self.task_list, text)
+        Application.set_input_disabled(self.task_list, text)
 
     def focus_next_widget(self, event):
         event.widget.tk_focusNext().focus()

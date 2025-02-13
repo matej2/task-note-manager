@@ -44,16 +44,16 @@ class UI(tkinter.Frame):
         return self.config_manager.font_family, self.config_manager.font_size_normal
 
     def configure_button_widgets(self):
-        self.button_container.grid(row=4, column=0, columnspan=2, sticky='e', pady=(10, 20))
+        self.button_container.grid(row=4, column=0, columnspan=3, sticky='e', pady=(10, 20))
 
         self.submit_button.config(text="Submit", font=self.get_font_config())
-        self.submit_button.grid(row=0, column=0, padx=30)
+        self.submit_button.grid(row=0, column=0, padx=90)
 
         self.open_file.config(text="Open file", font=self.get_font_config())
-        self.open_file.grid(row=0, column=1)
+        self.open_file.grid(row=0, column=1, sticky='e')
 
         self.instructions_button.configure(text="Instructions", font=self.get_font_config(), command=self.open_information_popup)
-        self.instructions_button.grid(row=0, column=3, padx=30)
+        self.instructions_button.grid(row=0, column=3, sticky='e', padx=20)
 
     def configure_input_widgets(self):
         tkinter.Label(self.root, text="What was done: ", font=self.get_font_config()).grid(row=1, column=0)
