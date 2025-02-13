@@ -1,4 +1,5 @@
 import os
+import sys
 
 
 class ConfigManager:
@@ -10,8 +11,15 @@ class ConfigManager:
         self.date_format = "%d %b, %Y"
         self.frequency = 6
 
-        self.current_dir = os.path.dirname(os.path.realpath(__file__))
-        self.full_path = os.path.join(self.current_dir, "demofile2.txt")
+        self.full_path = os.path.join(ConfigManager._get_full_path(), "demofile2.txt")
+
+    @staticmethod
+    def _get_full_path():
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        else:
+            application_path = os.path.dirname(os.path.abspath(__file__))
+        return application_path
 
     def __str__(self):
         return """
