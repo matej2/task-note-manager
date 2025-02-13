@@ -44,6 +44,12 @@ class Application(UI):
         self.list_data()
 
         self.notification.config(text="")
+        self.clear_inputs()
+
+    def clear_inputs(self):
+        self.set_input(self.things_done, "")
+        self.set_input(self.things_in_progress, "")
+        self.set_input(self.problems, "")
 
     @staticmethod
     def on_change_frequency(var, index, mode):
