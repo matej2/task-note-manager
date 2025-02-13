@@ -15,7 +15,7 @@ class Application(UI):
         self.file_manager = FileManager(self.config_manager)
         super().__init__(self.config_manager)
 
-        self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list_container, self.file_manager)
+        self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list_container, self.file_manager, self.config_manager)
 
         self.update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency_hours))
         self.scheduler = Scheduler(self.trigger_notification, self.update_time_until_next_run, self.config_manager)
