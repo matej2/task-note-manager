@@ -120,25 +120,15 @@ class UI(tkinter.Frame):
         instructions = tkinter.Label(top)
         instructions.config(
             text="""
-Goal of this application is to keep track of your daily work. It will ask you 3 question. These are designed so that the data you provide is useful for reports, meetings and notes. 
+Goal of this application is to keep track of your daily work. It will ask you 3 question. These are designed so that the data you provide is useful for reports, meetings and notes. Application will save this data to a yaml file, which you can see by clicking 'Open file' button. You can further edit data in this file to adapt it to your requrements.
 
-Application will save this data to a yaml file, which you can see by clicking 'Open file' button. You can further edit data in this file to adapt it to your requrements.
+Starting from the time you run application, it will notify you every 6 hours. In order to automatically start application, you can set it to run at startup.
             """,
             wraplength=400,
             justify=CENTER,
             font=(self.config_manager.font_family, self.config_manager.font_size_small)
         )
         instructions.grid(row=0, column=0)
-
-
-        scheduler_description = tkinter.Label(top)
-        scheduler_description.config(
-            text="When application is running, it will notify you to enter data every 6 hours. You can set appliation to run automatically at startup.",
-            wraplength=400,
-            justify=CENTER,
-            font=(self.config_manager.font_family, self.config_manager.font_size_small)
-        )
-        scheduler_description.grid(row=1, column=0)
 
 
         config_list = tkinter.Label(top)
@@ -148,4 +138,4 @@ Application will save this data to a yaml file, which you can see by clicking 'O
             justify=LEFT,
             font="TkFixedFont"
         )
-        config_list.grid(row=2, column=0)
+        config_list.grid(row=1, column=0)

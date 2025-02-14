@@ -16,7 +16,6 @@ class DataManagerBase:
     def read_data(self) -> NoteList:
         with self.file_manager.get_read_instance() as file:
             data = yaml.load(file, Loader=YamlUtils.get_loader())
-        #self.check_datatype(data, NoteList)
         return data
 
     def write_data(self, note_list: NoteList):
