@@ -1,6 +1,3 @@
-import datetime
-
-
 class NoteEntry:
     def __init__(self, date: str, things_done: str, to_be_done: str, problems: str):
         self.date = date

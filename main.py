@@ -32,13 +32,6 @@ class Application(UI):
         self.open_file.config(command=self.data_manager.file_manager.open_file)
 
 
-    def create_key_shortcuts(self):
-        self.root.bind('<Return>', self.data_manager.write_value)
-        self.things_done.bind('<Return>', self.data_manager.write_value)
-        self.things_done.bind("<Tab>", self.focus_next_widget)
-        self.things_in_progress.bind("<Tab>", self.focus_next_widget)
-        self.problems.bind("<Tab>", self.focus_next_widget)
-
     def on_click_submit_button(self):
         self.data_manager.write_value()
         self.list_data()

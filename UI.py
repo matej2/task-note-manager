@@ -1,7 +1,6 @@
 import tkinter
-import typing
-from datetime import datetime, timedelta, timezone
-from tkinter import RIGHT, Y, NONE, BOTTOM, X, END, TOP, CENTER, DISABLED, LEFT
+from datetime import datetime, timezone
+from tkinter import NONE, DISABLED, LEFT
 
 from ConfigManager import ConfigManager
 
