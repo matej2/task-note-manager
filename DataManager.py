@@ -1,13 +1,10 @@
 import datetime
 import tkinter
-import typing
 
 import yaml
 from ConfigManager import ConfigManager
 from DataManagerBase import DataManagerBase
-
 from FileManager import FileManager
-from StringUtils import StringUtils
 from models.NoteEntry import NoteEntry
 from models.NoteList import NoteList
 from utils.YamlUtils import YamlUtils

@@ -54,10 +54,6 @@ class Application(UI):
         self.fill_input_value(self.problems, "")
 
     @staticmethod
-    def on_change_frequency(var, index, mode):
-        print(var, index, mode)
-
-    @staticmethod
     def set_input_disabled(text: tkinter.Text, value: str):
         text.configure(state=NORMAL)
         Application.fill_input_value(text, value)
