@@ -39,5 +39,4 @@ Make sure you have Python 3.11 or higher installed. You would also need pipenv.
 Before you build this app, note that antivirus may flag it as potentially malicious executable. This is normal, you should add an exception for file in your antivirus program. Application may also need admin permissions to run in order to create and update output file.
 
 1. `pipenv install --dev`
-2. Get directory of virtual environment by running `pipenv --venv`
-3. Run `pipenv run pyinstaller --paths <virtual env path> --noconsole --onefile --windowed --name "Task Note Manager" main.py`. Option --noconsole will build app so that console window will not be displayed when running executable. Option --onefile will bundle all files into one executable. 
+2. Run `pipenv run pyinstaller --noconsole --onefile --windowed --name "Task Note Manager" main.py`. Option --noconsole will build app so that console window will not be displayed when running executable. Option --onefile will bundle all files into one executable. 
