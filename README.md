@@ -5,7 +5,11 @@
 ![ui screenshot](resources/ui.png "UI Screenshot")
 ![file screenshot](resources/file.png "File Screenshot")
  
-# Daily Usage
+## Download and usage instructions
+
+See [release list](https://github.com/matej2/task-note-manager/releases) to download latest version. 
+
+
 At the start of your workday, run the application. You can either launch it manually or set it to autorun at startup.  
 6 hours after the application starts, you will be prompted to provide your daily task data.
 
