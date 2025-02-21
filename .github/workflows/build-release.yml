@@ -2,7 +2,7 @@ name: Build and Release Tkinter Application
 
 on:
   release:
-    types: [created]  # Trigger the workflow when a new release is created
+    types: [published]  # Trigger the workflow when a new release is created
 
 jobs:
   build-and-release:
