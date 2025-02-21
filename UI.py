@@ -115,25 +115,28 @@ class UI(tkinter.Frame):
             self.counter.config(text=f"Notification in: {time_str} hours")
         else:
             self.counter.config(text="No upcoming notification")
+    def create_section(self, parent: tkinter.BaseWidget, title: str, body: str):
+        section = tkinter.Frame(parent)
+        tkinter.Label(section, text=title, font=(self.config_manager.font_family, self.config_manager.font_size_normal, "bold")).grid(row=0, column=0)
+        tkinter.Label(section, text=body, font=self.get_font_config(), wraplength=400,
+            justify=LEFT).grid(row=1, column=0)
+        return section
 
     def open_information_popup(self):
         top = tkinter.Toplevel(self.root)
         top.title("About application")
         top.config(padx=10, pady=10)
 
-        instructions = tkinter.Label(top)
-        instructions.config(
-            text="""Goal of this application is to keep track of your daily work. It will ask you 3 question. These are designed so that the data you provide is useful for reports, meetings and notes. 
-
-Application will save this data to a yaml file, which you can see by clicking 'Open file' button. You can further edit data in this file to adapt it to your requrements. Each entry is marked with "!NoteEntry", you may copy it and modify it.
-
-Starting from the time you run application, it will notify you every 6 hours. In order to automatically start application, you can set it to run at startup.
-            """,
-            wraplength=400,
-            justify=LEFT,
-            font=(self.config_manager.font_family, self.config_manager.font_size_small)
-        )
+        instructions = self.create_section(top, "Instructions", """At the start of a workday, run the application - either manual or you can set it to autorun at startup. 6 hours from application startup, you will be asked to provide data.
+                    """)
         instructions.grid(row=0, column=0)
+
+        about = self.create_section(top, "About", """This application is designed to keep track of your daily work. It will ask you 3 question. The data you provide using these questions is useful for reports, meetings and notes. 
+
+Application will save these answers to a yaml file, which you can see by clicking 'Open file' button. You can further edit data in this file to adapt it to your requrements. Each entry is marked with "!NoteEntry", you may copy it and modify it.
+            """)
+        about.grid(row=1, column=0)
+
 
 
         config_list = tkinter.Label(top)
@@ -143,4 +146,4 @@ Starting from the time you run application, it will notify you every 6 hours. In
             justify=LEFT,
             font="TkFixedFont"
         )
-        config_list.grid(row=1, column=0)
+        config_list.grid(row=3, column=0)

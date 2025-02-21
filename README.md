@@ -4,6 +4,10 @@
 
 ![ui screenshot](resources/ui.png "UI Screenshot")
 ![file screenshot](resources/file.png "File Screenshot")
+ 
+# Daily Usage
+At the start of your workday, run the application. You can either launch it manually or set it to autorun at startup.  
+6 hours after the application starts, you will be prompted to provide your daily task data.
 
 ## Key Features
 
@@ -32,11 +36,14 @@ Whether you're managing personal goals or team projects, Task Note Manager is he
 Make sure you have Python 3.11 or higher installed. You would also need pipenv.
 
 1. `pipenv install`
-2. `pienv run python main.py`
+2. `pipenv run python main.py`
 
 # Build instructions
 
-Before you build this app, note that antivirus may flag it as potentially malicious executable. This is normal, you should add an exception for file in your antivirus program. Application may also need admin permissions to run in order to create and update output file.
+When building this application locally, note that antivirus may flag it as potentially malicious executable. This is normal, you should add an exception for the file in your antivirus program. The application may also need admin permissions to run in order to create and update the output file.
 
 1. `pipenv install --dev`
-2. Run `pipenv run pyinstaller --noconsole --onefile --windowed --name "Task Note Manager" main.py`. Option --noconsole will build app so that console window will not be displayed when running executable. Option --onefile will bundle all files into one executable. 
+2. Run `pipenv run pyinstaller --noconsole --onefile --windowed --name "Task Note Manager" main.py`.  
+   - `--noconsole`: Hides the console window when running the executable.  
+   - `--onefile`: Bundles all files into a single executable.  
+   - `--windowed`: Ensures the app runs as a GUI application.
