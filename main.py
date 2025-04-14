@@ -1,6 +1,9 @@
+import subprocess
 import tkinter
 from datetime import datetime, timedelta, timezone
 from tkinter import END, NORMAL, DISABLED
+
+import notify2
 
 from ConfigManager import ConfigManager
 from DataManager import DataManager
@@ -26,6 +29,7 @@ class Application(UI):
         self.initialize()
 
     def initialize(self):
+        notify2.init("test")
         self.list_data()
 
         today_data = self.data_manager.get_today_data_single()
@@ -73,7 +77,7 @@ class Application(UI):
         return ("break")
 
     def trigger_notification(self):
-        self.root.deiconify()
+        notify2.Notification("Daily notification to enter data").show()
         self.root.focus_force()
         self.notify()
 
