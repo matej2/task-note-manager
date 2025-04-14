@@ -33,6 +33,15 @@ class DataManager(DataManagerBase):
                     result.append(note)
         return result
 
+    def get_today_data_single(self) -> NoteEntry | None:
+        return self.get_today_data()[0]
+
+    def find_and_replace_data(self, list: NoteList, entry: NoteEntry) -> None:
+        for i,e in enumerate(list.notes):
+            if e.date == entry.date:
+                list.notes[i] = entry
+                break
+
     def write_value(self) -> None:
         existing_data = self.read_data()
         if existing_data is None:
@@ -45,7 +54,8 @@ class DataManager(DataManagerBase):
         current_date = datetime.date.today().strftime(self.config_manager.date_format)
 
         new_note = NoteEntry(current_date, done, to_be_done, problems)
-        existing_data.notes.append(new_note)
+
+        self.find_and_replace_data(existing_data, new_note)
 
         self.write_data(existing_data)
 

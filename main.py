@@ -7,6 +7,7 @@ from DataManager import DataManager
 from FileManager import FileManager
 from Scheduler import Scheduler
 from UI import UI
+from models.NoteEntry import NoteEntry
 
 
 class Application(UI):
@@ -27,6 +28,9 @@ class Application(UI):
     def initialize(self):
         self.list_data()
 
+        today_data = self.data_manager.get_today_data_single()
+        self.init_inputs(today_data)
+
     def configure_widgets(self):
         self.submit_button.config(command=self.on_click_submit_button)
         self.open_file.config(command=self.data_manager.file_manager.open_file)
@@ -37,14 +41,12 @@ class Application(UI):
         self.list_data()
 
         self.notification.config(text="")
-        self.clear_inputs()
-
         self.task_list.see(tkinter.END)
 
-    def clear_inputs(self):
-        self.fill_input_value(self.things_done, "")
-        self.fill_input_value(self.things_in_progress, "")
-        self.fill_input_value(self.problems, "")
+    def init_inputs(self, entry: NoteEntry):
+        self.fill_input_value(self.things_done, entry.things_done)
+        self.fill_input_value(self.things_in_progress, entry.to_be_done)
+        self.fill_input_value(self.problems, entry.problems)
 
     @staticmethod
     def set_input_disabled(text: tkinter.Text, value: str):
