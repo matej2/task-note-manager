@@ -42,6 +42,9 @@ class DataManager(DataManagerBase):
                 list.notes[i] = entry
                 break
 
+    def split_string_to_tasks(self, string: str) -> list[str]:
+        return string.split(";")
+
     def write_value(self) -> None:
         existing_data = self.read_data()
         if existing_data is None:
