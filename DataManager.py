@@ -24,14 +24,14 @@ class DataManager(DataManagerBase):
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
-    def get_today_data(self) -> list[NoteEntry] | list[None]:
+    def get_today_data(self) -> NoteList:
         result = []
         note_list = self.read_data()
         if note_list is not None:
             for note in note_list.notes:
                 if note.date == datetime.date.today().strftime(self.config_manager.date_format):
                     result.append(note)
-        return result
+        return NoteList(result)
 
     def write_value(self) -> None:
         existing_data = self.read_data()

@@ -59,7 +59,7 @@ class Application(UI):
 
     def list_data(self):
         note_list = self.data_manager.get_today_data()
-        if len(note_list) == 0:
+        if len(note_list.notes) == 0:
             text = "No data"
         else:
             text = note_list

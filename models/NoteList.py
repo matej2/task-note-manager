@@ -6,3 +6,9 @@ class NoteList:
         if notes is None:
             notes = []
         self.notes = notes
+
+    def __str__(self):
+        txt = ""
+        for n in self.notes:
+            txt += str(n)
+        return txt
