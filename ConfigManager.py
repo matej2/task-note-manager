@@ -5,6 +5,7 @@ import sys
 class ConfigManager:
     def __init__(self):
         self.font_family = "TkDefaultFont"
+        self.font_family_monospace = "Consolas"
         self.font_size_small = 8
         self.font_size_normal = 10
         self.date_format = "%d. %b. %Y"

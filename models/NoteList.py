@@ -10,5 +10,5 @@ class NoteList:
     def __str__(self):
         txt = ""
         for n in self.notes:
-            txt += str(n)
+            txt += str(n) + "\n"
         return txt

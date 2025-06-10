@@ -6,9 +6,9 @@ class NoteEntry:
         self.problems = problems
 
     def __str__(self):
-        txt = "Date:".rjust(30) + self.date + '\n'
-        txt += "Things done:".rjust(30) + self.things_done + '\n'
-        txt += "To be done:".rjust(30) + self.to_be_done + '\n'
-        txt += "Problems:".rjust(30) + self.problems + '\n'
+        txt = "Date:".rjust(15) + self.date + '\n'
+        txt += "Things done:".rjust(15) + self.things_done + '\n'
+        txt += "To be done:".rjust(15) + self.to_be_done + '\n'
+        txt += "Problems:".rjust(15) + self.problems + '\n'
         return txt
 

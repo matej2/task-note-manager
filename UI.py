@@ -46,6 +46,9 @@ class UI(tkinter.Frame):
     def get_font_config(self) -> tuple:
         return self.config_manager.font_family, self.config_manager.font_size_normal
 
+    def get_monospace_config(self) -> tuple:
+        return self.config_manager.font_family_monospace, self.config_manager.font_size_small
+
     def configure_button_widgets(self):
         self.button_container.grid(row=4, column=0, columnspan=3, sticky='e', pady=(10, 20))
 
@@ -83,7 +86,7 @@ class UI(tkinter.Frame):
         self.task_list.config(width=30, height=15, wrap=NONE,
             xscrollcommand=h.set,
             yscrollcommand=v.set,
-            font=self.get_font_config(),
+            font=self.get_monospace_config(),
             state=DISABLED)
         self.task_list.grid(row=1, column=0)
 
