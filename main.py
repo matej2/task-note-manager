@@ -2,6 +2,8 @@ import tkinter
 from datetime import datetime, timedelta, timezone
 from tkinter import END, NORMAL, DISABLED
 
+from win11toast import toast
+
 from ConfigManager import ConfigManager
 from DataManager import DataManager
 from FileManager import FileManager
@@ -13,7 +15,6 @@ class Application(UI):
     def __init__(self):
         self.config_manager = ConfigManager()
         self.file_manager = FileManager(self.config_manager)
-        self.toast_notifier = ToastNotifier()
         super().__init__(self.config_manager)
 
         self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list_container, self.file_manager, self.config_manager)
@@ -72,7 +73,7 @@ class Application(UI):
         return ("break")
 
     def trigger_notification(self):
-        self.toast_notifier.show_toast("Enter data", "Daily notification to enter data", duration=240)
+        toast("Enter data", "Daily notification to enter data")
         self.root.deiconify()
         self.root.focus_force()
         self.notify()
