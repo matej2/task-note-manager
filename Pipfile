@@ -8,6 +8,7 @@ tk = "*"
 pyyaml = "*"
 apscheduler = "*"
 wheel = "*"
+win11toast = "*"
 
 [dev-packages]
 pyinstaller = "*"
