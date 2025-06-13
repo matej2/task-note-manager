@@ -64,5 +64,3 @@ class DataManager(DataManagerBase):
         self.find_and_replace_data(existing_data, new_note)
 
         self.write_data(existing_data)
-    def export_data(self) -> None:
-        pass

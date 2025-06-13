@@ -7,6 +7,7 @@ import notify2
 
 from ConfigManager import ConfigManager
 from DataManager import DataManager
+from ExportManager import ExportManager
 from FileManager import FileManager
 from Scheduler import Scheduler
 from UI import UI
@@ -17,6 +18,7 @@ class Application(UI):
     def __init__(self):
         self.config_manager = ConfigManager()
         self.file_manager = FileManager(self.config_manager)
+        self.export_manager = ExportManager(self.config_manager)
         super().__init__(self.config_manager)
 
         self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list_container, self.file_manager, self.config_manager)
@@ -38,7 +40,7 @@ class Application(UI):
     def configure_widgets(self):
         self.submit_button.config(command=self.on_click_submit_button)
         self.open_file.config(command=self.data_manager.file_manager.open_file)
-        self.export_button.config(command=self.data_manager.export_data)
+        self.export_button.config(command=self.export_manager.export_data)
 
 
     def on_click_submit_button(self):
