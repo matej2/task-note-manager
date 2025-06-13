@@ -60,7 +60,7 @@ class UI(tkinter.Frame):
         self.instructions_button.grid(row=0, column=3, sticky='e', padx=20)
 
         self.export_button.grid(row=0, column=4, sticky='e')
-        self.export_button.config(text="Export", font=self.get_font_config())
+        self.export_button.config(text="Export data - ODS", font=self.get_font_config())
 
     def configure_input_widgets(self):
         tkinter.Label(self.root, text="What was done: ", font=self.get_font_config()).grid(row=1, column=0)
