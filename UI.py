@@ -24,6 +24,7 @@ class UI(tkinter.Frame):
         self.open_file = tkinter.Button(self.button_container)
         self.list_button = tkinter.Button(self.button_container)
         self.instructions_button = tkinter.Button(self.button_container)
+        self.export_button = tkinter.Button(self.button_container)
 
         self.task_list_container = tkinter.Frame(self.root)
         self.task_list = tkinter.Text(self.task_list_container)
@@ -57,6 +58,9 @@ class UI(tkinter.Frame):
 
         self.instructions_button.configure(text="Instructions", font=self.get_font_config(), command=self.open_information_popup)
         self.instructions_button.grid(row=0, column=3, sticky='e', padx=20)
+
+        self.export_button.grid(row=0, column=4, sticky='e')
+        self.export_button.config(text="Export", font=self.get_font_config())
 
     def configure_input_widgets(self):
         tkinter.Label(self.root, text="What was done: ", font=self.get_font_config()).grid(row=1, column=0)

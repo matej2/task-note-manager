@@ -34,7 +34,10 @@ class DataManager(DataManagerBase):
         return result
 
     def get_today_data_single(self) -> NoteEntry | None:
-        return self.get_today_data()[0]
+        if len(self.get_today_data()) == 0:
+            return NoteEntry("", "", "", "")
+        else:
+            return self.get_today_data()[0]
 
     def find_and_replace_data(self, list: NoteList, entry: NoteEntry) -> None:
         for i,e in enumerate(list.notes):
@@ -61,4 +64,5 @@ class DataManager(DataManagerBase):
         self.find_and_replace_data(existing_data, new_note)
 
         self.write_data(existing_data)
-
+    def export_data(self) -> None:
+        pass

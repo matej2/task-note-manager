@@ -38,6 +38,7 @@ class Application(UI):
     def configure_widgets(self):
         self.submit_button.config(command=self.on_click_submit_button)
         self.open_file.config(command=self.data_manager.file_manager.open_file)
+        self.export_button.config(command=self.data_manager.export_data)
 
 
     def on_click_submit_button(self):
