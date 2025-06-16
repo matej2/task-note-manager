@@ -30,9 +30,10 @@ class UI(tkinter.Frame):
         self.task_list = tkinter.Text(self.task_list_container)
 
         # Input fields
-        self.things_done = tkinter.Text(self.root)
-        self.things_in_progress = tkinter.Text(self.root)
-        self.problems = tkinter.Text(self.root)
+        self.input_container = tkinter.Frame(self.root)
+        self.things_done = tkinter.Text(self.input_container)
+        self.things_in_progress = tkinter.Text(self.input_container)
+        self.problems = tkinter.Text(self.input_container)
 
         # Scheduler
         self.scheduler_container = tkinter.Frame(self.root)
@@ -63,18 +64,21 @@ class UI(tkinter.Frame):
         self.export_button.config(text="Export data - ODS", font=self.get_font_config())
 
     def configure_input_widgets(self):
-        tkinter.Label(self.root, text="What was done: ", font=self.get_font_config()).grid(row=1, column=0)
-        self.things_done.grid(row=1, column=1)
+        tkinter.Label(self.input_container, text="What was done: ", font=self.get_font_config()).grid(row=0, column=0)
+        self.things_done.grid(row=0, column=1)
         self.things_done.config(font=self.get_font_config(), height=4, width=30, wrap=tkinter.WORD)
         self.things_done.focus_set()
 
-        tkinter.Label(self.root, text="What needs to be done: ", font=self.get_font_config()).grid(row=2, column=0)
+        tkinter.Label(self.input_container, text="What needs to be done: ", font=self.get_font_config()).grid(row=1, column=0)
         self.things_in_progress.config(font=self.get_font_config(), height=4, width=30, wrap=tkinter.WORD)
-        self.things_in_progress.grid(row=2, column=1)
+        self.things_in_progress.grid(row=1, column=1)
 
-        tkinter.Label(self.root, text="Any problems: ", font=self.get_font_config()).grid(row=3, column=0)
+        tkinter.Label(self.input_container, text="Any problems: ", font=self.get_font_config()).grid(row=2, column=0)
         self.problems.config(font=self.get_font_config(), height=4, width=30, wrap=tkinter.WORD)
-        self.problems.grid(row=3, column=1)
+        self.problems.grid(row=2, column=1)
+
+        self.input_container.config(padx=10)
+        self.input_container.grid(row=1, column=0, sticky='n', padx=10)
 
     def configure_status_widgets(self):
         tkinter.Label(self.task_list_container, text="Todays notes: ", font=self.get_font_config()).grid(row=0, column=0)
