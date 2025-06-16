@@ -33,6 +33,15 @@ class DataManager(DataManagerBase):
                     result.append(note)
         return result
 
+    def get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:
+        result = []
+        note_list = self.read_data()
+        if note_list is not None:
+            for note in note_list.notes:
+                if note.date == date:
+                    result.append(note)
+        return result
+
     def get_today_data_single(self) -> NoteEntry | None:
         if len(self.get_today_data()) == 0:
             return NoteEntry("", "", "", "")
