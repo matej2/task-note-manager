@@ -7,6 +7,7 @@ from DataManagerBase import DataManagerBase
 from FileManager import FileManager
 from models.NoteEntry import NoteEntry
 from models.NoteList import NoteList
+from utils.TaskNameUtils import TaskNameUtils
 from utils.YamlUtils import YamlUtils
 
 
@@ -31,6 +32,9 @@ class DataManager(DataManagerBase):
             for note in note_list.notes:
                 if note.date == datetime.date.today().strftime(self.config_manager.date_format):
                     result.append(note)
+                print(TaskNameUtils.get_task_list(note.things_done))
+                print(TaskNameUtils.get_task_list(note.to_be_done))
+                print(TaskNameUtils.get_task_list(note.problems))
         return result
 
     def get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:
