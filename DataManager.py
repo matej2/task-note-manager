@@ -52,7 +52,8 @@ class DataManager(DataManagerBase):
         for i,e in enumerate(list.notes):
             if e.date == entry.date:
                 list.notes[i] = entry
-                break
+                return
+        list.notes.append(entry)
 
     def split_string_to_tasks(self, string: str) -> list[str]:
         return string.split(";")
