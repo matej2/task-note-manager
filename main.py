@@ -66,11 +66,11 @@ class Application(UI):
         text.insert(END, value)
 
     def list_data(self):
-        note_list = self.data_manager.get_today_data()
-        if len(note_list) == 0:
+        today_note = self.data_manager.get_today_data()
+        if today_note.is_empty():
             text = "No data"
         else:
-            text = note_list
+            text = today_note
 
         Application.set_input_disabled(self.task_list, text)
 

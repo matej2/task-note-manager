@@ -25,8 +25,8 @@ class DataManager(DataManagerBase):
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
-    def get_today_data(self) -> list[NoteEntry] | list[None]:
-        result = []
+    def get_today_data(self) -> NoteEntry:
+        result = NoteEntry("", "", "", "")
         note_list = self.read_data()
         if note_list is not None:
             result = note_list.get_todays_note()
@@ -42,10 +42,10 @@ class DataManager(DataManagerBase):
         return result
 
     def get_today_data_single(self) -> NoteEntry | None:
-        if len(self.get_today_data()) == 0:
+        if self.get_today_data().is_empty():
             return NoteEntry("", "", "", "")
         else:
-            return self.get_today_data()[0]
+            return self.get_today_data()
 
     def find_and_replace_data(self, list: NoteList, entry: NoteEntry) -> None:
         for i,e in enumerate(list.notes):

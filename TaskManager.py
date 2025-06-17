@@ -25,7 +25,7 @@ class TaskManager:
 
     @staticmethod
     def get_task_names(note_list: NoteList) -> list[str]:
-        note = note_list.get_note_by_date(datetime.date.today().strftime("%Y-%m-%d"))
+        note = note_list.get_todays_note()
         result = TaskManager.get_task_list(note.things_done)
         result.extend(TaskManager.get_task_list(note.to_be_done))
         result.extend(TaskManager.get_task_list(note.problems))

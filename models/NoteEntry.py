@@ -5,6 +5,9 @@ class NoteEntry:
         self.to_be_done = to_be_done
         self.problems = problems
 
+    def is_empty(self) -> bool:
+        return self.things_done == "" and self.to_be_done == "" and self.problems == ""
+
     def __str__(self):
         return f'\n\nDate: {self.date}\nThings done: {self.things_done}\nTo be done: {self.to_be_done}\nProblems: {self.problems}\n\n'
 
