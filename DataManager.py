@@ -2,12 +2,12 @@ import datetime
 import tkinter
 
 import yaml
+
 from ConfigManager import ConfigManager
 from DataManagerBase import DataManagerBase
 from FileManager import FileManager
 from models.NoteEntry import NoteEntry
 from models.NoteList import NoteList
-from utils.TaskNameUtils import TaskNameUtils
 from utils.YamlUtils import YamlUtils
 
 
@@ -29,10 +29,7 @@ class DataManager(DataManagerBase):
         result = []
         note_list = self.read_data()
         if note_list is not None:
-            for note in note_list.notes:
-                if note.date == datetime.date.today().strftime(self.config_manager.date_format):
-                    result.append(note)
-                    print(f"Date: {note.date}, Things done: {TaskNameUtils.get_task_list(note.things_done)}, To be done: {TaskNameUtils.get_task_list(note.to_be_done)}, Problems: {TaskNameUtils.get_task_list(note.problems)}")
+            result = note_list.get_todays_note()
         return result
 
     def get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:

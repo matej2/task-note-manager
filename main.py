@@ -1,4 +1,3 @@
-import subprocess
 import tkinter
 from datetime import datetime, timedelta, timezone
 from tkinter import END, NORMAL, DISABLED
