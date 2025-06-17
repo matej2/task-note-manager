@@ -21,13 +21,13 @@ class ExportManager:
 
     def export_data(self) -> None:
         note_list = self.data_manager.read_data_from_file()
-        all_notes = [["Date", "Things done", "To be done", "Problems"]]
+        sheet_content = [["Date", "Things done", "To be done", "Problems"]]
 
         for note in note_list.notes:
             new_line = [note.date, note.done, note.in_progress, note.problems]
-            all_notes.append(new_line)
+            sheet_content.append(new_line)
 
-        self.save_as_ordered_dict(all_notes)
+        self.save_as_ordered_dict(sheet_content)
 
     def export_tasks_by_date(self) -> None:
         curr_date = datetime.date.today().strftime(self.config_manager.date_format)

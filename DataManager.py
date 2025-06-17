@@ -63,7 +63,7 @@ class DataManager(DataManagerBase):
         to_be_done = DataManager.get_text_from_input(self.in_progress)
         problems = DataManager.get_text_from_input(self.problems)
 
-        new_note = NotesFactory.create_note(done, to_be_done, problems)
+        new_note = self.note_factory.create_note(done, to_be_done, problems)
 
         DataManager.override_existing_data_with_new_note(existing_data, new_note)
         self.write_data_to_file(existing_data)

@@ -1,8 +1,8 @@
 class NoteEntry:
-    def __init__(self, date: str, things_done: str, to_be_done: str, problems: str):
+    def __init__(self, date: str, done: str, in_progress: str, problems: str):
         self.date = date
-        self.done = things_done
-        self.in_progress = to_be_done
+        self.done = done
+        self.in_progress = in_progress
         self.problems = problems
 
     def is_empty(self) -> bool:
