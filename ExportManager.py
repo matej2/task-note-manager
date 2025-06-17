@@ -13,12 +13,12 @@ class ExportManager:
         self.config_manager = confix_manager
         self.data_manager = data_manager
 
-    def save_ordered_dict(self, data: list[list[str]]):
+    def save_as_ordered_dict(self, data: list[list[str]]) -> None:
         input_data = OrderedDict()
         input_data.update({"Notes": data})
         save_data("task_notes.ods", input_data)
 
-    def export_data(self):
+    def export_data(self) -> None:
         note_list = self.data_manager.read_data()
         all_notes = [["Date", "Things done", "To be done", "Problems"]]
 
@@ -30,10 +30,7 @@ class ExportManager:
         data.update({"Notes": all_notes})
         save_data("task_notes.ods", data)
 
-    def export_tasks_by_date(self):
-        """
-        This will export tasks statuses. It will use task names as rows and dates as columns
-        """
+    def export_tasks_by_date(self) -> None:
         curr_date = datetime.date.today().strftime(self.config_manager.date_format)
         previous_dates = []
         previous_tasks = []
@@ -49,4 +46,4 @@ class ExportManager:
         previous_dates.insert(0, "Task name")
 
 
-        self.save_ordered_dict(previous_tasks)
+        self.save_as_ordered_dict(previous_tasks)
