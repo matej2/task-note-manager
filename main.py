@@ -32,7 +32,7 @@ class Application(UI):
         notify2.init("test")
         self.update_data()
 
-        today_data = self.data_manager.get_today_data_single()
+        today_data = self.data_manager.get_today_data()
         self.init_inputs(today_data)
 
     def configure_buttons(self):

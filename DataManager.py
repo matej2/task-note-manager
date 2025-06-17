@@ -6,6 +6,7 @@ import yaml
 from ConfigManager import ConfigManager
 from DataManagerBase import DataManagerBase
 from FileManager import FileManager
+from factory.NotesFactory import NotesFactory
 from models.NoteEntry import NoteEntry
 from models.NoteList import NoteList
 from utils.YamlUtils import YamlUtils
@@ -25,11 +26,19 @@ class DataManager(DataManagerBase):
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
+    def extract_todays_notes(self, note_list : NoteList) -> NoteEntry | None:
+        result = None
+        for note in note_list.notes:
+            if note.date == datetime.date.today().strftime("%d. %b. %Y"):
+                result = note
+        return result
+
     def get_today_data(self) -> NoteEntry:
-        result = NoteEntry("", "", "", "")
+        result = NotesFactory.create_empty_note()
         note_list = self.read_data()
+
         if note_list is not None:
-            result = note_list.get_todays_note()
+            result = self.extract_todays_notes(note_list)
         return result
 
     def get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:
@@ -41,13 +50,7 @@ class DataManager(DataManagerBase):
                     result.append(note)
         return result
 
-    def get_today_data_single(self) -> NoteEntry | None:
-        if self.get_today_data().is_empty():
-            return NoteEntry("", "", "", "")
-        else:
-            return self.get_today_data()
-
-    def find_and_replace_data(self, list: NoteList, entry: NoteEntry) -> None:
+    def override_existing_data_with_new_note(self, list: NoteList, entry: NoteEntry) -> None:
         for i,e in enumerate(list.notes):
             if e.date == entry.date:
                 list.notes[i] = entry
@@ -63,10 +66,7 @@ class DataManager(DataManagerBase):
         to_be_done = self.things_in_progress.get("1.0", "end-1c")
         problems = self.problems.get("1.0", "end-1c")
 
-        current_date = datetime.date.today().strftime(self.config_manager.date_format)
+        new_note = NotesFactory.create_note(done, to_be_done, problems)
 
-        new_note = NoteEntry(current_date, done, to_be_done, problems)
-
-        self.find_and_replace_data(existing_data, new_note)
-
+        self.override_existing_data_with_new_note(existing_data, new_note)
         self.write_data(existing_data)
