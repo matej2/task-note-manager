@@ -10,8 +10,8 @@ from models.NoteEntry import NoteEntry
 
 class ExportManager:
 
-    def __init__(self, confix_manager: ConfigManager, data_manager: DataManager) -> None:
-        self.config_manager = confix_manager
+    def __init__(self, config_manager: ConfigManager, data_manager: DataManager) -> None:
+        self.config_manager = config_manager
         self.data_manager = data_manager
 
     def save_as_ordered_dict(self, data: list[list[str]]) -> None:
@@ -27,9 +27,7 @@ class ExportManager:
             new_line = [note.date, note.done, note.in_progress, note.problems]
             all_notes.append(new_line)
 
-        data = OrderedDict()
-        data.update({"Notes": all_notes})
-        save_data("task_notes.ods", data)
+        self.save_as_ordered_dict(all_notes)
 
     def export_tasks_by_date(self) -> None:
         curr_date = datetime.date.today().strftime(self.config_manager.date_format)
@@ -45,7 +43,6 @@ class ExportManager:
                 previous_tasks.append(note)
 
         previous_dates.insert(0, "Task name")
-
 
         self.save_as_ordered_dict(previous_tasks)
 
