@@ -1,10 +1,13 @@
 import re
+from datetime import datetime
+
+from models.NoteList import NoteList
 
 
 class TaskNameUtils:
     @staticmethod
     def list_to_string(result: list[str]) -> str:
-        if result[0] is not "":
+        if result[0] != "":
             return result[0]
         else:
             return result[1]
@@ -17,3 +20,11 @@ class TaskNameUtils:
             formatted_result.append(TaskNameUtils.list_to_string(r))
 
         return formatted_result
+
+    @staticmethod
+    def get_task_names(note_list: NoteList) -> list[str]:
+        note = note_list.get_note_by_date(datetime.date.today().strftime("%Y-%m-%d"))
+        result = TaskNameUtils.get_task_list(note.things_done)
+        result.extend(TaskNameUtils.get_task_list(note.to_be_done))
+        result.extend(TaskNameUtils.get_task_list(note.problems))
+        return result
