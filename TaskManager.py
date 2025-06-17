@@ -4,7 +4,9 @@ from datetime import datetime
 from models.NoteList import NoteList
 
 
-class TaskNameUtils:
+class TaskManager:
+    def __init__(self):
+        pass
     @staticmethod
     def list_to_string(result: list[str]) -> str:
         if result[0] != "":
@@ -17,14 +19,14 @@ class TaskNameUtils:
         formatted_result = []
 
         for r in result:
-            formatted_result.append(TaskNameUtils.list_to_string(r))
+            formatted_result.append(TaskManager.list_to_string(r))
 
         return formatted_result
 
     @staticmethod
     def get_task_names(note_list: NoteList) -> list[str]:
         note = note_list.get_note_by_date(datetime.date.today().strftime("%Y-%m-%d"))
-        result = TaskNameUtils.get_task_list(note.things_done)
-        result.extend(TaskNameUtils.get_task_list(note.to_be_done))
-        result.extend(TaskNameUtils.get_task_list(note.problems))
+        result = TaskManager.get_task_list(note.things_done)
+        result.extend(TaskManager.get_task_list(note.to_be_done))
+        result.extend(TaskManager.get_task_list(note.problems))
         return result
