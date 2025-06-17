@@ -32,7 +32,7 @@ class Application(UI):
         notify2.init("test")
         self.update_data()
 
-        today_data = self.data_manager.get_today_data()
+        today_data = self.data_manager.get_data_for_current_day()
         self.init_inputs(today_data)
 
     def configure_buttons(self):
@@ -41,7 +41,7 @@ class Application(UI):
         self.export_button.config(command=self.export_manager.export_data)
 
     def on_click_submit_button(self):
-        self.data_manager.write_value()
+        self.data_manager.save_input_data()
         self.update_data()
 
         self.notification.config(text="")
@@ -64,7 +64,7 @@ class Application(UI):
         text.insert(END, value)
 
     def update_data(self):
-        today_note = self.data_manager.get_today_data()
+        today_note = self.data_manager.get_data_for_current_day()
         Application.set_text_and_disable(self.task_list, str(today_note))
 
     def trigger_notification(self):

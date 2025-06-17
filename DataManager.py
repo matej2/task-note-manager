@@ -33,40 +33,36 @@ class DataManager(DataManagerBase):
                 result = note
         return result
 
-    def get_today_data(self) -> NoteEntry:
+    def get_data_for_current_day(self) -> NoteEntry:
         result = NotesFactory.create_empty_note()
-        note_list = self.read_data()
+        note_list = self.read_data_from_file()
 
         if note_list is not None:
             result = self.extract_todays_notes(note_list)
         return result
 
-    def get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:
-        result = []
-        note_list = self.read_data()
-        if note_list is not None:
-            for note in note_list.notes:
-                if note.date == date:
-                    result.append(note)
-        return result
-
-    def override_existing_data_with_new_note(self, list: NoteList, entry: NoteEntry) -> None:
+    @staticmethod
+    def override_existing_data_with_new_note(list: NoteList, entry: NoteEntry) -> None:
         for i,e in enumerate(list.notes):
             if e.date == entry.date:
                 list.notes[i] = entry
                 return
         list.notes.append(entry)
 
-    def write_value(self) -> None:
-        existing_data = self.read_data()
+    @staticmethod
+    def get_text_from_input(input: tkinter.Text):
+        return input.get("1.0", "end-1c")
+
+    def save_input_data(self) -> None:
+        existing_data = self.read_data_from_file()
         if existing_data is None:
             existing_data = NoteList()
 
-        done = self.things_done.get("1.0", "end-1c")
-        to_be_done = self.things_in_progress.get("1.0", "end-1c")
-        problems = self.problems.get("1.0", "end-1c")
+        done = DataManager.get_text_from_input(self.things_done)
+        to_be_done = DataManager.get_text_from_input(self.things_in_progress)
+        problems = DataManager.get_text_from_input(self.problems)
 
         new_note = NotesFactory.create_note(done, to_be_done, problems)
 
-        self.override_existing_data_with_new_note(existing_data, new_note)
-        self.write_data(existing_data)
+        DataManager.override_existing_data_with_new_note(existing_data, new_note)
+        self.write_data_to_file(existing_data)

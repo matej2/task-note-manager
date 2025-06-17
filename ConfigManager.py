@@ -10,10 +10,10 @@ class ConfigManager:
         self.date_format = "%d. %b. %Y"
         self.frequency_hours = 6
 
-        self.full_path = os.path.join(ConfigManager._get_full_path(), "task_notes.yaml")
+        self.full_path = os.path.join(ConfigManager._get_full_curr_dir_path(), "task_notes.yaml")
 
     @staticmethod
-    def _get_full_path():
+    def _get_full_curr_dir_path():
         if getattr(sys, 'frozen', False):
             application_path = os.path.dirname(sys.executable)
         else:

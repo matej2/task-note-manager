@@ -5,6 +5,7 @@ from pyexcel_ods3 import save_data
 
 from ConfigManager import ConfigManager
 from DataManager import DataManager
+from models.NoteEntry import NoteEntry
 
 
 class ExportManager:
@@ -19,7 +20,7 @@ class ExportManager:
         save_data("task_notes.ods", input_data)
 
     def export_data(self) -> None:
-        note_list = self.data_manager.read_data()
+        note_list = self.data_manager.read_data_from_file()
         all_notes = [["Date", "Things done", "To be done", "Problems"]]
 
         for note in note_list.notes:
@@ -39,7 +40,7 @@ class ExportManager:
             previous_dates.append((curr_date - timedelta(days=n)).strftime(self.config_manager.date_format))
 
         for d in previous_dates:
-            note = self.data_manager.get_data_for_date(d)
+            note = self.get_data_for_date(d)
             if note is not None:
                 previous_tasks.append(note)
 
@@ -47,3 +48,12 @@ class ExportManager:
 
 
         self.save_as_ordered_dict(previous_tasks)
+
+    def get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:
+        result = []
+        note_list = self.data_manager.read_data_from_file()
+        if note_list is not None:
+            for note in note_list.notes:
+                if note.date == date:
+                    result.append(note)
+        return result
