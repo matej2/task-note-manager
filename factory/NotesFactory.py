@@ -1,14 +1,17 @@
 import datetime
 
+from ConfigManager import ConfigManager
 from models.NoteEntry import NoteEntry
 
 
 class NotesFactory:
+    def __init__(self, config: ConfigManager):
+        self.config = config
+
     @staticmethod
     def create_empty_note() -> NoteEntry:
         return NoteEntry("", "", "", "")
 
-    @staticmethod
-    def create_note(done: str, to_do: str, problems: str):
-        current_date = datetime.date.today().strftime("%d. %b. %Y")
-        return NoteEntry(current_date, done, to_do, problems)
+    def create_note(self, done: str, in_progress: str, problems: str):
+        current_date = datetime.date.today().strftime(self.config.date_format)
+        return NoteEntry(current_date, done, in_progress, problems)

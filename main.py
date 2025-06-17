@@ -19,7 +19,7 @@ class Application(UI):
         super().__init__(self.config_manager)
 
         self.file_manager = FileManager(self.config_manager)
-        self.data_manager = DataManager(self.things_done, self.things_in_progress, self.problems, self.task_list_container, self.file_manager, self.config_manager)
+        self.data_manager = DataManager(self.done_field, self.in_progress_field, self.problems_field, self.task_list_container, self.file_manager, self.config_manager)
         self.export_manager = ExportManager(self.config_manager, self.data_manager)
 
         self.update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency_hours))
@@ -48,9 +48,9 @@ class Application(UI):
         self.task_list.see(tkinter.END)
 
     def init_inputs(self, entry: NoteEntry):
-        self.set_text(self.things_done, entry.things_done)
-        self.set_text(self.things_in_progress, entry.to_be_done)
-        self.set_text(self.problems, entry.problems)
+        self.set_text(self.done_field, entry.done)
+        self.set_text(self.in_progress_field, entry.in_progress)
+        self.set_text(self.problems_field, entry.problems)
 
     @staticmethod
     def set_text_and_disable(text: tkinter.Text, value: str):

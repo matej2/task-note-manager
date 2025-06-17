@@ -24,7 +24,7 @@ class ExportManager:
         all_notes = [["Date", "Things done", "To be done", "Problems"]]
 
         for note in note_list.notes:
-            new_line = [note.date, note.things_done, note.to_be_done, note.problems]
+            new_line = [note.date, note.done, note.in_progress, note.problems]
             all_notes.append(new_line)
 
         data = OrderedDict()

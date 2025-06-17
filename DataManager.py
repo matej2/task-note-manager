@@ -16,12 +16,13 @@ class DataManager(DataManagerBase):
 
     def __init__(self, things_done: tkinter.Text, things_in_progress: tkinter.Text, problems: tkinter.Text, status: tkinter.Label, file_manager: FileManager, config_manager: ConfigManager) -> None:
         super().__init__(file_manager)
-        self.things_done = things_done
-        self.things_in_progress = things_in_progress
+        self.done = things_done
+        self.in_progress = things_in_progress
         self.problems = problems
         self.status = status
 
         self.config_manager = config_manager
+        self.note_factory = NotesFactory(self.config_manager)
 
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
@@ -29,7 +30,7 @@ class DataManager(DataManagerBase):
     def extract_todays_notes(self, note_list : NoteList) -> NoteEntry | None:
         result = None
         for note in note_list.notes:
-            if note.date == datetime.date.today().strftime("%d. %b. %Y"):
+            if note.date == datetime.date.today().strftime(self.config_manager.date_format):
                 result = note
         return result
 
@@ -58,8 +59,8 @@ class DataManager(DataManagerBase):
         if existing_data is None:
             existing_data = NoteList()
 
-        done = DataManager.get_text_from_input(self.things_done)
-        to_be_done = DataManager.get_text_from_input(self.things_in_progress)
+        done = DataManager.get_text_from_input(self.done)
+        to_be_done = DataManager.get_text_from_input(self.in_progress)
         problems = DataManager.get_text_from_input(self.problems)
 
         new_note = NotesFactory.create_note(done, to_be_done, problems)
