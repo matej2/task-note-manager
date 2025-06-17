@@ -9,7 +9,6 @@ from DataManager import DataManager
 from ExportManager import ExportManager
 from FileManager import FileManager
 from Scheduler import Scheduler
-from TaskManager import TaskManager
 from UI import UI
 from models.NoteEntry import NoteEntry
 
@@ -69,7 +68,6 @@ class Application(UI):
     def update_data(self):
         today_note = self.data_manager.get_today_data()
         self.output_task_data(today_note)
-        self.output_task_names(today_note)
 
     def output_task_data(self, note: NoteEntry):
         if note.is_empty():
@@ -78,10 +76,6 @@ class Application(UI):
             text = str(note)
 
         Application.set_input_disabled(self.task_list, text)
-
-    def output_task_names(self, note: NoteEntry):
-        task_names = TaskManager.get_task_names(note)
-        self.task_name_list.config(text=task_names)
 
     def focus_next_widget(self, event):
         event.widget.tk_focusNext().focus()
