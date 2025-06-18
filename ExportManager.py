@@ -1,3 +1,4 @@
+import re
 from collections import OrderedDict
 from datetime import datetime, timedelta
 
@@ -13,10 +14,14 @@ class ExportManager:
     def __init__(self, config_manager: ConfigManager, data_manager: DataManager) -> None:
         self.config_manager = config_manager
         self.data_manager = data_manager
+        self._sheet_data = {}
 
-    def save_as_ordered_dict(self, data: list[list[str]]) -> None:
+    def add_sheet_row(self, data: list[list[str]], tab: str) -> None:
+        self._sheet_data.update({tab: data})
+
+    def save_as_ordered_dict(self) -> None:
         input_data = OrderedDict()
-        input_data.update({"Notes": data})
+        input_data.update(self._sheet_data)
         save_data("task_notes.ods", input_data)
 
     def export_data(self) -> None:
@@ -27,24 +32,32 @@ class ExportManager:
             new_line = [note.date, note.done, note.in_progress, note.problems]
             sheet_content.append(new_line)
 
-        self.save_as_ordered_dict(sheet_content)
+        self.add_sheet_row(sheet_content, "Default")
+        self.export_task_names()
 
-    def export_tasks_by_date(self) -> None:
-        curr_date = datetime.date.today().strftime(self.config_manager.date_format)
-        previous_dates = []
-        previous_tasks = []
 
-        for n in range(7):
-            previous_dates.append((curr_date - timedelta(days=n)).strftime(self.config_manager.date_format))
+    @staticmethod
+    def get_task_list(note: str) -> list[str]:
+        result = re.findall(r"^\s*([^:]*):|;\s*([^:]*):", note)
+        formatted_result = []
 
-        for d in previous_dates:
-            note = self.get_data_for_date(d)
-            if note is not None:
-                previous_tasks.append(note)
+        for r in result:
+            if r[0] != "":
+                formatted_result.append(r[0])
 
-        previous_dates.insert(0, "Task name")
+            else:
+                formatted_result.append(r[1])
 
-        self.save_as_ordered_dict(previous_tasks)
+        return formatted_result
+
+    def export_task_names(self) -> None:
+        note = self.data_manager.get_data_for_current_day()
+
+        result = ExportManager.get_task_list(note.done)
+        result.extend(ExportManager.get_task_list(note.in_progress))
+        result.extend(ExportManager.get_task_list(note.problems))
+        self.add_sheet_row([result], "Tasks")
+        self.save_as_ordered_dict()
 
     def get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:
         result = []
