@@ -28,7 +28,7 @@ class DataManager(DataManagerBase):
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
     def extract_todays_notes(self, note_list : NoteList) -> NoteEntry | None:
-        result = None
+        result = self.note_factory.create_empty_note()
         for note in note_list.notes:
             if note.date == datetime.date.today().strftime(self.config_manager.date_format):
                 result = note
