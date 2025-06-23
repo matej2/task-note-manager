@@ -1,6 +1,7 @@
 import re
 from collections import OrderedDict
 from datetime import datetime, timedelta
+import datetime
 
 from pyexcel_ods3 import save_data
 
@@ -16,7 +17,19 @@ class ExportManager:
         self.data_manager = data_manager
         self._sheet_data = {}
 
+    @staticmethod
+    def _is_array_empty(l: list):
+        flag = True
+
+        if len(l) != 0:
+            for item in l:
+                if len(item) > 0:
+                    flag = False
+        return flag
+
     def add_sheet_row(self, data: list[list[str]], tab: str) -> None:
+        if self._is_array_empty(data):
+            data = [["No data"]]
         self._sheet_data.update({tab: data})
 
     def save_as_ordered_dict(self) -> None:
@@ -37,7 +50,7 @@ class ExportManager:
 
 
     @staticmethod
-    def get_task_list(note: str) -> list[str]:
+    def extract_task_names(note: str) -> list[str]:
         result = re.findall(r"^\s*([^:]*):|;\s*([^:]*):", note)
         formatted_result = []
 
@@ -51,19 +64,26 @@ class ExportManager:
         return formatted_result
 
     def export_task_names(self) -> None:
-        note = self.data_manager.get_data_for_current_day()
+        for i in range(0, 7):
+            date = datetime.date.today() - timedelta(days=i)
+            note_list = self.get_data_for_date(date)
+            if len(note_list) > 0:
+                result = []
+                for note in note_list:
+                    result.extend(ExportManager.extract_task_names(note.done))
+                    result.extend(ExportManager.extract_task_names(note.in_progress))
+                    result.extend(ExportManager.extract_task_names(note.problems))
 
-        result = ExportManager.get_task_list(note.done)
-        result.extend(ExportManager.get_task_list(note.in_progress))
-        result.extend(ExportManager.get_task_list(note.problems))
-        self.add_sheet_row([result], "Tasks")
+                self.add_sheet_row([result], "Tasks")
+
         self.save_as_ordered_dict()
 
     def get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:
         result = []
         note_list = self.data_manager.read_data_from_file()
+        date_str = date.strftime(self.config_manager.date_format)
         if note_list is not None:
             for note in note_list.notes:
-                if note.date == date:
+                if note.date == date_str:
                     result.append(note)
         return result
