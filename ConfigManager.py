@@ -9,7 +9,17 @@ class ConfigManager:
         self.font_size_normal = 10
         self.date_format = "%d. %b. %Y"
         self.frequency_hours = 6
+        self.task_name_regex = r"^\s*([^:]*):|;\s*([^:]*):"
 
+        # Export
+        self.export_empty_row = "No data"
+        self.export_file_name = "task_notes.ods"
+        self.export_file_tab_name_default = "Default"
+        self.export_file_tab_name_task_names = "Task names"
+        self.export_data_date = "Date"
+        self.export_data_done = "Done"
+        self.export_data_in_progress = "In progress"
+        self.export_data_problems = "Problems"
         self.full_path = os.path.join(ConfigManager._get_full_curr_dir_path(), "task_notes.yaml")
 
     @staticmethod
