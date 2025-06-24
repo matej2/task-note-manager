@@ -127,7 +127,7 @@ class UI(tkinter.Frame):
         self.notification.config(highlightcolor="red", fg="red", font=self.__get_font_config())
         self.notification.grid(row=0, column=1)
 
-    def __update_time_until_next_run(self, next_run_time: datetime):
+    def _update_time_until_next_run(self, next_run_time: datetime):
         if next_run_time:
             now = datetime.now(timezone.utc)
             time_until_next_run = next_run_time - now
