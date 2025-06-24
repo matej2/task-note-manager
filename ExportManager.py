@@ -27,12 +27,12 @@ class ExportManager:
                     flag = False
         return flag
 
-    def add_sheet_row(self, data: list[list[str]], tab: str) -> None:
+    def _add_sheet_row(self, data: list[list[str]], tab: str) -> None:
         if self._is_array_empty(data):
             data = [[self.config_manager.export_empty_row]]
         self._sheet_data.update({tab: data})
 
-    def save_as_ordered_dict(self) -> None:
+    def _save_as_ordered_dict(self) -> None:
         input_data = OrderedDict()
         input_data.update(self._sheet_data)
         save_data(self.config_manager.export_file_name, input_data)
@@ -50,8 +50,8 @@ class ExportManager:
             new_line = [note.date, note.done, note.in_progress, note.problems]
             sheet_content.append(new_line)
 
-        self.add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
-        self.export_task_names()
+        self._add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
+        self._export_task_names()
 
 
     def extract_task_names(self, note: str) -> list[str]:
@@ -67,10 +67,10 @@ class ExportManager:
 
         return formatted_result
 
-    def export_task_names(self) -> None:
+    def _export_task_names(self) -> None:
         for i in range(0, 7):
             date = datetime.date.today() - timedelta(days=i)
-            note_list = self.get_data_for_date(date)
+            note_list = self._get_data_for_date(date)
             if len(note_list) > 0:
                 result = []
                 for note in note_list:
@@ -78,11 +78,11 @@ class ExportManager:
                     result.extend(ExportManager.extract_task_names(self, note.in_progress))
                     result.extend(ExportManager.extract_task_names(self, note.problems))
 
-                self.add_sheet_row([result], self.config_manager.export_file_tab_name_task_names)
+                self._add_sheet_row([result], self.config_manager.export_file_tab_name_task_names)
 
-        self.save_as_ordered_dict()
+        self._save_as_ordered_dict()
 
-    def get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:
+    def _get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:
         result = []
         note_list = self.data_manager.read_data_from_file()
         date_str = date.strftime(self.config_manager.date_format)
