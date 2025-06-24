@@ -36,4 +36,11 @@ Font family: {}
 Font size: {}
 Date format: {}
 Frequency hours: {}
-Output file: {}""".format(self.font_family, self.font_size_normal, self.date_format, self.frequency_hours, self.full_path)
+Output file: {}
+Excel file: {}""".format(
+            self.font_family,
+            self.font_size_normal,
+            self.date_format,
+            self.frequency_hours,
+            self.full_path,
+            self.export_file_name)
