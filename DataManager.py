@@ -27,7 +27,7 @@ class DataManager(DataManagerBase):
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
-    def extract_todays_notes(self, note_list : NoteList) -> NoteEntry | None:
+    def __extract_todays_notes(self, note_list : NoteList) -> NoteEntry | None:
         result = self.note_factory.create_empty_note()
         for note in note_list.notes:
             if note.date == datetime.date.today().strftime(self.config_manager.date_format):
@@ -36,14 +36,14 @@ class DataManager(DataManagerBase):
 
     def get_data_for_current_day(self) -> NoteEntry:
         result = NotesFactory.create_empty_note()
-        note_list = self.read_data_from_file()
+        note_list = self._read_data_from_file()
 
         if note_list is not None:
-            result = self.extract_todays_notes(note_list)
+            result = self.__extract_todays_notes(note_list)
         return result
 
     @staticmethod
-    def override_existing_data_with_new_note(list: NoteList, entry: NoteEntry) -> None:
+    def __override_existing_data_with_new_note(list: NoteList, entry: NoteEntry) -> None:
         for i,e in enumerate(list.notes):
             if e.date == entry.date:
                 list.notes[i] = entry
@@ -51,19 +51,19 @@ class DataManager(DataManagerBase):
         list.notes.append(entry)
 
     @staticmethod
-    def get_text_from_input(input: tkinter.Text):
+    def __get_text_from_input(input: tkinter.Text):
         return input.get("1.0", "end-1c")
 
     def save_input_data(self) -> None:
-        existing_data = self.read_data_from_file()
+        existing_data = self._read_data_from_file()
         if existing_data is None:
             existing_data = NoteList()
 
-        done = DataManager.get_text_from_input(self.done)
-        to_be_done = DataManager.get_text_from_input(self.in_progress)
-        problems = DataManager.get_text_from_input(self.problems)
+        done = DataManager.__get_text_from_input(self.done)
+        to_be_done = DataManager.__get_text_from_input(self.in_progress)
+        problems = DataManager.__get_text_from_input(self.problems)
 
         new_note = self.note_factory.create_note(done, to_be_done, problems)
 
-        DataManager.override_existing_data_with_new_note(existing_data, new_note)
-        self.write_data_to_file(existing_data)
+        DataManager.__override_existing_data_with_new_note(existing_data, new_note)
+        self._write_data_to_file(existing_data)

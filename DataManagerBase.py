@@ -9,11 +9,11 @@ class DataManagerBase:
     def __init__(self, file_manager: FileManager) -> None:
         self.file_manager = file_manager
 
-    def read_data_from_file(self) -> NoteList:
+    def _read_data_from_file(self) -> NoteList:
         with self.file_manager.get_read_instance() as file:
             data = yaml.load(file, Loader=YamlUtils.get_loader())
         return data
 
-    def write_data_to_file(self, note_list: NoteList):
+    def _write_data_to_file(self, note_list: NoteList):
         with (self.file_manager.get_write_instance() as file):
             yaml.dump(note_list, file)
