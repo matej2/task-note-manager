@@ -22,8 +22,8 @@ class Application(UI):
         self.data_manager = DataManager(self.done_field, self.in_progress_field, self.problems_field, self.task_list_container, self.file_manager, self.config_manager)
         self.export_manager = ExportManager(self.config_manager, self.data_manager)
 
-        self.update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency_hours))
-        self.scheduler = Scheduler(self.__trigger_notification, self.update_time_until_next_run, self.config_manager)
+        self.__update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency_hours))
+        self.scheduler = Scheduler(self.__trigger_notification, self.__update_time_until_next_run, self.config_manager)
 
         self.__configure_buttons()
         self.__initialize()
