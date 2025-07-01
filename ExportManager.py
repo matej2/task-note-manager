@@ -17,7 +17,6 @@ class ExportManager:
         self.data_manager = data_manager
         self._sheet_data = {}
 
-        self.__delete_file()
 
     def __delete_file(self) -> None:
         import os
@@ -35,7 +34,7 @@ class ExportManager:
         return flag
 
 
-    def __add_sheet_row(self, data: list[str], tab: str) -> None:
+    def __add_sheet_row(self, data: list[object], tab: str) -> None:
         if tab in self._sheet_data.keys():
             curr_data = self._sheet_data.get(tab)
         else:
@@ -55,6 +54,8 @@ class ExportManager:
         save_data(self.config_manager.export_file_name, input_data)
 
     def export_data(self) -> None:
+        self.__delete_file()
+
         note_list = self.data_manager._read_data_from_file()
         sheet_content = [
             self.config_manager.export_data_date,
@@ -90,20 +91,42 @@ class ExportManager:
 
         return response
 
+    @staticmethod
+    def __get_week_dates() -> list[datetime.date]:
+        date_list = []
+        for i in range(0, 7):
+            date_list.append(datetime.date.today() - timedelta(days=i))
+        return list(reversed(date_list))
 
     def __export_task_names(self) -> None:
-        for i in range(0, 7):
-            date = datetime.date.today() - timedelta(days=i)
+        date_list = self.__get_week_dates()
+        first_row = ['Tasks']
+        first_row.extend(date_list)
+        self.__add_sheet_row(first_row, self.config_manager.export_file_tab_name_task_names)
+
+        for date_index, date in enumerate(date_list):
             note_list = self.__get_data_for_date(date)
 
+            new_line = []
             if len(note_list) > 0:
                 for note in note_list:
-                    new_line = [note.date]
-                    new_line.extend(ExportManager.extract_task_names(self, note.done))
-                    new_line.extend(ExportManager.extract_task_names(self, note.in_progress))
-                    new_line.extend(ExportManager.extract_task_names(self, note.problems))
+                    new_line.extend(self.extract_task_names(note.done))
+                    new_line.extend(self.extract_task_names(note.in_progress))
+                    new_line.extend(self.extract_task_names(note.problems))
 
-                    self.__add_sheet_row(new_line, self.config_manager.export_file_tab_name_task_names)
+            new_line = []
+            if len(note_list) > 0:
+                for note in note_list:
+                    new_line.extend(self.__extract_task_data(note.done))
+                    new_line.extend(self.__extract_task_data(note.in_progress))
+                    new_line.extend(self.__extract_task_data(note.problems))
+
+            for task in new_line:
+                result = ['Tasks']
+                for i in range(0, date_index):
+                    result.insert(1, '')
+                result.append(task)
+                self.__add_sheet_row(result, self.config_manager.export_file_tab_name_task_names)
 
 
 
