@@ -17,6 +17,13 @@ class ExportManager:
         self.data_manager = data_manager
         self._sheet_data = {}
 
+        self.__delete_file()
+
+    def __delete_file(self) -> None:
+        import os
+        if os.path.exists(self.config_manager.export_file_name):
+            os.remove(self.config_manager.export_file_name)
+
     @staticmethod
     def __is_array_empty(l: list):
         flag = True
