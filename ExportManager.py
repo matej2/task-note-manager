@@ -77,11 +77,7 @@ class ExportManager:
         formatted_result = []
 
         for r in result:
-            if r[0] != "":
-                formatted_result.append(r[0])
-
-            else:
-                formatted_result.append(r[1])
+            formatted_result.append(r)
 
         return formatted_result
 

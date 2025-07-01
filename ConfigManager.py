@@ -9,7 +9,7 @@ class ConfigManager:
         self.font_size_normal = 10
         self.date_format = "%d. %b. %Y"
         self.frequency_hours = 6
-        self.task_name_regex = r"^\s*([^:;]*):|;\s*([^:;]*):"
+        self.task_name_regex = r"\s*([^:;]*):"
 
         # Export
         self.export_empty_row = "No data"
