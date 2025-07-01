@@ -71,15 +71,25 @@ class ExportManager:
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
         self.__export_task_names()
 
-
-    def extract_task_names(self, note: str) -> list[str]:
+    def __extract_task_data(self, note: str) -> list[dict[str, str]]:
         result = re.findall(self.config_manager.task_name_regex, note)
         formatted_result = []
 
         for r in result:
-            formatted_result.append(r)
+            formatted_result.append({r[0]: r[1]})
 
         return formatted_result
+
+
+    def extract_task_names(self, note: str) -> list[str]:
+        result = self.__extract_task_data(note)
+
+        response = []
+        for r in result:
+            response.append(list(r.keys())[0])
+
+        return response
+
 
     def __export_task_names(self) -> None:
         for i in range(0, 7):
