@@ -27,10 +27,20 @@ class ExportManager:
                     flag = False
         return flag
 
-    def __add_sheet_row(self, data: list[list[str]], tab: str) -> None:
-        if self.__is_array_empty(data):
-            data = [[self.config_manager.export_empty_row]]
-        self._sheet_data.update({tab: data})
+
+    def __add_sheet_row(self, data: list[str], tab: str) -> None:
+        if tab in self._sheet_data.keys():
+            curr_data = self._sheet_data.get(tab)
+        else:
+            curr_data = []
+
+        if len(data) == 0:
+            data = self.config_manager.export_empty_row
+
+        curr_data.append(data)
+
+        self._sheet_data.update({tab: curr_data})
+        self.__save_as_ordered_dict()
 
     def __save_as_ordered_dict(self) -> None:
         input_data = OrderedDict()
@@ -39,16 +49,17 @@ class ExportManager:
 
     def export_data(self) -> None:
         note_list = self.data_manager._read_data_from_file()
-        sheet_content = [[
+        sheet_content = [
             self.config_manager.export_data_date,
             self.config_manager.export_data_done,
             self.config_manager.export_data_in_progress,
             self.config_manager.export_data_problems
-        ]]
+        ]
+
+        self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
 
         for note in note_list.notes:
-            new_line = [note.date, note.done, note.in_progress, note.problems]
-            sheet_content.append(new_line)
+            sheet_content = [note.date, note.done, note.in_progress, note.problems]
 
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
         self.__export_task_names()
@@ -71,16 +82,17 @@ class ExportManager:
         for i in range(0, 7):
             date = datetime.date.today() - timedelta(days=i)
             note_list = self.__get_data_for_date(date)
+
             if len(note_list) > 0:
-                result = []
                 for note in note_list:
-                    result.extend(ExportManager.extract_task_names(self, note.done))
-                    result.extend(ExportManager.extract_task_names(self, note.in_progress))
-                    result.extend(ExportManager.extract_task_names(self, note.problems))
+                    new_line = [note.date]
+                    new_line.extend(ExportManager.extract_task_names(self, note.done))
+                    new_line.extend(ExportManager.extract_task_names(self, note.in_progress))
+                    new_line.extend(ExportManager.extract_task_names(self, note.problems))
 
-                self.__add_sheet_row([result], self.config_manager.export_file_tab_name_task_names)
+                    self.__add_sheet_row(new_line, self.config_manager.export_file_tab_name_task_names)
 
-        self.__save_as_ordered_dict()
+
 
     def __get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:
         result = []
