@@ -7,6 +7,7 @@ from pyexcel_ods3 import save_data
 
 from ConfigManager import ConfigManager
 from DataManager import DataManager
+from models.LocalizedDate import LocalizedDate
 from models.NoteEntry import NoteEntry
 from models.Task import Task
 
@@ -111,11 +112,12 @@ class ExportManager:
 
         return response
 
-    @staticmethod
-    def __get_week_dates() -> list[datetime.date]:
+    def __get_week_dates(self) -> list[datetime.date]:
         date_list = []
+        todays_date = LocalizedDate(self.config_manager.date_format)
+
         for i in range(0, 7):
-            date_list.append(datetime.date.today() - timedelta(days=i))
+            date_list.append(todays_date.date_instance - timedelta(days=i))
         return list(reversed(date_list))
 
     def __export_task_names(self) -> None:

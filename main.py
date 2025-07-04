@@ -10,6 +10,7 @@ from ExportManager import ExportManager
 from FileManager import FileManager
 from Scheduler import Scheduler
 from UI import UI
+from factory.NotesFactory import NotesFactory
 from models.NoteEntry import NoteEntry
 
 
@@ -19,7 +20,17 @@ class Application(UI):
         super().__init__(self.config_manager)
 
         self.file_manager = FileManager(self.config_manager)
-        self.data_manager = DataManager(self.done_field, self.in_progress_field, self.problems_field, self.task_list_container, self.file_manager, self.config_manager)
+        self.note_factory = NotesFactory(self.config_manager)
+
+        self.data_manager = DataManager(
+            self.done_field,
+            self.in_progress_field,
+            self.problems_field,
+            self.task_list_container,
+            self.file_manager,
+            self.config_manager,
+            self.note_factory
+        )
         self.export_manager = ExportManager(self.config_manager, self.data_manager)
 
         self._update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency_hours))

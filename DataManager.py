@@ -1,4 +1,3 @@
-import datetime
 import tkinter
 
 import yaml
@@ -7,6 +6,7 @@ from ConfigManager import ConfigManager
 from DataManagerBase import DataManagerBase
 from FileManager import FileManager
 from factory.NotesFactory import NotesFactory
+from models.LocalizedDate import LocalizedDate
 from models.NoteEntry import NoteEntry
 from models.NoteList import NoteList
 from utils.YamlUtils import YamlUtils
@@ -14,7 +14,15 @@ from utils.YamlUtils import YamlUtils
 
 class DataManager(DataManagerBase):
 
-    def __init__(self, things_done: tkinter.Text, things_in_progress: tkinter.Text, problems: tkinter.Text, status: tkinter.Label, file_manager: FileManager, config_manager: ConfigManager) -> None:
+    def __init__(self,
+                 things_done: tkinter.Text,
+                 things_in_progress: tkinter.Text,
+                 problems: tkinter.Text,
+                 status: tkinter.Label,
+                 file_manager: FileManager,
+                 config_manager: ConfigManager,
+                 note_factory: NotesFactory
+                 ) -> None:
         super().__init__(file_manager)
         self.done = things_done
         self.in_progress = things_in_progress
@@ -22,7 +30,7 @@ class DataManager(DataManagerBase):
         self.status = status
 
         self.config_manager = config_manager
-        self.note_factory = NotesFactory(self.config_manager)
+        self.note_factory = note_factory
 
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
@@ -30,7 +38,7 @@ class DataManager(DataManagerBase):
     def __extract_todays_notes(self, note_list : NoteList) -> NoteEntry | None:
         result = self.note_factory.create_empty_note()
         for note in note_list.notes:
-            if note.date == datetime.date.today().strftime(self.config_manager.date_format):
+            if note.date == str(LocalizedDate(self.config_manager.date_format)):
                 result = note
         return result
 

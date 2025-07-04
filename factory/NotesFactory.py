@@ -1,6 +1,7 @@
 import datetime
 
 from ConfigManager import ConfigManager
+from models.LocalizedDate import LocalizedDate
 from models.NoteEntry import NoteEntry
 
 
@@ -13,5 +14,5 @@ class NotesFactory:
         return NoteEntry("", "", "", "")
 
     def create_note(self, done: str, in_progress: str, problems: str):
-        current_date = datetime.date.today().strftime(self.config.date_format)
-        return NoteEntry(current_date, done, in_progress, problems)
+        current_date = LocalizedDate(self.config.date_format)
+        return NoteEntry(str(current_date), done, in_progress, problems)
