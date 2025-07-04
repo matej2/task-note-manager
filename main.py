@@ -12,6 +12,7 @@ from Scheduler import Scheduler
 from UI import UI
 from factory.NotesFactory import NotesFactory
 from models.NoteEntry import NoteEntry
+from notification.Notification import Notification
 
 
 class Application(UI):
@@ -21,6 +22,7 @@ class Application(UI):
 
         self.file_manager = FileManager(self.config_manager)
         self.note_factory = NotesFactory(self.config_manager)
+        self.notification = Notification(self.config_manager)
 
         self.data_manager = DataManager(
             self.done_field,
@@ -79,7 +81,7 @@ class Application(UI):
         Application.__set_text_and_disable(self.task_list, str(today_note))
 
     def __trigger_notification(self):
-        notify2.Notification("Daily notification to enter data").show()
+        self.notification.send_notification()
         self.root.focus_force()
         self.notification.config(text="Daily notification to enter data")
 
