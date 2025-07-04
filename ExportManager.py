@@ -114,10 +114,11 @@ class ExportManager:
 
     def __get_week_dates(self) -> list[datetime.date]:
         date_list = []
-        todays_date = LocalizedDate(self.config_manager.date_format)
+        todays_date = datetime.datetime.now()
 
         for i in range(0, 7):
-            date_list.append(todays_date.date_instance - timedelta(days=i))
+            week_day = LocalizedDate(self.config_manager.date_format, todays_date - timedelta(days=i))
+            date_list.append(week_day)
         return list(reversed(date_list))
 
     def __export_task_names(self) -> None:
@@ -126,7 +127,7 @@ class ExportManager:
         first_row.extend(date_list)
 
         for i,row in enumerate(first_row):
-            first_row[i] = row.strftime(self.config_manager.date_format)
+            first_row[i] = str(row)
         self.__add_sheet_row(first_row, self.config_manager.export_file_tab_name_task_names)
 
         for date_index, date in enumerate(date_list):
@@ -151,9 +152,8 @@ class ExportManager:
     def __get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:
         result = []
         note_list = self.data_manager._read_data_from_file()
-        date_str = date.strftime(self.config_manager.date_format)
         if note_list is not None:
             for note in note_list.notes:
-                if note.date == date_str:
+                if note.date == str(date):
                     result.append(note)
         return result
