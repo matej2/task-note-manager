@@ -11,8 +11,8 @@ class YamlUtils:
     _allowed_nodes = [
         "date",
         "problems",
-        "things_done",
-        "to_be_done"
+        "done",
+        "in_progress"
     ]
 
     @staticmethod

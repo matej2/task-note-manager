@@ -7,8 +7,8 @@ name = "pypi"
 tk = "*"
 pyyaml = "*"
 apscheduler = "*"
-wheel = "*"
-win11toast = "*"
+notify2 = "*"
+pyexcel-ods3 = "*"
 
 [dev-packages]
 pyinstaller = "*"

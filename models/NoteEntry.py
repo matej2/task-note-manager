@@ -1,14 +1,13 @@
 class NoteEntry:
-    def __init__(self, date: str, things_done: str, to_be_done: str, problems: str):
+    def __init__(self, date: str, done: str, in_progress: str, problems: str):
         self.date = date
-        self.things_done = things_done
-        self.to_be_done = to_be_done
+        self.done = done
+        self.in_progress = in_progress
         self.problems = problems
 
+    def is_empty(self) -> bool:
+        return self.done == "" and self.in_progress == "" and self.problems == ""
+
     def __str__(self):
-        txt = "Date:".rjust(15) + self.date + '\n'
-        txt += "Things done:".rjust(15) + self.things_done + '\n'
-        txt += "To be done:".rjust(15) + self.to_be_done + '\n'
-        txt += "Problems:".rjust(15) + self.problems + '\n'
-        return txt
+        return f'\n\nDate: {self.date}\nThings done: {self.done}\nTo be done: {self.in_progress}\nProblems: {self.problems}\n\n'
 
