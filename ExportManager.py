@@ -25,6 +25,9 @@ class ExportManager:
         if os.path.exists(self.config_manager.export_file_name):
             os.remove(self.config_manager.export_file_name)
 
+    def __delete_data(self) -> None:
+        self._sheet_data = {}
+
     @staticmethod
     def __is_array_empty(l: list):
         flag = True
@@ -76,6 +79,7 @@ class ExportManager:
 
     def export_data(self) -> None:
         self.__delete_file()
+        self.__delete_data()
 
         note_list = self.data_manager._read_data_from_file()
         sheet_content = [
@@ -123,16 +127,19 @@ class ExportManager:
 
     def __export_task_names(self) -> None:
         date_list = self.__get_week_dates()
-        first_row = [datetime.date.today()]
+        first_row = ['']
         first_row.extend(date_list)
 
         for i,row in enumerate(first_row):
             first_row[i] = str(row)
         self.__add_sheet_row(first_row, self.config_manager.export_file_tab_name_task_names)
 
+        task_descriptions = {}
+
         for date_index, date in enumerate(date_list):
             note_list = self.__get_data_for_date(date)
 
+            # Collect task names from all fields
             tasks_data = []
             if len(note_list) > 0:
                 for note in note_list:
@@ -141,6 +148,10 @@ class ExportManager:
                     tasks_data.extend(self.__extract_task_data(note.problems))
 
             for task in tasks_data:
+                if date in first_row:
+                    column_index = first_row.index(date)
+                    task_descriptions.get(task.name)[column_index] = task.description
+
                 result = [task.name]
                 for i in range(0, date_index):
                     result.insert(1, '')
