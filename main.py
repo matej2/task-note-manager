@@ -2,8 +2,6 @@ import tkinter
 from datetime import datetime, timedelta, timezone
 from tkinter import END, NORMAL, DISABLED
 
-import notify2
-
 from ConfigManager import ConfigManager
 from DataManager import DataManager
 from ExportManager import ExportManager
@@ -42,7 +40,6 @@ class Application(UI):
         self.__initialize()
 
     def __initialize(self):
-        notify2.init("test")
         self.__update_data()
 
         today_data = self.data_manager.get_data_for_current_day()
@@ -57,7 +54,6 @@ class Application(UI):
         self.data_manager.save_input_data()
         self.__update_data()
 
-        self.notification.config(text="")
         self.task_list.see(tkinter.END)
 
     def __init_inputs(self, entry: NoteEntry):
