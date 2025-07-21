@@ -159,10 +159,9 @@ class ExportManager:
 
         if note_list is not None:
             for note in note_list.notes:
-                if note.date == str(date):
-                    tasks_data.extend(self.__extract_task_data(note.done))
-                    tasks_data.extend(self.__extract_task_data(note.in_progress))
-                    tasks_data.extend(self.__extract_task_data(note.problems))
+                tasks_data.extend(self.__extract_task_data(note.done))
+                tasks_data.extend(self.__extract_task_data(note.in_progress))
+                tasks_data.extend(self.__extract_task_data(note.problems))
 
         for task in tasks_data:
             if date in first_row:
