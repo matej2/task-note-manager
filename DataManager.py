@@ -45,7 +45,7 @@ class DataManager(DataManagerBase):
         return result
 
     def get_data_for_current_day(self, callback: callable) -> None:
-        self._read_data_from_file_async(
+        self.read_data_from_file_async(
             lambda note_list: callback(self.__extract_todays_notes(note_list))
         )
 
@@ -76,4 +76,4 @@ class DataManager(DataManagerBase):
 
 
     def save_input_data(self, callback: callable) -> None:
-        self._read_data_from_file_async(lambda note_entry: self.__process_save_input(note_entry, callback))
+        self.read_data_from_file_async(lambda note_entry: self.__process_save_input(note_entry, callback))
