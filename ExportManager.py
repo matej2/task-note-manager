@@ -1,3 +1,4 @@
+import os
 import re
 from collections import OrderedDict
 from datetime import datetime, timedelta
@@ -19,9 +20,7 @@ class ExportManager:
         self.data_manager = data_manager
         self._sheet_data = {}
 
-
     def __delete_file(self) -> None:
-        import os
         if os.path.exists(self.config_manager.export_file_name):
             os.remove(self.config_manager.export_file_name)
 
@@ -78,7 +77,7 @@ class ExportManager:
         save_data(self.config_manager.export_file_name, input_data)
 
     def export_data(self) -> None:
-        self.__delete_file()
+        #self.__delete_file()
         self.__delete_data()
 
         self.data_manager.read_data_from_file_async(self.__process_existing_data)
@@ -147,8 +146,8 @@ class ExportManager:
             }
 
             # Extract
-            self.data_manager.read_data_from_file_async(self.__process_data_for_date, args)
-
+            result_list = self.data_manager.get_data_from_file()
+            self.__process_data_for_date(result_list, args)
 
     def __process_data_for_date(self, note_list: NoteList, args: dict) -> None:
         tasks_data = []

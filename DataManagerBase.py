@@ -29,6 +29,11 @@ class DataManagerBase:
         else:
             first_callback(data)
 
+    def get_data_from_file(self) -> NoteList:
+        with self.file_manager.get_read_instance() as file:
+            data = yaml.load(file, Loader=YamlUtils.get_loader())
+        return data
+
     def _write_data_to_file_async(self, note_list: NoteList, callback: callable):
         thread = threading.Thread(
             target=self.__write_data_to_file,
