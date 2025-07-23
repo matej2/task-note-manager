@@ -10,9 +10,7 @@ from models.NoteList import NoteList
 class YamlUtils:
     _allowed_nodes = [
         "date",
-        "problems",
-        "done",
-        "in_progress"
+        "done"
     ]
 
     @staticmethod
