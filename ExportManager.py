@@ -92,8 +92,9 @@ class ExportManager:
 
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
 
-        for note in note_list.notes:
-            sheet_content = [note.date, note.done, note.in_progress, note.problems]
+        if note_list is not None:
+            for note in note_list.notes:
+                sheet_content = [note.date, note.done, note.in_progress, note.problems]
 
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
         self.__export_task_names()

@@ -22,6 +22,7 @@ class UI(tkinter.Frame):
         self.button_container = tkinter.Frame(self.root)
         self.submit_button = tkinter.Button(self.button_container)
         self.open_file = tkinter.Button(self.button_container)
+        self.open_file_ods = tkinter.Button(self.button_container)
         self.list_button = tkinter.Button(self.button_container)
         self.instructions_button = tkinter.Button(self.button_container)
         self.export_button = tkinter.Button(self.button_container)
@@ -57,6 +58,9 @@ class UI(tkinter.Frame):
 
         self.open_file.config(text="Open file", font=self.__get_font_config())
         self.open_file.grid(row=0, column=1, sticky='e')
+
+        self.open_file_ods.config(text="Open file - ODS", font=self.__get_font_config())
+        self.open_file_ods.grid(row=0, column=2, sticky='e')
 
         self.instructions_button.configure(text="Instructions", font=self.__get_font_config(), command=self.__open_information_popup)
         self.instructions_button.grid(row=0, column=3, sticky='e', padx=20)

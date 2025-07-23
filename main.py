@@ -47,6 +47,7 @@ class Application(UI):
     def __configure_buttons(self):
         self.submit_button.config(command=self.__on_click_submit_button)
         self.open_file.config(command=self.data_manager.file_manager.open_file)
+        self.open_file_ods.config(command=self.data_manager.file_manager.open_file_ods)
         self.export_button.config(command=self.export_manager.export_data)
 
     def __on_click_submit_button(self):
