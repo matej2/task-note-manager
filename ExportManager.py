@@ -8,7 +8,7 @@ from pyexcel_ods3 import save_data
 from ConfigManager import ConfigManager
 from DataManager import DataManager
 from models.LocalizedDate import LocalizedDate
-from models.NoteEntry import NoteEntry
+from models.NoteList import NoteList
 from models.Task import Task
 
 
@@ -81,7 +81,9 @@ class ExportManager:
         self.__delete_file()
         self.__delete_data()
 
-        note_list = self.data_manager._read_data_from_file()
+        self.data_manager.read_data_from_file_async(self.__process_existing_data)
+
+    def __process_existing_data(self, note_list: NoteList) -> None:
         sheet_content = [
             self.config_manager.export_data_date,
             self.config_manager.export_data_done,
@@ -137,34 +139,37 @@ class ExportManager:
         task_descriptions = {}
 
         for date_index, date in enumerate(date_list):
-            note_list = self.__get_data_for_date(date)
+            args = {
+                'date_index': date_index,
+                'date': date,
+                'first_row': first_row,
+                'task_descriptions': task_descriptions
+            }
 
-            # Collect task names from all fields
-            tasks_data = []
-            if len(note_list) > 0:
-                for note in note_list:
-                    tasks_data.extend(self.__extract_task_data(note.done))
-                    tasks_data.extend(self.__extract_task_data(note.in_progress))
-                    tasks_data.extend(self.__extract_task_data(note.problems))
-
-            for task in tasks_data:
-                if date in first_row:
-                    column_index = first_row.index(date)
-                    task_descriptions.get(task.name)[column_index] = task.description
-
-                result = [task.name]
-                for i in range(0, date_index):
-                    result.insert(1, '')
-                result.append(task.description)
-                self.__add_sheet_row(result, self.config_manager.export_file_tab_name_task_names)
+            # Extract
+            self.data_manager.read_data_from_file_async(self.__process_data_for_date, args)
 
 
+    def __process_data_for_date(self, note_list: NoteList, args: dict) -> None:
+        tasks_data = []
+        date_index = args.get('date_index')
+        date = args.get('date')
+        first_row = args.get('first_row')
+        task_descriptions = args.get('task_descriptions')
 
-    def __get_data_for_date(self, date: datetime.date) -> list[NoteEntry] | list[None]:
-        result = []
-        note_list = self.data_manager._read_data_from_file()
         if note_list is not None:
             for note in note_list.notes:
-                if note.date == str(date):
-                    result.append(note)
-        return result
+                tasks_data.extend(self.__extract_task_data(note.done))
+                tasks_data.extend(self.__extract_task_data(note.in_progress))
+                tasks_data.extend(self.__extract_task_data(note.problems))
+
+        for task in tasks_data:
+            if date in first_row:
+                column_index = first_row.index(date)
+                task_descriptions.get(task.name)[column_index] = task.description
+
+            result = [task.name]
+            for i in range(0, date_index):
+                result.insert(1, '')
+            result.append(task.description)
+            self.__add_sheet_row(result, self.config_manager.export_file_tab_name_task_names)

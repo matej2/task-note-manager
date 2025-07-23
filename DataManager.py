@@ -37,18 +37,17 @@ class DataManager(DataManagerBase):
 
     def __extract_todays_notes(self, note_list : NoteList) -> NoteEntry | None:
         result = self.note_factory.create_empty_note()
+        if note_list is None:
+            return result
         for note in note_list.notes:
             if note.date == str(LocalizedDate(self.config_manager.date_format)):
                 result = note
         return result
 
-    def get_data_for_current_day(self) -> NoteEntry:
-        result = NotesFactory.create_empty_note()
-        note_list = self._read_data_from_file()
-
-        if note_list is not None:
-            result = self.__extract_todays_notes(note_list)
-        return result
+    def get_data_for_current_day(self, callback: callable) -> None:
+        self.read_data_from_file_async(
+            lambda note_list: callback(self.__extract_todays_notes(note_list))
+        )
 
     @staticmethod
     def __override_existing_data_with_new_note(list: NoteList, entry: NoteEntry) -> None:
@@ -62,8 +61,7 @@ class DataManager(DataManagerBase):
     def __get_text_from_input(input: tkinter.Text):
         return input.get("1.0", "end-1c")
 
-    def save_input_data(self) -> None:
-        existing_data = self._read_data_from_file()
+    def __process_save_input(self, existing_data: NoteList, callback: callable) -> None:
         if existing_data is None:
             existing_data = NoteList()
 
@@ -74,4 +72,8 @@ class DataManager(DataManagerBase):
         new_note = self.note_factory.create_note(done, to_be_done, problems)
 
         DataManager.__override_existing_data_with_new_note(existing_data, new_note)
-        self._write_data_to_file(existing_data)
+        self._write_data_to_file_async(existing_data, callback)
+
+
+    def save_input_data(self, callback: callable) -> None:
+        self.read_data_from_file_async(lambda note_entry: self.__process_save_input(note_entry, callback))
