@@ -72,6 +72,10 @@ class UI(tkinter.Frame):
         event.widget.tk_focusNext().focus()
         return "break"
 
+    def __focus_previous_widget(self, event):
+        event.widget.tk_focusPrev().focus()
+        return "break"
+
     def __trigger_submit(self, event):
         self.submit_button.invoke()
         return "break"
@@ -79,6 +83,7 @@ class UI(tkinter.Frame):
     def __set_bindings(self, widget):
         widget.bind("<Return>", self.__trigger_submit)
         widget.bind("<Tab>", self.__focus_next_widget)
+        widget.bind("<Shift-Tab>", self.__focus_previous_widget)
 
     def __configure_bindings(self):
         self.__set_bindings(self.done_field)
