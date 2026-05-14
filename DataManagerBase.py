@@ -15,7 +15,7 @@ class DataManagerBase:
         thread = threading.Thread(
             target=self._read_data_from_file,
             kwargs={
-                "read_instance": self.file_manager.get_read_instance(),
+                "read_instance": self.file_manager.get_read_wrapper(),
                 "first_callback":first_callback,
                 "args": args
             })
@@ -33,7 +33,7 @@ class DataManagerBase:
         thread = threading.Thread(
             target=self.__write_data_to_file,
             kwargs={
-                "write_instance": self.file_manager.get_write_instance(),
+                "write_instance": self.file_manager.get_write_wrapper(),
                 "note_list": note_list,
                 "callback":callback
             })
