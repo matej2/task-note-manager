@@ -85,10 +85,10 @@ class ExportManager:
 
     def __process_existing_data(self, note_list: NoteList) -> None:
         sheet_content = [
-            self.config_manager.export_data_date,
-            self.config_manager.export_data_done,
-            self.config_manager.export_data_in_progress,
-            self.config_manager.export_data_problems
+            self.config_manager.export_th_date,
+            self.config_manager.export_th_done,
+            self.config_manager.export_th_in_progress,
+            self.config_manager.export_th_problems
         ]
 
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
