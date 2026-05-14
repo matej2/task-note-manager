@@ -1,6 +1,5 @@
-from typing import override
-
 import notify2
+from typing_extensions import override
 
 from ConfigManager import ConfigManager
 from notification.NotificationInterface import NotificationInterface
