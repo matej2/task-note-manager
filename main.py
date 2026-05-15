@@ -10,7 +10,7 @@ from ExportManager import ExportManager
 from FileManager import FileManager
 from Scheduler import Scheduler
 from UI import UI
-from factory.NotesFactory import NotesFactory
+from factory.NoteEntryFactory import NoteEntryFactory
 from models.NoteEntry import NoteEntry
 from notification.Notification import Notification
 
@@ -21,7 +21,7 @@ class Application(UI):
         super().__init__(self.config_manager)
 
         self.file_manager = FileManager(self.config_manager)
-        self.note_factory = NotesFactory(self.config_manager)
+        self.note_factory = NoteEntryFactory(self.config_manager)
         self.notification = Notification(self.config_manager)
 
         self.data_manager = DataManager(

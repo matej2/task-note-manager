@@ -5,7 +5,7 @@ import yaml
 from ConfigManager import ConfigManager
 from DataManagerBase import DataManagerBase
 from FileManager import FileManager
-from factory.NotesFactory import NotesFactory
+from factory.NoteEntryFactory import NoteEntryFactory
 from models.LocalizedDate import LocalizedDate
 from models.NoteEntry import NoteEntry
 from models.NoteList import NoteList
@@ -21,7 +21,7 @@ class DataManager(DataManagerBase):
                  status: tkinter.Label,
                  file_manager: FileManager,
                  config_manager: ConfigManager,
-                 note_factory: NotesFactory
+                 note_factory: NoteEntryFactory
                  ) -> None:
         super().__init__(file_manager)
         self.done = things_done
@@ -36,7 +36,7 @@ class DataManager(DataManagerBase):
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
     def __extract_todays_notes(self, note_list : NoteList) -> NoteEntry | None:
-        result = self.note_factory.create_empty_note()
+        result = NoteEntry()
         if note_list is None:
             return result
         for note in note_list.notes:
