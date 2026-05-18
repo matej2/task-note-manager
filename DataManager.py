@@ -1,4 +1,5 @@
 import tkinter
+from typing import Callable
 
 import yaml
 
@@ -44,26 +45,26 @@ class DataManager(DataManagerBase):
                 result = note
         return result
 
-    def get_data_for_current_day(self, callback: callable) -> None:
+    def get_data_for_current_day(self, callback: Callable) -> None:
         self.read_data_from_file_async(
             lambda note_list: callback(self.__extract_todays_notes(note_list))
         )
 
     @staticmethod
-    def __override_existing_data_with_new_note(list: NoteList, entry: NoteEntry) -> None:
-        for i,e in enumerate(list.notes):
+    def __override_existing_data_with_new_note(note_list: NoteList, entry: NoteEntry) -> None:
+        for i,e in enumerate(note_list.notes):
             if e.date == entry.date:
-                list.notes[i] = entry
+                note_list.notes[i] = entry
                 return
-        list.notes.append(entry)
+        note_list.notes.append(entry)
 
     @staticmethod
-    def __get_text_from_input(input: tkinter.Text):
-        return input.get("1.0", "end-1c")
+    def __get_text_from_input(input_text: tkinter.Text):
+        return input_text.get("1.0", "end-1c")
 
-    def __process_save_input(self, existing_data: NoteList, callback: callable) -> None:
+    def __process_save_input(self, existing_data: NoteList, callback: Callable) -> None:
         if existing_data is None:
-            existing_data = NoteList()
+            existing_data = NoteList(list())
 
         done = DataManager.__get_text_from_input(self.done)
         to_be_done = DataManager.__get_text_from_input(self.in_progress)
@@ -75,5 +76,5 @@ class DataManager(DataManagerBase):
         self._write_data_to_file_async(existing_data, callback)
 
 
-    def save_input_data(self, callback: callable) -> None:
+    def save_input_data(self, callback: Callable) -> None:
         self.read_data_from_file_async(lambda note_entry: self.__process_save_input(note_entry, callback))
