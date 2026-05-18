@@ -74,7 +74,7 @@ class ExportManager:
             sheet_content = [note.date, note.done, note.in_progress, note.problems]
 
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
-        self.__export_task_names()
+        #self.__export_task_names()
 
     def __extract_task_data(self, note: str) -> list[Task]:
         result = re.findall(self.config_manager.task_name_regex, note)
@@ -143,7 +143,7 @@ class ExportManager:
                 task_descriptions.get(task.name)[column_index] = task.description
 
             result = [task.name]
-            for _ in date_index:
+            for _ in range(date_index):
                 result.insert(1, '')
             result.append(task.description)
             self.__add_sheet_row(result, self.config_manager.export_file_tab_name_task_names)
