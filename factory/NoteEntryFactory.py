@@ -5,7 +5,7 @@ from models.LocalizedDate import LocalizedDate
 from models.NoteEntry import NoteEntry
 
 
-class NotesFactory:
+class NoteEntryFactory:
     def __init__(self, config: ConfigManager):
         self.config = config
 

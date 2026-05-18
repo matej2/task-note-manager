@@ -1,6 +1,7 @@
 import tkinter
 from datetime import datetime, timezone
 from tkinter import NONE, DISABLED, LEFT
+from typing import Literal
 
 from ConfigManager import ConfigManager
 
@@ -26,6 +27,7 @@ class UI(tkinter.Frame):
         self.instructions_button = tkinter.Button(self.button_container)
         self.export_button = tkinter.Button(self.button_container)
 
+        # Task list
         self.task_list_container = tkinter.Frame(self.root)
         self.task_list = tkinter.Text(self.task_list_container)
 
@@ -62,7 +64,8 @@ class UI(tkinter.Frame):
         self.export_button.grid(row=0, column=4, sticky='e')
         self.export_button.config(text="Export data - ODS", font=self.__get_font_config())
 
-    def __focus_next_widget(self, event):
+    @staticmethod
+    def __focus_next_widget(event):
         event.widget.tk_focusNext().focus()
         return "break"
 
@@ -72,7 +75,7 @@ class UI(tkinter.Frame):
 
     def __set_bindings(self, widget):
         widget.bind("<Return>", self.__trigger_submit)
-        widget.bind("<Tab>", self.__focus_next_widget)
+        widget.bind("<Tab>", UI.__focus_next_widget)
 
     def __configure_bindings(self):
         self.__set_bindings(self.done_field)
@@ -129,6 +132,7 @@ class UI(tkinter.Frame):
             self.counter.config(text=f"Notification in: {time_str} hours")
         else:
             self.counter.config(text="No upcoming notification")
+
     def __create_section(self, parent: tkinter.BaseWidget, title: str, body: str):
         section = tkinter.Frame(parent)
         tkinter.Label(section, text=title, font=(self.config_manager.font_family, self.config_manager.font_size_normal, "bold")).grid(row=0, column=0)
@@ -150,8 +154,6 @@ class UI(tkinter.Frame):
 Application will save these answers to a yaml file, which you can see by clicking 'Open file' button. You can further edit data in this file to adapt it to your requrements. Each entry is marked with "!NoteEntry", you may copy it and modify it.
             """)
         about.grid(row=1, column=0)
-
-
 
         config_list = tkinter.Label(top)
         config_list.config(

@@ -2,7 +2,7 @@ from typing import Self
 
 
 class NoteEntry:
-    def __init__(self, date: str, done: str):
+    def __init__(self, date: str = "", done: str = ""):
         self.date = date
         self.done = done
 

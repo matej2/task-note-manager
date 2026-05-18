@@ -10,7 +10,7 @@ from ExportManager import ExportManager
 from FileManager import FileManager
 from Scheduler import Scheduler
 from UI import UI
-from factory.NotesFactory import NotesFactory
+from factory.NoteEntryFactory import NoteEntryFactory
 from models.NoteEntry import NoteEntry
 from notification.Notification import Notification
 
@@ -21,7 +21,7 @@ class Application(UI):
         super().__init__(self.config_manager)
 
         self.file_manager = FileManager(self.config_manager)
-        self.note_factory = NotesFactory(self.config_manager)
+        self.note_factory = NoteEntryFactory(self.config_manager)
         self.notification = Notification(self.config_manager)
 
         self.data_manager = DataManager(
@@ -47,7 +47,7 @@ class Application(UI):
 
     def __configure_buttons(self):
         self.submit_button.config(command=self.__on_click_submit_button)
-        self.open_file.config(command=self.data_manager.file_manager.open_file)
+        self.open_file.config(command=self.data_manager.file_manager.open_file_in_ext_app)
         self.export_button.config(command=self.export_manager.export_data)
 
     def __after_submit(self):
