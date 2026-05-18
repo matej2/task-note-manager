@@ -11,6 +11,7 @@ from DataManager import DataManager
 from models.LocalizedDate import LocalizedDate
 from models.NoteList import NoteList
 from models.Task import Task
+from models.helpers.NoteListHelper import NoteListHelper
 
 
 class ExportManager:
@@ -72,7 +73,9 @@ class ExportManager:
 
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
 
-        for note in iter(note_list.notes):
+        note_list_iter = NoteListHelper.get_note_list_iter(note_list)
+
+        for note in note_list_iter:
             sheet_content = [note.date, note.done, note.in_progress, note.problems]
 
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
