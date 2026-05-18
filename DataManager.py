@@ -11,6 +11,7 @@ from factory.NoteEntryFactory import NoteEntryFactory
 from models.LocalizedDate import LocalizedDate
 from models.NoteEntry import NoteEntry
 from models.NoteList import NoteList
+from models.helpers.NoteListHelper import NoteListHelper
 from utils.YamlUtils import YamlUtils
 
 
@@ -42,14 +43,20 @@ class DataManager(DataManagerBase):
         result = NoteEntry()
         if note_list is None:
             return result
-        for note in note_list.notes:
+
+        note_list_iter = NoteListHelper.get_note_list_iter(note_list)
+        for note in note_list_iter:
             if note.date == str(LocalizedDate(self.config_manager.date_format)):
                 result = note
         return result
 
     def get_data_for_current_day(self, callback: Callable) -> None:
         self.read_data_from_file_async(
-            lambda note_list: callback(self.__extract_todays_notes(note_list))
+            lambda note_list: callback(
+                self.__extract_todays_notes(
+                    note_list
+                )
+            )
         )
 
     @staticmethod
