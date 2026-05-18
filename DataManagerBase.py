@@ -21,6 +21,7 @@ class DataManagerBase:
                 "args": args
             })
         thread.start()
+        return thread
 
     @staticmethod
     def _read_data_from_file(read_instance, first_callback, args) -> None:
