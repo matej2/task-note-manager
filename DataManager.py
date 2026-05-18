@@ -77,7 +77,7 @@ class DataManager(DataManagerBase):
 
         DataManager.__override_existing_data_with_new_note(existing_data, new_note)
         self._write_data_to_file_async(existing_data, callback)
-        self.logger.debug(f"Wrote data to file, input: {done} {to_be_done} {problems}")
+        self.logger.debug(f"Wrote data to file, input: {done}")
 
 
     def save_input_data(self, callback: Callable) -> None:
