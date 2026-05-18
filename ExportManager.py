@@ -1,7 +1,8 @@
+import logging
+import os
 import re
 from collections import OrderedDict
-from datetime import datetime, timedelta
-import datetime
+from datetime import timedelta, datetime, date
 
 from pyexcel_ods3 import save_data
 
@@ -10,40 +11,27 @@ from DataManager import DataManager
 from models.LocalizedDate import LocalizedDate
 from models.NoteList import NoteList
 from models.Task import Task
+from models.helpers.NoteListHelper import NoteListHelper
 
 
 class ExportManager:
 
-    def __init__(self, config_manager: ConfigManager, data_manager: DataManager) -> None:
+    def __init__(self, config_manager: ConfigManager, data_manager: DataManager):
+        self.logger = logging.getLogger(__name__)
         self.config_manager = config_manager
         self.data_manager = data_manager
         self._sheet_data = {}
 
 
     def __delete_file(self) -> None:
-        import os
         if os.path.exists(self.config_manager.export_file_name):
             os.remove(self.config_manager.export_file_name)
 
     def __delete_data(self) -> None:
         self._sheet_data = {}
 
-    @staticmethod
-    def __is_array_empty(l: list):
-        flag = True
-
-        if len(l) != 0:
-            for item in l:
-                if len(item) > 0:
-                    flag = False
-        return flag
-
-
     def __add_sheet_row(self, data: list[object], tab: str) -> None:
-        if tab in self._sheet_data.keys():
-            curr_data = self._sheet_data.get(tab)
-        else:
-            curr_data = []
+        curr_data = self._sheet_data.get(tab, list())
 
         if len(data) == 0:
             data = self.config_manager.export_empty_row
@@ -54,27 +42,19 @@ class ExportManager:
         self.__save_as_ordered_dict()
 
     def __add_sheet_column(self, data: list[object], tab: str, column: int) -> None:
-        data_to_add = []
-
-        if tab in self._sheet_data.keys():
-            curr_data = self._sheet_data.get(tab)
-        else:
-            curr_data = []
+        curr_data = self._sheet_data.get(tab, list())
 
         if len(data) == 0:
-            data_to_add = [self.config_manager.export_empty_row]
-        else:
-            data_to_add = data
+            data = self.config_manager.export_empty_row
 
-        for i in range(0, len(curr_data)):
-            curr_data[i].insert(column, data_to_add[i])
+        for i in curr_data:
+            curr_data[i].insert(column, data[i])
 
         self._sheet_data.update({tab: curr_data})
         self.__save_as_ordered_dict()
 
     def __save_as_ordered_dict(self) -> None:
-        input_data = OrderedDict()
-        input_data.update(self._sheet_data)
+        input_data = OrderedDict(self._sheet_data)
         save_data(self.config_manager.export_file_name, input_data)
 
     def export_data(self) -> None:
@@ -85,19 +65,22 @@ class ExportManager:
 
     def __process_existing_data(self, note_list: NoteList) -> None:
         sheet_content = [
-            self.config_manager.export_data_date,
-            self.config_manager.export_data_done,
-            self.config_manager.export_data_in_progress,
-            self.config_manager.export_data_problems
+            self.config_manager.export_th_date,
+            self.config_manager.export_th_done,
+            self.config_manager.export_th_in_progress,
+            self.config_manager.export_th_problems
         ]
 
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
 
-        for note in note_list.notes:
+        note_list_iter = NoteListHelper.get_note_list_iter(note_list)
+
+        for note in note_list_iter:
             sheet_content = [note.date, note.done, note.in_progress, note.problems]
 
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
-        self.__export_task_names()
+        #self.__export_task_names()
+        self.logger.debug(f"Exported saved content to {self.config_manager.export_file_name}")
 
     def __extract_task_data(self, note: str) -> list[Task]:
         result = re.findall(self.config_manager.task_name_regex, note)
@@ -108,40 +91,37 @@ class ExportManager:
 
         return formatted_result
 
-
+    # TODO: Implement Task manager
     def extract_task_names(self, note: str) -> list[str]:
         result = self.__extract_task_data(note)
 
         response = []
         for r in result:
-            response.append(list(r.keys())[0])
+            response.append(r.name)
 
         return response
 
-    def __get_week_dates(self) -> list[datetime.date]:
+    def __get_week_dates(self) -> list[date]:
         date_list = []
-        todays_date = datetime.datetime.now()
+        today_date = datetime.now()
 
         for i in range(0, 7):
-            week_day = LocalizedDate(self.config_manager.date_format, todays_date - timedelta(days=i))
+            week_day = LocalizedDate(self.config_manager.date_format, today_date - timedelta(days=i))
             date_list.append(week_day)
         return list(reversed(date_list))
 
     def __export_task_names(self) -> None:
         date_list = self.__get_week_dates()
-        first_row = ['']
-        first_row.extend(date_list)
+        first_row = list(map(lambda x: str(x), date_list))
 
-        for i,row in enumerate(first_row):
-            first_row[i] = str(row)
         self.__add_sheet_row(first_row, self.config_manager.export_file_tab_name_task_names)
 
-        task_descriptions = {}
+        task_descriptions = dict(list())
 
-        for date_index, date in enumerate(date_list):
+        for date_index, date_value in enumerate(first_row):
             args = {
                 'date_index': date_index,
-                'date': date,
+                'date': date_value,
                 'first_row': first_row,
                 'task_descriptions': task_descriptions
             }
@@ -150,12 +130,12 @@ class ExportManager:
             self.data_manager.read_data_from_file_async(self.__process_data_for_date, args)
 
 
-    def __process_data_for_date(self, note_list: NoteList, args: dict) -> None:
+    def __process_data_for_date(self, note_list: NoteList, args: dict[str, list]) -> None:
         tasks_data = []
-        date_index = args.get('date_index')
-        date = args.get('date')
-        first_row = args.get('first_row')
-        task_descriptions = args.get('task_descriptions')
+        date_index = args.get('date_index', list())
+        date_input = args.get('date')
+        first_row = args.get('first_row', list())
+        task_descriptions = args.get('task_descriptions', dict[str, list])
 
         if note_list is not None:
             for note in note_list.notes:
@@ -164,12 +144,12 @@ class ExportManager:
                 tasks_data.extend(self.__extract_task_data(note.problems))
 
         for task in tasks_data:
-            if date in first_row:
-                column_index = first_row.index(date)
+            if date_input in first_row:
+                column_index = first_row.index(date_input)
                 task_descriptions.get(task.name)[column_index] = task.description
 
             result = [task.name]
-            for i in range(0, date_index):
+            for _ in range(date_index):
                 result.insert(1, '')
             result.append(task.description)
             self.__add_sheet_row(result, self.config_manager.export_file_tab_name_task_names)

@@ -1,4 +1,5 @@
 import threading
+from typing import Callable
 
 import yaml
 from FileManager import FileManager
@@ -11,29 +12,31 @@ class DataManagerBase:
     def __init__(self, file_manager: FileManager) -> None:
         self.file_manager = file_manager
 
-    def read_data_from_file_async(self, first_callback: callable, args: dict = None):
+    def read_data_from_file_async(self, first_callback: Callable, args: dict = {}):
         thread = threading.Thread(
-            target=self._read_data_from_file,
+            target=DataManagerBase._read_data_from_file,
             kwargs={
-                "read_instance": self.file_manager.get_read_instance(),
+                "read_instance": self.file_manager.get_read_wrapper(),
                 "first_callback":first_callback,
                 "args": args
             })
         thread.start()
+        return thread
 
-    def _read_data_from_file(self, read_instance, first_callback, args) -> None:
+    @staticmethod
+    def _read_data_from_file(read_instance, first_callback, args) -> None:
         with read_instance as file:
             data = yaml.load(file, Loader=YamlUtils.get_loader())
-        if args is not None:
+        if args != {}:
             first_callback(data, args)
         else:
             first_callback(data)
 
-    def _write_data_to_file_async(self, note_list: NoteList, callback: callable):
+    def _write_data_to_file_async(self, note_list: NoteList, callback: Callable):
         thread = threading.Thread(
             target=self.__write_data_to_file,
             kwargs={
-                "write_instance": self.file_manager.get_write_instance(),
+                "write_instance": self.file_manager.get_write_wrapper(),
                 "note_list": note_list,
                 "callback":callback
             })
