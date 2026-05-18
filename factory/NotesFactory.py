@@ -11,8 +11,8 @@ class NotesFactory:
 
     @staticmethod
     def create_empty_note() -> NoteEntry:
-        return NoteEntry("", "", "", "")
+        return NoteEntry("", "")
 
-    def create_note(self, done: str, in_progress: str, problems: str):
+    def create_note(self, done: str):
         current_date = LocalizedDate(self.config.date_format)
-        return NoteEntry(str(current_date), done, in_progress, problems)
+        return NoteEntry(str(current_date), done)

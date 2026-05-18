@@ -86,15 +86,13 @@ class ExportManager:
     def __process_existing_data(self, note_list: NoteList) -> None:
         sheet_content = [
             self.config_manager.export_data_date,
-            self.config_manager.export_data_done,
-            self.config_manager.export_data_in_progress,
-            self.config_manager.export_data_problems
+            self.config_manager.export_data_done
         ]
 
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
 
         for note in note_list.notes:
-            sheet_content = [note.date, note.done, note.in_progress, note.problems]
+            sheet_content = [note.date, note.done]
 
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
         self.__export_task_names()
@@ -160,8 +158,6 @@ class ExportManager:
         if note_list is not None:
             for note in note_list.notes:
                 tasks_data.extend(self.__extract_task_data(note.done))
-                tasks_data.extend(self.__extract_task_data(note.in_progress))
-                tasks_data.extend(self.__extract_task_data(note.problems))
 
         for task in tasks_data:
             if date in first_row:
