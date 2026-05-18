@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 
@@ -28,6 +29,12 @@ class ConfigManager:
 
         # Yaml
         self.full_path = os.path.join(ConfigManager._get_full_curr_dir_path(), "task_notes.yaml")
+
+        # Logging
+        logging.basicConfig(
+            level=logging.DEBUG,
+            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+            datefmt="%d-%b-%y %H:%M:%S")
 
     @staticmethod
     def _get_full_curr_dir_path():

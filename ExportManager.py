@@ -1,3 +1,4 @@
+import logging
 import os
 import re
 from collections import OrderedDict
@@ -15,6 +16,7 @@ from models.Task import Task
 class ExportManager:
 
     def __init__(self, config_manager: ConfigManager, data_manager: DataManager):
+        self.logger = logging.getLogger(__name__)
         self.config_manager = config_manager
         self.data_manager = data_manager
         self._sheet_data = {}
@@ -75,6 +77,7 @@ class ExportManager:
 
         self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
         #self.__export_task_names()
+        self.logger.debug(f"Exported saved content to {self.config_manager.export_file_name}")
 
     def __extract_task_data(self, note: str) -> list[Task]:
         result = re.findall(self.config_manager.task_name_regex, note)
