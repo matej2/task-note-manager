@@ -34,7 +34,7 @@ class DataManagerBase:
 
     def _write_data_to_file_async(self, note_list: NoteList, callback: Callable):
         thread = threading.Thread(
-            target=self.__write_data_to_file,
+            target=self._write_data_to_file,
             kwargs={
                 "write_instance": self.file_manager.get_write_wrapper(),
                 "note_list": note_list,
@@ -43,7 +43,7 @@ class DataManagerBase:
         thread.start()
 
     @staticmethod
-    def __write_data_to_file(write_instance, note_list: NoteList, callback):
+    def _write_data_to_file(write_instance, note_list: NoteList, callback):
         with (write_instance as file):
             yaml.dump(note_list, file)
         callback(note_list)
