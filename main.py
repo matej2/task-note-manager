@@ -12,6 +12,7 @@ from Scheduler import Scheduler
 from UI import UI
 from factory.NoteEntryFactory import NoteEntryFactory
 from models.NoteEntry import NoteEntry
+from models.NoteList import NoteList
 from notification.Notification import Notification
 
 
@@ -62,7 +63,7 @@ class Application(UI):
     def __init_inputs(self, entry: NoteEntry):
         self.__set_text(self.done_field, entry.done)
 
-    def __set_text_and_disable(self, value: NoteEntry):
+    def __set_text_and_disable(self, value: NoteList):
         self.task_list.configure(state=NORMAL)
         self.__set_text(self.task_list, str(value))
         self.task_list.configure(state=DISABLED)
@@ -73,7 +74,7 @@ class Application(UI):
         text.insert(END, str(value))
 
     def __update_data(self):
-        self.data_manager.get_data_for_current_day(self.__set_text_and_disable)
+        self.data_manager.get_data_for_tree_days(self.__set_text_and_disable)
 
     def __trigger_notification(self):
         self.notification.send_notification()
