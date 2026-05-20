@@ -55,6 +55,11 @@ class DataManager(DataManagerBase):
             )
         )
 
+    def get_data_for_tree_days(self, callback: Callable) -> None:
+        self.read_data_from_file_async(
+            lambda note_list: callback(NoteList(note_list[-3:]))
+        )
+
     @staticmethod
     def __override_existing_data_with_new_note(note_list: NoteList, entry: NoteEntry) -> None:
         for i,e in enumerate(note_list.notes):
