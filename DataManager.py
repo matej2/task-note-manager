@@ -57,7 +57,7 @@ class DataManager(DataManagerBase):
 
     def get_data_for_tree_days(self, callback: Callable) -> None:
         self.read_data_from_file_async(
-            lambda note_list: callback(NoteList(note_list[-3:]))
+            lambda note_list: callback(NoteList(note_list.notes[-3:]))
         )
 
     @staticmethod

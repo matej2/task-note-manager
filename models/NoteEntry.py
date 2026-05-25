@@ -10,7 +10,7 @@ class NoteEntry:
         return self.done == ""
 
     def __str__(self):
-        return f'\n\nDate: {self.date}\nThings done: {self.done}\n\n'
+        return f'Date: {self.date}\nThings done: {self.done}'
 
     def __eq__(self, other: Self):
         return self.date == other.date and self.done == other.done

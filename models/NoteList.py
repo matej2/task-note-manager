@@ -1,4 +1,5 @@
 import datetime
+from functools import reduce
 
 from models.NoteEntry import NoteEntry
 
@@ -7,3 +8,6 @@ class NoteList:
         if notes is None:
             notes = []
         self.notes = notes
+
+    def __str__(self):
+        return reduce(lambda sum, curr: str(sum) + "\n---\n\n" + str(curr), self.notes)
