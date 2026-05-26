@@ -1,3 +1,4 @@
+import asyncio
 import tkinter
 from datetime import datetime, timedelta, timezone
 from tkinter import END, NORMAL, DISABLED
@@ -23,7 +24,7 @@ class Application(UI):
 
         self.file_manager = FileManager(self.config_manager)
         self.note_factory = NoteEntryFactory(self.config_manager)
-        self.notification = Notification(self.config_manager)
+        self.notification_manager = Notification(self.config_manager)
 
         self.data_manager = DataManager(
             self.done_field,
@@ -44,23 +45,35 @@ class Application(UI):
 
     def __initialize(self):
         notify2.init("test")
-        self.__update_data()
+        asyncio.run(self.initialize_data_fields())
 
-        self.data_manager.get_data_for_current_day(self.__init_inputs)
+
+    async def initialize_data_fields(self):
+        note_list = await self.data_manager.read_data_from_file_async_direct()
+        await self.__update_data(note_list)
+
+        today_note_entry = self.data_manager.extract_today_notes(note_list)
+        self.__init_inputs(today_note_entry)
+
 
     def __configure_buttons(self):
         self.submit_button.config(command=self.__on_click_submit_button)
         self.open_file.config(command=self.data_manager.file_manager.open_file_in_ext_app)
-        self.export_button.config(command=self.export_manager.export_data)
+        self.export_button.config(command=self.__on_click_export_button)
+
+    def __on_click_export_button(self):
+        asyncio.run(self.export_manager.export_data())
 
     def __after_submit(self):
         self.notification.config(text="")
         self.task_list.see(tkinter.END)
 
     def __on_click_submit_button(self):
-        self.data_manager.save_input_data(
-            lambda note_list: self.__update_data(),
-        )
+        asyncio.run(self.save_data())
+
+    async def save_data(self):
+        updated_note_list = await self.data_manager.save_input_data()
+        await self.__update_data(updated_note_list)
 
     def __init_inputs(self, entry: NoteEntry):
         self.__set_text(self.done_field, entry.done)
@@ -71,18 +84,19 @@ class Application(UI):
         self.task_list.configure(state=NORMAL)
         self.__set_text(self.task_list, str(value))
         self.task_list.configure(state=DISABLED)
-        self.task_list.see(END)
 
     @staticmethod
     def __set_text(text: tkinter.Text, value: str):
         text.delete(1.0, END)
         text.insert(END, str(value))
 
-    def __update_data(self):
-        self.data_manager.get_data_for_tree_days(self.__set_text_and_disable)
+    async def __update_data(self, note_list: NoteList):
+        self.__set_text_and_disable(note_list)
+        self.__init_inputs(note_list.notes[-1])
+        self.__after_submit()
 
     def __trigger_notification(self):
-        self.notification.send_notification()
+        self.notification_manager.send_notification()
         self.root.focus_force()
         self.notification.config(text="Daily notification to enter data")
 

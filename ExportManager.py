@@ -30,14 +30,9 @@ class ExportManager:
     def __delete_data(self) -> None:
         self._sheet_data = {}
 
-    def __add_sheet_row(self, data: list[object], tab: str) -> None:
+    def __add_sheet_row(self, data: list[str], tab: str) -> None:
         curr_data = self._sheet_data.get(tab, list())
-
-        if len(data) == 0:
-            data = self.config_manager.export_empty_row
-
         curr_data.append(data)
-
         self._sheet_data.update({tab: curr_data})
 
     def __add_sheet_column(self, data: list[object], tab: str, column: int) -> None:
@@ -56,13 +51,13 @@ class ExportManager:
         input_data = OrderedDict(self._sheet_data)
         save_data(self.config_manager.export_file_name, input_data)
 
-    def export_data(self) -> None:
+    async def export_data(self) -> None:
         self.__delete_file()
         self.__delete_data()
 
-        self.data_manager.read_data_from_file_async(self.__process_existing_data)
+        await self.__export_data_tasks_by_date()
 
-    def __process_existing_data(self, note_list: NoteList) -> None:
+    def __add_tasks_by_date_header(self):
         self.__add_sheet_row( [
             self.config_manager.export_th_date,
             self.config_manager.export_th_done,
@@ -70,14 +65,16 @@ class ExportManager:
             self.config_manager.export_th_problems
         ], self.config_manager.export_file_tab_name_default)
 
+    async def __export_data_tasks_by_date(self) -> None:
+        note_list = await self.data_manager.read_data_from_file_async_direct()
+
+        self.__add_tasks_by_date_header()
         for note in iter(note_list.notes):
             self.__add_sheet_row(
                 [note.date, note.done, note.in_progress, note.problems],
                 self.config_manager.export_file_tab_name_default)
 
         self.__save_as_ordered_dict()
-
-        #self.__export_task_names()
         self.logger.debug(f"Exported saved content to {self.config_manager.export_file_name}")
 
     def __extract_task_data(self, note: str) -> list[Task]:
@@ -125,7 +122,7 @@ class ExportManager:
             }
 
             # Extract
-            self.data_manager.read_data_from_file_async(self.__process_data_for_date, args)
+            #self.data_manager.read_data_from_file_async(self.__process_data_for_date, args)
 
 
     def __process_data_for_date(self, note_list: NoteList, args: dict[str, list]) -> None:

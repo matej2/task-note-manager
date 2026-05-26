@@ -39,7 +39,7 @@ class DataManager(DataManagerBase):
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
 
-    def __extract_todays_notes(self, note_list : NoteList) -> NoteEntry | None:
+    def extract_today_notes(self, note_list : NoteList) -> NoteEntry:
         result = NoteEntry()
         if note_list is None:
             return result
@@ -49,20 +49,6 @@ class DataManager(DataManagerBase):
             if note.date == str(LocalizedDate(self.config_manager.date_format)):
                 result = note
         return result
-
-    def get_data_for_current_day(self, callback: Callable) -> None: # pragma: no cover
-        self.read_data_from_file_async(
-            lambda note_list: callback(
-                self.__extract_todays_notes(
-                    note_list
-                )
-            )
-        )
-
-    def get_data_for_tree_days(self, callback: Callable) -> None:
-        self.read_data_from_file_async(
-            lambda note_list: callback(NoteList(note_list.notes[-3:]))
-        )
 
     @staticmethod
     def __override_existing_data_with_new_note(note_list: NoteList, entry: NoteEntry) -> None:
@@ -76,7 +62,7 @@ class DataManager(DataManagerBase):
     def __get_text_from_input(input_text: tkinter.Text):
         return input_text.get("1.0", "end-1c")
 
-    def __process_save_input(self, existing_data: NoteList, callback: Callable) -> None:
+    async def __process_save_input(self, existing_data: NoteList) -> None:
         if existing_data is None:
             existing_data = NoteList(list())
 
@@ -87,9 +73,11 @@ class DataManager(DataManagerBase):
         new_note = self.note_factory.create_note(done, to_be_done, problems)
 
         DataManager.__override_existing_data_with_new_note(existing_data, new_note)
-        self._write_data_to_file_async(existing_data, callback)
+        await self._write_data_to_file_direct(existing_data)
         self.logger.debug(f"Wrote data to file, input: {done} {to_be_done} {problems}")
 
 
-    def save_input_data(self, callback: Callable) -> None:
-        self.read_data_from_file_async(lambda note_entry: self.__process_save_input(note_entry, callback))
+    async def save_input_data(self) -> NoteList:
+        note_list = await self.read_data_from_file_async_direct()
+        await self.__process_save_input(note_list)
+        return note_list

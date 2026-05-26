@@ -12,7 +12,7 @@ class TestMain(unittest.TestCase):
 
         self.assertIsNotNone(application_under_test.file_manager)
         self.assertIsNotNone(application_under_test.note_factory)
-        self.assertIsNotNone(application_under_test.notification)
+        self.assertIsNotNone(application_under_test.notification_manager)
 
         self.assertIsNotNone(application_under_test.data_manager)
         self.assertIsNotNone(application_under_test.export_manager)
