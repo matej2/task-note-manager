@@ -19,6 +19,8 @@ class DataManager(DataManagerBase):
 
     def __init__(self,
                  things_done: tkinter.Text,
+                 things_in_progress: tkinter.Text,
+                 problems: tkinter.Text,
                  status: tkinter.Label,
                  file_manager: FileManager,
                  config_manager: ConfigManager,
@@ -26,6 +28,8 @@ class DataManager(DataManagerBase):
                  ) -> None:
         super().__init__(file_manager)
         self.done = things_done
+        self.in_progress = things_in_progress
+        self.problems = problems
         self.status = status
         self.logger = logging.getLogger(__name__)
 
@@ -77,12 +81,14 @@ class DataManager(DataManagerBase):
             existing_data = NoteList(list())
 
         done = DataManager.__get_text_from_input(self.done)
+        to_be_done = DataManager.__get_text_from_input(self.in_progress)
+        problems = DataManager.__get_text_from_input(self.problems)
 
-        new_note = self.note_factory.create_note(done)
+        new_note = self.note_factory.create_note(done, to_be_done, problems)
 
         DataManager.__override_existing_data_with_new_note(existing_data, new_note)
         self._write_data_to_file_async(existing_data, callback)
-        self.logger.debug(f"Wrote data to file, input: {done}")
+        self.logger.debug(f"Wrote data to file, input: {done} {to_be_done} {problems}")
 
 
     def save_input_data(self, callback: Callable) -> None:

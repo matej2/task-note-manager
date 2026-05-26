@@ -27,6 +27,8 @@ class Application(UI):
 
         self.data_manager = DataManager(
             self.done_field,
+            self.in_progress_field,
+            self.problems_field,
             self.task_list_container,
             self.file_manager,
             self.config_manager,
@@ -62,6 +64,8 @@ class Application(UI):
 
     def __init_inputs(self, entry: NoteEntry):
         self.__set_text(self.done_field, entry.done)
+        self.__set_text(self.in_progress_field, entry.in_progress)
+        self.__set_text(self.problems_field, entry.problems)
 
     def __set_text_and_disable(self, value: NoteList):
         self.task_list.configure(state=NORMAL)

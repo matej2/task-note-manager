@@ -66,10 +66,14 @@ class ExportManager:
         self.__add_sheet_row( [
             self.config_manager.export_th_date,
             self.config_manager.export_th_done,
+            self.config_manager.export_th_in_progress,
+            self.config_manager.export_th_problems
         ], self.config_manager.export_file_tab_name_default)
 
         for note in iter(note_list.notes):
-            self.__add_sheet_row([note.date, note.done], self.config_manager.export_file_tab_name_default)
+            self.__add_sheet_row(
+                [note.date, note.done, note.in_progress, note.problems],
+                self.config_manager.export_file_tab_name_default)
 
         self.__save_as_ordered_dict()
 
@@ -134,6 +138,8 @@ class ExportManager:
         if note_list is not None:
             for note in note_list.notes:
                 tasks_data.extend(self.__extract_task_data(note.done))
+                tasks_data.extend(self.__extract_task_data(note.in_progress))
+                tasks_data.extend(self.__extract_task_data(note.problems))
 
         for task in tasks_data:
             if date_input in first_row:

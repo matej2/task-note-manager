@@ -34,6 +34,8 @@ class UI(tkinter.Frame):
         # Input fields
         self.input_container = tkinter.Frame(self.root)
         self.done_field = tkinter.Text(self.input_container)
+        self.in_progress_field = tkinter.Text(self.input_container)
+        self.problems_field = tkinter.Text(self.input_container)
 
         # Scheduler
         self.scheduler_container = tkinter.Frame(self.root)
@@ -79,12 +81,22 @@ class UI(tkinter.Frame):
 
     def __configure_bindings(self):
         self.__set_bindings(self.done_field)
+        self.__set_bindings(self.in_progress_field)
+        self.__set_bindings(self.problems_field)
 
     def __configure_input_widgets(self):
         tkinter.Label(self.input_container, text="What was done: ", font=self.__get_font_config()).grid(row=0, column=0)
         self.done_field.grid(row=1, column=0)
         self.done_field.config(font=self.__get_font_config(), height=4, width=30, wrap=tkinter.WORD)
         self.done_field.focus_set()
+
+        tkinter.Label(self.input_container, text="What needs to be done: ", font=self.__get_font_config()).grid(row=2, column=0)
+        self.in_progress_field.config(font=self.__get_font_config(), height=4, width=30, wrap=tkinter.WORD)
+        self.in_progress_field.grid(row=3, column=0)
+
+        tkinter.Label(self.input_container, text="Any problems: ", font=self.__get_font_config()).grid(row=4, column=0)
+        self.problems_field.config(font=self.__get_font_config(), height=4, width=30, wrap=tkinter.WORD)
+        self.problems_field.grid(row=5, column=0)
 
         self.input_container.config(padx=10)
         self.input_container.grid(row=1, column=0, sticky='n', padx=10)
