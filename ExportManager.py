@@ -39,7 +39,6 @@ class ExportManager:
         curr_data.append(data)
 
         self._sheet_data.update({tab: curr_data})
-        self.__save_as_ordered_dict()
 
     def __add_sheet_column(self, data: list[object], tab: str, column: int) -> None:
         curr_data = self._sheet_data.get(tab, list())
@@ -64,19 +63,16 @@ class ExportManager:
         self.data_manager.read_data_from_file_async(self.__process_existing_data)
 
     def __process_existing_data(self, note_list: NoteList) -> None:
-        sheet_content = [
+        self.__add_sheet_row( [
             self.config_manager.export_th_date,
             self.config_manager.export_th_done,
-        ]
+        ], self.config_manager.export_file_tab_name_default)
 
-        self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
+        for note in iter(note_list.notes):
+            self.__add_sheet_row([note.date, note.done], self.config_manager.export_file_tab_name_default)
 
-        note_list_iter = NoteListHelper.get_note_list_iter(note_list)
+        self.__save_as_ordered_dict()
 
-        for note in note_list_iter:
-            sheet_content = [note.date, note.done]
-
-        self.__add_sheet_row(sheet_content, self.config_manager.export_file_tab_name_default)
         #self.__export_task_names()
         self.logger.debug(f"Exported saved content to {self.config_manager.export_file_name}")
 
