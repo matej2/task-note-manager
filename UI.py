@@ -1,6 +1,6 @@
 import tkinter
 from datetime import datetime, timezone
-from tkinter import NONE, DISABLED, LEFT
+from tkinter import NONE, DISABLED, LEFT, END, WORD
 from typing import Literal
 
 from ConfigManager import ConfigManager
@@ -109,7 +109,7 @@ class UI(tkinter.Frame):
         v = tkinter.Scrollbar(self.task_list_container, borderwidth=2, relief="groove")
         v.grid(row=1, column=1, sticky='nsew')
 
-        self.task_list.config(width=30, height=15, wrap=NONE,
+        self.task_list.config(width=30, height=15, wrap=WORD,
                               xscrollcommand=h.set,
                               yscrollcommand=v.set,
                               font=self.__get_font_config(),

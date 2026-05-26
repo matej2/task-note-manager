@@ -70,6 +70,7 @@ class Application(UI):
         self.task_list.configure(state=NORMAL)
         self.__set_text(self.task_list, str(value))
         self.task_list.configure(state=DISABLED)
+        self.task_list.see(END)
 
     @staticmethod
     def __set_text(text: tkinter.Text, value: str):
