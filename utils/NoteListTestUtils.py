@@ -9,8 +9,6 @@ class NoteListTestUtils:
             notes=[
                 NoteEntry(
                     "12. Jan. 2024",
-                    "Created draft",
-                    "Save draft",
-                    "Missing information")
+                    "Created draft")
             ]
         )

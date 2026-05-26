@@ -50,13 +50,18 @@ class DataManager(DataManagerBase):
                 result = note
         return result
 
-    def get_data_for_current_day(self, callback: Callable) -> None:
+    def get_data_for_current_day(self, callback: Callable) -> None: # pragma: no cover
         self.read_data_from_file_async(
             lambda note_list: callback(
                 self.__extract_todays_notes(
                     note_list
                 )
             )
+        )
+
+    def get_data_for_tree_days(self, callback: Callable) -> None:
+        self.read_data_from_file_async(
+            lambda note_list: callback(NoteList(note_list.notes[-3:]))
         )
 
     @staticmethod
