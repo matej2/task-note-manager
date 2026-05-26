@@ -1,16 +1,15 @@
+import logging
 from abc import ABC, abstractmethod
 from datetime import date
 
 
 class IOdsTabExport(ABC):
+    logger = logging.getLogger(__name__)
+
     @abstractmethod
-    def add_content_row(self, row: list[str]) -> float:
+    def add_header(self):
         pass
 
     @abstractmethod
-    def write_content(self) -> str:
-        pass
-
-    @abstractmethod
-    def process_data_for_date(self, for_date: date) -> None:
+    async def run_export(self, for_date: date) -> None:
         pass
