@@ -1,9 +1,6 @@
-import threading
-from typing import Callable
-
 import yaml
-from FileManager import FileManager
-from models.NoteList import NoteList
+from src.manager.FileManager import FileManager
+from src.models.NoteList import NoteList
 from utils.YamlUtils import YamlUtils
 
 

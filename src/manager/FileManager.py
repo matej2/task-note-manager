@@ -2,7 +2,7 @@ import webbrowser
 from io import TextIOWrapper
 from typing import Any, IO
 
-from ConfigManager import ConfigManager
+from src.manager.ConfigManager import ConfigManager
 
 
 class FileManager:

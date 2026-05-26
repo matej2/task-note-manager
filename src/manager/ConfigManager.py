@@ -17,7 +17,7 @@ class ConfigManager:
 
         # Excel export
         self.export_empty_row = ["No data",]
-        self.export_file_name = os.path.join(ConfigManager._get_full_curr_dir_path(), "task_notes.ods")
+        self.export_file_name = os.path.join(ConfigManager._get_full_curr_dir_path(), "../../task_notes.ods")
         self.export_file_tab_name_default = "Default"
         self.export_file_tab_name_task_names = "Task names"
 
@@ -28,7 +28,7 @@ class ConfigManager:
         self.export_th_problems = "Problems"
 
         # Yaml
-        self.full_path = os.path.join(ConfigManager._get_full_curr_dir_path(), "task_notes.yaml")
+        self.full_path = os.path.join(ConfigManager._get_full_curr_dir_path(), "../../task_notes.yaml")
 
         # Logging
         logging.basicConfig(

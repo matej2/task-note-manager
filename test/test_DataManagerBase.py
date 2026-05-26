@@ -1,9 +1,9 @@
 import unittest
 from unittest.mock import patch, MagicMock, Mock, mock_open
 
-from DataManagerBase import DataManagerBase
-from models.NoteEntry import NoteEntry
-from models.NoteList import NoteList
+from src.manager.DataManagerBase import DataManagerBase
+from src.models.NoteEntry import NoteEntry
+from src.models.NoteList import NoteList
 
 
 class TestDataManagerBase(unittest.TestCase):

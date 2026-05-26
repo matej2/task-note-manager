@@ -1,8 +1,6 @@
-import datetime
-
-from ConfigManager import ConfigManager
-from models.LocalizedDate import LocalizedDate
-from models.NoteEntry import NoteEntry
+from src.manager.ConfigManager import ConfigManager
+from src.models.LocalizedDate import LocalizedDate
+from src.models.NoteEntry import NoteEntry
 
 
 class NoteEntryFactory:

@@ -1,9 +1,9 @@
 import unittest
-from unittest.mock import patch, Mock, mock_open, MagicMock
+from unittest.mock import patch, Mock, mock_open
 
-from ConfigManager import ConfigManager
-from DataManager import DataManager
-from FileManager import FileManager
+from src.manager.ConfigManager import ConfigManager
+from src.manager.DataManager import DataManager
+from src.manager.FileManager import FileManager
 from utils.NoteListTestUtils import NoteListTestUtils
 
 

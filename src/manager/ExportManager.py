@@ -6,12 +6,11 @@ from datetime import timedelta, datetime, date
 
 from pyexcel_ods3 import save_data
 
-from ConfigManager import ConfigManager
-from DataManager import DataManager
-from models.LocalizedDate import LocalizedDate
-from models.NoteList import NoteList
-from models.Task import Task
-from models.helpers.NoteListHelper import NoteListHelper
+from src.manager.ConfigManager import ConfigManager
+from src.manager.DataManager import DataManager
+from src.models.LocalizedDate import LocalizedDate
+from src.models.NoteList import NoteList
+from src.models.Task import Task
 
 
 class ExportManager:

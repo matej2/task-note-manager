@@ -1,6 +1,6 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 
-from ConfigManager import ConfigManager
+from src.manager.ConfigManager import ConfigManager
 
 
 class Scheduler:

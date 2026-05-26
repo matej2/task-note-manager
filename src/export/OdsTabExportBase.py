@@ -1,8 +1,8 @@
 from collections import OrderedDict
 from pyexcel_ods3 import save_data
 
-from ConfigManager import ConfigManager
-from DataManager import DataManager
+from src.manager.ConfigManager import ConfigManager
+from src.manager.DataManager import DataManager
 
 
 class OdsTabExportBase:

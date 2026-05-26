@@ -5,16 +5,16 @@ from tkinter import END, NORMAL, DISABLED
 
 import notify2
 
-from ConfigManager import ConfigManager
-from DataManager import DataManager
-from ExportManager import ExportManager
-from FileManager import FileManager
+from src.manager.ConfigManager import ConfigManager
+from src.manager.DataManager import DataManager
+from src.manager.ExportManager import ExportManager
+from src.manager.FileManager import FileManager
 from Scheduler import Scheduler
 from UI import UI
 from factory.NoteEntryFactory import NoteEntryFactory
-from models.NoteEntry import NoteEntry
-from models.NoteList import NoteList
-from notification.Notification import Notification
+from src.models.NoteEntry import NoteEntry
+from src.models.NoteList import NoteList
+from src.notification.Notification import Notification
 
 
 class Application(UI):

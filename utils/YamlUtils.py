@@ -3,8 +3,8 @@ from typing import Type
 import yaml
 from yaml import SafeLoader
 
-from models.NoteEntry import NoteEntry
-from models.NoteList import NoteList
+from src.models.NoteEntry import NoteEntry
+from src.models.NoteList import NoteList
 
 
 class YamlUtils:

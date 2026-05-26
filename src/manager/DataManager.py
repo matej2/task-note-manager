@@ -1,17 +1,16 @@
 import logging
 import tkinter
-from typing import Callable
 
 import yaml
 
-from ConfigManager import ConfigManager
-from DataManagerBase import DataManagerBase
-from FileManager import FileManager
-from factory.NoteEntryFactory import NoteEntryFactory
-from models.LocalizedDate import LocalizedDate
-from models.NoteEntry import NoteEntry
-from models.NoteList import NoteList
-from models.helpers.NoteListHelper import NoteListHelper
+from src.manager.ConfigManager import ConfigManager
+from src.manager.DataManagerBase import DataManagerBase
+from src.manager.FileManager import FileManager
+from src.factory.NoteEntryFactory import NoteEntryFactory
+from src.models.LocalizedDate import LocalizedDate
+from src.models.NoteEntry import NoteEntry
+from src.models.NoteList import NoteList
+from src.models.helpers.NoteListHelper import NoteListHelper
 from utils.YamlUtils import YamlUtils
 
 

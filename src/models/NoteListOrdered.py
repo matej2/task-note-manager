@@ -1,4 +1,4 @@
-from models.NoteEntry import NoteEntry
+from src.models.NoteEntry import NoteEntry
 
 
 class NoteListOrdered:

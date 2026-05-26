@@ -1,8 +1,8 @@
 import notify2
 from typing_extensions import override
 
-from ConfigManager import ConfigManager
-from notification.NotificationInterface import NotificationInterface
+from src.manager.ConfigManager import ConfigManager
+from src.notification.NotificationInterface import NotificationInterface
 
 
 class Notification(NotificationInterface):

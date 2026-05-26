@@ -1,4 +1,4 @@
-from ConfigManager import ConfigManager
+from src.manager.ConfigManager import ConfigManager
 
 
 class NotificationInterface:

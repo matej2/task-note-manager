@@ -1,7 +1,6 @@
-import datetime
 from functools import reduce
 
-from models.NoteEntry import NoteEntry
+from src.models.NoteEntry import NoteEntry
 
 class NoteList:
     def __init__(self, notes: list[NoteEntry]):

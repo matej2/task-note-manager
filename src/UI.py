@@ -1,9 +1,8 @@
 import tkinter
 from datetime import datetime, timezone
-from tkinter import NONE, DISABLED, LEFT, END, WORD
-from typing import Literal
+from tkinter import DISABLED, LEFT, WORD
 
-from ConfigManager import ConfigManager
+from src.manager.ConfigManager import ConfigManager
 
 
 class UI(tkinter.Frame):

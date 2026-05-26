@@ -1,5 +1,5 @@
-from models.NoteEntry import NoteEntry
-from models.NoteList import NoteList
+from src.models.NoteEntry import NoteEntry
+from src.models.NoteList import NoteList
 
 
 class NoteListTestUtils:
