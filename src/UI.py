@@ -48,7 +48,7 @@ class UI(tkinter.Frame):
         self.__configure_scheduler_widgets()
 
     def __get_font_config(self) -> tuple:
-        return self.config_manager.font_family, self.config_manager.font_size_normal
+        return self.config_manager.FONT_FAMILY, self.config_manager.FONT_SIZE_NORMAL
 
     def __configure_button_widgets(self):
         self.button_container.grid(row=4, column=0, columnspan=3, sticky='e', pady=(10, 20))
@@ -136,7 +136,7 @@ class UI(tkinter.Frame):
 
     def __create_section(self, parent: tkinter.BaseWidget, title: str, body: str):
         section = tkinter.Frame(parent)
-        tkinter.Label(section, text=title, font=(self.config_manager.font_family, self.config_manager.font_size_normal, "bold")).grid(row=0, column=0)
+        tkinter.Label(section, text=title, font=(self.config_manager.FONT_FAMILY, self.config_manager.FONT_SIZE_NORMAL, "bold")).grid(row=0, column=0)
         tkinter.Label(section, text=body, font=self.__get_font_config(), wraplength=400,
                       justify=LEFT).grid(row=1, column=0)
         return section

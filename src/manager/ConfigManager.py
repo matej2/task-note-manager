@@ -6,29 +6,28 @@ import sys
 class ConfigManager:
     def __init__(self):
         # Font
-        self.font_family = "TkDefaultFont"
-        self.font_size_small = 8
-        self.font_size_normal = 10
+        self.FONT_FAMILY = "TkDefaultFont"
+        self.FONT_SIZE_NORMAL = 10
 
         # Date, time
-        self.date_format = "%d. %b. %Y"
+        self.DATE_FORMAT = "%d. %b. %Y"
         self.frequency_hours = 6
-        self.task_name_regex = r"\s*([^:;]*)\s*:\s*([^:;]*)"
+        self.TASK_NAME_REGEX = r"\s*([^:;]*)\s*:\s*([^:;]*)"
 
         # Excel export
-        self.export_empty_row = ["No data",]
-        self.export_file_name = os.path.join(ConfigManager._get_full_curr_dir_path(), "../../task_notes.ods")
-        self.export_file_tab_name_default = "Default"
-        self.export_file_tab_name_task_names = "Task names"
+        self.EXPORT_EMPTY_ROW = ["No data", ]
+        self.EXPORT_FILE_NAME = os.path.join(ConfigManager._get_full_curr_dir_path(), "../../task_notes.ods")
+        self.EXPORT_TAB_NAME_DEFAULT = "Default"
+        self.EXPORT_TAB_NAME_TASK_NAMES = "Task names"
 
         #  Excel export headers
-        self.export_th_date = "Date"
-        self.export_th_done = "Done"
-        self.export_th_in_progress = "In progress"
-        self.export_th_problems = "Problems"
+        self.EXPORT_TH_DATE = "Date"
+        self.EXPORT_TH_DONE = "Done"
+        self.EXPORT_TH_IN_PROGRESS = "In progress"
+        self.EXPORT_TH_PROBLEMS = "Problems"
 
         # Yaml
-        self.full_path = os.path.join(ConfigManager._get_full_curr_dir_path(), "../../task_notes.yaml")
+        self.FULL_PATH = os.path.join(ConfigManager._get_full_curr_dir_path(), "../../task_notes.yaml")
 
         # Logging
         logging.basicConfig(
@@ -52,9 +51,9 @@ Date format: {}
 Frequency hours: {}
 Output file: {}
 Excel file: {}""".format(
-            self.font_family,
-            self.font_size_normal,
-            self.date_format,
+            self.FONT_FAMILY,
+            self.FONT_SIZE_NORMAL,
+            self.DATE_FORMAT,
             self.frequency_hours,
-            self.full_path,
-            self.export_file_name)
+            self.FULL_PATH,
+            self.EXPORT_FILE_NAME)

@@ -11,11 +11,11 @@ class NoteByStatusByDate(IOdsTabExport):
 
     def add_header(self):
         OdsTabExportBase.add_sheet_row( [
-            self.config_manager.export_th_date,
-            self.config_manager.export_th_done,
-            self.config_manager.export_th_in_progress,
-            self.config_manager.export_th_problems
-        ], self.config_manager.export_file_tab_name_default)
+            self.config_manager.EXPORT_TH_DATE,
+            self.config_manager.EXPORT_TH_DONE,
+            self.config_manager.EXPORT_TH_IN_PROGRESS,
+            self.config_manager.EXPORT_TH_PROBLEMS
+        ], self.config_manager.EXPORT_TAB_NAME_DEFAULT)
 
     async def run_export(self) -> None:
         note_list = await self.data_manager.read_data_from_file_async_direct()
@@ -24,7 +24,7 @@ class NoteByStatusByDate(IOdsTabExport):
         for note in note_list.notes:
             OdsTabExportBase.add_sheet_row(
                 [note.date, note.done, note.in_progress, note.problems],
-                self.config_manager.export_file_tab_name_default)
+                self.config_manager.EXPORT_TAB_NAME_DEFAULT)
 
         OdsTabExportBase.save_as_ordered_dict()
-        self.logger.debug(f"Exported saved content to {self.config_manager.export_file_name}")
+        self.logger.debug(f"Exported saved content to {self.config_manager.EXPORT_FILE_NAME}")

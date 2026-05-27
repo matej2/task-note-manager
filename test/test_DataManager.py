@@ -10,7 +10,7 @@ from utils.NoteListTestUtils import NoteListTestUtils
 class DataManagerTest(unittest.TestCase):
     def setUp(self):
         config_manager_mock = ConfigManager()
-        config_manager_mock.date_format = "%d. %b. %Y"
+        config_manager_mock.DATE_FORMAT = "%d. %b. %Y"
 
         file_manager_mock = FileManager(config_manager_mock)
         file_content = "key: value"

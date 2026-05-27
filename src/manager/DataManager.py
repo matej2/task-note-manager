@@ -45,7 +45,7 @@ class DataManager(DataManagerBase):
 
         note_list_iter = NoteListHelper.get_note_list_iter(note_list)
         for note in note_list_iter:
-            if note.date == str(LocalizedDate(self.config_manager.date_format)):
+            if note.date == str(LocalizedDate(self.config_manager.DATE_FORMAT)):
                 result = note
             break
         return result

@@ -19,8 +19,8 @@ class TaskManager:
         return result
 
     def get_tasks_from_note_entry(self, note_entry: NoteEntry) -> list[Task]:
-        result = re.findall(self.config_manager.task_name_regex,note_entry.done)
-        result.extend(re.findall(self.config_manager.task_name_regex, note_entry.in_progress))
-        result.extend(re.findall(self.config_manager.task_name_regex, note_entry.problems))
+        result = re.findall(self.config_manager.TASK_NAME_REGEX, note_entry.done)
+        result.extend(re.findall(self.config_manager.TASK_NAME_REGEX, note_entry.in_progress))
+        result.extend(re.findall(self.config_manager.TASK_NAME_REGEX, note_entry.problems))
 
         return [Task(r[0], r[1]) for r in result]

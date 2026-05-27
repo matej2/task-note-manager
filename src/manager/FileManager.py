@@ -8,7 +8,7 @@ from src.manager.ConfigManager import ConfigManager
 class FileManager:
 
     def __init__(self, config: ConfigManager) -> None:
-        self.full_path = config.full_path
+        self.full_path = config.FULL_PATH
 
         # Creates a file if it does not exist
         with open(self.full_path, "a") as f:
