@@ -19,6 +19,7 @@ class ExportManager:
         ]
 
     async def export_data(self) -> None:
+        await self.data_manager.save_input_data()
         OdsTabExportBase.delete_data()
 
         for registered_type in self.registered_export_types:

@@ -45,7 +45,6 @@ class UI(tkinter.Frame):
         self.__configure_input_widgets()
         self.__configure_status_widgets()
         self.__configure_scheduler_widgets()
-        self.__configure_bindings()
 
     def __get_font_config(self) -> tuple:
         return self.config_manager.font_family, self.config_manager.font_size_normal
@@ -66,22 +65,10 @@ class UI(tkinter.Frame):
         self.export_button.config(text="Export data - ODS", font=self.__get_font_config())
 
     @staticmethod
-    def __focus_next_widget(event):
+    def _focus_next_widget(event):
         event.widget.tk_focusNext().focus()
         return "break"
 
-    def __trigger_submit(self, event):
-        self.submit_button.invoke()
-        return "break"
-
-    def __set_bindings(self, widget):
-        widget.bind("<Return>", self.__trigger_submit)
-        widget.bind("<Tab>", UI.__focus_next_widget)
-
-    def __configure_bindings(self):
-        self.__set_bindings(self.done_field)
-        self.__set_bindings(self.in_progress_field)
-        self.__set_bindings(self.problems_field)
 
     def __configure_input_widgets(self):
         tkinter.Label(self.input_container, text="What was done: ", font=self.__get_font_config()).grid(row=0, column=0)

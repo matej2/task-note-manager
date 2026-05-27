@@ -41,6 +41,7 @@ class Application(UI):
         self.scheduler = Scheduler(self.__trigger_notification, self._update_time_until_next_run, self.config_manager)
 
         self.__configure_buttons()
+        self.__configure_bindings()
         self.__initialize()
 
     def __initialize(self):
@@ -68,8 +69,9 @@ class Application(UI):
         self.notification.config(text="")
         self.task_list.see(tkinter.END)
 
-    def __on_click_submit_button(self):
+    def __on_click_submit_button(self, *args):
         asyncio.run(self.save_data())
+        return "break"
 
     async def save_data(self):
         updated_note_list = await self.data_manager.save_input_data()
@@ -99,6 +101,16 @@ class Application(UI):
         self.notification_manager.send_notification()
         self.root.focus_force()
         self.notification.config(text="Daily notification to enter data")
+
+    def __configure_bindings(self):
+        self.__set_bindings(self.done_field)
+        self.__set_bindings(self.in_progress_field)
+        self.__set_bindings(self.problems_field)
+
+    def __set_bindings(self, widget):
+        widget.bind("<Return>", self.__on_click_submit_button)
+        widget.bind("<Tab>", UI._focus_next_widget)
+        widget.bind("<Control_L>s", self.__on_click_submit_button)
 
     def start(self):
         self.root.mainloop()
