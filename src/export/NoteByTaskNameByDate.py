@@ -5,15 +5,17 @@ from src.export.IOdsTabExport import IOdsTabExport
 from src.export.OdsTabExportBase import OdsTabExportBase
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
+from src.manager.TaskManager import TaskManager
 from src.models.LocalizedDate import LocalizedDate
 from src.models.NoteEntry import NoteEntry
 from src.models.Task import Task
 
 
 class NoteByTaskNameByDate(IOdsTabExport):
-    def __init__(self, config_manager: ConfigManager, data_manager: DataManager):
+    def __init__(self, config_manager: ConfigManager, data_manager: DataManager, task_manager: TaskManager) -> None:
         self.config_manager = config_manager
         self.data_manager = data_manager
+        self.task_manager = task_manager
 
     def __extract_task_data(self, note: str) -> list[Task]:
         result = re.findall(self.config_manager.task_name_regex, note)

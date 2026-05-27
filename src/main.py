@@ -12,6 +12,7 @@ from src.manager.FileManager import FileManager
 from Scheduler import Scheduler
 from UI import UI
 from factory.NoteEntryFactory import NoteEntryFactory
+from src.manager.TaskManager import TaskManager
 from src.models.NoteEntry import NoteEntry
 from src.models.NoteList import NoteList
 from src.notification.Notification import Notification
@@ -35,7 +36,8 @@ class Application(UI):
             self.config_manager,
             self.note_factory
         )
-        self.export_manager = ExportManager(self.config_manager, self.data_manager)
+        self.task_manager = TaskManager(self.config_manager, self.data_manager)
+        self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager)
 
         self._update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency_hours))
         self.scheduler = Scheduler(self.__trigger_notification, self._update_time_until_next_run, self.config_manager)
