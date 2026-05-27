@@ -1,4 +1,3 @@
-import re
 from datetime import datetime, date, timedelta
 
 from src.export.IOdsTabExport import IOdsTabExport
@@ -8,7 +7,6 @@ from src.manager.DataManager import DataManager
 from src.manager.TaskManager import TaskManager
 from src.models.LocalizedDate import LocalizedDate
 from src.models.NoteEntry import NoteEntry
-from src.models.Task import Task
 
 
 class NoteByTaskNameByDate(IOdsTabExport):
@@ -16,24 +14,6 @@ class NoteByTaskNameByDate(IOdsTabExport):
         self.config_manager = config_manager
         self.data_manager = data_manager
         self.task_manager = task_manager
-
-    def __extract_task_data(self, note: str) -> list[Task]:
-        result = re.findall(self.config_manager.task_name_regex, note)
-        formatted_result = []
-
-        for r in result:
-            formatted_result.append(Task(r[0], r[1]))
-
-        return formatted_result
-
-    def extract_task_names(self, note: str) -> list[str]:
-        result = self.__extract_task_data(note)
-
-        response = []
-        for r in result:
-            response.append(r.name)
-
-        return response
 
     def __get_week_dates(self) -> list[date]:
         date_list = []
@@ -51,7 +31,7 @@ class NoteByTaskNameByDate(IOdsTabExport):
 
         for date_index, date_value in enumerate(first_row):
             for note in note_list.notes:
-                self.__process_data_for_date(note, date_index, date_value, first_row)
+                self.__process_data_for_date(note, date_index, date_value)
 
 
     def add_header(self):
@@ -63,14 +43,8 @@ class NoteByTaskNameByDate(IOdsTabExport):
         return first_row
 
 
-    def __process_data_for_date(self, note: NoteEntry, date_index: int, date_value: str, first_row) -> None:
-        tasks_data = []
-
-        tasks_data.extend(self.__extract_task_data(note.done))
-        tasks_data.extend(self.__extract_task_data(note.in_progress))
-        tasks_data.extend(self.__extract_task_data(note.problems))
-
-        for task in tasks_data:
+    def __process_data_for_date(self, note: NoteEntry, date_index: int, date_value: str) -> None:
+        for task in self.task_manager.get_tasks_from_note_entry(note):
             result = [task.name]
 
             if note.date == date_value:
