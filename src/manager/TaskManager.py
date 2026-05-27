@@ -3,6 +3,7 @@ import re
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
 from src.models.NoteEntry import NoteEntry
+from src.models.NoteList import NoteList
 from src.models.Task import Task
 
 
@@ -11,7 +12,13 @@ class TaskManager:
         self.config_manager = config_manager
         self.data_manager = data_manager
 
-    def from_note_entry(self, note_entry: NoteEntry) -> list[Task]:
+    def get_tasks_from_note_list(self, note_list: NoteList) -> list[Task]:
+        result = list()
+        for n in note_list.notes:
+            result = [*result, *self.get_tasks_from_note_entry(n)]
+        return result
+
+    def get_tasks_from_note_entry(self, note_entry: NoteEntry) -> list[Task]:
         result = re.findall(self.config_manager.task_name_regex,note_entry.done)
         result.extend(re.findall(self.config_manager.task_name_regex, note_entry.in_progress))
         result.extend(re.findall(self.config_manager.task_name_regex, note_entry.problems))

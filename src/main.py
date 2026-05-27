@@ -67,9 +67,11 @@ class Application(UI):
     def __on_click_export_button(self):
         asyncio.run(self.export_manager.export_data())
 
-    def __after_submit(self):
+    def __after_submit(self, note_list: NoteList):
         self.notification.config(text="")
         self.task_list.see(tkinter.END)
+        task_names = "".join(str(s.name)+"\n" for s in self.task_manager.get_tasks_from_note_list(note_list))
+        self.task_name_list.config(text=f"Tasks:\n\n{task_names}")
 
     def __on_click_submit_button(self, *args):
         asyncio.run(self.save_data())
@@ -97,7 +99,7 @@ class Application(UI):
     async def __update_data(self, note_list: NoteList):
         self.__set_text_and_disable(note_list)
         self.__init_inputs(note_list.notes[-1])
-        self.__after_submit()
+        self.__after_submit(note_list)
 
     def __trigger_notification(self):
         self.notification_manager.send_notification()

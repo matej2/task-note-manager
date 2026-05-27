@@ -29,6 +29,7 @@ class UI(tkinter.Frame):
         # Task list
         self.task_list_container = tkinter.Frame(self.root)
         self.task_list = tkinter.Text(self.task_list_container)
+        self.task_name_list = tkinter.Label(self.task_list_container)
 
         # Input fields
         self.input_container = tkinter.Frame(self.root)
@@ -104,6 +105,8 @@ class UI(tkinter.Frame):
 
         h.config(command=self.task_list.xview)
         v.config(command=self.task_list.yview)
+
+        self.task_name_list.grid(row=3, column=0)
 
         self.task_list_container.config(padx=10)
         self.task_list_container.grid(row=1, column=2, rowspan=3, sticky='n', padx=10)
