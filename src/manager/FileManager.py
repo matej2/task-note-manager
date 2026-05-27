@@ -10,6 +10,7 @@ class FileManager:
     def __init__(self, config: ConfigManager) -> None:
         self.full_path = config.full_path
 
+        # Creates a file if it does not exist
         with open(self.full_path, "a") as f:
             f.write("")
 

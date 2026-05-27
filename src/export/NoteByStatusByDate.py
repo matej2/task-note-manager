@@ -21,7 +21,7 @@ class NoteByStatusByDate(IOdsTabExport):
         note_list = await self.data_manager.read_data_from_file_async_direct()
 
         self.add_header()
-        for note in iter(note_list.notes):
+        for note in note_list.notes:
             OdsTabExportBase.add_sheet_row(
                 [note.date, note.done, note.in_progress, note.problems],
                 self.config_manager.export_file_tab_name_default)

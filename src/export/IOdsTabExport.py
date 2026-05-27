@@ -11,5 +11,5 @@ class IOdsTabExport(ABC):
         pass
 
     @abstractmethod
-    async def run_export(self, for_date: date) -> None:
+    async def run_export(self) -> None:
         pass

@@ -47,6 +47,7 @@ class DataManager(DataManagerBase):
         for note in note_list_iter:
             if note.date == str(LocalizedDate(self.config_manager.date_format)):
                 result = note
+            break
         return result
 
     @staticmethod
