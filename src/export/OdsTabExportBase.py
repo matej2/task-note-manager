@@ -15,17 +15,15 @@ class OdsTabExportBase:
 
     @classmethod
     def init(cls, config_manager: ConfigManager, data_manager: DataManager) -> None:
-        """Nadomestek za __init__. Pokliče se enkrat ob zagonu aplikacije."""
-        if cls.config_manager is None:
-            cls.config_manager = config_manager
-        if cls.data_manager is None:
-            cls.data_manager = data_manager
+        """Call only once per app execution"""
+        cls.config_manager = config_manager
+        cls.data_manager = data_manager
+
 
     @classmethod
     def save_as_ordered_dict(cls) -> None:
         input_data = OrderedDict(cls._sheet_data)
         save_data(cls.config_manager.export_file_name, input_data)
-        cls.__delete_data()
 
     @classmethod
     def add_sheet_row(cls, data: list[object], tab: str) -> None:
@@ -43,11 +41,6 @@ class OdsTabExportBase:
         cls._sheet_data.update({tab: curr_data})
 
     @classmethod
-    def __delete_file(cls) -> None:
-        if os.path.exists(cls.config_manager.export_file_name):
-            os.remove(cls.config_manager.export_file_name)
-
-    @classmethod
-    def __delete_data(cls) -> None:
+    def delete_data(cls) -> None:
         cls._sheet_data = {}
 

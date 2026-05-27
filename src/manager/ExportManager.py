@@ -1,4 +1,6 @@
-from src.export.NoteByStatusByDate import ByStatusForDate
+from src.export.NoteByStatusByDate import NoteByStatusByDate
+from src.export.NoteByTaskNameByDate import NoteByTaskNameByDate
+from src.export.OdsTabExportBase import OdsTabExportBase
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
 
@@ -9,11 +11,16 @@ class ExportManager:
         self.config_manager = config_manager
         self.data_manager = data_manager
 
-        self.export_modes = [
-            ByStatusForDate(config_manager, data_manager),
+        OdsTabExportBase.init(config_manager, data_manager)
+
+        self.registered_export_types = [
+            NoteByStatusByDate(config_manager, data_manager),
+            NoteByTaskNameByDate(config_manager, data_manager),
         ]
 
     async def export_data(self) -> None:
-        for mode in self.export_modes:
-            await mode.run_export()
+        OdsTabExportBase.delete_data()
+
+        for registered_type in self.registered_export_types:
+            await registered_type.run_export()
 

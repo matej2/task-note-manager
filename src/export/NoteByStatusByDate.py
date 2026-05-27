@@ -4,11 +4,10 @@ from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
 
 
-class ByStatusForDate(IOdsTabExport):
+class NoteByStatusByDate(IOdsTabExport):
     def __init__(self, config_manager: ConfigManager, data_manager: DataManager):
         self.config_manager = config_manager
         self.data_manager = data_manager
-        OdsTabExportBase.init(self.config_manager, self.data_manager)
 
     def add_header(self):
         OdsTabExportBase.add_sheet_row( [

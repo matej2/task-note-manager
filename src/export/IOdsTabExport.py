@@ -7,7 +7,7 @@ class IOdsTabExport(ABC):
     logger = logging.getLogger(__name__)
 
     @abstractmethod
-    def add_header(self):
+    def add_header(self, *args):
         pass
 
     @abstractmethod
