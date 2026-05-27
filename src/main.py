@@ -86,18 +86,24 @@ class Application(UI):
         self.__set_text(self.in_progress_field, entry.in_progress)
         self.__set_text(self.problems_field, entry.problems)
 
-    def __set_text_and_disable(self, value: NoteList):
+    def __set_text_and_disable(self, value: str):
         self.task_list.configure(state=NORMAL)
-        self.__set_text(self.task_list, str(value))
+        self.__set_text(self.task_list, value)
         self.task_list.configure(state=DISABLED)
 
     @staticmethod
     def __set_text(text: tkinter.Text, value: str):
         text.delete(1.0, END)
-        text.insert(END, str(value))
+        text.insert(END, value)
 
     async def __update_data(self, note_list: NoteList):
-        self.__set_text_and_disable(note_list)
+        formatted_note_entries = [(f"Date: {n.date}\n"
+                                   f"Done: {n.done}\n"
+                                   f"In progress: {n.in_progress}\n"
+                                   f"Problems: {n.problems}") for n in note_list.notes]
+        formatted_note_output = "\n\n".join(formatted_note_entries)
+
+        self.__set_text_and_disable(formatted_note_output)
         self.__init_inputs(note_list.notes[-1])
         self.__after_submit(note_list)
 
