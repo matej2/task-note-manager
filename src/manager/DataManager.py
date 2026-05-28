@@ -11,7 +11,7 @@ from src.models.LocalizedDate import LocalizedDate
 from src.models.NoteEntry import NoteEntry
 from src.models.NoteList import NoteList
 from src.models.helpers.NoteListHelper import NoteListHelper
-from utils.YamlUtils import YamlUtils
+from src.utils.YamlUtils import YamlUtils
 
 
 class DataManager(DataManagerBase):

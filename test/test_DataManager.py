@@ -4,7 +4,7 @@ from unittest.mock import patch, Mock, mock_open
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
 from src.manager.FileManager import FileManager
-from utils.NoteListTestUtils import NoteListTestUtils
+from src.utils.NoteListTestUtils import NoteListTestUtils
 
 
 class DataManagerTest(unittest.TestCase):

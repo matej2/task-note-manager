@@ -1,7 +1,8 @@
 import yaml
 from src.manager.FileManager import FileManager
 from src.models.NoteList import NoteList
-from utils.YamlUtils import YamlUtils
+from src.models.factory.NoteListFactory import NoteListFactory
+from src.utils.YamlUtils import YamlUtils
 
 
 class DataManagerBase:
@@ -10,10 +11,12 @@ class DataManagerBase:
         self.file_manager = file_manager
 
     async def read_data_from_file_async_direct(self) -> NoteList:
-        data = None
         with self.file_manager.get_read_wrapper() as file:
             data = yaml.load(file, Loader=YamlUtils.get_loader())
-        return data
+        if data is not None and len(data.notes) != 0:
+            return data
+        else:
+            return NoteListFactory.get_empty_note_list()
 
     async def _write_data_to_file_direct(self, note_list: NoteList):
         with self.file_manager.get_write_wrapper() as file:
