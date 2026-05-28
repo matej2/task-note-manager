@@ -28,11 +28,11 @@ class Application(UI):
         asyncio.run(self.__init_wrapper())
 
     async def __init_wrapper(self):
-        self.__after_init()
-        await self.__before_init()
+        self.__setup()
+        await self.__after_setup()
 
 
-    def __after_init(self):
+    def __setup(self):
         self.file_manager = FileManager(self.config_manager)
         self.note_factory = NoteEntryFactory(self.config_manager)
         self.notification_manager = Notification(self.config_manager)
@@ -57,16 +57,14 @@ class Application(UI):
         self.__configure_bindings()
         notify2.init("test")
 
-    async def __before_init(self):
+    async def __after_setup(self):
         self.current_data = await self.data_manager.read_data_from_file_async_direct()
         await self.__update_data()
         await self.initialize_data_fields()
 
-
     async def initialize_data_fields(self):
         today_note_entry = self.data_manager.extract_today_notes(self.current_data)
-        self.__init_inputs(today_note_entry)
-
+        self.__set_note_input_text(today_note_entry)
 
     def __configure_buttons(self):
         self.submit_button.config(command=self.__on_click_submit_button)
@@ -90,15 +88,16 @@ class Application(UI):
         self.current_data = await self.data_manager.process_save_input(self.current_data)
         await self.__update_data()
 
-    def __init_inputs(self, entry: NoteEntry):
+    def __set_note_input_text(self, entry: NoteEntry):
         self.__set_text(self.done_field, entry.done)
         self.__set_text(self.in_progress_field, entry.in_progress)
         self.__set_text(self.problems_field, entry.problems)
 
-    def __set_text_and_disable(self, value: str):
-        self.task_list.configure(state=NORMAL)
-        self.__set_text(self.task_list, value)
-        self.task_list.configure(state=DISABLED)
+    @staticmethod
+    def __set_text_and_disable(field:tkinter.Text, value: str):
+        field.configure(state=NORMAL)
+        Application.__set_text(field, value)
+        field.configure(state=DISABLED)
 
     @staticmethod
     def __set_text(text: tkinter.Text, value: str):
@@ -112,8 +111,8 @@ class Application(UI):
                                    f"Problems: {n.problems}") for n in self.current_data.notes]
         formatted_note_output = "\n\n".join(formatted_note_entries)
 
-        self.__set_text_and_disable(formatted_note_output)
-        self.__init_inputs(self.current_data.notes[-1])
+        self.__set_text_and_disable(self.task_list, formatted_note_output)
+        self.__set_note_input_text(self.current_data.notes[-1])
         self.__after_submit(self.current_data)
 
     def __trigger_notification(self):
