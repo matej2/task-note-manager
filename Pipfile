@@ -4,12 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-tk = "*"
 pyyaml = "*"
 apscheduler = "*"
 notify2 = "*"
 pyexcel-ods3 = "*"
 typing-extensions = "*"
+customtkinter = "*"
 
 [dev-packages]
 pyinstaller = "*"
