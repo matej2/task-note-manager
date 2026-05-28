@@ -106,6 +106,7 @@ class UI(tkinter.Frame):
         h.config(command=self.task_list.xview)
         v.config(command=self.task_list.yview)
 
+        self.task_name_list.config(wraplength=300, justify=LEFT)
         self.task_name_list.grid(row=3, column=0)
 
         self.task_list_container.config(padx=10)

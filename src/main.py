@@ -1,5 +1,6 @@
 import asyncio
 import tkinter
+from collections import OrderedDict
 from datetime import datetime, timedelta, timezone
 from tkinter import END, NORMAL, DISABLED
 
@@ -77,7 +78,8 @@ class Application(UI):
     def __after_submit(self, note_list: NoteList):
         self.notification.config(text="")
         self.task_list.see(tkinter.END)
-        task_names = "".join(str(s.name)+"\n" for s in self.task_manager.get_tasks_from_note_list(note_list))
+        all_task_names = [str(s.name)+", " for s in self.task_manager.get_tasks_from_note_list(note_list)]
+        task_names = "".join(list(OrderedDict.fromkeys(all_task_names)))
         self.task_name_list.config(text=f"Tasks:\n\n{task_names}")
 
     def __on_click_submit_button(self, *args):
