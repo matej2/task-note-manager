@@ -1,5 +1,5 @@
 import logging
-import tkinter
+from tkinter import Text, Label
 
 import yaml
 
@@ -17,10 +17,10 @@ from src.utils.YamlUtils import YamlUtils
 class DataManager(DataManagerBase):
 
     def __init__(self,
-                 things_done: tkinter.Text,
-                 things_in_progress: tkinter.Text,
-                 problems: tkinter.Text,
-                 status: tkinter.Label,
+                 things_done: Text,
+                 things_in_progress: Text,
+                 problems: Text,
+                 status: Label,
                  file_manager: FileManager,
                  config_manager: ConfigManager,
                  note_factory: NoteEntryFactory,
@@ -57,7 +57,7 @@ class DataManager(DataManagerBase):
         note_list.notes = [entry if entry.date == n.date else n for n in note_list.notes]
 
     @staticmethod
-    def __get_text_from_input(input_text: tkinter.Text):
+    def __get_text_from_input(input_text: Text):
         return input_text.get("1.0", "end-1c")
 
     async def process_save_input(self, current_data: NoteList) -> NoteList:

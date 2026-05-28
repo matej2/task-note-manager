@@ -1,46 +1,45 @@
-import tkinter
 from datetime import datetime, timezone
-from tkinter import DISABLED, LEFT, WORD
+from tkinter import DISABLED, LEFT, WORD, Frame, Tk, Button, Text, Label, Scrollbar, BaseWidget, Toplevel
 
 from src.manager.ConfigManager import ConfigManager
 
 
-class UI(tkinter.Frame):
+class UI(Frame):
 
     def __init__(self, config: ConfigManager):
-        self.root_container = tkinter.Tk()
+        self.root_container = Tk()
         self.root_container.title("Task note manager")
 
-        tkinter.Frame.__init__(self, self.root_container)
-        self.root = tkinter.Frame(self.root_container)
+        Frame.__init__(self, self.root_container)
+        self.root = Frame(self.root_container)
         self.root.config(padx=20, pady=20)
         self.root.grid(row=0, column=0)
 
         self.config_manager = config
 
         # Buttons
-        self.button_container = tkinter.Frame(self.root)
-        self.submit_button = tkinter.Button(self.button_container)
-        self.open_file = tkinter.Button(self.button_container)
-        self.list_button = tkinter.Button(self.button_container)
-        self.instructions_button = tkinter.Button(self.button_container)
-        self.export_button = tkinter.Button(self.button_container)
+        self.button_container = Frame(self.root)
+        self.submit_button = Button(self.button_container)
+        self.open_file = Button(self.button_container)
+        self.list_button = Button(self.button_container)
+        self.instructions_button = Button(self.button_container)
+        self.export_button = Button(self.button_container)
 
         # Task list
-        self.task_list_container = tkinter.Frame(self.root)
-        self.task_list = tkinter.Text(self.task_list_container)
-        self.task_name_list = tkinter.Label(self.task_list_container)
+        self.task_list_container = Frame(self.root)
+        self.task_list = Text(self.task_list_container)
+        self.task_name_list = Label(self.task_list_container)
 
         # Input fields
-        self.input_container = tkinter.Frame(self.root)
-        self.done_field = tkinter.Text(self.input_container)
-        self.in_progress_field = tkinter.Text(self.input_container)
-        self.problems_field = tkinter.Text(self.input_container)
+        self.input_container = Frame(self.root)
+        self.done_field = Text(self.input_container)
+        self.in_progress_field = Text(self.input_container)
+        self.problems_field = Text(self.input_container)
 
         # Scheduler
-        self.scheduler_container = tkinter.Frame(self.root)
-        self.counter = tkinter.Label(self.scheduler_container)
-        self.notification = tkinter.Label(self.scheduler_container)
+        self.scheduler_container = Frame(self.root)
+        self.counter = Label(self.scheduler_container)
+        self.notification = Label(self.scheduler_container)
 
         self.__configure_button_widgets()
         self.__configure_input_widgets()
@@ -72,28 +71,28 @@ class UI(tkinter.Frame):
 
 
     def __configure_input_widgets(self):
-        tkinter.Label(self.input_container, text="What was done: ", font=self.__get_font_config()).grid(row=0, column=0)
+        Label(self.input_container, text="What was done: ", font=self.__get_font_config()).grid(row=0, column=0)
         self.done_field.grid(row=1, column=0)
-        self.done_field.config(font=self.__get_font_config(), height=4, width=30, wrap=tkinter.WORD)
+        self.done_field.config(font=self.__get_font_config(), height=4, width=30, wrap=WORD)
         self.done_field.focus_set()
 
-        tkinter.Label(self.input_container, text="What needs to be done: ", font=self.__get_font_config()).grid(row=2, column=0)
-        self.in_progress_field.config(font=self.__get_font_config(), height=4, width=30, wrap=tkinter.WORD)
+        Label(self.input_container, text="What needs to be done: ", font=self.__get_font_config()).grid(row=2, column=0)
+        self.in_progress_field.config(font=self.__get_font_config(), height=4, width=30, wrap=WORD)
         self.in_progress_field.grid(row=3, column=0)
 
-        tkinter.Label(self.input_container, text="Any problems: ", font=self.__get_font_config()).grid(row=4, column=0)
-        self.problems_field.config(font=self.__get_font_config(), height=4, width=30, wrap=tkinter.WORD)
+        Label(self.input_container, text="Any problems: ", font=self.__get_font_config()).grid(row=4, column=0)
+        self.problems_field.config(font=self.__get_font_config(), height=4, width=30, wrap=WORD)
         self.problems_field.grid(row=5, column=0)
 
         self.input_container.config(padx=10)
         self.input_container.grid(row=1, column=0, sticky='n', padx=10)
 
     def __configure_status_widgets(self):
-        tkinter.Label(self.task_list_container, text="Todays notes: ", font=self.__get_font_config()).grid(row=0, column=0)
+        Label(self.task_list_container, text="Todays notes: ", font=self.__get_font_config()).grid(row=0, column=0)
 
-        h = tkinter.Scrollbar(self.task_list_container, orient='horizontal', borderwidth=2, relief="groove")
+        h = Scrollbar(self.task_list_container, orient='horizontal', borderwidth=2, relief="groove")
         h.grid(row=2, column=0, sticky='nsew')
-        v = tkinter.Scrollbar(self.task_list_container, borderwidth=2, relief="groove")
+        v = Scrollbar(self.task_list_container, borderwidth=2, relief="groove")
         v.grid(row=1, column=1, sticky='nsew')
 
         self.task_list.config(width=30, height=15, wrap=WORD,
@@ -135,15 +134,15 @@ class UI(tkinter.Frame):
         else:
             self.counter.config(text="No upcoming notification")
 
-    def __create_section(self, parent: tkinter.BaseWidget, title: str, body: str):
-        section = tkinter.Frame(parent)
-        tkinter.Label(section, text=title, font=(self.config_manager.FONT_FAMILY, self.config_manager.FONT_SIZE_NORMAL, "bold")).grid(row=0, column=0)
-        tkinter.Label(section, text=body, font=self.__get_font_config(), wraplength=400,
+    def __create_section(self, parent: BaseWidget, title: str, body: str):
+        section = Frame(parent)
+        Label(section, text=title, font=(self.config_manager.FONT_FAMILY, self.config_manager.FONT_SIZE_NORMAL, "bold")).grid(row=0, column=0)
+        Label(section, text=body, font=self.__get_font_config(), wraplength=400,
                       justify=LEFT).grid(row=1, column=0)
         return section
 
     def __open_information_popup(self):
-        top = tkinter.Toplevel(self.root)
+        top = Toplevel(self.root)
         top.title("About application")
         top.config(padx=10, pady=10)
 
@@ -157,7 +156,7 @@ Application will save these answers to a yaml file, which you can see by clickin
             """)
         about.grid(row=1, column=0)
 
-        config_list = tkinter.Label(top)
+        config_list = Label(top)
         config_list.config(
             text="Configuration:\n" + str(self.config_manager),
             wraplength=400,
