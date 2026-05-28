@@ -102,7 +102,7 @@ class Application(UI):
     @staticmethod
     def __set_text(text: tkinter.Text, value: str):
         text.delete(1.0, END)
-        text.insert(END, value)
+        text.insert(END, str(value))
 
     async def __update_data(self):
         formatted_note_entries = [(f"Date: {n.date}\n"
