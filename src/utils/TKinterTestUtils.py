@@ -1,4 +1,4 @@
-from tkinter import Text, Label
+from customtkinter import CTkTextbox as Text, CTkLabel as Label
 from unittest.mock import MagicMock
 
 

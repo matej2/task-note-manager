@@ -1,7 +1,7 @@
 import asyncio
 from collections import OrderedDict
 from datetime import datetime, timedelta, timezone
-from tkinter import END, NORMAL, DISABLED, Text
+from customtkinter import END, NORMAL, DISABLED, CTkTextbox as Text
 
 import notify2
 
@@ -67,19 +67,19 @@ class Application(UI):
         self.__set_note_input_text(today_note_entry)
 
     def __configure_buttons(self):
-        self.submit_button.config(command=self.__on_click_submit_button)
-        self.open_file.config(command=self.data_manager.file_manager.open_file_in_ext_app)
-        self.export_button.config(command=self.__on_click_export_button)
+        self.submit_button.configure(command=self.__on_click_submit_button)
+        self.open_file.configure(command=self.data_manager.file_manager.open_file_in_ext_app)
+        self.export_button.configure(command=self.__on_click_export_button)
 
     def __on_click_export_button(self):
         asyncio.run(self.export_manager.export_data())
 
     def __after_submit(self, note_list: NoteList):
-        self.notification.config(text="")
+        self.notification.configure(text="")
         self.task_list.see(END)
         all_task_names = [str(s.name)+", " for s in self.task_manager.get_tasks_from_note_list(note_list)]
         task_names = "".join(list(OrderedDict.fromkeys(all_task_names)))
-        self.task_name_list.config(text=f"Tasks:\n\n{task_names}")
+        self.task_name_list.configure(text=f"Tasks:\n\n{task_names}")
 
     def __on_click_submit_button(self, *args):
         asyncio.run(self.save_data())
@@ -125,7 +125,7 @@ class Application(UI):
     def __trigger_notification(self):
         self.notification_manager.send_notification()
         self.root.focus_force()
-        self.notification.config(text="Daily notification to enter data")
+        self.notification.configure(text="Daily notification to enter data")
 
     def __configure_bindings(self):
         self.__set_bindings(self.done_field)

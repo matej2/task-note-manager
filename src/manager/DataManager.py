@@ -1,5 +1,5 @@
 import logging
-from tkinter import Text, Label
+from customtkinter import CTkTextbox as Text, CTkLabel as Label
 
 import yaml
 
