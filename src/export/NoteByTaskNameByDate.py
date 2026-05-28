@@ -25,11 +25,10 @@ class NoteByTaskNameByDate(IOdsTabExport):
         return list(reversed(date_list))
 
     async def run_export(self) -> None:
-        note_list = await self.data_manager.read_data_from_file_async_direct()
         first_row = self.add_header()
 
         for date_index, date_value in enumerate(first_row):
-            for note in note_list.notes:
+            for note in OdsTabExportBase.current_data.notes:
                 self.__process_data_for_date(note, date_index, date_value)
 
 

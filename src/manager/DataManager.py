@@ -23,7 +23,8 @@ class DataManager(DataManagerBase):
                  status: tkinter.Label,
                  file_manager: FileManager,
                  config_manager: ConfigManager,
-                 note_factory: NoteEntryFactory
+                 note_factory: NoteEntryFactory,
+                 current_data: NoteList
                  ) -> None:
         super().__init__(file_manager)
         self.done = things_done
@@ -31,6 +32,7 @@ class DataManager(DataManagerBase):
         self.problems = problems
         self.status = status
         self.logger = logging.getLogger(__name__)
+        self.current_data = current_data
 
         self.config_manager = config_manager
         self.note_factory = note_factory
@@ -52,19 +54,13 @@ class DataManager(DataManagerBase):
 
     @staticmethod
     def __override_existing_data_with_new_note(note_list: NoteList, entry: NoteEntry) -> None:
-        for i,e in enumerate(note_list.notes):
-            if e.date == entry.date:
-                note_list.notes[i] = entry
-                return
-        note_list.notes.append(entry)
+        note_list.notes = [entry if entry.date == n.date else n for n in note_list.notes]
 
     @staticmethod
     def __get_text_from_input(input_text: tkinter.Text):
         return input_text.get("1.0", "end-1c")
 
-    async def __process_save_input(self, existing_data: NoteList) -> None:
-        if existing_data is None:
-            existing_data = NoteList(list())
+    async def process_save_input(self, current_data: NoteList) -> NoteList:
 
         done = DataManager.__get_text_from_input(self.done)
         to_be_done = DataManager.__get_text_from_input(self.in_progress)
@@ -72,12 +68,7 @@ class DataManager(DataManagerBase):
 
         new_note = self.note_factory.create_note(done, to_be_done, problems)
 
-        DataManager.__override_existing_data_with_new_note(existing_data, new_note)
-        await self._write_data_to_file_direct(existing_data)
+        DataManager.__override_existing_data_with_new_note(current_data, new_note)
+        await self._write_data_to_file_direct(current_data)
         self.logger.debug(f"Wrote data to file, input: {done} {to_be_done} {problems}")
-
-
-    async def save_input_data(self) -> NoteList:
-        note_list = await self.read_data_from_file_async_direct()
-        await self.__process_save_input(note_list)
-        return note_list
+        return current_data

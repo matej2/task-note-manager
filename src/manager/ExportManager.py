@@ -4,16 +4,20 @@ from src.export.OdsTabExportBase import OdsTabExportBase
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
 from src.manager.TaskManager import TaskManager
+from src.models.NoteList import NoteList
 
 
 class ExportManager:
 
-    def __init__(self, config_manager: ConfigManager, data_manager: DataManager, task_manager: TaskManager) -> None:
+    def __init__(self, config_manager: ConfigManager,
+                 data_manager: DataManager,
+                 task_manager: TaskManager,
+                 current_data: NoteList) -> None:
         self.config_manager = config_manager
         self.data_manager = data_manager
         self.task_manager = task_manager
 
-        OdsTabExportBase.init(config_manager, data_manager)
+        OdsTabExportBase.init(config_manager, data_manager, current_data)
 
         self.registered_export_types = [
             NoteByStatusByDate(config_manager, data_manager),
@@ -21,7 +25,7 @@ class ExportManager:
         ]
 
     async def export_data(self) -> None:
-        await self.data_manager.save_input_data()
+        #await self.data_manager.save_input_data()
         OdsTabExportBase.delete_data()
 
         for registered_type in self.registered_export_types:

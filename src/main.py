@@ -23,6 +23,16 @@ class Application(UI):
         self.config_manager = ConfigManager()
         super().__init__(self.config_manager)
 
+        self.current_data = NoteList(list())
+
+        asyncio.run(self.__init_wrapper())
+
+    async def __init_wrapper(self):
+        self.__after_init()
+        await self.__before_init()
+
+
+    def __after_init(self):
         self.file_manager = FileManager(self.config_manager)
         self.note_factory = NoteEntryFactory(self.config_manager)
         self.notification_manager = Notification(self.config_manager)
@@ -34,28 +44,27 @@ class Application(UI):
             self.task_list_container,
             self.file_manager,
             self.config_manager,
-            self.note_factory
+            self.note_factory,
+            self.current_data
         )
         self.task_manager = TaskManager(self.config_manager, self.data_manager)
-        self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager)
+        self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager, self.current_data)
 
         self._update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency_hours))
         self.scheduler = Scheduler(self.__trigger_notification, self._update_time_until_next_run, self.config_manager)
 
         self.__configure_buttons()
         self.__configure_bindings()
-        self.__initialize()
-
-    def __initialize(self):
         notify2.init("test")
-        asyncio.run(self.initialize_data_fields())
+
+    async def __before_init(self):
+        self.current_data = await self.data_manager.read_data_from_file_async_direct()
+        await self.__update_data()
+        await self.initialize_data_fields()
 
 
     async def initialize_data_fields(self):
-        note_list = await self.data_manager.read_data_from_file_async_direct()
-        await self.__update_data(note_list)
-
-        today_note_entry = self.data_manager.extract_today_notes(note_list)
+        today_note_entry = self.data_manager.extract_today_notes(self.current_data)
         self.__init_inputs(today_note_entry)
 
 
@@ -78,8 +87,8 @@ class Application(UI):
         return "break"
 
     async def save_data(self):
-        updated_note_list = await self.data_manager.save_input_data()
-        await self.__update_data(updated_note_list)
+        self.current_data = await self.data_manager.process_save_input(self.current_data)
+        await self.__update_data()
 
     def __init_inputs(self, entry: NoteEntry):
         self.__set_text(self.done_field, entry.done)
@@ -96,16 +105,16 @@ class Application(UI):
         text.delete(1.0, END)
         text.insert(END, value)
 
-    async def __update_data(self, note_list: NoteList):
+    async def __update_data(self):
         formatted_note_entries = [(f"Date: {n.date}\n"
                                    f"Done: {n.done}\n"
                                    f"In progress: {n.in_progress}\n"
-                                   f"Problems: {n.problems}") for n in note_list.notes]
+                                   f"Problems: {n.problems}") for n in self.current_data.notes]
         formatted_note_output = "\n\n".join(formatted_note_entries)
 
         self.__set_text_and_disable(formatted_note_output)
-        self.__init_inputs(note_list.notes[-1])
-        self.__after_submit(note_list)
+        self.__init_inputs(self.current_data.notes[-1])
+        self.__after_submit(self.current_data)
 
     def __trigger_notification(self):
         self.notification_manager.send_notification()
