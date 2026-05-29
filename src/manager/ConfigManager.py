@@ -10,9 +10,10 @@ class ConfigManager:
     def __init__(self):
         # Font
         self.FONT_FAMILY = "TkDefaultFont"
-        self.FONT_SIZE_LARGE = 20
-        self.FONT_SIZE_NORMAL = 15
-        self.FONT_SIZE_SMALL = 10
+        self.REM_MULT = 13
+        self.FONT_SIZE_LARGE = 1.3
+        self.FONT_SIZE_NORMAL = 1
+        self.FONT_SIZE_SMALL = 0.8
 
         # Date, time
         self.DATE_FORMAT = "%d. %b. %Y"
@@ -38,6 +39,11 @@ class ConfigManager:
         self.NEW_NOTE_LABEL_PADY = 10
         self.BUTTTON_PADX = 10
         self.BUTTTON_PADY = 10
+
+        #  Colors
+        self.FRAME_BACKGROUND = "#ededed"
+        self.TITLE_BACKGROUND = "#dbdbdb"
+        self.FRAME_BORDER = "#b5b5b5"
 
         # Yaml
         self.FULL_PATH = os.path.join(ConfigManager._get_full_curr_dir_path(), "../../task_notes.yaml")
@@ -71,20 +77,23 @@ Excel file: {}""".format(
             self.FULL_PATH,
             self.EXPORT_FILE_NAME)
 
+    def rem(self, val: float):
+        return int(val * self.REM_MULT)
+
     def get_regular_font(self):
         return Font(
             family=self.FONT_FAMILY,
-            size=self.FONT_SIZE_NORMAL
+            size=self.rem(self.FONT_SIZE_NORMAL)
         )
 
-    def get_header_font(self):
+    def get_large_font(self):
         return Font(
             family=self.FONT_FAMILY,
-            size=self.FONT_SIZE_LARGE
+            size=self.rem(self.FONT_SIZE_LARGE)
         )
 
     def get_small_font(self):
         return Font(
             family=self.FONT_FAMILY,
-            size=self.FONT_SIZE_SMALL
+            size=self.rem(self.FONT_SIZE_SMALL)
         )

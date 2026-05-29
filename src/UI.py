@@ -1,8 +1,8 @@
 from datetime import datetime, timezone
 from tkinter import BaseWidget
 
-from customtkinter import LEFT, CTkFrame as Frame, CTk as Tk, CTkButton as Button, CTkTextbox as Text, \
-    CTkLabel as Label, CTkToplevel as Toplevel
+from customtkinter import LEFT, CTkFrame as Frame, CTk as Tk, CTkButton as Button, CTkLabel as Label, \
+    CTkToplevel as Toplevel
 
 from src.manager.ConfigManager import ConfigManager
 from src.manager.UILayoutHelper import UILayoutHelper
@@ -11,15 +11,16 @@ from src.manager.UILayoutHelper import UILayoutHelper
 class UI(Frame):
 
     def __init__(self, config: ConfigManager):
-        self.root_container = Tk()
-        self.root_container.title("Task note manager")
-
-        Frame.__init__(self, self.root_container)
-        self.root = Frame(self.root_container)
-        self.root.grid(row=0, column=0, padx=20, pady=20)
-
         self.config_manager = config
         self.ui_helper = UILayoutHelper(config)
+
+        self.root_container = Tk()
+        self.root_container.title("Task note manager")
+        self.root_container.configure(fg_color=self.config_manager.FRAME_BACKGROUND)
+
+        Frame.__init__(self, self.root_container)
+        self.root = Frame(self.root_container, fg_color=self.config_manager.FRAME_BACKGROUND)
+        self.root.grid(row=0, column=0, padx=20, pady=20)
 
         # Buttons
         self.button_container = Frame(None)
@@ -52,7 +53,7 @@ class UI(Frame):
 
 
     def __configure_button_widgets(self):
-        self.button_container.grid(row=4, column=0, columnspan=3, sticky='e', pady=(10, 20))
+        self.button_container = self.ui_helper.display_frame(self.root, 4, 0, columnspan=3, sticky='e')
 
         self.submit_button = self.ui_helper.display_button("Submit", self.button_container, 0, 0)
         self.open_file = self.ui_helper.display_button("Open File", self.button_container, 0, 1)

@@ -38,7 +38,7 @@ class UILayoutHelper:
         field = Label(parent)
         field.configure(
             text=text,
-            font=self.config_manager.get_header_font(),
+            font=self.config_manager.get_large_font(),
             wraplength=300,
             justify=LEFT,
             text_color="red")
@@ -49,7 +49,7 @@ class UILayoutHelper:
 
     def display_button(self, text: str, parent: Frame, row: int, column: int) -> Button:
         field = Button(parent)
-        field.configure(text=text, font=self.config_manager.get_header_font())
+        field.configure(text=text, font=self.config_manager.get_large_font())
         field.grid(row=row, column=column, pady=self.config_manager.BUTTTON_PADY,
                              padx=self.config_manager.BUTTTON_PADX)
         return field
@@ -64,10 +64,11 @@ class UILayoutHelper:
         field = Label(parent)
         field.configure(
             text=text,
-            font=self.config_manager.get_header_font(),
+            font=self.config_manager.get_large_font(),
             wraplength=300,
             justify=LEFT,
-            fg_color="#edfffe"
+            fg_color=self.config_manager.TITLE_BACKGROUND,
+            corner_radius=3
         )
         field.grid(row=row, column=column, pady=self.config_manager.NEW_NOTE_LABEL_PADY,
                              padx=self.config_manager.NEW_NOTE_LABEL_PADX)
@@ -75,12 +76,13 @@ class UILayoutHelper:
 
     def display_frame(self, parent: Frame | Toplevel, row: int, column: int, title: str = "",  **kwargs) -> Frame:
         parent_frame = Frame(parent)
-        parent_frame.configure(border_color="gray", border_width=2)
+        parent_frame.configure(border_color=self.config_manager.FRAME_BORDER, border_width=2, fg_color=self.config_manager.FRAME_BACKGROUND)
         parent_frame.grid(row=row, column=column, pady=10, padx=20, **kwargs)
 
         if title != "":
             self.display_title(title, parent_frame, 0, 0)
         sub_frame = Frame(parent_frame)
+        sub_frame.configure(fg_color=self.config_manager.FRAME_BACKGROUND)
         sub_frame.grid(row=1, column=0, pady=10, padx=20)
 
         return sub_frame
