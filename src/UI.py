@@ -31,14 +31,14 @@ class UI(Frame):
 
         # Task list
         self.task_list_container = Frame(None)
-        self.task_list = Text(None)
+        self.task_list = None
         self.task_name_list = Label(None)
 
         # Input fields
         self.input_container = Frame(None)
-        self.done_field = Text(None)
-        self.in_progress_field = Text(None)
-        self.problems_field = Text(None)
+        self.done_field = None
+        self.in_progress_field = None
+        self.problems_field = None
 
         # Scheduler
         self.scheduler_container = Frame(None)
@@ -161,21 +161,10 @@ class UI(Frame):
         top.title("About application")
         top.configure(padx=10, pady=10)
 
-        instructions = self.__create_section(top, "Instructions", """At the start of a workday, run the application - either manual or you can set it to autorun at startup. 6 hours from application startup, you will be asked to provide data.
-                    """)
-        instructions.grid(row=0, column=0)
+        instructions_frame = self.ui_helper.display_frame(top, 1, 0, "How to use")
 
-        about = self.__create_section(top, "About", """This application is designed to keep track of your daily work. It will ask you 3 question. The data you provide using these questions is useful for reports, meetings and notes. 
+        self.ui_helper.display_new_note_label("1. Run the application at the start of your workday (manually or via autorun).\n2. After 6 hours of runtime, a prompt will appear to log your daily progress.", instructions_frame, 0, 0)
 
-Application will save these answers to a yaml file, which you can see by clicking 'Open file' button. You can further edit data in this file to adapt it to your requrements. Each entry is marked with "!NoteEntry", you may copy it and modify it.
-            """)
-        about.grid(row=1, column=0)
+        about_frame = self.ui_helper.display_frame(top, 0, 0, "About")
 
-        config_list = Label(top)
-        config_list.configure(
-            text="Configuration:\n" + str(self.config_manager),
-            wraplength=400,
-            justify=LEFT,
-            font="TkFixedFont"
-        )
-        config_list.grid(row=3, column=0)
+        self.ui_helper.display_new_note_label("This application helps you effortlessly track your daily work activities.\n\nKey Features:\n• Answer 3 simple questions about your workday.\n• Generate useful data for reports, meetings, and personal notes.\n• Automatically save all responses into a human-readable YAML file.\n\nClick the 'Open file' button to view or manually edit your data. Each entry is marked with '!NoteEntry' for easy copying and customization.", about_frame, 0, 0)
