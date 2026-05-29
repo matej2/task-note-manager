@@ -107,9 +107,9 @@ class Application(UI):
 
     async def __update_data(self):
         formatted_note_entries = [(f"Date: {n.date}\n"
-                                   f"Done: {n.done}\n"
-                                   f"In progress: {n.in_progress}\n"
-                                   f"Problems: {n.problems}") for n in self.current_data.notes]
+                                   f"- Done: {n.done}\n"
+                                   f"- In progress: {n.in_progress}\n"
+                                   f"- Problems: {n.problems}") for n in self.current_data.notes]
         formatted_note_output = "\n\n".join(formatted_note_entries)
 
         today_note_entry = self.data_manager.extract_today_notes(self.current_data)
