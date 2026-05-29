@@ -1,3 +1,4 @@
+from tkinter import DISABLED, LEFT
 
 from customtkinter import CTkLabel as Label, WORD, CTkFrame as Frame, CTkTextbox as Text, CTkTextbox, \
     CTkButton as Button
@@ -16,12 +17,35 @@ class UILayoutHelper:
                              padx=self.config_manager.NEW_NOTE_INPUT_PADX)
         return field
 
+
+    def display_status_input(self, parent: Frame, row: int, column: int):
+        field = self.display_new_note_input(parent, row, column)
+        field.configure(state=DISABLED)
+        return field
+
     def display_new_note_label(self, text: str, parent: Frame, row: int, column: int) -> Label:
         field = Label(parent)
-        field.configure(text=text, font=self.config_manager.get_header_font())
+        field.configure(
+            text=text,
+            font=self.config_manager.get_header_font(),
+            wraplength=300,
+            justify=LEFT)
         field.grid(row=row, column=column, pady=self.config_manager.NEW_NOTE_LABEL_PADY,
                              padx=self.config_manager.NEW_NOTE_LABEL_PADX)
         return field
+
+    def display_warning_label(self, text: str, parent: Frame, row: int, column: int) -> Label:
+        field = Label(parent)
+        field.configure(
+            text=text,
+            font=self.config_manager.get_header_font(),
+            wraplength=300,
+            justify=LEFT,
+            text_color="red")
+        field.grid(row=row, column=column, pady=self.config_manager.NEW_NOTE_LABEL_PADY,
+                             padx=self.config_manager.NEW_NOTE_LABEL_PADX)
+        return field
+
 
     def display_button(self, text: str, parent: Frame, row: int, column: int) -> Button:
         field = Button(parent)
@@ -34,4 +58,10 @@ class UILayoutHelper:
         field = Text(parent)
         field.configure(text=text, font=self.config_manager.get_regular_font())
         field.grid(row=row, column=column, pady=self.config_manager.BUTTTON_PADY, padx=self.config_manager.BUTTTON_PADX)
+        return field
+
+    def display_frame(self, parent: Frame, row: int, column: int, **kwargs) -> Frame:
+        field = Frame(parent)
+        field.configure(border_color="gray", border_width=2)
+        field.grid(row=row, column=column, pady=10, padx=20, **kwargs)
         return field

@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from tkinter import BaseWidget
 
-from customtkinter import DISABLED, LEFT, WORD, CTkFrame as Frame, CTk as Tk, CTkButton as Button, CTkTextbox as Text, \
+from customtkinter import LEFT, CTkFrame as Frame, CTk as Tk, CTkButton as Button, CTkTextbox as Text, \
     CTkLabel as Label, CTkToplevel as Toplevel
 
 from src.manager.ConfigManager import ConfigManager
@@ -22,7 +22,7 @@ class UI(Frame):
         self.ui_helper = UILayoutHelper(config)
 
         # Buttons
-        self.button_container = Frame(self.root)
+        self.button_container = Frame(None)
         self.submit_button = Button(None)
         self.open_file = Button(None)
         self.list_button = Button(None)
@@ -30,20 +30,20 @@ class UI(Frame):
         self.export_button = Button(None)
 
         # Task list
-        self.task_list_container = Frame(self.root)
-        self.task_list = Text(self.task_list_container)
-        self.task_name_list = Label(self.task_list_container)
+        self.task_list_container = Frame(None)
+        self.task_list = Text(None)
+        self.task_name_list = Label(None)
 
         # Input fields
-        self.input_container = Frame(self.root, border_color="black", border_width=2)
-        self.done_field = Text(self.input_container)
-        self.in_progress_field = Text(self.input_container)
-        self.problems_field = Text(self.input_container)
+        self.input_container = Frame(None)
+        self.done_field = Text(None)
+        self.in_progress_field = Text(None)
+        self.problems_field = Text(None)
 
         # Scheduler
-        self.scheduler_container = Frame(self.root)
-        self.counter = Label(self.scheduler_container)
-        self.notification = Label(self.scheduler_container)
+        self.scheduler_container = Frame(None)
+        self.counter = Label(None)
+        self.notification = Label(None)
 
         self.__configure_button_widgets()
         self.__configure_input_widgets()
@@ -69,6 +69,8 @@ class UI(Frame):
 
 
     def __configure_input_widgets(self):
+        self.input_container = self.ui_helper.display_frame(self.root, 1, 0, sticky='n')
+
         self.ui_helper.display_new_note_label(
             "What was done: ",
             self.input_container,
@@ -105,28 +107,32 @@ class UI(Frame):
             5,
             0
         )
-        self.input_container.grid(row=1, column=0, sticky='n', padx=20, pady=20)
+
 
     def __configure_status_widgets(self):
-        Label(self.task_list_container, text="Todays notes: ", font=self.config_manager.get_header_font()).grid(row=0, column=0)
+        self.task_list_container =  self.ui_helper.display_frame(self.root, 1, 2, rowspan=3, sticky='n')
 
-        self.task_list.configure(wrap=WORD,
-                              font=self.config_manager.get_regular_font(),
-                              state=DISABLED)
-        self.task_list.grid(row=1, column=0)
+        self.ui_helper.display_new_note_label("Todays notes: ", self.task_list_container, 0, 0)
 
-        self.task_name_list.configure(wraplength=300, justify=LEFT)
-        self.task_name_list.grid(row=3, column=0)
+        self.task_list = self.ui_helper.display_status_input(
+            self.task_list_container,
+            1,
+            0
+        )
 
-        self.task_list_container.grid(row=1, column=2, rowspan=3, sticky='n', padx=10)
+        self.task_name_list = self.ui_helper.display_new_note_label(
+            "",
+            self.task_list_container,
+            3,
+            0
+        )
+
 
     def __configure_scheduler_widgets(self):
-        self.scheduler_container.grid(row=5, column=0)
-        self.counter.configure(font=self.config_manager.get_regular_font(), text="Remaining time: --:--")
-        self.counter.grid(row=0, column=0)
+        self.scheduler_container  = self.ui_helper.display_frame(self.root, 5, 0)
 
-        self.notification.configure(text_color="red", font=self.config_manager.get_regular_font())
-        self.notification.grid(row=0, column=1)
+        self.counter = self.ui_helper.display_new_note_label("Remaining time: --:--", self.scheduler_container,0, 0)
+        self.notification = self.ui_helper.display_warning_label("", self.scheduler_container, 0, 1)
 
     def _update_time_until_next_run(self, next_run_time: datetime):
         if next_run_time:
