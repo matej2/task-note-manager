@@ -164,8 +164,8 @@ class UI(Frame):
 
         instructions_frame = self.ui_helper.display_frame(top, 1, 0, "How to use")
 
-        self.ui_helper.display_new_note_label("1. Run the application at the start of your workday (manually or via autorun).\n2. After 6 hours of runtime, a prompt will appear to log your daily progress.", instructions_frame, 0, 0)
+        self.ui_helper.display_new_note_label("1. Launch the application at the start of your workday (manually or via startup autorun).\n2. Leave the app running quietly in the background.\n3. After 6 hours of runtime, a prompt will automatically appear on your screen.\n4. Answer 3 quick questions about your completed tasks and progress.\n5. Your log is securely saved, and you can access, edit, or export your data at any time.", instructions_frame, 0, 0)
 
         about_frame = self.ui_helper.display_frame(top, 0, 0, "About")
 
-        self.ui_helper.display_new_note_label("This application helps you effortlessly track your daily work activities.\n\nKey Features:\n• Answer 3 simple questions about your workday.\n• Generate useful data for reports, meetings, and personal notes.\n• Automatically save all responses into a human-readable YAML file.\n\nClick the 'Open file' button to view or manually edit your data. Each entry is marked with '!NoteEntry' for easy copying and customization.", about_frame, 0, 0)
+        self.ui_helper.display_new_note_label("Task Note Manager is a streamlined tool designed to help you effortlessly track and log your daily work activities.\n\nKey Features & Benefits:\n• Automated Reminders: The app automatically prompts you for input after 6 hours of runtime.\n• Structured Insights: Answer 3 simple questions to capture crucial details about your workday.\n• Meeting & Report Ready: Generated notes are perfect for daily standups, status updates, or personal tracking.\n• Local Storage: All data is saved safely in a clean, human-readable YAML format.\n• Full Control: Click the 'Open file' button to view, edit, or copy entries directly. Every log is marked with '!NoteEntry' for easy customization.", about_frame, 0, 0)
