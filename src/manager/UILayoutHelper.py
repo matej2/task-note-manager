@@ -73,7 +73,10 @@ class UILayoutHelper:
 
     def display_frame(self, parent: Frame | Toplevel, row: int, column: int, title: str = "",  **kwargs) -> Frame:
         parent_frame = Frame(parent)
-        parent_frame.configure(border_color=self.config_manager.FRAME_BORDER, border_width=2, fg_color=self.config_manager.FRAME_BACKGROUND)
+        parent_frame.configure(
+            border_color=self.config_manager.FRAME_BORDER,
+            border_width=2,
+            fg_color=self.config_manager.FRAME_BACKGROUND)
         parent_frame.grid(row=row, column=column, pady=10, padx=20, **kwargs)
 
         if title != "":

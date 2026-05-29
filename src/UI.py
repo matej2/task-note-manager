@@ -18,9 +18,15 @@ class UI(Frame):
         self.root_container.title("Task note manager")
         self.root_container.configure(fg_color=self.config_manager.FRAME_BACKGROUND)
 
+        self.root_container.grid_rowconfigure(0, weight=1)
+        self.root_container.grid_columnconfigure(0, weight=1)
+
         Frame.__init__(self, self.root_container)
         self.root = Frame(self.root_container, fg_color=self.config_manager.FRAME_BACKGROUND)
-        self.root.grid(row=0, column=0, padx=20, pady=20)
+        self.root.grid_rowconfigure(0, weight=1)
+        self.root.grid_columnconfigure(0, weight=1)
+
+        self.root.grid(row=0, column=0, padx=20, pady=20 , sticky="nsew")
 
         # Buttons
         self.button_container = Frame(None)
