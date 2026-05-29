@@ -49,15 +49,12 @@ class UILayoutHelper:
 
     def display_button(self, text: str, parent: Frame, row: int, column: int) -> Button:
         field = Button(parent)
-        field.configure(text=text, font=self.config_manager.get_large_font())
-        field.grid(row=row, column=column, pady=self.config_manager.BUTTTON_PADY,
-                             padx=self.config_manager.BUTTTON_PADX)
-        return field
-
-    def display_text(self, text: str, parent: Frame, row: int, column: int) -> Text:
-        field = Text(parent)
-        field.configure(text=text, font=self.config_manager.get_regular_font())
-        field.grid(row=row, column=column, pady=self.config_manager.BUTTTON_PADY, padx=self.config_manager.BUTTTON_PADX)
+        field.configure(
+            text=text,
+            font=self.config_manager.get_large_font(),
+            border_spacing=self.config_manager.BUTTON_BORDER_SPACING)
+        field.grid(row=row, column=column, pady=self.config_manager.BUTTON_PADY,
+                   padx=self.config_manager.BUTTON_PADX)
         return field
 
     def display_title(self, text: str, parent: Frame, row: int, column: int) -> Label:
