@@ -112,14 +112,11 @@ class Application(UI):
                                    f"Problems: {n.problems}") for n in self.current_data.notes]
         formatted_note_output = "\n\n".join(formatted_note_entries)
 
-        last_entry_list = self.current_data.notes[-1:]
-        if len(last_entry_list) > 0:
-            last_entry = last_entry_list[0]
-        else:
-            last_entry = NoteEntry()
+        today_note_entry = self.data_manager.extract_today_notes(self.current_data)
+
 
         self.__set_text_and_disable(self.task_list, formatted_note_output)
-        self.__set_note_input_text(last_entry)
+        self.__set_note_input_text(today_note_entry)
         self.__after_submit(self.current_data)
 
     def __trigger_notification(self):

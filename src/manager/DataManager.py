@@ -1,3 +1,4 @@
+import copy
 import logging
 from customtkinter import CTkTextbox as Text, CTkLabel as Label
 
@@ -54,7 +55,15 @@ class DataManager(DataManagerBase):
 
     @staticmethod
     def __override_existing_data_with_new_note(note_list: NoteList, entry: NoteEntry) -> None:
-        note_list.notes = [entry if entry.date == n.date else n for n in note_list.notes]
+        is_found = False
+        note_list_copy = copy.deepcopy(note_list)
+        for i, n in enumerate(note_list_copy.notes):
+            if n.date == entry.date:
+                note_list.notes[i] = entry
+                is_found = True
+
+        if not is_found:
+            note_list.notes.append(entry)
 
     @staticmethod
     def __get_text_from_input(input_text: Text):
