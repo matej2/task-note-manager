@@ -1,13 +1,18 @@
 import logging
 import os
 import sys
+from tkinter.font import BOLD
+
+from customtkinter import CTkLabel as Label, WORD, CTkFrame as Frame, CTkTextbox as Text, CTkFont as Font
 
 
 class ConfigManager:
     def __init__(self):
         # Font
         self.FONT_FAMILY = "TkDefaultFont"
-        self.FONT_SIZE_NORMAL = 10
+        self.FONT_SIZE_LARGE = 20
+        self.FONT_SIZE_NORMAL = 15
+        self.FONT_SIZE_SMALL = 10
 
         # Date, time
         self.DATE_FORMAT = "%d. %b. %Y"
@@ -25,6 +30,14 @@ class ConfigManager:
         self.EXPORT_TH_DONE = "Done"
         self.EXPORT_TH_IN_PROGRESS = "In progress"
         self.EXPORT_TH_PROBLEMS = "Problems"
+
+        # Default padding
+        self.NEW_NOTE_INPUT_PADX = 20
+        self.NEW_NOTE_INPUT_PADY = 20
+        self.NEW_NOTE_LABEL_PADX = 5
+        self.NEW_NOTE_LABEL_PADY = 10
+        self.BUTTTON_PADX = 10
+        self.BUTTTON_PADY = 10
 
         # Yaml
         self.FULL_PATH = os.path.join(ConfigManager._get_full_curr_dir_path(), "../../task_notes.yaml")
@@ -57,3 +70,21 @@ Excel file: {}""".format(
             self.frequency_hours,
             self.FULL_PATH,
             self.EXPORT_FILE_NAME)
+
+    def get_regular_font(self):
+        return Font(
+            family=self.FONT_FAMILY,
+            size=self.FONT_SIZE_NORMAL
+        )
+
+    def get_header_font(self):
+        return Font(
+            family=self.FONT_FAMILY,
+            size=self.FONT_SIZE_LARGE
+        )
+
+    def get_small_font(self):
+        return Font(
+            family=self.FONT_FAMILY,
+            size=self.FONT_SIZE_SMALL
+        )
