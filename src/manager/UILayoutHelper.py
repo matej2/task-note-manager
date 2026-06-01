@@ -77,7 +77,9 @@ class UILayoutHelper:
             border_color=self.config_manager.FRAME_BORDER,
             border_width=2,
             fg_color=self.config_manager.FRAME_BACKGROUND)
-        parent_frame.grid(row=row, column=column, pady=10, padx=20, **kwargs)
+        parent_frame.grid_rowconfigure(0, weight=1)
+        parent_frame.grid_columnconfigure(0, weight=1)
+        parent_frame.grid(row=row, column=column, pady=10, padx=20, sticky="nsew", **kwargs)
 
         if title != "":
             self.display_title(title, parent_frame, 0, 0)

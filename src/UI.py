@@ -25,6 +25,7 @@ class UI(Frame):
         self.root = Frame(self.root_container, fg_color=self.config_manager.FRAME_BACKGROUND)
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
+        self.root.grid_columnconfigure(1, weight=1)
 
         self.root.grid(row=0, column=0, padx=20, pady=20 , sticky="nsew")
 
@@ -59,7 +60,7 @@ class UI(Frame):
 
 
     def __configure_button_widgets(self):
-        self.button_container = self.ui_helper.display_frame(self.root, 4, 0, columnspan=3, sticky='e')
+        self.button_container = self.ui_helper.display_frame(self.root, 1, 0, columnspan=2)
 
         self.submit_button = self.ui_helper.display_button("Submit", self.button_container, 0, 0)
         self.open_file = self.ui_helper.display_button("Open File", self.button_container, 0, 1)
@@ -76,7 +77,7 @@ class UI(Frame):
 
 
     def __configure_input_widgets(self):
-        self.input_container = self.ui_helper.display_frame(self.root, 1, 0, sticky='n')
+        self.input_container = self.ui_helper.display_frame(self.root, 0, 0)
 
         self.ui_helper.display_new_note_label(
             "What was done: ",
@@ -117,7 +118,7 @@ class UI(Frame):
 
 
     def __configure_status_widgets(self):
-        self.task_list_container =  self.ui_helper.display_frame(self.root, 1, 2, rowspan=3, sticky='n')
+        self.task_list_container =  self.ui_helper.display_frame(self.root, 0, 1)
 
         self.ui_helper.display_new_note_label("Todays notes: ", self.task_list_container, 0, 0)
 
@@ -136,7 +137,7 @@ class UI(Frame):
 
 
     def __configure_scheduler_widgets(self):
-        self.scheduler_container  = self.ui_helper.display_frame(self.root, 5, 0)
+        self.scheduler_container  = self.ui_helper.display_frame(self.root, 2, 0, columnspan=2)
 
         self.counter = self.ui_helper.display_new_note_label("Remaining time: --:--", self.scheduler_container,0, 0)
         self.notification = self.ui_helper.display_warning_label("", self.scheduler_container, 0, 1)
