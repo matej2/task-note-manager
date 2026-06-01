@@ -60,9 +60,9 @@ class UI(Frame):
 
     def __configure_button_widgets(self):
         self.submit_button = self.ui_helper.display_button("Submit",self.input_container,6,0, True)
-        self.open_file = self.ui_helper.display_button("Open File", self.task_list_container, 3, 0)
-        self.export_button = self.ui_helper.display_button("Export data - ODS", self.task_list_container, 3, 1)
-        self.instructions_button = self.ui_helper.display_button("Instructions", self.task_list_container, 3, 2)
+        self.open_file = self.ui_helper.display_button("Open YAML File", self.task_list_container, 3, 0)
+        self.export_button = self.ui_helper.display_button("Export data to ODS", self.task_list_container, 3, 1)
+        self.instructions_button = self.ui_helper.display_button("About", self.task_list_container, 3, 2)
 
         self.instructions_button.configure(command=self.__open_information_popup)
 
@@ -159,7 +159,7 @@ class UI(Frame):
 
     def __open_information_popup(self):
         top = Toplevel(self.root)
-        top.title("About application")
+        top.title("About")
         top.configure(padx=10, pady=10)
 
         instructions_frame = self.ui_helper.display_frame(top, 1, 0, "How to use")
