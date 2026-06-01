@@ -55,7 +55,6 @@ class Application(UI):
 
         self.__configure_buttons()
         self.__configure_bindings()
-        notify2.init("test")
 
     async def __after_setup(self):
         self.current_data = await self.data_manager.read_data_from_file_async_direct()
@@ -77,6 +76,7 @@ class Application(UI):
     async def process_export(self):
         await self.data_manager.process_save_input(self.current_data)
         await self.export_manager.export_data(self.current_data)
+        Notification.send_info_notification("Export completed")
 
 
     def __after_submit(self, note_list: NoteList):
@@ -93,6 +93,7 @@ class Application(UI):
     async def save_data(self):
         self.current_data = await self.data_manager.process_save_input(self.current_data)
         await self.__update_data()
+        Notification.send_info_notification("Data saved")
 
     def __set_note_input_text(self, entry: NoteEntry):
         self.__set_text(self.done_field, entry.done)
