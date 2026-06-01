@@ -62,9 +62,9 @@ class UI(Frame):
     def __configure_button_widgets(self):
         self.button_container = self.ui_helper.display_frame(self.root, 1, 0, columnspan=2)
 
-        self.submit_button = self.ui_helper.display_button("Submit", self.button_container, 0, 0)
+        self.submit_button = self.ui_helper.display_button("Submit",self.button_container,0,0, True)
         self.open_file = self.ui_helper.display_button("Open File", self.button_container, 0, 1)
-        self.export_button = self.ui_helper.display_button("Export data - ODS", self.button_container, 0, 4)
+        self.export_button = self.ui_helper.display_button("Export data - ODS", self.button_container, 0, 2)
         self.instructions_button = self.ui_helper.display_button("Instructions", self.button_container, 0, 3)
 
         self.instructions_button.configure(command=self.__open_information_popup)

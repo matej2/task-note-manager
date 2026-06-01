@@ -47,12 +47,16 @@ class UILayoutHelper:
         return field
 
 
-    def display_button(self, text: str, parent: Frame, row: int, column: int) -> Button:
+    def display_button(self, text: str, parent: Frame, row: int, column: int, is_primary: bool = False) -> Button:
         field = Button(parent)
         field.configure(
             text=text,
             font=self.config_manager.get_large_font(),
-            border_spacing=self.config_manager.BUTTON_BORDER_SPACING)
+            border_spacing=self.config_manager.BUTTON_BORDER_SPACING,
+            fg_color=self.config_manager.SECONDARY_BUTTON_COLOR, hover_color=self.config_manager.SECONDARY_BUTTON_COLOR_HOVER)
+
+        if is_primary:
+            field.configure(fg_color=self.config_manager.PRIMARY_BUTTON_COLOR, hover_color=self.config_manager.PRIMARY_BUTTON_COLOR_HOVER)
         field.grid(row=row, column=column, pady=self.config_manager.BUTTON_PADY,
                    padx=self.config_manager.BUTTON_PADX)
         return field

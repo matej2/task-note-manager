@@ -42,9 +42,13 @@ class ConfigManager:
         self.BUTTON_PADY = 10
 
         #  Colors
-        self.FRAME_BACKGROUND = "#ededed"
-        self.TITLE_BACKGROUND = "#dbdbdb"
-        self.FRAME_BORDER = "#b5b5b5"
+        self.FRAME_BACKGROUND = "#EEEEEE"
+        self.TITLE_BACKGROUND = "#E0E0E0"
+        self.FRAME_BORDER = "#BDBDBD"
+        self.SECONDARY_BUTTON_COLOR = "#1565C0"
+        self.SECONDARY_BUTTON_COLOR_HOVER = "#0D47A1"
+        self.PRIMARY_BUTTON_COLOR = "#388E3C"
+        self.PRIMARY_BUTTON_COLOR_HOVER = "#2E7D32"
 
         # Yaml
         self.FULL_PATH = os.path.join(ConfigManager._get_full_curr_dir_path(), "../../task_notes.yaml")
