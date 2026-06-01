@@ -5,13 +5,13 @@ from customtkinter import END, NORMAL, DISABLED, CTkTextbox as Text
 
 import notify2
 
+from src.Scheduler import Scheduler
+from src.UI import UI
+from src.factory.NoteEntryFactory import NoteEntryFactory
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
 from src.manager.ExportManager import ExportManager
 from src.manager.FileManager import FileManager
-from Scheduler import Scheduler
-from UI import UI
-from factory.NoteEntryFactory import NoteEntryFactory
 from src.manager.TaskManager import TaskManager
 from src.models.NoteEntry import NoteEntry
 from src.models.NoteList import NoteList
@@ -47,7 +47,7 @@ class Application(UI):
             self.note_factory,
             self.current_data
         )
-        self.task_manager = TaskManager(self.config_manager, self.data_manager)
+        self.task_manager = TaskManager(self.config_manager)
         self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager, self.current_data)
 
         self._update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency_hours))

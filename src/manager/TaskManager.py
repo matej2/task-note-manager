@@ -1,16 +1,14 @@
 import re
 
 from src.manager.ConfigManager import ConfigManager
-from src.manager.DataManager import DataManager
 from src.models.NoteEntry import NoteEntry
 from src.models.NoteList import NoteList
 from src.models.Task import Task
 
 
 class TaskManager:
-    def __init__(self, config_manager: ConfigManager, data_manager: DataManager):
+    def __init__(self, config_manager: ConfigManager):
         self.config_manager = config_manager
-        self.data_manager = data_manager
 
     def get_tasks_from_note_list(self, note_list: NoteList) -> list[Task]:
         result = list()
