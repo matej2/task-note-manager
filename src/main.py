@@ -136,7 +136,6 @@ class Application(UI):
         self.__set_bindings(self.problems_field)
 
     def __set_bindings(self, widget):
-        widget.bind("<Return>", self.__on_click_submit_button)
         widget.bind("<Tab>", UI._focus_next_widget)
         widget.bind("<Control_L>s", self.__on_click_submit_button)
 
