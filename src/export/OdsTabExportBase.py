@@ -1,11 +1,10 @@
 import logging
-import os
 from collections import OrderedDict
+
 from pyexcel_ods3 import save_data
 
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
-from src.models.NoteList import NoteList
 
 
 class OdsTabExportBase:
@@ -13,15 +12,12 @@ class OdsTabExportBase:
     logger = logging.getLogger(__name__)
     data_manager = None
     _sheet_data = {}
-    current_data = NoteList(list())
 
     @classmethod
-    def init(cls, config_manager: ConfigManager, data_manager: DataManager, current_data: NoteList) -> None:
+    def init(cls, config_manager: ConfigManager, data_manager: DataManager) -> None:
         """Call only once per app execution"""
         cls.config_manager = config_manager
         cls.data_manager = data_manager
-        cls.current_data = current_data
-
 
     @classmethod
     def save_as_ordered_dict(cls) -> None:

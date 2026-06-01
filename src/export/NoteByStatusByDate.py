@@ -2,6 +2,7 @@ from src.export.IOdsTabExport import IOdsTabExport
 from src.export.OdsTabExportBase import OdsTabExportBase
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
+from src.models.NoteList import NoteList
 
 
 class NoteByStatusByDate(IOdsTabExport):
@@ -17,9 +18,9 @@ class NoteByStatusByDate(IOdsTabExport):
             self.config_manager.EXPORT_TH_PROBLEMS
         ], self.config_manager.EXPORT_TAB_NAME_DEFAULT)
 
-    async def run_export(self) -> None:
+    async def run_export(self, current_data: NoteList) -> None:
         self.add_header()
-        for note in OdsTabExportBase.current_data.notes:
+        for note in current_data.notes:
             OdsTabExportBase.add_sheet_row(
                 [note.date, note.done, note.in_progress, note.problems],
                 self.config_manager.EXPORT_TAB_NAME_DEFAULT)

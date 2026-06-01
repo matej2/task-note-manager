@@ -1,5 +1,6 @@
+import copy
 import logging
-import tkinter
+from customtkinter import CTkTextbox as Text, CTkLabel as Label
 
 import yaml
 
@@ -17,10 +18,10 @@ from src.utils.YamlUtils import YamlUtils
 class DataManager(DataManagerBase):
 
     def __init__(self,
-                 things_done: tkinter.Text,
-                 things_in_progress: tkinter.Text,
-                 problems: tkinter.Text,
-                 status: tkinter.Label,
+                 things_done: Text,
+                 things_in_progress: Text,
+                 problems: Text,
+                 status: Label,
                  file_manager: FileManager,
                  config_manager: ConfigManager,
                  note_factory: NoteEntryFactory,
@@ -54,10 +55,18 @@ class DataManager(DataManagerBase):
 
     @staticmethod
     def __override_existing_data_with_new_note(note_list: NoteList, entry: NoteEntry) -> None:
-        note_list.notes = [entry if entry.date == n.date else n for n in note_list.notes]
+        is_found = False
+        note_list_copy = copy.deepcopy(note_list)
+        for i, n in enumerate(note_list_copy.notes):
+            if n.date == entry.date:
+                note_list.notes[i] = entry
+                is_found = True
+
+        if not is_found:
+            note_list.notes.append(entry)
 
     @staticmethod
-    def __get_text_from_input(input_text: tkinter.Text):
+    def __get_text_from_input(input_text: Text):
         return input_text.get("1.0", "end-1c")
 
     async def process_save_input(self, current_data: NoteList) -> NoteList:

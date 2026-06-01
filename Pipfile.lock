@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9c270fb5118bad1770df7e7be495f0dfef45d9f8e9731a5d15c2b0de6270aaa3"
+            "sha256": "8c4365c116c1c4a58c85e8fe9b264167106bbef8dddbed0e1cb02c08d38b7b14"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -24,6 +24,23 @@
             "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==3.11.2"
+        },
+        "customtkinter": {
+            "hashes": [
+                "sha256:14ad3e7cd3cb3b9eb642b9d4e8711ae80d3f79fb82545ad11258eeffb2e6b37c",
+                "sha256:fd8db3bafa961c982ee6030dba80b4c2e25858630756b513986db19113d8d207"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.7'",
+            "version": "==5.2.2"
+        },
+        "darkdetect": {
+            "hashes": [
+                "sha256:a7509ccf517eaad92b31c214f593dbcf138ea8a43b2935406bbd565e15527a85",
+                "sha256:b5428e1170263eb5dea44c25dc3895edd75e6f52300986353cd63533fe7df8b1"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==0.8.0"
         },
         "lml": {
             "hashes": [
@@ -180,6 +197,14 @@
             "index": "pypi",
             "version": "==0.3.1"
         },
+        "packaging": {
+            "hashes": [
+                "sha256:5fc45236b9446107ff2415ce77c807cee2862cb6fac22b8a73826d0693b0980e",
+                "sha256:ff452ff5a3e828ce110190feff1178bb1f2ea2281fa2075aadb987c2fb221661"
+            ],
+            "markers": "python_version >= '3.8'",
+            "version": "==26.2"
+        },
         "pyexcel-ezodf": {
             "hashes": [
                 "sha256:972eeea9b0e4bab60dfc5cdcb7378cc7ba5e070a0b7282746c0182c5de011ff1",
@@ -283,14 +308,6 @@
             "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==6.0.3"
-        },
-        "tk": {
-            "hashes": [
-                "sha256:60bc8923d5d35f67f5c6bd93d4f0c49d2048114ec077768f959aef36d4ed97f8",
-                "sha256:703a69ff0d5ba2bd2f7440582ad10160e4a6561595d33457dc6caa79b9bf4930"
-            ],
-            "index": "pypi",
-            "version": "==0.1.0"
         },
         "typing-extensions": {
             "hashes": [

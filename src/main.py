@@ -1,8 +1,7 @@
 import asyncio
-import tkinter
 from collections import OrderedDict
 from datetime import datetime, timedelta, timezone
-from tkinter import END, NORMAL, DISABLED
+from customtkinter import END, NORMAL, DISABLED, CTkTextbox as Text
 
 import notify2
 
@@ -56,7 +55,6 @@ class Application(UI):
 
         self.__configure_buttons()
         self.__configure_bindings()
-        notify2.init("test")
 
     async def __after_setup(self):
         self.current_data = await self.data_manager.read_data_from_file_async_direct()
@@ -68,19 +66,25 @@ class Application(UI):
         self.__set_note_input_text(today_note_entry)
 
     def __configure_buttons(self):
-        self.submit_button.config(command=self.__on_click_submit_button)
-        self.open_file.config(command=self.data_manager.file_manager.open_file_in_ext_app)
-        self.export_button.config(command=self.__on_click_export_button)
+        self.submit_button.configure(command=self.__on_click_submit_button)
+        self.open_file.configure(command=self.data_manager.file_manager.open_file_in_ext_app)
+        self.export_button.configure(command=self.__on_click_export_button)
 
     def __on_click_export_button(self):
-        asyncio.run(self.export_manager.export_data())
+        asyncio.run(self.process_export())
+
+    async def process_export(self):
+        await self.data_manager.process_save_input(self.current_data)
+        await self.export_manager.export_data(self.current_data)
+        Notification.send_info_notification("Export completed")
+
 
     def __after_submit(self, note_list: NoteList):
-        self.notification.config(text="")
-        self.task_list.see(tkinter.END)
+        self.notification.configure(text="")
+        self.task_list.see(END)
         all_task_names = [str(s.name)+", " for s in self.task_manager.get_tasks_from_note_list(note_list)]
         task_names = "".join(list(OrderedDict.fromkeys(all_task_names)))
-        self.task_name_list.config(text=f"Tasks:\n\n{task_names}")
+        self.task_name_list.configure(text=f"Tasks:\n\n{task_names}")
 
     def __on_click_submit_button(self, *args):
         asyncio.run(self.save_data())
@@ -89,6 +93,7 @@ class Application(UI):
     async def save_data(self):
         self.current_data = await self.data_manager.process_save_input(self.current_data)
         await self.__update_data()
+        Notification.send_info_notification("Data saved")
 
     def __set_note_input_text(self, entry: NoteEntry):
         self.__set_text(self.done_field, entry.done)
@@ -96,37 +101,34 @@ class Application(UI):
         self.__set_text(self.problems_field, entry.problems)
 
     @staticmethod
-    def __set_text_and_disable(field:tkinter.Text, value: str):
+    def __set_text_and_disable(field:Text, value: str):
         field.configure(state=NORMAL)
         Application.__set_text(field, value)
         field.configure(state=DISABLED)
 
     @staticmethod
-    def __set_text(text: tkinter.Text, value: str):
+    def __set_text(text: Text, value: str):
         text.delete(1.0, END)
         text.insert(END, str(value))
 
     async def __update_data(self):
         formatted_note_entries = [(f"Date: {n.date}\n"
-                                   f"Done: {n.done}\n"
-                                   f"In progress: {n.in_progress}\n"
-                                   f"Problems: {n.problems}") for n in self.current_data.notes]
+                                   f"- Done: {n.done}\n"
+                                   f"- In progress: {n.in_progress}\n"
+                                   f"- Problems: {n.problems}") for n in self.current_data.notes]
         formatted_note_output = "\n\n".join(formatted_note_entries)
 
-        last_entry_list = self.current_data.notes[-1:]
-        if len(last_entry_list) > 0:
-            last_entry = last_entry_list[0]
-        else:
-            last_entry = NoteEntry()
+        today_note_entry = self.data_manager.extract_today_notes(self.current_data)
+
 
         self.__set_text_and_disable(self.task_list, formatted_note_output)
-        self.__set_note_input_text(last_entry)
+        self.__set_note_input_text(today_note_entry)
         self.__after_submit(self.current_data)
 
     def __trigger_notification(self):
         self.notification_manager.send_notification()
         self.root.focus_force()
-        self.notification.config(text="Daily notification to enter data")
+        self.notification.configure(text="Daily notification to enter data")
 
     def __configure_bindings(self):
         self.__set_bindings(self.done_field)
@@ -134,7 +136,6 @@ class Application(UI):
         self.__set_bindings(self.problems_field)
 
     def __set_bindings(self, widget):
-        widget.bind("<Return>", self.__on_click_submit_button)
         widget.bind("<Tab>", UI._focus_next_widget)
         widget.bind("<Control_L>s", self.__on_click_submit_button)
 

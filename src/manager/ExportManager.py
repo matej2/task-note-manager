@@ -17,17 +17,16 @@ class ExportManager:
         self.data_manager = data_manager
         self.task_manager = task_manager
 
-        OdsTabExportBase.init(config_manager, data_manager, current_data)
+        OdsTabExportBase.init(config_manager, data_manager)
 
         self.registered_export_types = [
             NoteByStatusByDate(config_manager, data_manager),
             NoteByTaskNameByDate(config_manager, data_manager, task_manager),
         ]
 
-    async def export_data(self) -> None:
-        #await self.data_manager.save_input_data()
+    async def export_data(self, current_data: NoteList) -> None:
         OdsTabExportBase.delete_data()
 
         for registered_type in self.registered_export_types:
-            await registered_type.run_export()
+            await registered_type.run_export(current_data)
 
