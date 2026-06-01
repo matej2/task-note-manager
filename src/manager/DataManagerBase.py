@@ -20,4 +20,4 @@ class DataManagerBase:
 
     async def _write_data_to_file_direct(self, note_list: NoteList):
         with self.file_manager.get_write_wrapper() as file:
-            yaml.dump(note_list, file)
+            yaml.dump(note_list, file, allow_unicode=True)
