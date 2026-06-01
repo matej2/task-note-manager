@@ -36,7 +36,7 @@ class ConfigManager:
         self.NEW_NOTE_INPUT_PADX = 20
         self.NEW_NOTE_INPUT_PADY = 20
         self.NEW_NOTE_LABEL_PADX = 5
-        self.NEW_NOTE_LABEL_PADY = 10
+        self.NEW_NOTE_LABEL_PADY = 5
         self.BUTTON_BORDER_SPACING = 10
         self.BUTTON_PADX = 20
         self.BUTTON_PADY = 10

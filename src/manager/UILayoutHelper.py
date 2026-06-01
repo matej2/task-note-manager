@@ -12,7 +12,7 @@ class UILayoutHelper:
 
     def display_new_note_input(self, parent: Frame, row: int, column: int) -> CTkTextbox:
         field = Text(master=parent)
-        field.configure(font=self.config_manager.get_regular_font(), wrap=WORD, width=200, height=100)
+        field.configure(font=self.config_manager.get_regular_font(), wrap=WORD, width=300, height=150)
         field.grid(row=row, column=column, pady=self.config_manager.NEW_NOTE_INPUT_PADY,
                              padx=self.config_manager.NEW_NOTE_INPUT_PADX)
         return field
@@ -20,7 +20,7 @@ class UILayoutHelper:
 
     def display_status_input(self, parent: Frame, row: int, column: int):
         field = self.display_new_note_input(parent, row, column)
-        field.configure(state=DISABLED, height=400)
+        field.configure(state=DISABLED, height=500, width=300)
         return field
 
     def display_new_note_label(self, text: str, parent: Frame, row: int, column: int) -> Label:
