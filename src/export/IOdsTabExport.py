@@ -1,6 +1,7 @@
 import logging
 from abc import ABC, abstractmethod
-from datetime import date
+
+from src.models.NoteList import NoteList
 
 
 class IOdsTabExport(ABC):
@@ -11,5 +12,5 @@ class IOdsTabExport(ABC):
         pass
 
     @abstractmethod
-    async def run_export(self) -> None:
+    async def run_export(self, current_data: NoteList) -> None:
         pass

@@ -7,6 +7,7 @@ from src.manager.DataManager import DataManager
 from src.manager.TaskManager import TaskManager
 from src.models.LocalizedDate import LocalizedDate
 from src.models.NoteEntry import NoteEntry
+from src.models.NoteList import NoteList
 
 
 class NoteByTaskNameByDate(IOdsTabExport):
@@ -24,11 +25,11 @@ class NoteByTaskNameByDate(IOdsTabExport):
             date_list.append(week_day)
         return list(reversed(date_list))
 
-    async def run_export(self) -> None:
+    async def run_export(self, current_data: NoteList) -> None:
         first_row = self.add_header()
 
         for date_index, date_value in enumerate(first_row):
-            for note in OdsTabExportBase.current_data.notes:
+            for note in current_data.notes:
                 self.__process_data_for_date(note, date_index, date_value)
 
 

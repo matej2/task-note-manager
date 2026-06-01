@@ -72,7 +72,12 @@ class Application(UI):
         self.export_button.configure(command=self.__on_click_export_button)
 
     def __on_click_export_button(self):
-        asyncio.run(self.export_manager.export_data())
+        asyncio.run(self.process_export())
+
+    async def process_export(self):
+        await self.data_manager.process_save_input(self.current_data)
+        await self.export_manager.export_data(self.current_data)
+
 
     def __after_submit(self, note_list: NoteList):
         self.notification.configure(text="")
