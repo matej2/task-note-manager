@@ -30,7 +30,6 @@ class UI(Frame):
         self.root.grid(row=0, column=0, padx=20, pady=20 , sticky="nsew")
 
         # Buttons
-        self.button_container = Frame(None)
         self.submit_button = Button(None)
         self.open_file = Button(None)
         self.list_button = Button(None)
@@ -38,12 +37,12 @@ class UI(Frame):
         self.export_button = Button(None)
 
         # Task list
-        self.task_list_container = Frame(None)
+        self.task_list_container = self.ui_helper.display_frame(self.root, 0, 1)
         self.task_list = None
         self.task_name_list = Label(None)
 
         # Input fields
-        self.input_container = Frame(None)
+        self.input_container = self.ui_helper.display_frame(self.root, 0, 0)
         self.done_field = None
         self.in_progress_field = None
         self.problems_field = None
@@ -60,12 +59,10 @@ class UI(Frame):
 
 
     def __configure_button_widgets(self):
-        self.button_container = self.ui_helper.display_frame(self.root, 1, 0, columnspan=2)
-
-        self.submit_button = self.ui_helper.display_button("Submit",self.button_container,0,0, True)
-        self.open_file = self.ui_helper.display_button("Open File", self.button_container, 0, 1)
-        self.export_button = self.ui_helper.display_button("Export data - ODS", self.button_container, 0, 2)
-        self.instructions_button = self.ui_helper.display_button("Instructions", self.button_container, 0, 3)
+        self.submit_button = self.ui_helper.display_button("Submit",self.input_container,6,0, True)
+        self.open_file = self.ui_helper.display_button("Open File", self.task_list_container, 3, 0)
+        self.export_button = self.ui_helper.display_button("Export data - ODS", self.task_list_container, 3, 1)
+        self.instructions_button = self.ui_helper.display_button("Instructions", self.task_list_container, 3, 2)
 
         self.instructions_button.configure(command=self.__open_information_popup)
 
@@ -77,8 +74,6 @@ class UI(Frame):
 
 
     def __configure_input_widgets(self):
-        self.input_container = self.ui_helper.display_frame(self.root, 0, 0)
-
         self.ui_helper.display_new_note_label(
             "What was done: ",
             self.input_container,
@@ -118,9 +113,7 @@ class UI(Frame):
 
 
     def __configure_status_widgets(self):
-        self.task_list_container =  self.ui_helper.display_frame(self.root, 0, 1)
-
-        self.ui_helper.display_new_note_label("Todays notes: ", self.task_list_container, 0, 0)
+        self.ui_helper.display_todays_notes_label("Todays notes: ", self.task_list_container, 0, 0)
 
         self.task_list = self.ui_helper.display_status_input(
             self.task_list_container,
@@ -131,7 +124,7 @@ class UI(Frame):
         self.task_name_list = self.ui_helper.display_new_note_label(
             "",
             self.task_list_container,
-            3,
+            2,
             0
         )
 

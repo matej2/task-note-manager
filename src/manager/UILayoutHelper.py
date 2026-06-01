@@ -17,10 +17,21 @@ class UILayoutHelper:
                              padx=self.config_manager.NEW_NOTE_INPUT_PADX)
         return field
 
+    def display_todays_notes_label(self, text: str, parent: Frame, row: int, column: int) -> Label:
+        field = self.display_new_note_label(text, parent, row, column)
+        field.grid(columnspan=3)
+        return field
+
 
     def display_status_input(self, parent: Frame, row: int, column: int):
         field = self.display_new_note_input(parent, row, column)
-        field.configure(state=DISABLED, height=500, width=300)
+        field.configure(state=DISABLED, height=500, width=400)
+        field.grid(columnspan=3)
+        return field
+
+    def display_task_name_list_label(self, text: str, parent: Frame, row: int, column: int) -> Label:
+        field = self.display_new_note_label(text, parent, row, column)
+        field.grid(columnspan=3)
         return field
 
     def display_new_note_label(self, text: str, parent: Frame, row: int, column: int) -> Label:
