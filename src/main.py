@@ -48,7 +48,7 @@ class Application(UI):
             self.current_data
         )
         self.task_manager = TaskManager(self.config_manager)
-        self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager, self.current_data)
+        self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager)
 
         self._update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency_hours))
         self.scheduler = Scheduler(self.__trigger_notification, self._update_time_until_next_run, self.config_manager)

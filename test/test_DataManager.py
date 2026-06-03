@@ -1,4 +1,3 @@
-import unittest
 from unittest import IsolatedAsyncioTestCase
 from unittest.mock import Mock, patch, AsyncMock
 

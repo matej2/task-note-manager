@@ -11,8 +11,7 @@ class ExportManager:
 
     def __init__(self, config_manager: ConfigManager,
                  data_manager: DataManager,
-                 task_manager: TaskManager,
-                 current_data: NoteList) -> None:
+                 task_manager: TaskManager) -> None:
         self.config_manager = config_manager
         self.data_manager = data_manager
         self.task_manager = task_manager

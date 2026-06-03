@@ -8,20 +8,20 @@ from src.models.NoteList import NoteList
 
 
 class YamlUtils:
-    _allowed_nodes = [
+    __allowed_nodes = {
         "date",
         "problems",
         "done",
         "in_progress"
-    ]
+    }
 
     @staticmethod
-    def remove_unknown_keys(value: dict) -> dict:
-        result = {}
-        for key, value in value.items():
-            if key in YamlUtils._allowed_nodes:
-                result[key] = value
-        return result
+    def remove_unknown_keys(data: dict) -> dict:
+        return {
+            key: val
+            for key, val in data.items()
+            if key in YamlUtils.__allowed_nodes
+        }
 
     @staticmethod
     def note_entry_constructor(loader: yaml.SafeLoader, node: yaml.nodes.MappingNode) -> NoteEntry:
