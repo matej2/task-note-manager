@@ -41,9 +41,10 @@ class YamlUtils:
         return loader
 
     @staticmethod
-    def note_list_representer(dumper, data: NoteList): return dumper.represent_mapping("!NoteList", data.__dict__)
+    def note_list_representer(dumper, data: NoteList):
+        return dumper.represent_mapping("!NoteList", data.__dict__)
 
     @staticmethod
-    def note_entry_representer(dumper, data: NoteEntry): return dumper.represent_mapping("!NoteEntry",
-                                                                                         data.__dict__)
+    def note_entry_representer(dumper, data: NoteEntry):
+        return dumper.represent_mapping("!NoteEntry",data.__dict__)
 
