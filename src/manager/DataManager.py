@@ -1,5 +1,7 @@
 import copy
 import logging
+from types import NoneType
+
 from customtkinter import CTkTextbox as Text, CTkLabel as Label
 
 import yaml
@@ -40,6 +42,8 @@ class DataManager(DataManagerBase):
 
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
+        yaml.add_representer(str, YamlUtils.string_representer, Dumper=yaml.Dumper)
+        yaml.add_representer(NoneType, YamlUtils.none_representer, Dumper=yaml.Dumper)
 
     # Use self.current:data
     def extract_today_notes(self, note_list : NoteList) -> NoteEntry:

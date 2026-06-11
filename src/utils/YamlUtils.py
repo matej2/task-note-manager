@@ -46,5 +46,13 @@ class YamlUtils:
 
     @staticmethod
     def note_entry_representer(dumper, data: NoteEntry):
-        return dumper.represent_mapping("!NoteEntry",data.__dict__)
+        return dumper.represent_mapping("!NoteEntry",
+                                        {k: (None if v == '' else v) for k, v in data.__dict__.items()})
 
+    @staticmethod
+    def string_representer(dumper, data):
+        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
+
+    @staticmethod
+    def none_representer(dumper, data):
+        return dumper.represent_scalar('tag:yaml.org,2002:str', '', style='"')
