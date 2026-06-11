@@ -52,3 +52,7 @@ When building this application locally, note that antivirus may flag it as poten
    - `--noconsole`: Hides the console window when running the executable.  
    - `--onefile`: Bundles all files into a single executable.  
    - `--windowed`: Ensures the app runs as a GUI application.
+
+# Test run 
+
+    coverage run -m unittest discover && coverage html
