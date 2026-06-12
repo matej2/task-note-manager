@@ -1,8 +1,6 @@
 name: Run tests when PR is created
 
-on:
-  pull_request:
-    types: [opened, reopened]
+on: issue_comment
 
 permissions:
     contents: read
@@ -10,6 +8,8 @@ permissions:
 
 jobs:
   run-tests:
+    name: Run tests on PR when new comment is added
+    if: contains(github.event.comment.body, '/test')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
