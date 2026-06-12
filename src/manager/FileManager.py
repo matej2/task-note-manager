@@ -1,3 +1,6 @@
+import os
+import platform
+import subprocess
 import webbrowser
 from io import TextIOWrapper
 from typing import Any, IO
@@ -21,5 +24,10 @@ class FileManager:
         return open(self.full_path, "w")
 
     def open_file_in_ext_app(self):
-        webbrowser.open(self.full_path)
+        if platform.system() == 'Darwin':  # macOS
+            subprocess.call(('open', self.full_path))
+        elif platform.system() == 'Windows':  # Windows
+            os.startfile(self.full_path)
+        else:  # linux variants
+            subprocess.call(('xdg-open', self.full_path))
 
