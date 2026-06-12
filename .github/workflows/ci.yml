@@ -9,6 +9,8 @@ jobs:
     name: Run tests on PR when new comment is added
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Checkout branch
         run: |
           gh pr checkout ${{ github.event.issue.number }}
