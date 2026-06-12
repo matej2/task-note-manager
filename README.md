@@ -62,3 +62,5 @@ Run the tests:
 In order to get test coverage, run the following command and then open `htmlcov/index.html`
 
     coverage run -m unittest discover && coverage html
+
+test
