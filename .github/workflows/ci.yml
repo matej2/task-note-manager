@@ -45,9 +45,14 @@ jobs:
           pipenv run coverage run -m unittest discover -s test && pipenv run coverage xml -o coverage.xml
 
       - name: Post coverage comment
-        run: |
-          TOTAL=$(pipenv run coverage report --format=total)
-          gh pr comment ${{ github.event.issue.number }} --body "## Coverage Report
-          Total coverage: **${TOTAL}%**"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { execSync } = require('child_process');
+            const total = execSync('pipenv run coverage report --format=total', { cwd: process.env.GITHUB_WORKSPACE }).toString().trim();
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: `## Coverage Report\nTotal coverage: **${total}%**`
+            });
