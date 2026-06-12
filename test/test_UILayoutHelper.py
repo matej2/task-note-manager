@@ -1,3 +1,4 @@
+import os
 import unittest
 from unittest.mock import Mock, patch
 
@@ -8,6 +9,10 @@ from src.manager.UILayoutHelper import UILayoutHelper
 
 class TestUILayoutHelper(unittest.TestCase):
     def setUp(self):
+        if os.name != "nt" and os.getenv("GITHUB_ACTIONS"):
+            os.system('Xvfb :1 -screen 0 1600x1200x16  &')
+            os.environ["DISPLAY"] = ":1.0"
+
         self.root = CTk()
 
         config_manager = Mock()
