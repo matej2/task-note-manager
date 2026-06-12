@@ -3,6 +3,8 @@ name: Run tests when PR is created
 on:
   issue_comment:
     types: [created]
+  pull_request:
+    types: [opened,reopened]
 
 jobs:
   run-tests:
