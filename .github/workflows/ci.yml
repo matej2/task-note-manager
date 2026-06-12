@@ -40,9 +40,14 @@ jobs:
         run: |
           pipenv run coverage run -m unittest discover -s test && pipenv run coverage xml -o coverage.xml
 
-      - name: Get Cover
-        uses: orgoro/coverage@v3.2
-        with:
-          coverageFile: coverage.xml
-          thresholdAll: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run tests with coverage
+        run: |
+          pipenv run coverage run -m unittest discover -s test && pipenv run coverage xml -o coverage.xml
+
+      - name: Post coverage comment
+        run: |
+          TOTAL=$(pipenv run coverage report --format=total)
+          gh pr comment ${{ github.event.issue.number }} --body "## Coverage Report
+          Total coverage: **${TOTAL}%**"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
