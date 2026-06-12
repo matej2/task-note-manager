@@ -84,7 +84,8 @@ class Application(UI):
         self.task_list.see(END)
         all_task_names = [str(s.name)+", " for s in self.task_manager.get_tasks_from_note_list(note_list)]
         task_names = "".join(list(OrderedDict.fromkeys(all_task_names)))
-        self.task_name_list.configure(text=f"Tasks:\n\n{task_names}")
+
+        Application.__set_text_and_disable(self.task_name_list, f"{task_names}")
 
     def __on_click_submit_button(self, *args):
         asyncio.run(self.save_data())
