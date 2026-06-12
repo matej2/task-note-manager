@@ -23,7 +23,7 @@ class ConfigManager:
 
         # Excel export
         self.EXPORT_EMPTY_ROW = ["No data", ]
-        self.EXPORT_FILE_NAME = os.path.join(ConfigManager._get_full_curr_dir_path(), "../../task_notes.ods")
+        self.EXPORT_FILE_NAME = os.path.join(ConfigManager.get_full_curr_dir_path(), "../../task_notes.ods")
         self.EXPORT_TAB_NAME_DEFAULT = "Default"
         self.EXPORT_TAB_NAME_TASK_NAMES = "Task names"
 
@@ -52,7 +52,7 @@ class ConfigManager:
         self.PRIMARY_BUTTON_COLOR_HOVER = "#2E7D32"
 
         # Yaml
-        self.FULL_PATH = os.path.join(ConfigManager._get_full_curr_dir_path(), "task_notes.yaml")
+        self.FULL_PATH = os.path.join(ConfigManager.get_full_curr_dir_path(), "task_notes.yaml")
 
         # Logging
         logging.basicConfig(
@@ -61,7 +61,7 @@ class ConfigManager:
             datefmt="%d-%b-%y %H:%M:%S")
 
     @staticmethod
-    def _get_full_curr_dir_path():
+    def get_full_curr_dir_path():
         if platform.system() == "Windows":
             os.makedirs(os.path.join(os.environ["APPDATA"], "TaskNoteManager"), exist_ok=True)
             return os.path.join(os.environ["APPDATA"], "TaskNoteManager")
