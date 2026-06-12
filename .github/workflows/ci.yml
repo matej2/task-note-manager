@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: '3.11.4'
 
-      - name: Install Pipenv
+      - name: Install dependencies with apt get
         run: |
           sudo apt-get install libdbus-1-dev libdbus-glib-1-dev
 
