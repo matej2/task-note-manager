@@ -10,7 +10,7 @@ class TestExportManager(IsolatedAsyncioTestCase):
     @patch("src.manager.ExportManager.NoteByStatusByDate")
     @patch("src.manager.ExportManager.OdsTabExportBase")
     async def test_export_data(self, export_base_mock, by_status_mock, by_task_mock):
-        export_base_mock.init.return_value = None
+        export_base_mock.set_dependencies.return_value = None
         export_base_mock.delete_data.return_value = None
 
         status_instance = MagicMock()
@@ -35,7 +35,7 @@ class TestExportManager(IsolatedAsyncioTestCase):
         by_status_mock.assert_called_once()
         by_task_mock.assert_called_once()
 
-        export_base_mock.init.assert_called_once()
+        export_base_mock.set_dependencies.assert_called_once()
         export_base_mock.delete_data.assert_called_once()
 
         status_instance.run_export.assert_called_once_with(input_note_list)

@@ -11,6 +11,8 @@ class NoteEntry:
     def is_empty(self) -> bool:
         return self.done == "" and self.in_progress == "" and self.problems == ""
 
-    def __eq__(self, other: Self):
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, NoteEntry):
+            return NotImplemented
         return self.date == other.date and self.done == other.done and self.in_progress == other.in_progress and self.problems == other.problems
 

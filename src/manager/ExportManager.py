@@ -16,7 +16,7 @@ class ExportManager:
         self.data_manager = data_manager
         self.task_manager = task_manager
 
-        OdsTabExportBase.init(config_manager, data_manager)
+        OdsTabExportBase.set_dependencies(config_manager, data_manager)
 
         self.registered_export_types = [
             NoteByStatusByDate(config_manager, data_manager),
