@@ -81,7 +81,7 @@ jobs:
       # Step 5: Build the application using PyInstaller
       - name: Build with PyInstaller
         run: |
-          pipenv run pyinstaller --noconsole --onefile --windowed --name "Task Note Manager" --paths=.  src/main.py
+          pipenv run pyinstaller --noconsole --onefile --windowed  --paths=.  src/main.py
 
       # Step 6: Upload executable to release assets
       - name: Upload Release Asset
@@ -90,6 +90,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}  # This is provided by the release event
-          asset_path: ./dist/main.exe
-          asset_name: TaskNoteManager-${{ github.event.release.tag_name }}.exe
+          asset_path: ./dist/main
+          asset_name: TaskNoteManager-${{ github.event.release.tag_name }}
           asset_content_type: application/octet-stream
