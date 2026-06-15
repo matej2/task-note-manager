@@ -9,7 +9,7 @@ class ConfigManager:
     def __init__(self):
         # Font
         self.FONT_FAMILY = "TkDefaultFont"
-        self.REM_MULT = 13
+        self.REM_MULT = 14
         self.FONT_SIZE_LARGE = 1.3
         self.FONT_SIZE_NORMAL = 1
         self.FONT_SIZE_SMALL = 0.8
