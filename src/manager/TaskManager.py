@@ -11,7 +11,7 @@ class TaskManager:
         self.config_manager = config_manager
 
     def get_tasks_from_note_list(self, note_list: NoteList) -> list[Task]:
-        result = list()
+        result: list[Task] = list()
         for n in note_list.notes:
             result = [*result, *self.get_tasks_from_note_entry(n)]
         return result

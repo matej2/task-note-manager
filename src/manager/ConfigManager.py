@@ -1,10 +1,8 @@
 import logging
 import os
 import platform
-import sys
-from tkinter.font import BOLD
 
-from customtkinter import CTkLabel as Label, WORD, CTkFrame as Frame, CTkTextbox as Text, CTkFont as Font
+from customtkinter import CTkFont as Font
 
 
 class ConfigManager:

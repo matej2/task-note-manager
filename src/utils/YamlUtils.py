@@ -1,4 +1,4 @@
-from typing import Type
+from typing import Type, cast
 
 import yaml
 from yaml import SafeLoader
@@ -8,30 +8,43 @@ from src.models.NoteList import NoteList
 
 
 class YamlUtils:
-    __allowed_nodes = {
+    __allowed_nodes_note_entry = {
         "date",
         "problems",
         "done",
         "in_progress"
     }
 
+    __allowed_nodes_note_list = {
+        "notes"
+    }
+
     @staticmethod
-    def remove_unknown_keys(data: dict) -> dict:
+    def remove_unknown_note_entry_keys(data: dict) -> dict:
         return {
             key: val
             for key, val in data.items()
-            if key in YamlUtils.__allowed_nodes
+            if key in YamlUtils.__allowed_nodes_note_entry
+        }
+
+    @staticmethod
+    def remove_unknown_note_list_keys(data: dict) -> dict:
+        return {
+            key: val
+            for key, val in data.items()
+            if key in YamlUtils.__allowed_nodes_note_list
         }
 
     @staticmethod
     def note_entry_constructor(loader: yaml.SafeLoader, node: yaml.nodes.MappingNode) -> NoteEntry:
-        yaml_nodes = YamlUtils.remove_unknown_keys(loader.construct_mapping(node))
+        yaml_nodes = YamlUtils.remove_unknown_note_entry_keys(loader.construct_mapping(node))
 
         return NoteEntry(**yaml_nodes)
 
     @staticmethod
     def note_entry_list_constructor(loader: yaml.SafeLoader, node: yaml.nodes.MappingNode) -> NoteList:
-        return NoteList(**loader.construct_mapping(node))
+        yaml_nodes = YamlUtils.remove_unknown_note_list_keys(loader.construct_mapping(node))
+        return NoteList(**yaml_nodes)
 
     @staticmethod
     def get_loader() -> Type[SafeLoader]:

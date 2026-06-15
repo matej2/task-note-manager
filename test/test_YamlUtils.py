@@ -15,7 +15,7 @@ class TestYamlUtils(unittest.TestCase):
     def test_remove_unknown_keys(self, yaml_utils_mock):
         yaml_utils = YamlUtils()
 
-        result = yaml_utils.remove_unknown_keys({"done": "test", "notes": "test"})
+        result = yaml_utils.remove_unknown_note_entry_keys({"done": "test", "notes": "test"})
 
 
         assert len(result.keys()) == 1

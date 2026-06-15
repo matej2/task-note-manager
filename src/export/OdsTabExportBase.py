@@ -8,13 +8,13 @@ from src.manager.DataManager import DataManager
 
 
 class OdsTabExportBase:
-    config_manager = None
+    config_manager = ConfigManager()
     logger = logging.getLogger(__name__)
     data_manager = None
-    _sheet_data = {}
+    _sheet_data: dict[str, list] = {}
 
     @classmethod
-    def init(cls, config_manager: ConfigManager, data_manager: DataManager) -> None:
+    def set_dependencies(cls, config_manager: ConfigManager, data_manager: DataManager) -> None:
         """Call only once per app execution"""
         cls.config_manager = config_manager
         cls.data_manager = data_manager
@@ -25,7 +25,7 @@ class OdsTabExportBase:
         save_data(cls.config_manager.EXPORT_FILE_NAME, input_data)
 
     @classmethod
-    def add_sheet_row(cls, data: list[object], tab: str) -> None:
+    def add_sheet_row(cls, data: list[str], tab: str) -> None:
         curr_data = cls._sheet_data.get(tab, list())
         curr_data.append(data)
 
