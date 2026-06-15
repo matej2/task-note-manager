@@ -78,7 +78,7 @@ jobs:
         with:
           script: |
             const { execSync } = require('child_process');
-            const total = execSync('pipenv run coverage report --format=markdown', { cwd: process.env.GITHUB_WORKSPACE }).toString().trim();
+            const total = execSync('pipenv run coverage report -m --format=markdown', { cwd: process.env.GITHUB_WORKSPACE }).toString().trim();
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
