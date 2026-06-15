@@ -1,5 +1,3 @@
-from functools import reduce
-
 from src.models.NoteEntry import NoteEntry
 
 class NoteList:

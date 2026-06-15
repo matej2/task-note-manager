@@ -2,18 +2,16 @@ import copy
 import logging
 from types import NoneType
 
+import yaml
 from customtkinter import CTkTextbox as Text, CTkLabel as Label
 
-import yaml
-
+from src.factory.NoteEntryFactory import NoteEntryFactory
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManagerBase import DataManagerBase
 from src.manager.FileManager import FileManager
-from src.factory.NoteEntryFactory import NoteEntryFactory
 from src.models.LocalizedDate import LocalizedDate
 from src.models.NoteEntry import NoteEntry
 from src.models.NoteList import NoteList
-from src.models.helpers.NoteListHelper import NoteListHelper
 from src.utils.YamlUtils import YamlUtils
 
 

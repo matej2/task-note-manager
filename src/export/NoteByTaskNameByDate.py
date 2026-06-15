@@ -22,7 +22,7 @@ class NoteByTaskNameByDate(IOdsTabExport):
 
         for i in range(0, 7):
             week_day = LocalizedDate(self.config_manager.DATE_FORMAT, today_date - timedelta(days=i))
-            date_list.append(week_day)
+            date_list.append(week_day.date_instance)
         return list(reversed(date_list))
 
     async def run_export(self, current_data: NoteList) -> None:

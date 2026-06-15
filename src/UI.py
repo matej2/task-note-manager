@@ -38,7 +38,7 @@ class UI(Frame):
 
         # Task list
         self.task_list_container = self.ui_helper.display_frame(self.root, 0, 1)
-        self.task_list = None
+        self.task_list = Text(None)
         self.task_name_list = None
 
         # Input fields
