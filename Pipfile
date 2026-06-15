@@ -16,6 +16,7 @@ dbus-python = "*"
 pyinstaller = "*"
 coverage = "*"
 pyvirtualdisplay = "*"
+mypy = "*"
 
 [requires]
 python_version = "3.11.4"
