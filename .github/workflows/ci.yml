@@ -7,25 +7,53 @@ on:
 jobs:
   run-tests:
     name: Run tests on PR when new comment is added
+    # Only run on PR comments (not issue comments) containing "!test"
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '!test')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      statuses: write        # needed to post commit status to the PR
     steps:
+      - name: Get PR HEAD sha
+        id: pr-sha
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.issue.number,
+            });
+            core.setOutput('sha', pr.data.head.sha);
+
+      - name: Set commit status to pending
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: '${{ steps.pr-sha.outputs.sha }}',
+              state: 'pending',
+              context: 'Run tests',
+              description: 'Tests are running...',
+            });
+
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Checkout branch
-        run: |
-          gh pr checkout ${{ github.event.issue.number }}
+        run: gh pr checkout ${{ github.event.issue.number }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11.4'
 
       - name: Install dependencies with apt get
-        run: |
-          sudo apt-get install -y libdbus-1-dev libdbus-glib-1-dev
+        run: sudo apt-get install -y libdbus-1-dev libdbus-glib-1-dev
 
       - name: Install Pipenv
         run: |
@@ -33,16 +61,10 @@ jobs:
           pip install pipenv
 
       - name: Install dependencies with Pipenv
-        run: |
-          pipenv install --dev --deploy
-
-      - name: Run tests with coverage and upload resulting html file
-        run: |
-          pipenv run coverage run -m unittest discover -s test && pipenv run coverage xml -o coverage.xml
+        run: pipenv install --dev --deploy
 
       - name: Run tests with coverage
-        run: |
-          pipenv run coverage run -m unittest discover -s test && pipenv run coverage xml -o coverage.xml
+        run: pipenv run coverage run -m unittest discover -s test && pipenv run coverage xml -o coverage.xml
 
       - name: Post coverage comment
         uses: actions/github-script@v7
@@ -55,4 +77,32 @@ jobs:
               repo: context.repo.repo,
               issue_number: context.payload.issue.number,
               body: `## Coverage Report\nTotal coverage: **${total}%**`
+            });
+
+      - name: Set commit status to success
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: '${{ steps.pr-sha.outputs.sha }}',
+              state: 'success',
+              context: 'Run tests',
+              description: 'Tests passed!',
+            });
+
+      - name: Set commit status to failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: '${{ steps.pr-sha.outputs.sha }}',
+              state: 'failure',
+              context: 'Run tests',
+              description: 'Tests failed!',
             });
