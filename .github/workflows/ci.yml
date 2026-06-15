@@ -83,7 +83,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.issue.number,
-              body: `## Coverage Report\nTotal coverage: **${total}%**`
+              body: `## Coverage Report\nTotal coverage: ${total}%`
             });
 
       - name: Set commit status to success
