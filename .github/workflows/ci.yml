@@ -58,7 +58,7 @@ jobs:
       - name: Install GUI dependencies and Xvfb
         run: |
           sudo apt-get update
-          sudo apt-get install -y xvfb python3-tk libx11-dev libxext-dev libxrender-dev libxinerama-dev libxi-dev libxrandr-dev libcursor-dev libglx-mesa0 mesa-utils
+          sudo apt-get install -y xvfb python3-tk libx11-dev libxext-dev libxrender-dev libxinerama-dev libxi-dev libxrandr-dev libxcursor-dev libglx-mesa0 mesa-utils
 
       - name: Install Pipenv
         run: |
