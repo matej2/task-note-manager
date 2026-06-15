@@ -2,8 +2,8 @@
 
 **Task Note Manager** is a simple yet powerful application designed to help users manage their daily tasks, track progress, and identify challenges efficiently. Whether you're a professional, student, or just someone looking to stay organized, this tool is built to streamline your workflow and keep you on top of your responsibilities.
 
-![ui screenshot](src/resources/ui.png "UI Screenshot")
-![file screenshot](src/resources/file.png "File Screenshot")
+![ui screenshot](resources/app.png "UI Screenshot")
+![file screenshot](resources/file.png "File Screenshot")
  
 ## Download and usage instructions
 
@@ -40,8 +40,8 @@ Whether you're managing personal goals or team projects, Task Note Manager is he
 Make sure you have Python 3.11.7 or higher installed. You would also need pipenv.
 
 1. `sudo apt-get install -y libdbus-1-dev libdbus-glib-1-dev`
-1. `pipenv install`
-2. `pipenv run python main.py`
+2`pipenv install`
+3`pipenv run python main.py`
 
 # Build instructions
 
