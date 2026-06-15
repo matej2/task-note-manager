@@ -64,7 +64,7 @@ jobs:
         run: pipenv install --dev --deploy
 
       - name: Run tests with coverage
-        run: coverage run --source=./src -m unittest discover -s test/
+        run: pipenv run coverage run --source=./src -m unittest discover -s test/
 
       - name: Post coverage comment
         uses: actions/github-script@v7
