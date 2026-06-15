@@ -11,12 +11,12 @@ pyexcel-ods3 = "*"
 typing-extensions = "*"
 customtkinter = "*"
 dbus-python = "*"
+pyinstaller = "*"
 
 [dev-packages]
-pyinstaller = "*"
 coverage = "*"
 pyvirtualdisplay = "*"
 mypy = "*"
 
 [requires]
-python_version = "3.11.4"
+python_version = "3.11.7"
