@@ -12,6 +12,8 @@ jobs:
       # Step 1: Check out the repository
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: win
 
       # Step 2: Set up Python
       - name: Set up Python
@@ -28,12 +30,12 @@ jobs:
       # Step 4: Install dependencies using Pipenv
       - name: Install dependencies with Pipenv
         run: |
-          pipenv install --dev
+          pipenv install
 
       # Step 5: Build the application using PyInstaller
       - name: Build with PyInstaller
         run: |
-          pipenv run pyinstaller --noconsole --windowed --onefile main.py
+          pipenv run pyinstaller --noconsole --onefile --windowed --name "Task Note Manager" --paths=.  src/main.py
 
       # Step 6: Upload executable to release assets
       - name: Upload Release Asset
@@ -71,12 +73,12 @@ jobs:
       # Step 4: Install dependencies using Pipenv
       - name: Install dependencies with Pipenv
         run: |
-          pipenv install --dev
+          pipenv install
 
       # Step 5: Build the application using PyInstaller
       - name: Build with PyInstaller
         run: |
-          pipenv run pyinstaller --noconsole --windowed --onefile main.py
+          pipenv run pyinstaller --noconsole --onefile --windowed --name "Task Note Manager" --paths=.  src/main.py
 
       # Step 6: Upload executable to release assets
       - name: Upload Release Asset
