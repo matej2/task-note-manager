@@ -69,6 +69,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pipenv
+          
+      - name: Install dependencies with apt get
+        run: sudo apt-get install -y libdbus-1-dev libdbus-glib-1-dev
 
       # Step 4: Install dependencies using Pipenv
       - name: Install dependencies with Pipenv
