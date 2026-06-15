@@ -8,10 +8,14 @@ from src.manager.UILayoutHelper import UILayoutHelper
 
 
 class TestUILayoutHelper(unittest.TestCase):
-    def setUp(self):
-        self.disp = Display()
-        self.disp.start()
+    @classmethod
+    def setUpClass(cls):
+        cls.disp = Display(visible=0, size=(800, 600))
+        cls.disp.start()
 
+        cls.root = CTk()
+
+    def setUp(self):
         config_manager = Mock()
         config_manager.get_regular_font.return_value = CTkFont(
             family="Arial",
@@ -48,5 +52,10 @@ class TestUILayoutHelper(unittest.TestCase):
             assert result.master is not None
             self.__check_position(result)
 
-    def tearDown(self):
-        self.disp.stop()
+    @classmethod
+    def tearDownClass(cls):
+        if hasattr(cls, "root"):
+            cls.root.destroy()
+        if hasattr(cls, "disp"):
+            cls.disp.stop()
+
