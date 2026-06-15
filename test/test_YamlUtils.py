@@ -12,7 +12,7 @@ class TestYamlUtils(unittest.TestCase):
         self.yaml_utils = YamlUtils()
 
     @patch("src.utils.YamlUtils")
-    def test_remove_unknown_keys(self, yaml_utils_mock):
+    def test_remove_unknown_note_entry_keys(self, yaml_utils_mock):
         yaml_utils = YamlUtils()
 
         result = yaml_utils.remove_unknown_note_entry_keys({"done": "test", "notes": "test"})
@@ -20,7 +20,7 @@ class TestYamlUtils(unittest.TestCase):
 
         assert len(result.keys()) == 1
 
-    @patch("src.utils.YamlUtils.YamlUtils.remove_unknown_keys")
+    @patch("src.utils.YamlUtils.YamlUtils.remove_unknown_note_entry_keys")
     def test_note_entry_constructor(self, remove_keys_mock):
         loader_mock = Mock()
         node_mock = Mock()
