@@ -1,48 +1,84 @@
-import unittest
-from unittest.mock import patch, Mock, mock_open
+from unittest import IsolatedAsyncioTestCase
+from unittest.mock import Mock, patch, AsyncMock
 
-from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
-from src.manager.FileManager import FileManager
-from src.utils.NoteListTestUtils import NoteListTestUtils
+from src.models.NoteEntry import NoteEntry
+from src.models.NoteList import NoteList
+from test.util.TestUtils import get_note_list, get_empty_note_list
 
 
-class DataManagerTest(unittest.TestCase):
+class TestDataManager(IsolatedAsyncioTestCase):
     def setUp(self):
-        config_manager_mock = ConfigManager()
-        config_manager_mock.DATE_FORMAT = "%d. %b. %Y"
+        done = Mock()
+        done.get.return_value = "Finished with tests UPDATED"
 
-        file_manager_mock = FileManager(config_manager_mock)
-        file_content = "key: value"
-        m = mock_open(read_data=file_content)
-        self.patch_open = patch("builtins.open", m)
-        self.patch_open.__enter__()
+        in_progress = Mock()
+        in_progress.get.return_value = "Refactoring UPDATED"
 
-        file_manager_mock.get_read_wrapper = open("dummy")
+        problems = Mock()
+        problems.get.return_value = "Need to prepare docs UPDATED"
+
+        status = Mock()
+
+        file_manager = Mock()
+
+        config_manager = Mock()
+        config_manager.DATE_FORMAT = "%d. %b. %Y"
+
+        note_factory = Mock()
+        note_factory.create_note.return_value = get_note_list().notes[1]
+
+        current_data = get_note_list()
 
         self.data_manager = DataManager(
-            Mock(),
-            Mock(),
-            file_manager_mock,
-            config_manager_mock,
-            Mock()
+            done,
+            in_progress,
+            problems,
+            status,
+            file_manager,
+            config_manager,
+            note_factory,
+            current_data
         )
 
-    @unittest.skip("reason for skipping")
-    @patch("models.helpers.NoteListHelper")
-    def test_extract_todays_notes_for_correct_input(self, note_list_iter):
-        note_list = NoteListTestUtils.get_test_note_list()
-        note_list_iter.return_value = note_list
+    def test_extract_today_notes(self):
+        # Input is None
+        result = self.data_manager.extract_today_notes(None)
+        assert result == NoteEntry()
 
-        note_entry = self.data_manager.get_data_for_current_day(lambda x: x)
+        # Input is defined - todays note is included
+        note_list = get_note_list()
+        result = self.data_manager.extract_today_notes(note_list)
+        assert result is not None
+        assert result.done == "Finished with tests"
+        assert result.in_progress == "Refactoring"
+        assert result.problems == "Need to prepare docs"
 
-        assert note_entry is None
+        # Input is defined - todays note is not included
+        note_list = get_empty_note_list()
+        result = self.data_manager.extract_today_notes(note_list)
+        assert result is not None
+        assert result.done == ""
+        assert result.in_progress == ""
+        assert result.problems == ""
 
-    def test_get_data_for_current_day(self):
-        callable_mock = Mock()
+    async def test_process_save_input_with_defined_note_list(self):
+        note_list = get_note_list()
 
-        self.data_manager.get_data_for_current_day(callable_mock)
+        with patch.object(self.data_manager, "_write_data_to_file_direct", new_callable=AsyncMock) as write_data_mock:
+            await self.data_manager.process_save_input(note_list)
 
-    def tearDown(self):
-        self.patch_open.__exit__()
+            assert write_data_mock.called
+            args, kwargs = write_data_mock.call_args
+            result_note_list:NoteList = args[0]
+            assert len(result_note_list.notes) == 2
+
+    async def test_process_save_input_with_empty_note_list(self):
+        with patch.object(self.data_manager, "_write_data_to_file_direct", new_callable=AsyncMock) as write_data_mock:
+            await self.data_manager.process_save_input(NoteList(notes=list()))
+
+            assert write_data_mock.called
+            args, kwargs = write_data_mock.call_args
+            result_note_list: NoteList = args[0]
+            assert len(result_note_list.notes) == 1
 

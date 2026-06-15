@@ -1,113 +1,42 @@
-import unittest
-from unittest.mock import patch, MagicMock, Mock, mock_open
+from typing import Any
+from unittest import IsolatedAsyncioTestCase
+from unittest.mock import Mock, mock_open, patch, MagicMock, ANY
 
 from src.manager.DataManagerBase import DataManagerBase
-from src.models.NoteEntry import NoteEntry
-from src.models.NoteList import NoteList
+from test.util.TestUtils import get_note_list
 
 
-class TestDataManagerBase(unittest.TestCase):
-    def setUp(self):
-        mock_instance = MagicMock()
-        self.data_manager_base = DataManagerBase(mock_instance)
+class TestDataManagerBase(IsolatedAsyncioTestCase):
+    def setUp(self) -> None:
 
-    @patch('threading.Thread')
-    def test_read_data_from_file_async(self, mock_thread):
-        mock_instance = MagicMock()
-        mock_thread.return_value = mock_instance
+        file_manager_mock = Mock()
+        file_manager_mock.get_read_wrapper = mock_open(read_data="foo")
+        file_manager_mock.get_write_wrapper = mock_open()
 
-        self.data_manager_base.read_data_from_file_async(lambda x: x, {})
+        self.data_manager_base = DataManagerBase(file_manager_mock)
 
-        mock_thread.assert_called_once()
+    async def test_read_data_from_file_async_direct(self):
+        # Empty file
+        with patch("yaml.load") as mock_empty:
+            mock_empty.read.return_value = None
 
-        kwargs = mock_thread.call_args.kwargs
-        self.assertIsNotNone(kwargs.get("target"))
-        kwargs_for_callable = kwargs.get("kwargs")
-        self.assertIsNotNone(kwargs_for_callable.get("read_instance"))
-        self.assertIsNotNone(kwargs_for_callable.get("first_callback"))
-        self.assertIsNotNone(kwargs_for_callable.get("args"))
+            result = await self.data_manager_base.read_data_from_file_async_direct()
 
-        mock_instance.start.assert_called_once()
+            assert result is not None
+            assert len(result.notes) == 1
 
-    @patch('threading.Thread')
-    def test_write_data_from_file_async(self, mock_thread):
-        mock_instance = MagicMock()
-        mock_thread.return_value = mock_instance
-        mock_callback = MagicMock()
+        # Non-empty file
+        with patch("yaml.load") as mock_non_empty:
+            mock_non_empty.return_value = get_note_list() #Should return an NoteList, but the test gets MagicMock
 
-        self.data_manager_base._write_data_to_file_async(NoteList(Mock()), mock_callback)
+            result = await self.data_manager_base.read_data_from_file_async_direct()
 
-        mock_thread.assert_called_once()
+            assert result is not None
+            assert len(result.notes) == 2 # This is empty
 
-        kwargs = mock_thread.call_args.kwargs
-        self.assertIsNotNone(kwargs.get("target"))
-        kwargs_for_callable = kwargs.get("kwargs")
-        self.assertIsNotNone(kwargs_for_callable.get("write_instance"))
-        self.assertIsNotNone(kwargs_for_callable.get("note_list"))
-        self.assertIsNotNone(kwargs_for_callable.get("callback"))
-
-        mock_instance.start.assert_called_once()
-
-    def test_read_data_from_file_with_undefined_arguments(self):
-        file_content = "key: value"
-        m = mock_open(read_data=file_content)
-
-        with patch("builtins.open", m):
-            first_callback = Mock()
-            args = {}
-
-            read_instance = open("dummy")  # will use mocked open
-
-            self.data_manager_base._read_data_from_file(
-                read_instance,
-                first_callback,
-                args
-            )
-
-            first_callback.assert_called_once()
-            args = first_callback.call_args.args
-            self.assertEquals(args[0], {'key': 'value'})
-
-    def test_read_data_from_file_with_defined_arguments(self):
-        file_content = "key: value"
-        m = mock_open(read_data=file_content)
-
-        with patch("builtins.open", m):
-            first_callback = Mock()
-            input_args = {"test": "hello"}
-
-            read_instance = open("dummy")  # will use mocked open
-
-            self.data_manager_base._read_data_from_file(
-                read_instance,
-                first_callback,
-                input_args
-            )
-
-            first_callback.assert_called_once()
-            args = first_callback.call_args.args
-            self.assertEquals(args[0], {'key': 'value'})
-            self.assertEquals(args[1], {'test': 'hello'})
-
-
-    def test_write_data_to_file_with_undefined_arguments(self):
-        m = mock_open()
-        note_list = NoteList(notes=[NoteEntry()])
-
-        with patch("builtins.open", m):
-            first_callback = Mock()
-
-            write_instance = open("dummy")  # will use mocked open
-
-            self.data_manager_base._write_data_to_file(
-                write_instance,
-                note_list,
-                first_callback
-            )
-
-            first_callback.assert_called_once()
-            args = first_callback.call_args.args
-            self.assertEquals(args[0], note_list)
-
-if __name__ == '__main__':
-    unittest.main()
+    async def test_write_data_to_file_direct(self):
+        note_list = get_note_list()
+        with patch("yaml.dump") as dump_mock:
+            await self.data_manager_base._write_data_to_file_direct(note_list)
+            dump_mock.assert_called_once()
+            dump_mock.assert_called_with(note_list, ANY, allow_unicode=True)

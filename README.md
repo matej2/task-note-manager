@@ -37,9 +37,9 @@ Whether you're managing personal goals or team projects, Task Note Manager is he
 
 # Local run instructions
 
-Make sure you have Python 3.11 or higher installed. You would also need pipenv.
+Make sure you have Python 3.11.7 or higher installed. You would also need pipenv.
 
-1. `sudo apt-get install libdbus-1-dev libdbus-glib-1-dev`
+1. `sudo apt-get install -y libdbus-1-dev libdbus-glib-1-dev`
 1. `pipenv install`
 2. `pipenv run python main.py`
 
@@ -52,3 +52,13 @@ When building this application locally, note that antivirus may flag it as poten
    - `--noconsole`: Hides the console window when running the executable.  
    - `--onefile`: Bundles all files into a single executable.  
    - `--windowed`: Ensures the app runs as a GUI application.
+
+# Tests and coverage
+
+Run the tests:
+
+    python -m unittest discover
+
+In order to get test coverage, run the following command and then open `htmlcov/index.html`
+
+    coverage run -m unittest discover && coverage html

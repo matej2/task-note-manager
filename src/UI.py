@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from tkinter import BaseWidget
 
 from customtkinter import LEFT, CTkFrame as Frame, CTk as Tk, CTkButton as Button, CTkLabel as Label, \
-    CTkToplevel as Toplevel
+    CTkToplevel as Toplevel, CTkTextbox as Text
 
 from src.manager.ConfigManager import ConfigManager
 from src.manager.UILayoutHelper import UILayoutHelper
@@ -39,7 +39,7 @@ class UI(Frame):
         # Task list
         self.task_list_container = self.ui_helper.display_frame(self.root, 0, 1)
         self.task_list = None
-        self.task_name_list = Label(None)
+        self.task_name_list = None
 
         # Input fields
         self.input_container = self.ui_helper.display_frame(self.root, 0, 0)
@@ -60,9 +60,9 @@ class UI(Frame):
 
     def __configure_button_widgets(self):
         self.submit_button = self.ui_helper.display_button("Submit",self.input_container,6,0, True)
-        self.open_file = self.ui_helper.display_button("Open YAML File", self.task_list_container, 3, 0)
-        self.export_button = self.ui_helper.display_button("Export data to ODS", self.task_list_container, 3, 1)
-        self.instructions_button = self.ui_helper.display_button("About", self.task_list_container, 3, 2)
+        self.open_file = self.ui_helper.display_button("Open YAML File", self.task_list_container, 4, 0)
+        self.export_button = self.ui_helper.display_button("Export data to ODS", self.task_list_container, 4, 1)
+        self.instructions_button = self.ui_helper.display_button("About", self.task_list_container, 4, 2)
 
         self.instructions_button.configure(command=self.__open_information_popup)
 
@@ -121,13 +121,14 @@ class UI(Frame):
             0
         )
 
-        self.task_name_list = self.ui_helper.display_new_note_label(
-            "",
+        self.ui_helper.display_todays_notes_label("Task list: ", self.task_list_container, 2, 0)
+
+        self.task_name_list = self.ui_helper.display_status_input(
             self.task_list_container,
-            2,
+            3,
             0
         )
-
+        self.task_name_list.configure(height=100, width=400)
 
     def __configure_scheduler_widgets(self):
         self.scheduler_container  = self.ui_helper.display_frame(self.root, 2, 0, columnspan=2)
@@ -168,4 +169,4 @@ class UI(Frame):
 
         about_frame = self.ui_helper.display_frame(top, 0, 0, "About")
 
-        self.ui_helper.display_new_note_label("Task Note Manager is a streamlined tool designed to help you effortlessly track and log your daily work activities.\n\nKey Features & Benefits:\n• Automated Reminders: The app automatically prompts you for input after 6 hours of runtime.\n• Structured Insights: Answer 3 simple questions to capture crucial details about your workday.\n• Meeting & Report Ready: Generated notes are perfect for daily standups, status updates, or personal tracking.\n• Local Storage: All data is saved safely in a clean, human-readable YAML format.\n• Full Control: Click the 'Open file' button to view, edit, or copy entries directly. Every log is marked with '!NoteEntry' for easy customization.", about_frame, 0, 0)
+        self.ui_helper.display_new_note_label(f"Task Note Manager is a streamlined tool designed to help you effortlessly track and log your daily work activities.\n\nKey Features & Benefits:\n• Automated Reminders: The app automatically prompts you for input after 6 hours of runtime.\n• Structured Insights: Answer 3 simple questions to capture crucial details about your workday.\n• Meeting & Report Ready: Generated notes are perfect for daily standups, status updates, or personal tracking.\n• Local Storage: All data is saved safely in a clean, human-readable YAML format.\n• Full Control: Click the 'Open file' button to view, edit, or copy entries directly. Every log is marked with '!NoteEntry' for easy customization.\n\nData is saved in YAML file at {self.config_manager.FULL_PATH}", about_frame, 0, 0)

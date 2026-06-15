@@ -8,20 +8,20 @@ from src.models.NoteList import NoteList
 
 
 class YamlUtils:
-    _allowed_nodes = [
+    __allowed_nodes = {
         "date",
         "problems",
         "done",
         "in_progress"
-    ]
+    }
 
     @staticmethod
-    def remove_unknown_keys(value: dict) -> dict:
-        result = {}
-        for key, value in value.items():
-            if key in YamlUtils._allowed_nodes:
-                result[key] = value
-        return result
+    def remove_unknown_keys(data: dict) -> dict:
+        return {
+            key: val
+            for key, val in data.items()
+            if key in YamlUtils.__allowed_nodes
+        }
 
     @staticmethod
     def note_entry_constructor(loader: yaml.SafeLoader, node: yaml.nodes.MappingNode) -> NoteEntry:
@@ -41,9 +41,18 @@ class YamlUtils:
         return loader
 
     @staticmethod
-    def note_list_representer(dumper, data: NoteList): return dumper.represent_mapping("!NoteList", data.__dict__)
+    def note_list_representer(dumper, data: NoteList):
+        return dumper.represent_mapping("!NoteList", data.__dict__)
 
     @staticmethod
-    def note_entry_representer(dumper, data: NoteEntry): return dumper.represent_mapping("!NoteEntry",
-                                                                                         data.__dict__)
+    def note_entry_representer(dumper, data: NoteEntry):
+        return dumper.represent_mapping("!NoteEntry",
+                                        {k: (None if v == '' else v) for k, v in data.__dict__.items()})
 
+    @staticmethod
+    def string_representer(dumper, data):
+        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
+
+    @staticmethod
+    def none_representer(dumper, data):
+        return dumper.represent_scalar('tag:yaml.org,2002:str', '', style='"')

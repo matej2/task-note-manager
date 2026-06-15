@@ -1,5 +1,7 @@
 import copy
 import logging
+from types import NoneType
+
 from customtkinter import CTkTextbox as Text, CTkLabel as Label
 
 import yaml
@@ -40,44 +42,45 @@ class DataManager(DataManagerBase):
 
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
+        yaml.add_representer(str, YamlUtils.string_representer, Dumper=yaml.Dumper)
+        yaml.add_representer(NoneType, YamlUtils.none_representer, Dumper=yaml.Dumper)
 
+    # Use self.current:data
     def extract_today_notes(self, note_list : NoteList) -> NoteEntry:
         result = NoteEntry()
         if note_list is None:
             return result
 
-        note_list_iter = NoteListHelper.get_note_list_iter(note_list)
-        for note in note_list_iter:
+        for note in note_list.notes:
             if note.date == str(LocalizedDate(self.config_manager.DATE_FORMAT)):
                 result = note
-            break
+                break
         return result
 
     @staticmethod
     def __override_existing_data_with_new_note(note_list: NoteList, entry: NoteEntry) -> None:
-        is_found = False
         note_list_copy = copy.deepcopy(note_list)
+
         for i, n in enumerate(note_list_copy.notes):
             if n.date == entry.date:
                 note_list.notes[i] = entry
-                is_found = True
+                return
 
-        if not is_found:
-            note_list.notes.append(entry)
+        note_list.notes.append(entry)
 
     @staticmethod
-    def __get_text_from_input(input_text: Text):
+    def __get_text_from_input(input_text: Text) -> str:
         return input_text.get("1.0", "end-1c")
 
     async def process_save_input(self, current_data: NoteList) -> NoteList:
 
-        done = DataManager.__get_text_from_input(self.done)
-        to_be_done = DataManager.__get_text_from_input(self.in_progress)
-        problems = DataManager.__get_text_from_input(self.problems)
+        done = self.__get_text_from_input(self.done)
+        to_be_done = self.__get_text_from_input(self.in_progress)
+        problems = self.__get_text_from_input(self.problems)
 
         new_note = self.note_factory.create_note(done, to_be_done, problems)
 
-        DataManager.__override_existing_data_with_new_note(current_data, new_note)
+        self.__override_existing_data_with_new_note(current_data, new_note)
         await self._write_data_to_file_direct(current_data)
         self.logger.debug(f"Wrote data to file, input: {done} {to_be_done} {problems}")
         return current_data

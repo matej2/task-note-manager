@@ -5,13 +5,13 @@ from customtkinter import END, NORMAL, DISABLED, CTkTextbox as Text
 
 import notify2
 
+from src.Scheduler import Scheduler
+from src.UI import UI
+from src.factory.NoteEntryFactory import NoteEntryFactory
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
 from src.manager.ExportManager import ExportManager
 from src.manager.FileManager import FileManager
-from Scheduler import Scheduler
-from UI import UI
-from factory.NoteEntryFactory import NoteEntryFactory
 from src.manager.TaskManager import TaskManager
 from src.models.NoteEntry import NoteEntry
 from src.models.NoteList import NoteList
@@ -47,8 +47,8 @@ class Application(UI):
             self.note_factory,
             self.current_data
         )
-        self.task_manager = TaskManager(self.config_manager, self.data_manager)
-        self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager, self.current_data)
+        self.task_manager = TaskManager(self.config_manager)
+        self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager)
 
         self._update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency_hours))
         self.scheduler = Scheduler(self.__trigger_notification, self._update_time_until_next_run, self.config_manager)
@@ -84,7 +84,8 @@ class Application(UI):
         self.task_list.see(END)
         all_task_names = [str(s.name)+", " for s in self.task_manager.get_tasks_from_note_list(note_list)]
         task_names = "".join(list(OrderedDict.fromkeys(all_task_names)))
-        self.task_name_list.configure(text=f"Tasks:\n\n{task_names}")
+
+        Application.__set_text_and_disable(self.task_name_list, f"{task_names}")
 
     def __on_click_submit_button(self, *args):
         asyncio.run(self.save_data())
@@ -93,7 +94,7 @@ class Application(UI):
     async def save_data(self):
         self.current_data = await self.data_manager.process_save_input(self.current_data)
         await self.__update_data()
-        Notification.send_info_notification("Data saved")
+        Notification.send_info_notification(f"Data saved to file {self.config_manager.FULL_PATH}")
 
     def __set_note_input_text(self, entry: NoteEntry):
         self.__set_text(self.done_field, entry.done)
