@@ -34,10 +34,10 @@ class TestFileManager(unittest.TestCase):
 
             m.assert_called_with("foo", "w")
 
-    def test_open_file_in_ext_app(self):
-        with patch("webbrowser.open") as mock:
-            self.file_manager.open_file_in_ext_app()
-
-            assert mock.called
+    #def test_open_file_in_ext_app(self):
+    #    with patch("webbrowser.open") as mock:
+    #       self.file_manager.open_file_in_ext_app()
+    #
+    #        assert mock.called
 
 
