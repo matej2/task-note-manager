@@ -2,13 +2,15 @@ import unittest
 from unittest.mock import Mock, patch
 
 from customtkinter import CTkFrame, CTk, CTkFont, CTkBaseClass, CTkLabel
+from pyvirtualdisplay import Display
 
 from src.manager.UILayoutHelper import UILayoutHelper
 
 
 class TestUILayoutHelper(unittest.TestCase):
     def setUp(self):
-        self.root = CTk()
+        self.disp = Display()
+        self.disp.start()
 
         config_manager = Mock()
         config_manager.get_regular_font.return_value = CTkFont(
@@ -46,3 +48,5 @@ class TestUILayoutHelper(unittest.TestCase):
             assert result.master is not None
             self.__check_position(result)
 
+    def tearDown(self):
+        self.disp.stop()
