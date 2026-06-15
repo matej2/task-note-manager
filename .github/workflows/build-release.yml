@@ -30,12 +30,12 @@ jobs:
       # Step 4: Install dependencies using Pipenv
       - name: Install dependencies with Pipenv
         run: |
-          pipenv install
+          pipenv install --skip-lock
 
       # Step 5: Build the application using PyInstaller
       - name: Build with PyInstaller
         run: |
-          pipenv run pyinstaller --noconsole --onefile --windowed --name "Task Note Manager" --paths=.  src/main.py
+          pipenv run pyinstaller --noconsole --onefile --windowed --paths=.  src/main.py
 
       # Step 6: Upload executable to release assets
       - name: Upload Release Asset
