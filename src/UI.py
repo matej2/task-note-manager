@@ -133,7 +133,7 @@ class UI(Frame):
     def __configure_scheduler_widgets(self):
         self.scheduler_container  = self.ui_helper.display_frame(self.root, 2, 0, columnspan=2)
 
-        self.counter = self.ui_helper.display_new_note_label("Remaining time: --:--", self.scheduler_container,0, 0)
+        self.counter = self.ui_helper.display_label("Remaining time: --:--", self.scheduler_container,0, 0)
         self.notification = self.ui_helper.display_warning_label("", self.scheduler_container, 0, 1)
 
     def _update_time_until_next_run(self, next_run_time: datetime):
@@ -165,8 +165,8 @@ class UI(Frame):
 
         instructions_frame = self.ui_helper.display_frame(top, 1, 0, "How to use")
 
-        self.ui_helper.display_new_note_label("1. Launch the application at the start of your workday (manually or via startup autorun).\n2. Leave the app running quietly in the background.\n3. After 6 hours of runtime, a prompt will automatically appear on your screen.\n4. Answer 3 quick questions about your completed tasks and progress.\n5. Your log is securely saved, and you can access, edit, or export your data at any time.", instructions_frame, 0, 0)
+        self.ui_helper.display_label("1. Launch the application at the start of your workday (manually or via startup autorun).\n2. Leave the app running quietly in the background.\n3. After 6 hours of runtime, a prompt will automatically appear on your screen.\n4. Answer 3 quick questions about your completed tasks and progress.\n5. Your log is securely saved, and you can access, edit, or export your data at any time.", instructions_frame, 0, 0)
 
         about_frame = self.ui_helper.display_frame(top, 0, 0, "About")
 
-        self.ui_helper.display_new_note_label(f"Task Note Manager is a streamlined tool designed to help you effortlessly track and log your daily work activities.\n\nKey Features & Benefits:\n• Automated Reminders: The app automatically prompts you for input after 6 hours of runtime.\n• Structured Insights: Answer 3 simple questions to capture crucial details about your workday.\n• Meeting & Report Ready: Generated notes are perfect for daily standups, status updates, or personal tracking.\n• Local Storage: All data is saved safely in a clean, human-readable YAML format.\n• Full Control: Click the 'Open file' button to view, edit, or copy entries directly. Every log is marked with '!NoteEntry' for easy customization.\n\nData is saved in YAML file at {self.config_manager.FULL_PATH}", about_frame, 0, 0)
+        self.ui_helper.display_label(f"Task Note Manager is a streamlined tool designed to help you effortlessly track and log your daily work activities.\n\nKey Features & Benefits:\n• Automated Reminders: The app automatically prompts you for input after 6 hours of runtime.\n• Structured Insights: Answer 3 simple questions to capture crucial details about your workday.\n• Meeting & Report Ready: Generated notes are perfect for daily standups, status updates, or personal tracking.\n• Local Storage: All data is saved safely in a clean, human-readable YAML format.\n• Full Control: Click the 'Open file' button to view, edit, or copy entries directly. Every log is marked with '!NoteEntry' for easy customization.\n\nData is saved in YAML file at {self.config_manager.FULL_PATH}", about_frame, 0, 0)

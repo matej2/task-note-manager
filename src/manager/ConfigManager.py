@@ -42,7 +42,6 @@ class ConfigManager:
 
         #  Colors
         self.FRAME_BACKGROUND = "#EEEEEE"
-        self.TITLE_BACKGROUND = "#E0E0E0"
         self.FRAME_BORDER = "#BDBDBD"
         self.SECONDARY_BUTTON_COLOR = "#1565C0"
         self.SECONDARY_BUTTON_COLOR_HOVER = "#0D47A1"
