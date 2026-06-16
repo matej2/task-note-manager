@@ -10,7 +10,6 @@ notify2 = "*"
 pyexcel-ods3 = "*"
 typing-extensions = "*"
 customtkinter = "*"
-dbus-python = "*"
 pyinstaller = "*"
 
 [dev-packages]

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "09e9ed361f0d24d90737f907997b85d82516bca1e0989b58b2169d4d65b9bf5b"
+            "sha256": "d4433eac3a00049b1cf9388f24478f565062dd4e213b4f9d12ecfe99332d3f8b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -48,14 +48,6 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==0.8.0"
-        },
-        "dbus-python": {
-            "hashes": [
-                "sha256:991666e498f60dbf3e49b8b7678f5559b8a65034fdf61aae62cdecdb7d89c770"
-            ],
-            "index": "pypi",
-            "markers": "python_version >= '3.7'",
-            "version": "==1.4.0"
         },
         "lml": {
             "hashes": [
