@@ -113,7 +113,7 @@ class UI(Frame):
 
 
     def __configure_status_widgets(self):
-        self.ui_helper.display_todays_notes_label("Todays notes: ", self.task_list_container, 0, 0)
+        self.ui_helper.display_todays_notes_label("Notes: ", self.task_list_container, 0, 0)
 
         self.task_list = self.ui_helper.display_status_input(
             self.task_list_container,
