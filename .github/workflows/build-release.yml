@@ -78,6 +78,11 @@ jobs:
         run: |
           pipenv install
 
+      # Step 4: Install dependencies using Pipenv
+      - name: Install dbus
+        run: |
+          pipenv install dbus-python
+
       # Step 5: Build the application using PyInstaller
       - name: Build with PyInstaller
         run: |
