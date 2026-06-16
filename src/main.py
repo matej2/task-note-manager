@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
 import asyncio
+import re
 from collections import OrderedDict
 from datetime import datetime, timedelta, timezone
-from customtkinter import END, NORMAL, DISABLED, CTkTextbox as Text
+
+from customtkinter import END, NORMAL, DISABLED, CTkTextbox as Text, CTkFont as Font
 
 import notify2
 
@@ -60,6 +62,7 @@ class Application(UI):
 
     async def __after_setup(self):
         self.current_data = await self.data_manager.read_data_from_file_async_direct()
+        Application.setup_tags(self.task_list)
         await self.__update_data()
         await self.initialize_data_fields()
 
@@ -78,7 +81,7 @@ class Application(UI):
     async def process_export(self):
         await self.data_manager.process_save_input(self.current_data)
         await self.export_manager.export_data(self.current_data)
-        Notification.send_info_notification("Export completed")
+        Notification.send_info_notification(f"Exported data to {self.config_manager.EXPORT_FILE_PATH}")
 
 
     def __after_submit(self, note_list: NoteList):
@@ -110,15 +113,45 @@ class Application(UI):
         field.configure(state=DISABLED)
 
     @staticmethod
+    def setup_tags(field: Text):
+        current_font = field.cget("font")
+
+        family = current_font.cget("family")
+        size = current_font.cget("size")
+
+        bold_font = Font(family=family, size=size, weight="bold")
+        underline_font = Font(family=family, size=size, underline=True)
+
+        field.tag_config("bold", cnf={"font": bold_font})
+        field.tag_config("underline", cnf={"font": underline_font})
+
+    @staticmethod
     def __set_text(text: Text, value: str):
-        text.delete(1.0, END)
-        text.insert(END, str(value))
+        text.delete("0.0", END)
+
+        pattern = re.compile(r'(\*\*.*?\*\*|__.*?__)')
+        parts = pattern.split(value)
+
+        for part in parts:
+            if not part:
+                continue
+
+            if part.startswith("**") and part.endswith("**"):
+                clean_text = part[2:-2]
+                text.insert(END, clean_text, "bold")
+
+            elif part.startswith("__") and part.endswith("__"):
+                clean_text = part[2:-2]
+                text.insert(END, clean_text, "underline")
+
+            else:
+                text.insert(END, part)
 
     async def __update_data(self):
-        formatted_note_entries = [(f"Date: {n.date}\n"
-                                   f"- Done: {n.done}\n"
-                                   f"- In progress: {n.in_progress}\n"
-                                   f"- Problems: {n.problems}") for n in self.current_data.notes]
+        formatted_note_entries = [(f"__Date: {n.date}__\n"
+                                   f"- **Done:** {n.done}\n"
+                                   f"- **In progress:** {n.in_progress}\n"
+                                   f"- **Problems:** {n.problems}") for n in self.current_data.notes]
         formatted_note_output = "\n\n".join(formatted_note_entries)
 
         today_note_entry = self.data_manager.extract_today_notes(self.current_data)

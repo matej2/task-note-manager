@@ -47,7 +47,7 @@ class TestUILayoutHelper(unittest.TestCase):
         with patch.object(UILayoutHelper, "display_new_note_label") as new_note_mock:
             new_note_mock.return_value = CTkLabel(self.parent)
 
-            result = self.layout_helper.display_todays_notes_label("Todays notes", self.parent, 0, 0)
+            result = self.layout_helper.display_todays_notes_label("Notes:", self.parent, 0, 0)
 
             assert result.master is not None
             self.__check_position(result)

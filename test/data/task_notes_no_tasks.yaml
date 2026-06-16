@@ -1,0 +1,1502 @@
+!NoteList
+notes:
+- !NoteEntry
+  date: '01. Jan. 2026'
+  done: 'Setup'
+  in_progress: 'neki, Started with task'
+  problems:
+- !NoteEntry
+  date: '02. Jan. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Started with task'
+  problems: ' Bug found in production'
+- !NoteEntry
+  date: '03. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code'
+  problems:
+- !NoteEntry
+  date: '04. Jan. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Started with task'
+  problems: 'Počasen API'
+- !NoteEntry
+  date: '05. Jan. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '06. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '07. Jan. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '08. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '09. Jan. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '10. Jan. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '11. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Težave s povezavo'
+- !NoteEntry
+  date: '12. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code'
+  problems:
+- !NoteEntry
+  date: '13. Jan. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '14. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '15. Jan. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '16. Jan. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '17. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '18. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code'
+  problems:
+- !NoteEntry
+  date: '19. Jan. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '20. Jan. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '21. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '22. Jan. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: ' Bug found in production'
+- !NoteEntry
+  date: '23. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code'
+  problems:
+- !NoteEntry
+  date: '24. Jan. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '25. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code'
+  problems:
+- !NoteEntry
+  date: '26. Jan. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '27. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code'
+  problems:
+- !NoteEntry
+  date: '28. Jan. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Started with task'
+  problems: 'Konflikt pri spajanju'
+- !NoteEntry
+  date: '29. Jan. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '30. Jan. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '31. Jan. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '01. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '02. Feb. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '03. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '04. Feb. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '05. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '06. Feb. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Napačni testi'
+- !NoteEntry
+  date: '07. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code'
+  problems:
+- !NoteEntry
+  date: '08. Feb. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '09. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '10. Feb. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '11. Feb. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '12. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '13. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code'
+  problems:
+- !NoteEntry
+  date: '14. Feb. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '15. Feb. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '16. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '17. Feb. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Počasen API'
+- !NoteEntry
+  date: '18. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '19. Feb. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '20. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '21. Feb. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '22. Feb. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '23. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '24. Feb. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '25. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems: ' Bug found in production'
+- !NoteEntry
+  date: '26. Feb. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '27. Feb. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '28. Feb. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '01. Mar. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '02. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '03. Mar. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Težave s povezavo'
+- !NoteEntry
+  date: '04. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '05. Mar. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '06. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '07. Mar. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '08. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '09. Mar. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '10. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '11. Mar. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '12. Mar. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '13. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '14. Mar. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Konflikt pri spajanju'
+- !NoteEntry
+  date: '15. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '16. Mar. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '17. Mar. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '18. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '19. Mar. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '20. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '21. Mar. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '22. Mar. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '23. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '24. Mar. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Napačni testi'
+- !NoteEntry
+  date: '25. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '26. Mar. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '27. Mar. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '28. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '29. Mar. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Počasen API'
+- !NoteEntry
+  date: '30. Mar. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '31. Mar. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '01. Apr. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '02. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '03. Apr. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '04. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems: ' Bug found in production'
+- !NoteEntry
+  date: '05. Apr. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '06. Apr. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '07. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '08. Apr. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Težave s povezavo'
+- !NoteEntry
+  date: '09. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '10. Apr. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '11. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '12. Apr. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '13. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '14. Apr. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '15. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '16. Apr. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Konflikt pri spajanju'
+- !NoteEntry
+  date: '17. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '18. Apr. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '19. Apr. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '20. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '21. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems: ' Bug found in production'
+- !NoteEntry
+  date: '22. Apr. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '23. Apr. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '24. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '25. Apr. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '26. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '27. Apr. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '28. Apr. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems: 'Napačni testi'
+- !NoteEntry
+  date: '29. Apr. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '30. Apr. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '01. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '02. May. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Počasen API'
+- !NoteEntry
+  date: '03. May. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '04. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '05. May. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '06. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '07. May. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '08. May. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '09. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '10. May. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Težave s povezavo'
+- !NoteEntry
+  date: '11. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '12. May. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '13. May. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '14. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '15. May. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '16. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems: ' Bug found in production'
+- !NoteEntry
+  date: '17. May. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '18. May. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '19. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '20. May. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '21. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '22. May. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '23. May. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems: 'Konflikt pri spajanju'
+- !NoteEntry
+  date: '24. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '25. May. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '26. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '27. May. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '28. May. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '29. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Napačni testi'
+- !NoteEntry
+  date: '30. May. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '31. May. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '01. Jun. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '02. Jun. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '03. Jun. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Počasen API'
+- !NoteEntry
+  date: '04. Jun. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '05. Jun. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '06. Jun. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '07. Jun. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '08. Jun. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '09. Jun. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Težave s povezavo'
+- !NoteEntry
+  date: '10. Jun. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '11. Jun. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '12. Jun. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '13. Jun. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: ' Bug found in production'
+- !NoteEntry
+  date: '14. Jun. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '15. Jun. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '16. Jun. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '17. Jun. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '18. Jun. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '19. Jun. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Konflikt pri spajanju'
+- !NoteEntry
+  date: '20. Jun. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '21. Jun. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '22. Jun. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '23. Jun. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '24. Jun. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Napačni testi'
+- !NoteEntry
+  date: '25. Jun. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '26. Jun. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '27. Jun. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '28. Jun. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '29. Jun. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Počasen API'
+- !NoteEntry
+  date: '30. Jun. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '01. Jul. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '02. Jul. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '03. Jul. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '04. Jul. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Težave s povezavo'
+- !NoteEntry
+  date: '05. Jul. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '06. Jul. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '07. Jul. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '08. Jul. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: ' Bug found in production'
+- !NoteEntry
+  date: '09. Jul. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '10. Jul. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '11. Jul. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '12. Jul. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '13. Jul. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '14. Jul. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Konflikt pri spajanju'
+- !NoteEntry
+  date: '15. Jul. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '16. Jul. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '17. Jul. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '18. Jul. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '19. Jul. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Napačni testi'
+- !NoteEntry
+  date: '20. Jul. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '21. Jul. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '22. Jul. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '23. Jul. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Počasen API'
+- !NoteEntry
+  date: '24. Jul. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '25. Jul. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '26. Jul. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '27. Jul. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '28. Jul. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '29. Jul. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Težave s povezavo'
+- !NoteEntry
+  date: '30. Jul. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '31. Jul. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '01. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '02. Aug. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: ' Bug found in production'
+- !NoteEntry
+  date: '03. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '04. Aug. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '05. Aug. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '06. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '07. Aug. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '08. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Konflikt pri spajanju'
+- !NoteEntry
+  date: '09. Aug. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '10. Aug. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '11. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '12. Aug. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Napačni testi'
+- !NoteEntry
+  date: '13. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '14. Aug. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '15. Aug. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '16. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '17. Aug. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '18. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Počasen API'
+- !NoteEntry
+  date: '19. Aug. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '20. Aug. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '21. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '22. Aug. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '23. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Težave s povezavo'
+- !NoteEntry
+  date: '24. Aug. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '25. Aug. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '26. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '27. Aug. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: ' Bug found in production'
+- !NoteEntry
+  date: '28. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '29. Aug. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '30. Aug. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '31. Aug. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '01. Sep. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Konflikt pri spajanju'
+- !NoteEntry
+  date: '02. Sep. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '03. Sep. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '04. Sep. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '05. Sep. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '06. Sep. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Napačni testi'
+- !NoteEntry
+  date: '07. Sep. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '08. Sep. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '09. Sep. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '10. Sep. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems: 'Počasen API'
+- !NoteEntry
+  date: '11. Sep. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '12. Sep. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '13. Sep. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '14. Sep. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '15. Sep. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '16. Sep. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Težave s povezavo'
+- !NoteEntry
+  date: '17. Sep. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '18. Sep. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '19. Sep. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '20. Sep. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems: ' Bug found in production'
+- !NoteEntry
+  date: '21. Sep. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '22. Sep. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '23. Sep. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '24. Sep. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '25. Sep. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems: 'Konflikt pri spajanju'
+- !NoteEntry
+  date: '26. Sep. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '27. Sep. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '28. Sep. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '29. Sep. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Napačni testi'
+- !NoteEntry
+  date: '30. Sep. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '01. Oct. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '02. Oct. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Počasen API'
+- !NoteEntry
+  date: '03. Oct. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '04. Oct. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '05. Oct. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '06. Oct. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '07. Oct. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Težave s povezavo'
+- !NoteEntry
+  date: '08. Oct. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '09. Oct. 2026'
+  done: 'Refaktoriranje'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '10. Oct. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '11. Oct. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: ' Bug found in production'
+- !NoteEntry
+  date: '12. Oct. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '13. Oct. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '14. Oct. 2026'
+  done: 'Pregled kode'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '15. Oct. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '16. Oct. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Konflikt pri spajanju'
+- !NoteEntry
+  date: '17. Oct. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '18. Oct. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '19. Oct. 2026'
+  done: 'Sestanek z ekipo'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '20. Oct. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '21. Oct. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Napačni testi'
+- !NoteEntry
+  date: '22. Oct. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '23. Oct. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '24. Oct. 2026'
+  done: 'Dokumentacija'
+  in_progress: 'neki, Working on code, Working on code'
+  problems:
+- !NoteEntry
+  date: '25. Oct. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code, Started with task'
+  problems:
+- !NoteEntry
+  date: '26. Oct. 2026'
+  done: ' Finished development and testing'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'Počasen API'
+- !NoteEntry
+  date: '27. Oct. 2026'
+  done: 'Regular maintenance'
+  in_progress: 'neki, Working on code, Working on code'
+  problems: 'neki'
