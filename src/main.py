@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import asyncio
 from collections import OrderedDict
 from datetime import datetime, timedelta, timezone
