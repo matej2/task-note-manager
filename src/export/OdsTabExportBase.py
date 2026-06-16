@@ -22,7 +22,7 @@ class OdsTabExportBase:
     @classmethod
     def save_as_ordered_dict(cls) -> None:
         input_data = OrderedDict(cls._sheet_data)
-        save_data(cls.config_manager.EXPORT_FILE_NAME, input_data)
+        save_data(cls.config_manager.EXPORT_FILE_PATH, input_data)
 
     @classmethod
     def add_sheet_row(cls, data: list[str], tab: str) -> None:

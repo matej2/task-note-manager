@@ -21,7 +21,7 @@ class ConfigManager:
 
         # Excel export
         self.EXPORT_EMPTY_ROW = ["No data", ]
-        self.EXPORT_FILE_NAME = os.path.join(ConfigManager.get_full_curr_dir_path(), "../../task_notes.ods")
+        self.EXPORT_FILE_PATH = os.path.join(ConfigManager.get_working_dir(), "task_notes.ods")
         self.EXPORT_TAB_NAME_DEFAULT = "Default"
         self.EXPORT_TAB_NAME_TASK_NAMES = "Task names"
 
@@ -42,7 +42,6 @@ class ConfigManager:
 
         #  Colors
         self.FRAME_BACKGROUND = "#EEEEEE"
-        self.TITLE_BACKGROUND = "#E0E0E0"
         self.FRAME_BORDER = "#BDBDBD"
         self.SECONDARY_BUTTON_COLOR = "#1565C0"
         self.SECONDARY_BUTTON_COLOR_HOVER = "#0D47A1"
@@ -50,7 +49,7 @@ class ConfigManager:
         self.PRIMARY_BUTTON_COLOR_HOVER = "#2E7D32"
 
         # Yaml
-        self.FULL_PATH = os.path.join(ConfigManager.get_full_curr_dir_path(), "task_notes.yaml")
+        self.FULL_PATH = os.path.join(ConfigManager.get_working_dir(), "task_notes.yaml")
 
         # Logging
         logging.basicConfig(
@@ -59,7 +58,7 @@ class ConfigManager:
             datefmt="%d-%b-%y %H:%M:%S")
 
     @staticmethod
-    def get_full_curr_dir_path():
+    def get_working_dir():
         if platform.system() == "Windows":
             os.makedirs(os.path.join(os.environ["APPDATA"], "TaskNoteManager"), exist_ok=True)
             return os.path.join(os.environ["APPDATA"], "TaskNoteManager")
@@ -80,7 +79,7 @@ Excel file: {}""".format(
             self.DATE_FORMAT,
             self.frequency_hours,
             self.FULL_PATH,
-            self.EXPORT_FILE_NAME)
+            self.EXPORT_FILE_PATH)
 
     def rem(self, val: float):
         return int(val * self.REM_MULT)

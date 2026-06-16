@@ -81,7 +81,7 @@ class Application(UI):
     async def process_export(self):
         await self.data_manager.process_save_input(self.current_data)
         await self.export_manager.export_data(self.current_data)
-        Notification.send_info_notification("Export completed")
+        Notification.send_info_notification(f"Exported data to {self.config_manager.EXPORT_FILE_PATH}")
 
 
     def __after_submit(self, note_list: NoteList):

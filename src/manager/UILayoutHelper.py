@@ -35,21 +35,26 @@ class UILayoutHelper:
         return field
 
     def display_new_note_label(self, text: str, parent: Frame, row: int, column: int) -> Label:
+        field = self.display_label(text, parent, row, column)
+        field.configure(font = self.config_manager.get_large_font())
+        return field
+
+    def display_label(self, text: str, parent: Frame, row: int, column: int) -> Label:
         field = Label(parent)
         field.configure(
-            text=text,
-            font=self.config_manager.get_regular_font(),
-            wraplength=300,
-            justify=LEFT)
+            text = text,
+            font = self.config_manager.get_regular_font(),
+            wraplength = 300,
+            justify = LEFT)
         field.grid(row=row, column=column, pady=self.config_manager.NEW_NOTE_LABEL_PADY,
-                             padx=self.config_manager.NEW_NOTE_LABEL_PADX)
+        padx = self.config_manager.NEW_NOTE_LABEL_PADX)
         return field
 
     def display_warning_label(self, text: str, parent: Frame, row: int, column: int) -> Label:
         field = Label(parent)
         field.configure(
             text=text,
-            font=self.config_manager.get_large_font(),
+            font=self.config_manager.get_regular_font(),
             wraplength=300,
             justify=LEFT,
             text_color="red")
@@ -79,7 +84,6 @@ class UILayoutHelper:
             font=self.config_manager.get_large_font(),
             wraplength=300,
             justify=LEFT,
-            fg_color=self.config_manager.TITLE_BACKGROUND,
             corner_radius=3
         )
         field.grid(row=row, column=column, pady=self.config_manager.NEW_NOTE_LABEL_PADY,
