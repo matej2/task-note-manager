@@ -39,9 +39,9 @@ Whether you're managing personal goals or team projects, Task Note Manager is he
 
 Make sure you have Python 3.11.7 or higher installed. You would also need pipenv.
 
-1. `sudo apt-get install -y libdbus-1-dev libdbus-glib-1-dev`
-2`pipenv install`
-3`pipenv run python main.py`
+1.`sudo apt-get install -y libdbus-1-dev libdbus-glib-1-dev`
+2.`pipenv install`
+3.`pipenv run python main.py`
 
 # Build instructions
 
