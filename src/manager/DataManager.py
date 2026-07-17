@@ -5,7 +5,6 @@ from types import NoneType
 import yaml
 from customtkinter import CTkTextbox as Text, CTkLabel as Label
 
-from src.factory.NoteEntryFactory import NoteEntryFactory
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManagerBase import DataManagerBase
 from src.manager.FileManager import FileManager
@@ -24,7 +23,6 @@ class DataManager(DataManagerBase):
                  status: Label,
                  file_manager: FileManager,
                  config_manager: ConfigManager,
-                 note_factory: NoteEntryFactory,
                  current_data: NoteList
                  ) -> None:
         super().__init__(file_manager)
@@ -36,7 +34,6 @@ class DataManager(DataManagerBase):
         self.current_data = current_data
 
         self.config_manager = config_manager
-        self.note_factory = note_factory
 
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
@@ -76,7 +73,7 @@ class DataManager(DataManagerBase):
         to_be_done = self.__get_text_from_input(self.in_progress)
         problems = self.__get_text_from_input(self.problems)
 
-        new_note = self.note_factory.create_note(done, to_be_done, problems)
+        new_note = NoteEntry(done, to_be_done, problems)
 
         self.__override_existing_data_with_new_note(current_data, new_note)
         await self._write_data_to_file_direct(current_data)
