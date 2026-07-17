@@ -1,7 +1,7 @@
 import yaml
+
 from src.manager.FileManager import FileManager
 from src.models.NoteList import NoteList
-from src.models.factory.NoteListFactory import NoteListFactory
 from src.utils.YamlUtils import YamlUtils
 
 
@@ -16,7 +16,7 @@ class DataManagerBase:
         if data is not None and len(data.notes) != 0:
             return data
         else:
-            return NoteListFactory.get_empty_note_list()
+            return NoteList()
 
     async def _write_data_to_file_direct(self, note_list: NoteList):
         with self.file_manager.get_write_wrapper() as file:

@@ -73,7 +73,7 @@ class DataManager(DataManagerBase):
         to_be_done = self.__get_text_from_input(self.in_progress)
         problems = self.__get_text_from_input(self.problems)
 
-        new_note = NoteEntry(done, to_be_done, problems)
+        new_note = NoteEntry(str(LocalizedDate(self.config_manager.DATE_FORMAT)), done, to_be_done, problems)
 
         self.__override_existing_data_with_new_note(current_data, new_note)
         await self._write_data_to_file_direct(current_data)
