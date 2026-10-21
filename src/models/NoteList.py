@@ -1,7 +1,7 @@
 from src.models.NoteEntry import NoteEntry
 
 class NoteList:
-    def __init__(self, notes: list[NoteEntry]):
+    def __init__(self, notes: list[NoteEntry] | None = None):
         if notes is None:
             notes = []
         self.notes = notes

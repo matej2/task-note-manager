@@ -9,7 +9,6 @@ import notify2
 
 from src.Scheduler import Scheduler
 from src.UI import UI
-from src.factory.NoteEntryFactory import NoteEntryFactory
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
 from src.manager.ExportManager import ExportManager
@@ -36,7 +35,6 @@ class Application(UI):
 
     def __setup(self):
         self.file_manager = FileManager(self.config_manager)
-        self.note_factory = NoteEntryFactory(self.config_manager)
         self.notification_manager = Notification(self.config_manager)
 
         self.data_manager = DataManager(
@@ -46,7 +44,6 @@ class Application(UI):
             self.task_list_container,
             self.file_manager,
             self.config_manager,
-            self.note_factory,
             self.current_data
         )
         self.task_manager = TaskManager(self.config_manager)

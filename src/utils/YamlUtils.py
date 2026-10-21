@@ -39,6 +39,11 @@ class YamlUtils:
     def note_entry_constructor(loader: yaml.SafeLoader, node: yaml.nodes.MappingNode) -> NoteEntry:
         yaml_nodes = YamlUtils.remove_unknown_note_entry_keys(loader.construct_mapping(node))
 
+        date = yaml_nodes.get("date", None)
+        done = yaml_nodes.get("done", None)
+        in_progress = yaml_nodes.get("in_progress", None)
+        problem = yaml_nodes.get("problems", None)
+
         return NoteEntry(**yaml_nodes)
 
     @staticmethod

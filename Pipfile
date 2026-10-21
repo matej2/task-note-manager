@@ -17,6 +17,7 @@ pyinstaller = "*"
 coverage = "*"
 pyvirtualdisplay = "*"
 mypy = "*"
+pip-audit = "*"
 
 [requires]
 python_version = "3.11.7"
