@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 pyyaml = "*"
 apscheduler = "*"
-notify2 = "*"
 pyexcel-ods3 = "*"
 typing-extensions = "*"
 customtkinter = "*"

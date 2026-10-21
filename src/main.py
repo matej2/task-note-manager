@@ -7,7 +7,6 @@ from datetime import datetime, timedelta, timezone
 
 from customtkinter import END, NORMAL, DISABLED, CTkTextbox as Text, CTkFont as Font
 
-import notify2
 
 from src.Scheduler import Scheduler
 from src.UI import UI
