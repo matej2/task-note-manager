@@ -80,7 +80,8 @@ class Application(UI):
     async def process_export(self):
         await self.data_manager.process_save_input(self.current_data)
         await self.export_manager.export_data(self.current_data)
-        Notification.send_info_notification(f"Exported data to {self.config_manager.EXPORT_FILE_PATH}")
+        await self.notification_manager.send_info_notification(
+            f"Exported data to {self.config_manager.EXPORT_FILE_PATH}")
 
 
     def __after_submit(self, note_list: NoteList):
@@ -98,7 +99,7 @@ class Application(UI):
     async def save_data(self):
         self.current_data = await self.data_manager.process_save_input(self.current_data)
         await self.__update_data()
-        Notification.send_info_notification(f"Data saved to file {self.config_manager.FULL_PATH}")
+        self.notification.send_info_notification(f"Data saved to file {self.config_manager.FULL_PATH}")
 
     def __set_note_input_text(self, entry: NoteEntry):
         self.__set_text(self.done_field, entry.done)
