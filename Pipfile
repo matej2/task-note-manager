@@ -6,12 +6,11 @@ name = "pypi"
 [packages]
 pyyaml = "*"
 apscheduler = "*"
-notify2 = "*"
 pyexcel-ods3 = "*"
 typing-extensions = "*"
 customtkinter = "*"
-dbus-python = "*"
 pyinstaller = "*"
+desktop-notifier = "*"
 
 [dev-packages]
 coverage = "*"

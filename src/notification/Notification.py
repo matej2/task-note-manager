@@ -1,5 +1,6 @@
-import notify2
-from typing_extensions import override
+import asyncio
+
+from desktop_notifier import DesktopNotifier
 
 from src.manager.ConfigManager import ConfigManager
 from src.notification.NotificationInterface import NotificationInterface
@@ -8,14 +9,13 @@ from src.notification.NotificationInterface import NotificationInterface
 class Notification(NotificationInterface):
     def __init__(self, config_manager: ConfigManager) -> None:
         super().__init__(config_manager)
-        notify2.init("Task Note Manager")
+        self.notifier = DesktopNotifier(app_name="Task Note Manager")
 
-    @staticmethod
-    def send_info_notification(text: str):
-        notification = notify2.Notification(text)
-        notification.set_timeout(5000)
-        notification.show()
+    async def send_info_notification(self, text: str):
+        await self.notifier.send(
+            title="Task Note Manager",
+            message=text
+        )
 
-    @override
     def send_notification(self) -> None:
-        notify2.Notification("Daily notification to enter data").show()
+        asyncio.run(self.send_info_notification(text="Daily notification to enter data"))
