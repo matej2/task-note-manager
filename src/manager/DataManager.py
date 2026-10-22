@@ -5,6 +5,7 @@ from types import NoneType
 import yaml
 from customtkinter import CTkTextbox as Text, CTkLabel as Label
 
+from models.Config import Config
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManagerBase import DataManagerBase
 from src.manager.FileManager import FileManager
@@ -37,6 +38,7 @@ class DataManager(DataManagerBase):
 
         yaml.add_representer(NoteList, YamlUtils.note_list_representer)
         yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
+        yaml.add_representer(Config, YamlUtils.config_representer)
         yaml.add_representer(str, YamlUtils.string_representer, Dumper=yaml.Dumper)
         yaml.add_representer(NoneType, YamlUtils.none_representer, Dumper=yaml.Dumper)
 

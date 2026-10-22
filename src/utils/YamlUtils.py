@@ -3,6 +3,7 @@ from typing import Type, cast
 import yaml
 from yaml import SafeLoader
 
+from models.Config import Config
 from src.models.NoteEntry import NoteEntry
 from src.models.NoteList import NoteList
 
@@ -39,12 +40,19 @@ class YamlUtils:
     def note_entry_constructor(loader: yaml.SafeLoader, node: yaml.nodes.MappingNode) -> NoteEntry:
         yaml_nodes = YamlUtils.remove_unknown_note_entry_keys(loader.construct_mapping(node))
 
+        # TODO: Remove unused code
         date = yaml_nodes.get("date", None)
         done = yaml_nodes.get("done", None)
         in_progress = yaml_nodes.get("in_progress", None)
         problem = yaml_nodes.get("problems", None)
 
         return NoteEntry(**yaml_nodes)
+
+    @staticmethod
+    def config_constructor(loader: yaml.SafeLoader, node: yaml.nodes.MappingNode) -> Config:
+        yaml_nodes = YamlUtils.remove_unknown_note_entry_keys(loader.construct_mapping(node))
+
+        return Config(**yaml_nodes)
 
     @staticmethod
     def note_entry_list_constructor(loader: yaml.SafeLoader, node: yaml.nodes.MappingNode) -> NoteList:
@@ -56,11 +64,16 @@ class YamlUtils:
         loader = yaml.SafeLoader
         loader.add_constructor("!NoteList", YamlUtils.note_entry_list_constructor)
         loader.add_constructor("!NoteEntry", YamlUtils.note_entry_constructor)
+        loader.add_constructor("!Config", YamlUtils.config_constructor)
         return loader
 
     @staticmethod
     def note_list_representer(dumper, data: NoteList):
         return dumper.represent_mapping("!NoteList", data.__dict__)
+
+    @staticmethod
+    def config_representer(dumper, data: Config):
+        return dumper.represent_mapping("!Config", data.__dict__)
 
     @staticmethod
     def note_entry_representer(dumper, data: NoteEntry):

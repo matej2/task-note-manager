@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone
 
 from customtkinter import END, NORMAL, DISABLED, CTkTextbox as Text, CTkFont as Font
 
-
+from manager.ConfigFileManager import ConfigFileManager
 from src.Scheduler import Scheduler
 from src.UI import UI
 from src.manager.ConfigManager import ConfigManager
@@ -22,8 +22,10 @@ from src.notification.Notification import Notification
 
 class Application(UI):
     def __init__(self):
+        self.config_data = ConfigFileManager()
+
         self.config_manager = ConfigManager()
-        super().__init__(self.config_manager)
+        super().__init__(self.config_manager, self.config_data)
 
         self.current_data = NoteList(list())
 

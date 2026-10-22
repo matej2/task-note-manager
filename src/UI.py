@@ -4,14 +4,17 @@ from tkinter import BaseWidget
 from customtkinter import LEFT, CTkFrame as Frame, CTk as Tk, CTkButton as Button, CTkLabel as Label, \
     CTkToplevel as Toplevel, CTkTextbox as Text
 
+from manager.ConfigFileManager import ConfigFileManager
+from models.Config import Config
 from src.manager.ConfigManager import ConfigManager
 from src.manager.UILayoutHelper import UILayoutHelper
 
 
 class UI(Frame):
 
-    def __init__(self, config: ConfigManager):
+    def __init__(self, config: ConfigManager, config_data: ConfigFileManager):
         self.config_manager = config
+        self.config_data = config_data
         self.ui_helper = UILayoutHelper(config)
 
         self.root_container = Tk()

@@ -4,6 +4,8 @@ import platform
 
 from customtkinter import CTkFont as Font
 
+from utils.FileUtils import FileUtils
+
 
 class ConfigManager:
     def __init__(self):
@@ -21,7 +23,7 @@ class ConfigManager:
 
         # Excel export
         self.EXPORT_EMPTY_ROW = ["No data", ]
-        self.EXPORT_FILE_PATH = os.path.join(ConfigManager.get_working_dir(), "task_notes.ods")
+        self.EXPORT_FILE_PATH = os.path.join(FileUtils.get_working_dir(), "task_notes.ods")
         self.EXPORT_TAB_NAME_DEFAULT = "Default"
         self.EXPORT_TAB_NAME_TASK_NAMES = "Task names"
 
@@ -49,22 +51,13 @@ class ConfigManager:
         self.PRIMARY_BUTTON_COLOR_HOVER = "#2E7D32"
 
         # Yaml
-        self.FULL_PATH = os.path.join(ConfigManager.get_working_dir(), "task_notes.yaml")
+        self.FULL_PATH = os.path.join(FileUtils.get_working_dir(), "task_notes.yaml")
 
         # Logging
         logging.basicConfig(
             level=logging.DEBUG,
             format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
             datefmt="%d-%b-%y %H:%M:%S")
-
-    @staticmethod
-    def get_working_dir():
-        if platform.system() == "Windows":
-            os.makedirs(os.path.join(os.environ["APPDATA"], "TaskNoteManager"), exist_ok=True)
-            return os.path.join(os.environ["APPDATA"], "TaskNoteManager")
-        else:
-            os.makedirs(os.path.join(os.path.expanduser("~"), ".TaskNoteManager"), exist_ok=True)
-            return os.path.join(os.path.expanduser("~"), ".TaskNoteManager")
 
     def __str__(self):
         return """
