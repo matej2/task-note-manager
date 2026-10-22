@@ -1,0 +1,81 @@
+import copy
+import logging
+from types import NoneType
+
+import yaml
+from customtkinter import CTkTextbox as Text, CTkLabel as Label
+
+from src.manager.ConfigManager import ConfigManager
+from src.manager.DataManagerBase import DataManagerBase
+from src.manager.FileManager import FileManager
+from src.models.LocalizedDate import LocalizedDate
+from src.models.NoteEntry import NoteEntry
+from src.models.NoteList import NoteList
+from src.utils.YamlUtils import YamlUtils
+
+
+class DataManager(DataManagerBase):
+
+    def __init__(self,
+                 things_done: Text,
+                 things_in_progress: Text,
+                 problems: Text,
+                 status: Label,
+                 file_manager: FileManager,
+                 config_manager: ConfigManager,
+                 current_data: NoteList
+                 ) -> None:
+        super().__init__(file_manager)
+        self.done = things_done
+        self.in_progress = things_in_progress
+        self.problems = problems
+        self.status = status
+        self.logger = logging.getLogger(__name__)
+        self.current_data = current_data
+
+        self.config_manager = config_manager
+
+        yaml.add_representer(NoteList, YamlUtils.note_list_representer)
+        yaml.add_representer(NoteEntry, YamlUtils.note_entry_representer)
+        yaml.add_representer(str, YamlUtils.string_representer, Dumper=yaml.Dumper)
+        yaml.add_representer(NoneType, YamlUtils.none_representer, Dumper=yaml.Dumper)
+
+    # Use self.current:data
+    def extract_today_notes(self, note_list : NoteList) -> NoteEntry:
+        result = NoteEntry()
+        if note_list is None:
+            return result
+
+        for note in note_list.notes:
+            if note.date == str(LocalizedDate(self.config_manager.DATE_FORMAT)):
+                result = note
+                break
+        return result
+
+    @staticmethod
+    def __override_existing_data_with_new_note(note_list: NoteList, entry: NoteEntry) -> None:
+        note_list_copy = copy.deepcopy(note_list)
+
+        for i, n in enumerate(note_list_copy.notes):
+            if n.date == entry.date:
+                note_list.notes[i] = entry
+                return
+
+        note_list.notes.append(entry)
+
+    @staticmethod
+    def __get_text_from_input(input_text: Text) -> str:
+        return input_text.get("1.0", "end-1c")
+
+    async def process_save_input(self, current_data: NoteList) -> NoteList:
+
+        done = self.__get_text_from_input(self.done)
+        to_be_done = self.__get_text_from_input(self.in_progress)
+        problems = self.__get_text_from_input(self.problems)
+
+        new_note = NoteEntry(str(LocalizedDate(self.config_manager.DATE_FORMAT)), done, to_be_done, problems)
+
+        self.__override_existing_data_with_new_note(current_data, new_note)
+        await self._write_data_to_file_direct(current_data)
+        self.logger.debug(f"Wrote data to file, input: {done} {to_be_done} {problems}")
+        return current_data

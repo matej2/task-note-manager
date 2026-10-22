@@ -37,17 +37,30 @@ Whether you're managing personal goals or team projects, Task Note Manager is he
 
 # Local run instructions
 
-Make sure you have Python 3.11 or higher installed. You would also need pipenv.
+Make sure you have Python 3.11.7 or higher installed. You would also need pipenv.
 
-1. `pipenv install`
-2. `pipenv run python main.py`
+1. `sudo apt-get install -y libdbus-1-dev libdbus-glib-1-dev`
+2. Run `pipenv install dbus-python` (linux)
+3`pipenv install`
+4`pipenv run python main.py`
 
 # Build instructions
 
 When building this application locally, note that antivirus may flag it as potentially malicious executable. This is normal, you should add an exception for the file in your antivirus program. The application may also need admin permissions to run in order to create and update the output file.
 
-1. `pipenv install --dev`
-2. Run `pipenv run pyinstaller --noconsole --onefile --windowed --name "Task Note Manager" main.py`.  
+1. `pipenv install`
+2. Run `pipenv run pyinstaller --noconsole --onefile --windowed --name "Task Note Manager" --paths=.  src/main.py`.  
    - `--noconsole`: Hides the console window when running the executable.  
    - `--onefile`: Bundles all files into a single executable.  
    - `--windowed`: Ensures the app runs as a GUI application.
+   - `--paths`: Looks at specific path when resolving "import x" statements
+
+# Tests and coverage
+
+Run the tests:
+
+    python -m unittest discover
+
+In order to get test coverage, run the following command and then open `htmlcov/index.html`
+
+    coverage run -m unittest discover && coverage html

@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "task-note-manager"
+version = "2.0"
+dependencies = [
+    "pyyaml == 6.0.3",
+    "apscheduler == 3.11.2",
+    "notify2 ==0.3.1",
+    "pyexcel-ods3 ==0.6.1",
+    "typing-extensions ==4.15.0",
+    "customtkinter ==5.2.2"
+]
+
+[project.optional-dependencies]
+
+dev = [
+    "pyinstaller == 6.20.0",
+    "coverage == 7.14.0"
+]
+
+[tool.mypy]
+disable_error_code = ["import-untyped"]

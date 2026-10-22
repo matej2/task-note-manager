@@ -4,14 +4,19 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-tk = "*"
 pyyaml = "*"
 apscheduler = "*"
 pyexcel-ods3 = "*"
-win11toast = "*"
+typing-extensions = "*"
+customtkinter = "*"
+pyinstaller = "*"
+desktop-notifier = "*"
 
 [dev-packages]
-pyinstaller = "*"
+coverage = "*"
+pyvirtualdisplay = "*"
+mypy = "*"
+pip-audit = "*"
 
 [requires]
-python_version = "3.11.4"
+python_version = "3.11.7"
