@@ -23,6 +23,7 @@ from src.notification.Notification import Notification
 class Application(UI):
     def __init__(self):
         self.config_data = ConfigFileManager()
+        self.config_data.read_config_from_file_async_direct()
 
         self.config_manager = ConfigManager()
         super().__init__(self.config_manager, self.config_data)
