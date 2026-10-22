@@ -50,28 +50,24 @@ class ConfigManager:
         self.PRIMARY_BUTTON_COLOR = "#388E3C"
         self.PRIMARY_BUTTON_COLOR_HOVER = "#2E7D32"
 
-        # Yaml
-        self.FULL_PATH = os.path.join(FileUtils.get_working_dir(), "task_notes.yaml")
-
         # Logging
         logging.basicConfig(
             level=logging.DEBUG,
             format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
             datefmt="%d-%b-%y %H:%M:%S")
 
+        # TODO: Unused code, remove
     def __str__(self):
         return """
 Font family: {}
 Font size: {}
 Date format: {}
 Frequency hours: {}
-Output file: {}
 Excel file: {}""".format(
             self.FONT_FAMILY,
             self.FONT_SIZE_NORMAL,
             self.DATE_FORMAT,
             self.frequency_hours,
-            self.FULL_PATH,
             self.EXPORT_FILE_PATH)
 
     def rem(self, val: float):

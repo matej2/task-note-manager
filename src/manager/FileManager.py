@@ -5,13 +5,14 @@ import webbrowser
 from io import TextIOWrapper
 from typing import Any, IO
 
+from models.Config import Config
 from src.manager.ConfigManager import ConfigManager
 
 
 class FileManager:
 
-    def __init__(self, config: ConfigManager) -> None:
-        self.full_path = config.FULL_PATH
+    def __init__(self, config: Config) -> None:
+        self.full_path = config.save_directory
 
         # Creates a file if it does not exist
         with open(self.full_path, "a") as f:

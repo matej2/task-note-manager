@@ -1,11 +1,9 @@
 import os
-from io import TextIOWrapper
-from typing import Any, IO, Type
+from typing import Type
 
 import yaml
 from yaml import SafeLoader
 
-from manager.ConfigManager import ConfigManager
 from models.Config import Config
 from utils.FileUtils import FileUtils
 from utils.YamlUtils import YamlUtils
@@ -14,11 +12,13 @@ from utils.YamlUtils import YamlUtils
 class ConfigFileManager:
     def __init__(self):
         self.__CONFIG_FULL_PATH = os.path.join(FileUtils.get_working_dir(), "task_notes_conf.yaml")
-        self.config = Config()
+        self.config = None
 
         # Creates a file if it does not exist
         with open(self.__CONFIG_FULL_PATH, "a") as f:
             f.write("")
+
+        self.read_config_from_file_async_direct()
 
     @staticmethod
     def config_representer(dumper, data: Config):

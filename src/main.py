@@ -22,8 +22,8 @@ from src.notification.Notification import Notification
 
 class Application(UI):
     def __init__(self):
-        self.config_data = ConfigFileManager()
-        self.config_data.read_config_from_file_async_direct()
+        config_file_manager = ConfigFileManager()
+        self.config_data = config_file_manager.config
 
         self.config_manager = ConfigManager()
         super().__init__(self.config_manager, self.config_data)
@@ -38,7 +38,7 @@ class Application(UI):
 
 
     def __setup(self):
-        self.file_manager = FileManager(self.config_manager)
+        self.file_manager = FileManager(self.config_data)
         self.notification_manager = Notification(self.config_manager)
 
         self.data_manager = DataManager(
@@ -99,7 +99,7 @@ class Application(UI):
     async def save_data(self):
         self.current_data = await self.data_manager.process_save_input(self.current_data)
         await self.__update_data()
-        self.notification.send_info_notification(f"Data saved to file {self.config_manager.FULL_PATH}")
+        self.notification.send_info_notification(f"Data saved to file {self.config_data.save_directory}")
 
     def __set_note_input_text(self, entry: NoteEntry):
         self.__set_text(self.done_field, entry.done)

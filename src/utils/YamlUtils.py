@@ -16,6 +16,10 @@ class YamlUtils:
         "in_progress"
     }
 
+    __allowed_config_note_entry = {
+        "save_directory"
+    }
+
     __allowed_nodes_note_list = {
         "notes"
     }
@@ -26,6 +30,14 @@ class YamlUtils:
             key: val
             for key, val in data.items()
             if key in YamlUtils.__allowed_nodes_note_entry
+        }
+
+    @staticmethod
+    def remove_unknown_config_entry_keys(data: dict) -> dict:
+        return {
+            key: val
+            for key, val in data.items()
+            if key in YamlUtils.__allowed_config_note_entry
         }
 
     @staticmethod
@@ -50,7 +62,7 @@ class YamlUtils:
 
     @staticmethod
     def config_constructor(loader: yaml.SafeLoader, node: yaml.nodes.MappingNode) -> Config:
-        yaml_nodes = YamlUtils.remove_unknown_note_entry_keys(loader.construct_mapping(node))
+        yaml_nodes = YamlUtils.remove_unknown_config_entry_keys(loader.construct_mapping(node))
 
         return Config(**yaml_nodes)
 
