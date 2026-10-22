@@ -45,7 +45,7 @@ jobs:
         with:
           upload_url: ${{ github.event.release.upload_url }}  # This is provided by the release event
           asset_path: ./dist/main.exe
-          asset_name: TaskNoteManager-${{ github.event.release.tag_name }}.exe
+          asset_name: TaskNoteManager-${{ github.event.release.tag_name }}-windows.exe
           asset_content_type: application/octet-stream
 
   build-and-release-linux:
@@ -88,5 +88,5 @@ jobs:
         with:
           upload_url: ${{ github.event.release.upload_url }}  # This is provided by the release event
           asset_path: ./dist/main
-          asset_name: TaskNoteManager-${{ github.event.release.tag_name }}
+          asset_name: TaskNoteManager-${{ github.event.release.tag_name }}-linux.bin
           asset_content_type: application/octet-stream
