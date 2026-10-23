@@ -4,6 +4,7 @@ from collections import OrderedDict
 from pyexcel_ods3 import save_data
 
 from models.Config import Config
+from models.NoteList import NoteList
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
 

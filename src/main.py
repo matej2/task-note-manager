@@ -7,6 +7,7 @@ from datetime import datetime, timedelta, timezone
 
 from customtkinter import END, NORMAL, DISABLED, CTkTextbox as Text, CTkFont as Font
 
+from manager.AISummaryManager import AISummaryManager
 from manager.ConfigFileManager import ConfigFileManager
 from src.Scheduler import Scheduler
 from src.UI import UI
@@ -60,6 +61,8 @@ class Application(UI):
         self.__configure_buttons()
         self.__configure_bindings()
 
+        self.ai_summary_manager = AISummaryManager(self.config_data, self.file_manager)
+
     async def __after_setup(self):
         self.current_data = await self.data_manager.read_data_from_file_async_direct()
         Application.setup_tags(self.task_list)
@@ -83,6 +86,9 @@ class Application(UI):
         await self.export_manager.export_data(self.current_data)
         await self.notification_manager.send_info_notification(
             f"Exported data to {self.config_data.export_file_path}")
+
+        # TODO: Summary should be saved in csv file.
+        self.ai_summary_manager.generate(self.current_data)
 
 
     def __after_submit(self, note_list: NoteList):

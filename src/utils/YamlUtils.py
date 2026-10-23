@@ -18,7 +18,8 @@ class YamlUtils:
 
     __allowed_config_note_entry = {
         "save_directory",
-        "export_file_path"
+        "export_file_path",
+        "gemini_api_key",
     }
 
     __allowed_nodes_note_list = {

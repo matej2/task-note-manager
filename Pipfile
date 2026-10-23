@@ -11,6 +11,7 @@ typing-extensions = "*"
 customtkinter = "*"
 pyinstaller = "*"
 desktop-notifier = "*"
+google-genai = "*"
 
 [dev-packages]
 coverage = "*"
