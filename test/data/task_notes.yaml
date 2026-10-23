@@ -2,1501 +2,1501 @@
 notes:
 - !NoteEntry
   date: '01. Jan. 2026'
-  done: 'Setup'
-  in_progress: 'neki; Task1: Started with task'
-  problems:
+  done: 'Log cleanup'
+  in_progress: 'Task1: Onboarding checklist - Kicked off with scoping'
+  problems: 'Task1: blocked waiting for design assets'
 - !NoteEntry
   date: '02. Jan. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task1: Working on code; Task2: Started with task'
-  problems: 'Task1: Bug found in production'
+  done: 'Interview with a candidate'
+  in_progress: 'Task1: Onboarding checklist - testing on staging'
+  problems: 'Staging environment down for an hour'
 - !NoteEntry
   date: '03. Jan. 2026'
-  done: 'Task1: Finished development and testing'
-  in_progress: 'neki; Task2: Working on code'
-  problems:
+  done: 'Security patch rollout'
+  in_progress: 'Task1: Onboarding checklist - integrating with backend'
+  problems: 'VPN connection dropping'
 - !NoteEntry
   date: '04. Jan. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task2: Working on code; Task3: Started with task'
-  problems: 'Počasen API'
+  done: 'Pair programming session'
+  in_progress: 'Task1: Onboarding checklist - tuning performance'
+  problems: 'Build times creeping up'
 - !NoteEntry
   date: '05. Jan. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task2: Working on code; Task3: Working on code'
-  problems:
+  done: 'Code review'
+  in_progress: 'Task1: Onboarding checklist - polishing error messages; Task2: Error reporting hook - Started: drafting the design'
+  problems: 'Overlapping meetings ate focus time'
 - !NoteEntry
   date: '06. Jan. 2026'
-  done: 'Task2: Finished development and testing'
-  in_progress: 'neki; Task3: Working on code; Task4: Started with task'
-  problems:
+  done: 'Server maintenance'
+  in_progress: 'Task1: Onboarding checklist - fixing review comments; Task2: Error reporting hook - polishing error messages; Task3: Session timeout handling - Started: reading existing code'
+  problems: 'Task1: inconsistent behavior across browsers'
 - !NoteEntry
   date: '07. Jan. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task3: Working on code; Task4: Working on code'
-  problems:
+  done: 'Refactoring legacy module'
+  in_progress: 'Task1: Onboarding checklist - writing unit tests; Task2: Error reporting hook - cleaning up the code; Task3: Session timeout handling - integrating with backend'
+  problems: 'Task3: bug found in production'
 - !NoteEntry
   date: '08. Jan. 2026'
-  done: 'Task4: Finished development and testing'
-  in_progress: 'neki; Task3: Working on code; Task5: Started with task'
-  problems:
+  done: 'Team meeting'
+  in_progress: 'Task1: Onboarding checklist - final testing; Task2: Error reporting hook - tuning performance; Task3: Session timeout handling - integrating with backend'
+  problems: 'Task1: review taking longer than expected'
 - !NoteEntry
   date: '09. Jan. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task3: Working on code; Task5: Working on code'
-  problems:
+  done: 'Task1: Onboarding checklist - Merged after review'
+  in_progress: 'Task2: Error reporting hook - last review round; Task3: Session timeout handling - fixing review comments'
+  problems: 'Incorrect test fixtures'
 - !NoteEntry
   date: '10. Jan. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task3: Working on code; Task5: Working on code; Task6: Started with task'
-  problems:
+  done: 'Task2: Error reporting hook - Finished and deployed'
+  in_progress: 'Task3: Session timeout handling - testing on staging; Task4: Settings page - Started: reading existing code'
+  problems: 'Task3: memory leak under load'
 - !NoteEntry
   date: '11. Jan. 2026'
-  done: 'Task5: Finished development and testing'
-  in_progress: 'neki; Task3: Working on code; Task6: Working on code'
-  problems: 'Težave s povezavo'
+  done: 'CI pipeline fixes'
+  in_progress: 'Task3: Session timeout handling - tuning performance; Task4: Settings page - polishing error messages'
+  problems: 'Task3: blocked waiting for design assets'
 - !NoteEntry
   date: '12. Jan. 2026'
-  done: 'Task3: Finished development and testing'
-  in_progress: 'neki; Task6: Working on code'
-  problems:
+  done: 'Fixed flaky tests'
+  in_progress: 'Task3: Session timeout handling - writing migration script; Task4: Settings page - testing on staging; Task5: CSV report builder - Started: reading existing code'
+  problems: 'Slow API response times'
 - !NoteEntry
   date: '13. Jan. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task6: Working on code; Task7: Started with task'
-  problems:
+  done: 'Updated documentation'
+  in_progress: 'Task3: Session timeout handling - integrating with backend; Task4: Settings page - writing migration script; Task5: CSV report builder - fixing review comments'
+  problems: 'Laptop update interrupted work'
 - !NoteEntry
   date: '14. Jan. 2026'
-  done: 'Task6: Finished development and testing'
-  in_progress: 'neki; Task7: Working on code; Task8: Started with task'
-  problems:
+  done: 'Sprint planning'
+  in_progress: 'Task3: Session timeout handling - tuning performance; Task4: Settings page - fixing review comments; Task5: CSV report builder - wiring up the UI'
+  problems: 'Task5: slow query on large dataset'
 - !NoteEntry
   date: '15. Jan. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task7: Working on code; Task8: Working on code'
-  problems:
+  done: 'Retrospective'
+  in_progress: 'Task3: Session timeout handling - final testing; Task4: Settings page - handling edge cases; Task5: CSV report builder - waiting for review feedback'
+  problems: 'Database migration took longer than planned'
 - !NoteEntry
   date: '16. Jan. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task7: Working on code; Task8: Working on code; Task9: Started with task'
-  problems:
+  done: 'Task3: Session timeout handling - Shipped to production'
+  in_progress: 'Task4: Settings page - tuning performance; Task5: CSV report builder - writing unit tests; Task6: Keyboard shortcuts - Started: drafting the design'
+  problems: 'Task5: inconsistent behavior across browsers'
 - !NoteEntry
   date: '17. Jan. 2026'
-  done: 'Task8: Finished development and testing'
-  in_progress: 'neki; Task7: Working on code; Task9: Working on code'
-  problems:
+  done: 'Log cleanup'
+  in_progress: 'Task4: Settings page - cleaning up the code; Task5: CSV report builder - waiting for review feedback; Task6: Keyboard shortcuts - wiring up the UI'
+  problems: 'Task5: bug found in production'
 - !NoteEntry
   date: '18. Jan. 2026'
-  done: 'Task7: Finished development and testing'
-  in_progress: 'neki; Task9: Working on code'
-  problems:
+  done: 'Database index review'
+  in_progress: 'Task4: Settings page - cleaning up the code; Task5: CSV report builder - preparing for release; Task6: Keyboard shortcuts - polishing error messages'
+  problems: 'Task5: staging data out of date'
 - !NoteEntry
   date: '19. Jan. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task9: Working on code; Task10: Started with task'
-  problems:
+  done: 'Task5: CSV report builder - Completed, tests green'
+  in_progress: 'Task4: Settings page - preparing for release; Task6: Keyboard shortcuts - handling edge cases'
+  problems: 'Task4: memory leak under load'
 - !NoteEntry
   date: '20. Jan. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task9: Working on code; Task10: Working on code'
-  problems:
+  done: 'Task4: Settings page - Finished and deployed'
+  in_progress: 'Task6: Keyboard shortcuts - writing migration script; Task7: Email templates - Started: drafting the design'
+  problems: 'Task7: rate limit hit on external API'
 - !NoteEntry
   date: '21. Jan. 2026'
-  done: 'Task9: Finished development and testing'
-  in_progress: 'neki; Task10: Working on code; Task11: Started with task'
-  problems:
+  done: 'Cleaned up old branches'
+  in_progress: 'Task6: Keyboard shortcuts - wiring up the UI; Task7: Email templates - waiting for review feedback'
+  problems: 'Task6: unclear acceptance criteria'
 - !NoteEntry
   date: '22. Jan. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task10: Working on code; Task11: Working on code'
-  problems: 'Task11: Bug found in production'
+  done: 'Security patch rollout'
+  in_progress: 'Task6: Keyboard shortcuts - fixing review comments; Task7: Email templates - testing on staging; Task8: Slack integration - Started: setting up the branch'
+  problems: 'Task6: missing test coverage'
 - !NoteEntry
   date: '23. Jan. 2026'
-  done: 'Task10: Finished development and testing'
-  in_progress: 'neki; Task11: Working on code'
-  problems:
+  done: 'Monitoring dashboard tweaks'
+  in_progress: 'Task6: Keyboard shortcuts - polishing error messages; Task7: Email templates - cleaning up the code; Task8: Slack integration - testing on staging'
+  problems: 'Task8: regression reported by support'
 - !NoteEntry
   date: '24. Jan. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task11: Working on code; Task12: Started with task'
-  problems:
+  done: 'Mentoring a junior colleague'
+  in_progress: 'Task6: Keyboard shortcuts - last review round; Task7: Email templates - implementing core logic; Task8: Slack integration - tuning performance'
+  problems: 'Outdated documentation caused confusion'
 - !NoteEntry
   date: '25. Jan. 2026'
-  done: 'Task11: Finished development and testing'
-  in_progress: 'neki; Task12: Working on code'
-  problems:
+  done: 'Task6: Keyboard shortcuts - Shipped to production'
+  in_progress: 'Task7: Email templates - last review round; Task8: Slack integration - cleaning up the code'
+  problems: 'Task8: inconsistent behavior across browsers'
 - !NoteEntry
   date: '26. Jan. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task12: Working on code; Task13: Started with task'
-  problems:
+  done: 'Task7: Email templates - Finished and deployed'
+  in_progress: 'Task8: Slack integration - tuning performance; Task9: Localization support - Started: reading existing code'
+  problems: 'Task8: bug found in production'
 - !NoteEntry
   date: '27. Jan. 2026'
-  done: 'Task12: Finished development and testing'
-  in_progress: 'neki; Task13: Working on code'
-  problems:
+  done: 'Dependency updates'
+  in_progress: 'Task8: Slack integration - tuning performance; Task9: Localization support - wiring up the UI; Task10: Health check endpoint - Kicked off with scoping'
+  problems: 'Task10: missing test coverage'
 - !NoteEntry
   date: '28. Jan. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task13: Working on code; Task14: Started with task'
-  problems: 'Konflikt pri spajanju'
+  done: 'Interview with a candidate'
+  in_progress: 'Task8: Slack integration - implementing core logic; Task9: Localization support - writing unit tests; Task10: Health check endpoint - implementing core logic'
+  problems: 'Task8: missing test coverage'
 - !NoteEntry
   date: '29. Jan. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task13: Working on code; Task14: Working on code; Task15: Started with task'
-  problems:
+  done: 'Pair programming session'
+  in_progress: 'Task8: Slack integration - cleaning up the code; Task9: Localization support - final testing; Task10: Health check endpoint - fixing review comments'
+  problems: 'Task8: flaky integration test'
 - !NoteEntry
   date: '30. Jan. 2026'
-  done: 'Task13: Finished development and testing'
-  in_progress: 'neki; Task14: Working on code; Task15: Working on code'
-  problems:
+  done: 'Task9: Localization support - Released to staging, approved'
+  in_progress: 'Task8: Slack integration - testing on staging; Task10: Health check endpoint - integrating with backend; Task11: OAuth provider setup - Started: drafting the design'
+  problems: 'Task10: memory leak under load'
 - !NoteEntry
   date: '31. Jan. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task14: Working on code; Task15: Working on code'
-  problems:
+  done: 'Server maintenance'
+  in_progress: 'Task8: Slack integration - fixing review comments; Task10: Health check endpoint - testing on staging; Task11: OAuth provider setup - fixing review comments'
+  problems: 'Task8: timeout when calling third-party service'
 - !NoteEntry
   date: '01. Feb. 2026'
-  done: 'Task15: Finished development and testing'
-  in_progress: 'neki; Task14: Working on code; Task16: Started with task'
-  problems:
+  done: 'Refactoring legacy module'
+  in_progress: 'Task8: Slack integration - final testing; Task10: Health check endpoint - preparing for release; Task11: OAuth provider setup - tuning performance'
+  problems: 'Task11: merge conflict with main'
 - !NoteEntry
   date: '02. Feb. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task14: Working on code; Task16: Working on code'
-  problems:
+  done: 'Task8: Slack integration - Released to staging, approved; Task10: Health check endpoint - Merged after review'
+  in_progress: 'Task11: OAuth provider setup - writing unit tests; Task12: Admin impersonation - Started: skeleton implementation'
+  problems: 'Task12: rate limit hit on external API'
 - !NoteEntry
   date: '03. Feb. 2026'
-  done: 'Task14: Finished development and testing'
-  in_progress: 'neki; Task16: Working on code; Task17: Started with task'
-  problems:
+  done: 'Team meeting'
+  in_progress: 'Task11: OAuth provider setup - wiring up the UI; Task12: Admin impersonation - cleaning up the code'
+  problems: 'Task11: regression reported by support'
 - !NoteEntry
   date: '04. Feb. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task16: Working on code; Task17: Working on code'
-  problems:
+  done: 'Updated documentation'
+  in_progress: 'Task11: OAuth provider setup - last review round; Task12: Admin impersonation - fixing review comments'
+  problems: 'Build times creeping up'
 - !NoteEntry
   date: '05. Feb. 2026'
-  done: 'Task16: Finished development and testing'
-  in_progress: 'neki; Task17: Working on code; Task18: Started with task'
-  problems:
+  done: 'Task11: OAuth provider setup - Finished development and testing'
+  in_progress: 'Task12: Admin impersonation - implementing core logic'
+  problems: 'Incorrect test fixtures'
 - !NoteEntry
   date: '06. Feb. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task17: Working on code; Task18: Working on code'
-  problems: 'Napačni testi'
+  done: 'Log cleanup'
+  in_progress: 'Task12: Admin impersonation - final testing'
+  problems: 'Missing access to monitoring tools'
 - !NoteEntry
   date: '07. Feb. 2026'
-  done: 'Task17: Finished development and testing'
-  in_progress: 'neki; Task18: Working on code'
-  problems:
+  done: 'Task12: Admin impersonation - Merged after review'
+  in_progress: 'Task13: Query optimization - Started: setting up the branch'
+  problems: 'Task13: inconsistent behavior across browsers'
 - !NoteEntry
   date: '08. Feb. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task18: Working on code; Task19: Started with task'
-  problems:
+  done: 'CI pipeline fixes'
+  in_progress: 'Task13: Query optimization - cleaning up the code; Task14: Password reset flow - Started: setting up the branch'
+  problems: 'VPN connection dropping'
 - !NoteEntry
   date: '09. Feb. 2026'
-  done: 'Task18: Finished development and testing'
-  in_progress: 'neki; Task19: Working on code; Task20: Started with task'
-  problems:
+  done: 'Backlog grooming'
+  in_progress: 'Task13: Query optimization - testing on staging; Task14: Password reset flow - handling edge cases; Task15: Login rate limiting - Started: drafting the design'
+  problems: 'Task14: inconsistent behavior across browsers'
 - !NoteEntry
   date: '10. Feb. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task19: Working on code; Task20: Working on code'
-  problems:
+  done: 'Cleaned up old branches'
+  in_progress: 'Task13: Query optimization - polishing error messages; Task14: Password reset flow - handling edge cases; Task15: Login rate limiting - handling edge cases'
+  problems: 'Laptop update interrupted work'
 - !NoteEntry
   date: '11. Feb. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task19: Working on code; Task20: Working on code; Task21: Started with task'
-  problems:
+  done: 'Code review'
+  in_progress: 'Task13: Query optimization - fixing review comments; Task14: Password reset flow - polishing error messages; Task15: Login rate limiting - implementing core logic'
+  problems: 'Overlapping meetings ate focus time'
 - !NoteEntry
   date: '12. Feb. 2026'
-  done: 'Task20: Finished development and testing'
-  in_progress: 'neki; Task19: Working on code; Task21: Working on code'
-  problems:
+  done: 'Retrospective'
+  in_progress: 'Task13: Query optimization - waiting for review feedback; Task14: Password reset flow - tuning performance; Task15: Login rate limiting - waiting for review feedback'
+  problems: 'Task15: regression reported by support'
 - !NoteEntry
   date: '13. Feb. 2026'
-  done: 'Task19: Finished development and testing'
-  in_progress: 'neki; Task21: Working on code'
-  problems:
+  done: 'Mentoring a junior colleague'
+  in_progress: 'Task13: Query optimization - last review round; Task14: Password reset flow - preparing for release; Task15: Login rate limiting - tuning performance'
+  problems: 'Staging environment down for an hour'
 - !NoteEntry
   date: '14. Feb. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task21: Working on code; Task22: Started with task'
-  problems:
+  done: 'Task13: Query optimization - Finished and deployed; Task14: Password reset flow - Completed, tests green'
+  in_progress: 'Task15: Login rate limiting - preparing for release'
+  problems: 'Task15: API contract changed upstream'
 - !NoteEntry
   date: '15. Feb. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task21: Working on code; Task22: Working on code'
-  problems:
+  done: 'Task15: Login rate limiting - Completed, tests green'
+  in_progress: 'Task16: Inventory sync - Started: reading existing code'
+  problems: 'Task16: inconsistent behavior across browsers'
 - !NoteEntry
   date: '16. Feb. 2026'
-  done: 'Task22: Finished development and testing'
-  in_progress: 'neki; Task21: Working on code; Task23: Started with task'
-  problems:
+  done: 'Monitoring dashboard tweaks'
+  in_progress: 'Task16: Inventory sync - tuning performance; Task17: Mobile layout fixes - Started: skeleton implementation'
+  problems: 'License renewal pending for IDE'
 - !NoteEntry
   date: '17. Feb. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task21: Working on code; Task23: Working on code'
-  problems: 'Počasen API'
+  done: 'Fixed flaky tests'
+  in_progress: 'Task16: Inventory sync - integrating with backend; Task17: Mobile layout fixes - polishing error messages; Task18: Notification center - Started: drafting the design'
+  problems: 'Noisy alerts overnight'
 - !NoteEntry
   date: '18. Feb. 2026'
-  done: 'Task21: Finished development and testing'
-  in_progress: 'neki; Task23: Working on code; Task24: Started with task'
-  problems:
+  done: 'Interview with a candidate'
+  in_progress: 'Task16: Inventory sync - wiring up the UI; Task17: Mobile layout fixes - preparing for release; Task18: Notification center - writing migration script'
+  problems: 'Task16: memory leak under load'
 - !NoteEntry
   date: '19. Feb. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task23: Working on code; Task24: Working on code'
-  problems:
+  done: 'Task17: Mobile layout fixes - Shipped to production'
+  in_progress: 'Task16: Inventory sync - polishing error messages; Task18: Notification center - integrating with backend'
+  problems: 'Task18: review taking longer than expected'
 - !NoteEntry
   date: '20. Feb. 2026'
-  done: 'Task23: Finished development and testing'
-  in_progress: 'neki; Task24: Working on code; Task25: Started with task'
-  problems:
+  done: 'Dependency updates'
+  in_progress: 'Task16: Inventory sync - final testing; Task18: Notification center - last review round'
+  problems: 'Task16: environment config mismatch'
 - !NoteEntry
   date: '21. Feb. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task24: Working on code; Task25: Working on code'
-  problems:
+  done: 'Task16: Inventory sync - Completed, tests green; Task18: Notification center - Finished development and testing'
+  in_progress: 'Task19: Two-factor authentication - Kicked off with scoping'
+  problems: 'Task19: regression reported by support'
 - !NoteEntry
   date: '22. Feb. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task24: Working on code; Task25: Working on code; Task26: Started with task'
-  problems:
+  done: 'Security patch rollout'
+  in_progress: 'Task19: Two-factor authentication - wiring up the UI'
+  problems: 'Outdated documentation caused confusion'
 - !NoteEntry
   date: '23. Feb. 2026'
-  done: 'Task25: Finished development and testing'
-  in_progress: 'neki; Task24: Working on code; Task26: Working on code'
-  problems:
+  done: 'Refactoring legacy module'
+  in_progress: 'Task19: Two-factor authentication - writing migration script'
+  problems: 'Task19: blocked waiting for design assets'
 - !NoteEntry
   date: '24. Feb. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task24: Working on code; Task26: Working on code'
-  problems:
+  done: 'Team meeting'
+  in_progress: 'Task19: Two-factor authentication - wiring up the UI'
+  problems: 'Task19: unclear acceptance criteria'
 - !NoteEntry
   date: '25. Feb. 2026'
-  done: 'Task26: Finished development and testing'
-  in_progress: 'neki; Task24: Working on code; Task27: Started with task'
-  problems: 'Task27: Bug found in production'
+  done: 'Log cleanup'
+  in_progress: 'Task19: Two-factor authentication - last review round'
+  problems: 'Task19: memory leak under load'
 - !NoteEntry
   date: '26. Feb. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task24: Working on code; Task27: Working on code'
-  problems:
+  done: 'Task19: Two-factor authentication - Shipped to production'
+  in_progress: 'Task20: Report scheduler - Started: drafting the design'
+  problems: 'Task20: merge conflict with main'
 - !NoteEntry
   date: '27. Feb. 2026'
-  done: 'Task24: Finished development and testing'
-  in_progress: 'neki; Task27: Working on code; Task28: Started with task'
-  problems:
+  done: 'Updated documentation'
+  in_progress: 'Task20: Report scheduler - handling edge cases'
+  problems: 'Task20: missing test coverage'
 - !NoteEntry
   date: '28. Feb. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task27: Working on code; Task28: Working on code'
-  problems:
+  done: 'Cleaned up old branches'
+  in_progress: 'Task20: Report scheduler - handling edge cases; Task21: Comment threads - Started: setting up the branch'
+  problems: 'Task21: slow query on large dataset'
 - !NoteEntry
   date: '01. Mar. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task27: Working on code; Task28: Working on code; Task29: Started with task'
-  problems:
+  done: 'Backlog grooming'
+  in_progress: 'Task20: Report scheduler - wiring up the UI; Task21: Comment threads - implementing core logic'
+  problems: 'Task21: missing test coverage'
 - !NoteEntry
   date: '02. Mar. 2026'
-  done: 'Task28: Finished development and testing'
-  in_progress: 'neki; Task27: Working on code; Task29: Working on code'
-  problems:
+  done: 'CI pipeline fixes'
+  in_progress: 'Task20: Report scheduler - writing migration script; Task21: Comment threads - testing on staging'
+  problems: 'Slow API response times'
 - !NoteEntry
   date: '03. Mar. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task27: Working on code; Task29: Working on code'
-  problems: 'Težave s povezavo'
+  done: 'Database index review'
+  in_progress: 'Task20: Report scheduler - wiring up the UI; Task21: Comment threads - cleaning up the code; Task22: Bulk edit tool - Started: drafting the design'
+  problems: 'Task22: blocked waiting for design assets'
 - !NoteEntry
   date: '04. Mar. 2026'
-  done: 'Task29: Finished development and testing'
-  in_progress: 'neki; Task27: Working on code; Task30: Started with task'
-  problems:
+  done: 'Pair programming session'
+  in_progress: 'Task20: Report scheduler - implementing core logic; Task21: Comment threads - tuning performance; Task22: Bulk edit tool - wiring up the UI'
+  problems: 'Task20: unclear acceptance criteria'
 - !NoteEntry
   date: '05. Mar. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task27: Working on code; Task30: Working on code'
-  problems:
+  done: 'Retrospective'
+  in_progress: 'Task20: Report scheduler - wiring up the UI; Task21: Comment threads - wiring up the UI; Task22: Bulk edit tool - wiring up the UI'
+  problems: 'Task22: bug found in production'
 - !NoteEntry
   date: '06. Mar. 2026'
-  done: 'Task27: Finished development and testing'
-  in_progress: 'neki; Task30: Working on code; Task31: Started with task'
-  problems:
+  done: 'Code review'
+  in_progress: 'Task20: Report scheduler - polishing error messages; Task21: Comment threads - writing unit tests; Task22: Bulk edit tool - cleaning up the code'
+  problems: 'Task21: timeout when calling third-party service'
 - !NoteEntry
   date: '07. Mar. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task30: Working on code; Task31: Working on code'
-  problems:
+  done: 'Fixed flaky tests'
+  in_progress: 'Task20: Report scheduler - writing migration script; Task21: Comment threads - cleaning up the code; Task22: Bulk edit tool - cleaning up the code'
+  problems: 'Task22: memory leak under load'
 - !NoteEntry
   date: '08. Mar. 2026'
-  done: 'Task31: Finished development and testing'
-  in_progress: 'neki; Task30: Working on code; Task32: Started with task'
-  problems:
+  done: 'Server maintenance'
+  in_progress: 'Task20: Report scheduler - final testing; Task21: Comment threads - cleaning up the code; Task22: Bulk edit tool - implementing core logic'
+  problems: 'Task20: rate limit hit on external API'
 - !NoteEntry
   date: '09. Mar. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task30: Working on code; Task32: Working on code'
-  problems:
+  done: 'Task20: Report scheduler - Finished and deployed'
+  in_progress: 'Task21: Comment threads - cleaning up the code; Task22: Bulk edit tool - tuning performance; Task23: Release notes page - Started: setting up the branch'
+  problems: 'Overlapping meetings ate focus time'
 - !NoteEntry
   date: '10. Mar. 2026'
-  done: 'Task30: Finished development and testing'
-  in_progress: 'neki; Task32: Working on code; Task33: Started with task'
-  problems:
+  done: 'Security patch rollout'
+  in_progress: 'Task21: Comment threads - final testing; Task22: Bulk edit tool - tuning performance; Task23: Release notes page - fixing review comments'
+  problems: 'Task23: merge conflict with main'
 - !NoteEntry
   date: '11. Mar. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task32: Working on code; Task33: Working on code'
-  problems:
+  done: 'Task21: Comment threads - Merged after review'
+  in_progress: 'Task22: Bulk edit tool - handling edge cases; Task23: Release notes page - polishing error messages'
+  problems: 'VPN connection dropping'
 - !NoteEntry
   date: '12. Mar. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task32: Working on code; Task33: Working on code; Task34: Started with task'
-  problems:
+  done: 'Refactoring legacy module'
+  in_progress: 'Task22: Bulk edit tool - tuning performance; Task23: Release notes page - last review round'
+  problems: 'Missing access to monitoring tools'
 - !NoteEntry
   date: '13. Mar. 2026'
-  done: 'Task32: Finished development and testing'
-  in_progress: 'neki; Task33: Working on code; Task34: Working on code'
-  problems:
+  done: 'Task23: Release notes page - Finished development and testing'
+  in_progress: 'Task22: Bulk edit tool - preparing for release'
+  problems: 'Task22: timeout when calling third-party service'
 - !NoteEntry
   date: '14. Mar. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task33: Working on code; Task34: Working on code'
-  problems: 'Konflikt pri spajanju'
+  done: 'Task22: Bulk edit tool - Shipped to production'
+  in_progress: 'Task24: Dashboard caching - Started: drafting the design'
+  problems: 'Task24: staging data out of date'
 - !NoteEntry
   date: '15. Mar. 2026'
-  done: 'Task33: Finished development and testing'
-  in_progress: 'neki; Task34: Working on code; Task35: Started with task'
-  problems:
+  done: 'Sprint planning'
+  in_progress: 'Task24: Dashboard caching - writing unit tests; Task25: Feature flag service - Started: drafting the design'
+  problems: 'Task24: blocked waiting for design assets'
 - !NoteEntry
   date: '16. Mar. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task34: Working on code; Task35: Working on code'
-  problems:
+  done: 'Updated documentation'
+  in_progress: 'Task24: Dashboard caching - writing unit tests; Task25: Feature flag service - wiring up the UI; Task26: Pagination refactor - Started: skeleton implementation'
+  problems: 'Task26: slow query on large dataset'
 - !NoteEntry
   date: '17. Mar. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task34: Working on code; Task35: Working on code; Task36: Started with task'
-  problems:
+  done: 'Mentoring a junior colleague'
+  in_progress: 'Task24: Dashboard caching - wiring up the UI; Task25: Feature flag service - tuning performance; Task26: Pagination refactor - handling edge cases'
+  problems: 'License renewal pending for IDE'
 - !NoteEntry
   date: '18. Mar. 2026'
-  done: 'Task34: Finished development and testing'
-  in_progress: 'neki; Task35: Working on code; Task36: Working on code'
-  problems:
+  done: 'Dependency updates'
+  in_progress: 'Task24: Dashboard caching - writing unit tests; Task25: Feature flag service - integrating with backend; Task26: Pagination refactor - tuning performance'
+  problems: 'Task26: bug found in production'
 - !NoteEntry
   date: '19. Mar. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task35: Working on code; Task36: Working on code'
-  problems:
+  done: 'Backlog grooming'
+  in_progress: 'Task24: Dashboard caching - handling edge cases; Task25: Feature flag service - wiring up the UI; Task26: Pagination refactor - polishing error messages'
+  problems: 'Task26: API contract changed upstream'
 - !NoteEntry
   date: '20. Mar. 2026'
-  done: 'Task36: Finished development and testing'
-  in_progress: 'neki; Task35: Working on code; Task37: Started with task'
-  problems:
+  done: 'Interview with a candidate'
+  in_progress: 'Task24: Dashboard caching - integrating with backend; Task25: Feature flag service - fixing review comments; Task26: Pagination refactor - integrating with backend'
+  problems: 'Task25: timeout when calling third-party service'
 - !NoteEntry
   date: '21. Mar. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task35: Working on code; Task37: Working on code'
-  problems:
+  done: 'Database index review'
+  in_progress: 'Task24: Dashboard caching - fixing review comments; Task25: Feature flag service - writing unit tests; Task26: Pagination refactor - polishing error messages'
+  problems: 'Task24: flaky integration test'
 - !NoteEntry
   date: '22. Mar. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task35: Working on code; Task37: Working on code; Task38: Started with task'
-  problems:
+  done: 'Pair programming session'
+  in_progress: 'Task24: Dashboard caching - fixing review comments; Task25: Feature flag service - last review round; Task26: Pagination refactor - preparing for release'
+  problems: 'Build times creeping up'
 - !NoteEntry
   date: '23. Mar. 2026'
-  done: 'Task35: Finished development and testing'
-  in_progress: 'neki; Task37: Working on code; Task38: Working on code'
-  problems:
+  done: 'Task25: Feature flag service - Merged after review; Task26: Pagination refactor - Finished development and testing'
+  in_progress: 'Task24: Dashboard caching - last review round; Task27: Drag-and-drop uploads - Started: setting up the branch'
+  problems: 'Task24: merge conflict with main'
 - !NoteEntry
   date: '24. Mar. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task37: Working on code; Task38: Working on code'
-  problems: 'Napačni testi'
+  done: 'Task24: Dashboard caching - Merged after review'
+  in_progress: 'Task27: Drag-and-drop uploads - writing unit tests; Task28: Invoice PDF export - Kicked off with scoping'
+  problems: 'Task28: flaky integration test'
 - !NoteEntry
   date: '25. Mar. 2026'
-  done: 'Task38: Finished development and testing'
-  in_progress: 'neki; Task37: Working on code; Task39: Started with task'
-  problems:
+  done: 'CI pipeline fixes'
+  in_progress: 'Task27: Drag-and-drop uploads - waiting for review feedback; Task28: Invoice PDF export - wiring up the UI; Task29: Contact form spam filter - Started: reading existing code'
+  problems: 'Incorrect test fixtures'
 - !NoteEntry
   date: '26. Mar. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task37: Working on code; Task39: Working on code'
-  problems:
+  done: 'Code review'
+  in_progress: 'Task27: Drag-and-drop uploads - writing migration script; Task28: Invoice PDF export - waiting for review feedback; Task29: Contact form spam filter - integrating with backend'
+  problems: 'Task29: API contract changed upstream'
 - !NoteEntry
   date: '27. Mar. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task37: Working on code; Task39: Working on code; Task40: Started with task'
-  problems:
+  done: 'Monitoring dashboard tweaks'
+  in_progress: 'Task27: Drag-and-drop uploads - cleaning up the code; Task28: Invoice PDF export - testing on staging; Task29: Contact form spam filter - tuning performance'
+  problems: 'Task28: memory leak under load'
 - !NoteEntry
   date: '28. Mar. 2026'
-  done: 'Task37: Finished development and testing'
-  in_progress: 'neki; Task39: Working on code; Task40: Working on code'
-  problems:
+  done: 'Log cleanup'
+  in_progress: 'Task27: Drag-and-drop uploads - writing unit tests; Task28: Invoice PDF export - waiting for review feedback; Task29: Contact form spam filter - implementing core logic'
+  problems: 'Task29: rate limit hit on external API'
 - !NoteEntry
   date: '29. Mar. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task39: Working on code; Task40: Working on code'
-  problems: 'Počasen API'
+  done: 'Server maintenance'
+  in_progress: 'Task27: Drag-and-drop uploads - wiring up the UI; Task28: Invoice PDF export - preparing for release; Task29: Contact form spam filter - final testing'
+  problems: 'Task27: flaky integration test'
 - !NoteEntry
   date: '30. Mar. 2026'
-  done: 'Task39: Finished development and testing'
-  in_progress: 'neki; Task40: Working on code; Task41: Started with task'
-  problems:
+  done: 'Task28: Invoice PDF export - Finished and deployed; Task29: Contact form spam filter - Finished development and testing'
+  in_progress: 'Task27: Drag-and-drop uploads - preparing for release'
+  problems: 'Database migration took longer than planned'
 - !NoteEntry
   date: '31. Mar. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task40: Working on code; Task41: Working on code'
-  problems:
+  done: 'Task27: Drag-and-drop uploads - Merged after review'
+  in_progress: 'Task30: Data archiving job - Kicked off with scoping'
+  problems: 'Noisy alerts overnight'
 - !NoteEntry
   date: '01. Apr. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task40: Working on code; Task41: Working on code; Task42: Started with task'
-  problems:
+  done: 'Retrospective'
+  in_progress: 'Task30: Data archiving job - fixing review comments; Task31: Scheduled exports - Started: setting up the branch'
+  problems: 'Task31: flaky integration test'
 - !NoteEntry
   date: '02. Apr. 2026'
-  done: 'Task41: Finished development and testing'
-  in_progress: 'neki; Task40: Working on code; Task42: Working on code'
-  problems:
+  done: 'Cleaned up old branches'
+  in_progress: 'Task30: Data archiving job - implementing core logic; Task31: Scheduled exports - cleaning up the code'
+  problems: 'Task30: rate limit hit on external API'
 - !NoteEntry
   date: '03. Apr. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task40: Working on code; Task42: Working on code'
-  problems:
+  done: 'Team meeting'
+  in_progress: 'Task30: Data archiving job - wiring up the UI; Task31: Scheduled exports - preparing for release'
+  problems: 'Task30: review taking longer than expected'
 - !NoteEntry
   date: '04. Apr. 2026'
-  done: 'Task40: Finished development and testing'
-  in_progress: 'neki; Task42: Working on code; Task43: Started with task'
-  problems: 'Task42: Bug found in production'
+  done: 'Task31: Scheduled exports - Finished development and testing'
+  in_progress: 'Task30: Data archiving job - writing migration script; Task32: Billing page redesign - Started: skeleton implementation'
+  problems: 'Task30: regression reported by support'
 - !NoteEntry
   date: '05. Apr. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task42: Working on code; Task43: Working on code'
-  problems:
+  done: 'Dependency updates'
+  in_progress: 'Task30: Data archiving job - last review round; Task32: Billing page redesign - wiring up the UI; Task33: Template editor - Started: skeleton implementation'
+  problems: 'Laptop update interrupted work'
 - !NoteEntry
   date: '06. Apr. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task42: Working on code; Task43: Working on code; Task44: Started with task'
-  problems:
+  done: 'Task30: Data archiving job - Released to staging, approved'
+  in_progress: 'Task32: Billing page redesign - implementing core logic; Task33: Template editor - implementing core logic; Task34: Tag management - Kicked off with scoping'
+  problems: 'Task34: unclear acceptance criteria'
 - !NoteEntry
   date: '07. Apr. 2026'
-  done: 'Task42: Finished development and testing'
-  in_progress: 'neki; Task43: Working on code; Task44: Working on code'
-  problems:
+  done: 'Fixed flaky tests'
+  in_progress: 'Task32: Billing page redesign - cleaning up the code; Task33: Template editor - handling edge cases; Task34: Tag management - cleaning up the code'
+  problems: 'Task32: rate limit hit on external API'
 - !NoteEntry
   date: '08. Apr. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task43: Working on code; Task44: Working on code'
-  problems: 'Težave s povezavo'
+  done: 'Mentoring a junior colleague'
+  in_progress: 'Task32: Billing page redesign - tuning performance; Task33: Template editor - writing unit tests; Task34: Tag management - writing migration script'
+  problems: 'Task34: review taking longer than expected'
 - !NoteEntry
   date: '09. Apr. 2026'
-  done: 'Task43: Finished development and testing'
-  in_progress: 'neki; Task44: Working on code; Task45: Started with task'
-  problems:
+  done: 'Security patch rollout'
+  in_progress: 'Task32: Billing page redesign - integrating with backend; Task33: Template editor - writing migration script; Task34: Tag management - tuning performance'
+  problems: 'Slow API response times'
 - !NoteEntry
   date: '10. Apr. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task44: Working on code; Task45: Working on code'
-  problems:
+  done: 'Pair programming session'
+  in_progress: 'Task32: Billing page redesign - preparing for release; Task33: Template editor - cleaning up the code; Task34: Tag management - waiting for review feedback'
+  problems: 'Task32: bug found in production'
 - !NoteEntry
   date: '11. Apr. 2026'
-  done: 'Task44: Finished development and testing'
-  in_progress: 'neki; Task45: Working on code; Task46: Started with task'
-  problems:
+  done: 'Task32: Billing page redesign - Released to staging, approved'
+  in_progress: 'Task33: Template editor - fixing review comments; Task34: Tag management - handling edge cases'
+  problems: 'Disk space low on build server'
 - !NoteEntry
   date: '12. Apr. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task45: Working on code; Task46: Working on code'
-  problems:
+  done: 'Updated documentation'
+  in_progress: 'Task33: Template editor - implementing core logic; Task34: Tag management - final testing; Task35: Backup verification - Kicked off with scoping'
+  problems: 'Task35: inconsistent behavior across browsers'
 - !NoteEntry
   date: '13. Apr. 2026'
-  done: 'Task46: Finished development and testing'
-  in_progress: 'neki; Task45: Working on code; Task47: Started with task'
-  problems:
+  done: 'Task34: Tag management - Completed, tests green'
+  in_progress: 'Task33: Template editor - waiting for review feedback; Task35: Backup verification - integrating with backend'
+  problems: 'Task33: API contract changed upstream'
 - !NoteEntry
   date: '14. Apr. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task45: Working on code; Task47: Working on code'
-  problems:
+  done: 'Database index review'
+  in_progress: 'Task33: Template editor - cleaning up the code; Task35: Backup verification - writing migration script; Task36: Webhook retries - Started: skeleton implementation'
+  problems: 'Task35: unclear acceptance criteria'
 - !NoteEntry
   date: '15. Apr. 2026'
-  done: 'Task45: Finished development and testing'
-  in_progress: 'neki; Task47: Working on code; Task48: Started with task'
-  problems:
+  done: 'Sprint planning'
+  in_progress: 'Task33: Template editor - last review round; Task35: Backup verification - waiting for review feedback; Task36: Webhook retries - implementing core logic'
+  problems: 'Task33: environment config mismatch'
 - !NoteEntry
   date: '16. Apr. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task47: Working on code; Task48: Working on code'
-  problems: 'Konflikt pri spajanju'
+  done: 'Task33: Template editor - Merged after review'
+  in_progress: 'Task35: Backup verification - implementing core logic; Task36: Webhook retries - waiting for review feedback; Task37: Search autocomplete - Started: skeleton implementation'
+  problems: 'Task37: memory leak under load'
 - !NoteEntry
   date: '17. Apr. 2026'
-  done: 'Task47: Finished development and testing'
-  in_progress: 'neki; Task48: Working on code; Task49: Started with task'
-  problems:
+  done: 'Interview with a candidate'
+  in_progress: 'Task35: Backup verification - fixing review comments; Task36: Webhook retries - handling edge cases; Task37: Search autocomplete - implementing core logic'
+  problems: 'Task35: rate limit hit on external API'
 - !NoteEntry
   date: '18. Apr. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task48: Working on code; Task49: Working on code'
-  problems:
+  done: 'Server maintenance'
+  in_progress: 'Task35: Backup verification - fixing review comments; Task36: Webhook retries - wiring up the UI; Task37: Search autocomplete - implementing core logic'
+  problems: 'Task36: review taking longer than expected'
 - !NoteEntry
   date: '19. Apr. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task48: Working on code; Task49: Working on code; Task50: Started with task'
-  problems:
+  done: 'Monitoring dashboard tweaks'
+  in_progress: 'Task35: Backup verification - final testing; Task36: Webhook retries - tuning performance; Task37: Search autocomplete - waiting for review feedback'
+  problems: 'Task37: regression reported by support'
 - !NoteEntry
   date: '20. Apr. 2026'
-  done: 'Task48: Finished development and testing'
-  in_progress: 'neki; Task49: Working on code; Task50: Working on code'
-  problems:
+  done: 'Task35: Backup verification - Finished and deployed'
+  in_progress: 'Task36: Webhook retries - implementing core logic; Task37: Search autocomplete - writing unit tests; Task38: File upload chunking - Started: skeleton implementation'
+  problems: 'Task36: missing test coverage'
 - !NoteEntry
   date: '21. Apr. 2026'
-  done: 'Task49: Finished development and testing'
-  in_progress: 'neki; Task50: Working on code; Task51: Started with task'
-  problems: 'Task50: Bug found in production'
+  done: 'Cleaned up old branches'
+  in_progress: 'Task36: Webhook retries - integrating with backend; Task37: Search autocomplete - testing on staging; Task38: File upload chunking - implementing core logic'
+  problems: 'Task36: flaky integration test'
 - !NoteEntry
   date: '22. Apr. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task50: Working on code; Task51: Working on code'
-  problems:
+  done: 'Code review'
+  in_progress: 'Task36: Webhook retries - preparing for release; Task37: Search autocomplete - waiting for review feedback; Task38: File upload chunking - writing migration script'
+  problems: 'Task36: merge conflict with main'
 - !NoteEntry
   date: '23. Apr. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task50: Working on code; Task51: Working on code; Task52: Started with task'
-  problems:
+  done: 'Task36: Webhook retries - Released to staging, approved'
+  in_progress: 'Task37: Search autocomplete - cleaning up the code; Task38: File upload chunking - wiring up the UI'
+  problems: 'Overlapping meetings ate focus time'
 - !NoteEntry
   date: '24. Apr. 2026'
-  done: 'Task50: Finished development and testing'
-  in_progress: 'neki; Task51: Working on code; Task52: Working on code'
-  problems:
+  done: 'CI pipeline fixes'
+  in_progress: 'Task37: Search autocomplete - testing on staging; Task38: File upload chunking - integrating with backend'
+  problems: 'Task38: merge conflict with main'
 - !NoteEntry
   date: '25. Apr. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task51: Working on code; Task52: Working on code'
-  problems:
+  done: 'Dependency updates'
+  in_progress: 'Task37: Search autocomplete - preparing for release; Task38: File upload chunking - wiring up the UI'
+  problems: 'Outdated documentation caused confusion'
 - !NoteEntry
   date: '26. Apr. 2026'
-  done: 'Task52: Finished development and testing'
-  in_progress: 'neki; Task51: Working on code; Task53: Started with task'
-  problems:
+  done: 'Task37: Search autocomplete - Finished and deployed'
+  in_progress: 'Task38: File upload chunking - wiring up the UI'
+  problems: 'Noisy alerts overnight'
 - !NoteEntry
   date: '27. Apr. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task51: Working on code; Task53: Working on code'
-  problems:
+  done: 'Mentoring a junior colleague'
+  in_progress: 'Task38: File upload chunking - polishing error messages'
+  problems: 'Flaky CI runner'
 - !NoteEntry
   date: '28. Apr. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task51: Working on code; Task53: Working on code; Task54: Started with task'
-  problems: 'Napačni testi'
+  done: 'Log cleanup'
+  in_progress: 'Task38: File upload chunking - cleaning up the code'
+  problems: 'Staging environment down for an hour'
 - !NoteEntry
   date: '29. Apr. 2026'
-  done: 'Task51: Finished development and testing'
-  in_progress: 'neki; Task53: Working on code; Task54: Working on code'
-  problems:
+  done: 'Backlog grooming'
+  in_progress: 'Task38: File upload chunking - implementing core logic'
+  problems: 'VPN connection dropping'
 - !NoteEntry
   date: '30. Apr. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task53: Working on code; Task54: Working on code'
-  problems:
+  done: 'Security patch rollout'
+  in_progress: 'Task38: File upload chunking - last review round'
+  problems: 'Missing access to monitoring tools'
 - !NoteEntry
   date: '01. May. 2026'
-  done: 'Task53: Finished development and testing'
-  in_progress: 'neki; Task54: Working on code; Task55: Started with task'
-  problems:
+  done: 'Task38: File upload chunking - Finished and deployed'
+  in_progress: 'Task39: Activity feed - Kicked off with scoping'
+  problems: 'Task39: flaky integration test'
 - !NoteEntry
   date: '02. May. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task54: Working on code; Task55: Working on code'
-  problems: 'Počasen API'
+  done: 'Pair programming session'
+  in_progress: 'Task39: Activity feed - writing unit tests; Task40: Offline mode - Started: reading existing code'
+  problems: 'Task40: bug found in production'
 - !NoteEntry
   date: '03. May. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task54: Working on code; Task55: Working on code; Task56: Started with task'
-  problems:
+  done: 'Fixed flaky tests'
+  in_progress: 'Task39: Activity feed - writing migration script; Task40: Offline mode - implementing core logic'
+  problems: 'Laptop update interrupted work'
 - !NoteEntry
   date: '04. May. 2026'
-  done: 'Task54: Finished development and testing'
-  in_progress: 'neki; Task55: Working on code; Task56: Working on code'
-  problems:
+  done: 'Team meeting'
+  in_progress: 'Task39: Activity feed - tuning performance; Task40: Offline mode - waiting for review feedback'
+  problems: 'Task40: rate limit hit on external API'
 - !NoteEntry
   date: '05. May. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task55: Working on code; Task56: Working on code'
-  problems:
+  done: 'Sprint planning'
+  in_progress: 'Task39: Activity feed - polishing error messages; Task40: Offline mode - cleaning up the code'
+  problems: 'Task39: merge conflict with main'
 - !NoteEntry
   date: '06. May. 2026'
-  done: 'Task55: Finished development and testing'
-  in_progress: 'neki; Task56: Working on code; Task57: Started with task'
-  problems:
+  done: 'Database index review'
+  in_progress: 'Task39: Activity feed - final testing; Task40: Offline mode - polishing error messages'
+  problems: 'Build times creeping up'
 - !NoteEntry
   date: '07. May. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task56: Working on code; Task57: Working on code'
-  problems:
+  done: 'Task39: Activity feed - Released to staging, approved'
+  in_progress: 'Task40: Offline mode - waiting for review feedback; Task41: Image thumbnails - Started: drafting the design'
+  problems: 'Task40: regression reported by support'
 - !NoteEntry
   date: '08. May. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task56: Working on code; Task57: Working on code; Task58: Started with task'
-  problems:
+  done: 'Interview with a candidate'
+  in_progress: 'Task40: Offline mode - tuning performance; Task41: Image thumbnails - integrating with backend; Task42: Calendar sync - Kicked off with scoping'
+  problems: 'Task42: regression reported by support'
 - !NoteEntry
   date: '09. May. 2026'
-  done: 'Task56: Finished development and testing'
-  in_progress: 'neki; Task57: Working on code; Task58: Working on code'
-  problems:
+  done: 'Cleaned up old branches'
+  in_progress: 'Task40: Offline mode - preparing for release; Task41: Image thumbnails - implementing core logic; Task42: Calendar sync - testing on staging'
+  problems: 'Task42: environment config mismatch'
 - !NoteEntry
   date: '10. May. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task57: Working on code; Task58: Working on code'
-  problems: 'Težave s povezavo'
+  done: 'Task40: Offline mode - Finished development and testing'
+  in_progress: 'Task41: Image thumbnails - preparing for release; Task42: Calendar sync - waiting for review feedback; Task43: User import wizard - Started: skeleton implementation'
+  problems: 'Task43: merge conflict with main'
 - !NoteEntry
   date: '11. May. 2026'
-  done: 'Task58: Finished development and testing'
-  in_progress: 'neki; Task57: Working on code; Task59: Started with task'
-  problems:
+  done: 'Task41: Image thumbnails - Released to staging, approved'
+  in_progress: 'Task42: Calendar sync - implementing core logic; Task43: User import wizard - tuning performance; Task44: Currency conversion - Started: skeleton implementation'
+  problems: 'Task42: merge conflict with main'
 - !NoteEntry
   date: '12. May. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task57: Working on code; Task59: Working on code'
-  problems:
+  done: 'Server maintenance'
+  in_progress: 'Task42: Calendar sync - polishing error messages; Task43: User import wizard - handling edge cases; Task44: Currency conversion - writing migration script'
+  problems: 'Task43: memory leak under load'
 - !NoteEntry
   date: '13. May. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task57: Working on code; Task59: Working on code; Task60: Started with task'
-  problems:
+  done: 'Dependency updates'
+  in_progress: 'Task42: Calendar sync - polishing error messages; Task43: User import wizard - cleaning up the code; Task44: Currency conversion - waiting for review feedback'
+  problems: 'Task44: slow query on large dataset'
 - !NoteEntry
   date: '14. May. 2026'
-  done: 'Task57: Finished development and testing'
-  in_progress: 'neki; Task59: Working on code; Task60: Working on code'
-  problems:
+  done: 'Updated documentation'
+  in_progress: 'Task42: Calendar sync - tuning performance; Task43: User import wizard - final testing; Task44: Currency conversion - cleaning up the code'
+  problems: 'Task43: timeout when calling third-party service'
 - !NoteEntry
   date: '15. May. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task59: Working on code; Task60: Working on code'
-  problems:
+  done: 'Task43: User import wizard - Merged after review'
+  in_progress: 'Task42: Calendar sync - tuning performance; Task44: Currency conversion - implementing core logic'
+  problems: 'Disk space low on build server'
 - !NoteEntry
   date: '16. May. 2026'
-  done: 'Task59: Finished development and testing'
-  in_progress: 'neki; Task60: Working on code; Task61: Started with task'
-  problems: 'Task60: Bug found in production'
+  done: 'Refactoring legacy module'
+  in_progress: 'Task42: Calendar sync - tuning performance; Task44: Currency conversion - waiting for review feedback; Task45: Dark mode theme - Started: reading existing code'
+  problems: 'Task44: unclear acceptance criteria'
 - !NoteEntry
   date: '17. May. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task60: Working on code; Task61: Working on code'
-  problems:
+  done: 'Retrospective'
+  in_progress: 'Task42: Calendar sync - final testing; Task44: Currency conversion - testing on staging; Task45: Dark mode theme - writing unit tests'
+  problems: 'Slow API response times'
 - !NoteEntry
   date: '18. May. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task60: Working on code; Task61: Working on code; Task62: Started with task'
-  problems:
+  done: 'Task42: Calendar sync - Finished development and testing'
+  in_progress: 'Task44: Currency conversion - fixing review comments; Task45: Dark mode theme - wiring up the UI'
+  problems: 'License renewal pending for IDE'
 - !NoteEntry
   date: '19. May. 2026'
-  done: 'Task60: Finished development and testing'
-  in_progress: 'neki; Task61: Working on code; Task62: Working on code'
-  problems:
+  done: 'Monitoring dashboard tweaks'
+  in_progress: 'Task44: Currency conversion - polishing error messages; Task45: Dark mode theme - fixing review comments; Task46: Audit log viewer - Started: drafting the design'
+  problems: 'Task46: flaky integration test'
 - !NoteEntry
   date: '20. May. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task61: Working on code; Task62: Working on code'
-  problems:
+  done: 'Code review'
+  in_progress: 'Task44: Currency conversion - preparing for release; Task45: Dark mode theme - implementing core logic; Task46: Audit log viewer - wiring up the UI'
+  problems: 'Task46: slow query on large dataset'
 - !NoteEntry
   date: '21. May. 2026'
-  done: 'Task62: Finished development and testing'
-  in_progress: 'neki; Task61: Working on code; Task63: Started with task'
-  problems:
+  done: 'Task44: Currency conversion - Released to staging, approved'
+  in_progress: 'Task45: Dark mode theme - integrating with backend; Task46: Audit log viewer - waiting for review feedback'
+  problems: 'Task45: missing test coverage'
 - !NoteEntry
   date: '22. May. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task61: Working on code; Task63: Working on code'
-  problems:
+  done: 'Fixed flaky tests'
+  in_progress: 'Task45: Dark mode theme - fixing review comments; Task46: Audit log viewer - final testing; Task47: Cost report - Started: skeleton implementation'
+  problems: 'Task46: staging data out of date'
 - !NoteEntry
   date: '23. May. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task61: Working on code; Task63: Working on code; Task64: Started with task'
-  problems: 'Konflikt pri spajanju'
+  done: 'Task46: Audit log viewer - Completed, tests green'
+  in_progress: 'Task45: Dark mode theme - integrating with backend; Task47: Cost report - writing unit tests'
+  problems: 'Task45: unclear acceptance criteria'
 - !NoteEntry
   date: '24. May. 2026'
-  done: 'Task61: Finished development and testing'
-  in_progress: 'neki; Task63: Working on code; Task64: Working on code'
-  problems:
+  done: 'Pair programming session'
+  in_progress: 'Task45: Dark mode theme - waiting for review feedback; Task47: Cost report - waiting for review feedback'
+  problems: 'Task45: memory leak under load'
 - !NoteEntry
   date: '25. May. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task63: Working on code; Task64: Working on code'
-  problems:
+  done: 'CI pipeline fixes'
+  in_progress: 'Task45: Dark mode theme - fixing review comments; Task47: Cost report - integrating with backend; Task48: API versioning - Started: skeleton implementation'
+  problems: 'Task45: blocked waiting for design assets'
 - !NoteEntry
   date: '26. May. 2026'
-  done: 'Task63: Finished development and testing'
-  in_progress: 'neki; Task64: Working on code; Task65: Started with task'
-  problems:
+  done: 'Log cleanup'
+  in_progress: 'Task45: Dark mode theme - preparing for release; Task47: Cost report - writing unit tests; Task48: API versioning - implementing core logic'
+  problems: 'Task48: regression reported by support'
 - !NoteEntry
   date: '27. May. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task64: Working on code; Task65: Working on code'
-  problems:
+  done: 'Task45: Dark mode theme - Finished development and testing'
+  in_progress: 'Task47: Cost report - handling edge cases; Task48: API versioning - waiting for review feedback; Task49: Role permissions matrix - Started: reading existing code'
+  problems: 'Task49: missing test coverage'
 - !NoteEntry
   date: '28. May. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task64: Working on code; Task65: Working on code; Task66: Started with task'
-  problems:
+  done: 'Team meeting'
+  in_progress: 'Task47: Cost report - handling edge cases; Task48: API versioning - preparing for release; Task49: Role permissions matrix - integrating with backend'
+  problems: 'Overlapping meetings ate focus time'
 - !NoteEntry
   date: '29. May. 2026'
-  done: 'Task65: Finished development and testing'
-  in_progress: 'neki; Task64: Working on code; Task66: Working on code'
-  problems: 'Napačni testi'
+  done: 'Task48: API versioning - Completed, tests green'
+  in_progress: 'Task47: Cost report - cleaning up the code; Task49: Role permissions matrix - cleaning up the code'
+  problems: 'Noisy alerts overnight'
 - !NoteEntry
   date: '30. May. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task64: Working on code; Task66: Working on code'
-  problems:
+  done: 'Backlog grooming'
+  in_progress: 'Task47: Cost report - preparing for release; Task49: Role permissions matrix - testing on staging; Task50: Order status tracking - Started: drafting the design'
+  problems: 'VPN connection dropping'
 - !NoteEntry
   date: '31. May. 2026'
-  done: 'Task64: Finished development and testing'
-  in_progress: 'neki; Task66: Working on code; Task67: Started with task'
-  problems:
+  done: 'Task47: Cost report - Shipped to production'
+  in_progress: 'Task49: Role permissions matrix - last review round; Task50: Order status tracking - wiring up the UI; Task51: Onboarding checklist - Started: drafting the design'
+  problems: 'Task50: review taking longer than expected'
 - !NoteEntry
   date: '01. Jun. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task66: Working on code; Task67: Working on code'
-  problems:
+  done: 'Task49: Role permissions matrix - Shipped to production'
+  in_progress: 'Task50: Order status tracking - waiting for review feedback; Task51: Onboarding checklist - polishing error messages; Task52: Error reporting hook - Started: skeleton implementation'
+  problems: 'Task52: inconsistent behavior across browsers'
 - !NoteEntry
   date: '02. Jun. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task66: Working on code; Task67: Working on code; Task68: Started with task'
-  problems:
+  done: 'Security patch rollout'
+  in_progress: 'Task50: Order status tracking - handling edge cases; Task51: Onboarding checklist - preparing for release; Task52: Error reporting hook - tuning performance'
+  problems: 'Task52: environment config mismatch'
 - !NoteEntry
   date: '03. Jun. 2026'
-  done: 'Task66: Finished development and testing'
-  in_progress: 'neki; Task67: Working on code; Task68: Working on code'
-  problems: 'Počasen API'
+  done: 'Task51: Onboarding checklist - Completed, tests green'
+  in_progress: 'Task50: Order status tracking - writing migration script; Task52: Error reporting hook - wiring up the UI; Task53: Session timeout handling - Kicked off with scoping'
+  problems: 'Task53: API contract changed upstream'
 - !NoteEntry
   date: '04. Jun. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task67: Working on code; Task68: Working on code'
-  problems:
+  done: 'Sprint planning'
+  in_progress: 'Task50: Order status tracking - tuning performance; Task52: Error reporting hook - cleaning up the code; Task53: Session timeout handling - handling edge cases'
+  problems: 'Outdated documentation caused confusion'
 - !NoteEntry
   date: '05. Jun. 2026'
-  done: 'Task68: Finished development and testing'
-  in_progress: 'neki; Task67: Working on code; Task69: Started with task'
-  problems:
+  done: 'Dependency updates'
+  in_progress: 'Task50: Order status tracking - fixing review comments; Task52: Error reporting hook - tuning performance; Task53: Session timeout handling - integrating with backend'
+  problems: 'Task53: staging data out of date'
 - !NoteEntry
   date: '06. Jun. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task67: Working on code; Task69: Working on code'
-  problems:
+  done: 'Refactoring legacy module'
+  in_progress: 'Task50: Order status tracking - handling edge cases; Task52: Error reporting hook - handling edge cases; Task53: Session timeout handling - writing unit tests'
+  problems: 'Task52: merge conflict with main'
 - !NoteEntry
   date: '07. Jun. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task67: Working on code; Task69: Working on code; Task70: Started with task'
-  problems:
+  done: 'Server maintenance'
+  in_progress: 'Task50: Order status tracking - last review round; Task52: Error reporting hook - final testing; Task53: Session timeout handling - preparing for release'
+  problems: 'Task52: missing test coverage'
 - !NoteEntry
   date: '08. Jun. 2026'
-  done: 'Task67: Finished development and testing'
-  in_progress: 'neki; Task69: Working on code; Task70: Working on code'
-  problems:
+  done: 'Task50: Order status tracking - Completed, tests green; Task52: Error reporting hook - Finished and deployed; Task53: Session timeout handling - Released to staging, approved'
+  in_progress: 'Task54: Settings page - Started: setting up the branch'
+  problems: 'Missing access to monitoring tools'
 - !NoteEntry
   date: '09. Jun. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task69: Working on code; Task70: Working on code'
-  problems: 'Težave s povezavo'
+  done: 'Interview with a candidate'
+  in_progress: 'Task54: Settings page - polishing error messages; Task55: CSV report builder - Started: setting up the branch'
+  problems: 'Task55: timeout when calling third-party service'
 - !NoteEntry
   date: '10. Jun. 2026'
-  done: 'Task69: Finished development and testing'
-  in_progress: 'neki; Task70: Working on code; Task71: Started with task'
-  problems:
+  done: 'Retrospective'
+  in_progress: 'Task54: Settings page - tuning performance; Task55: CSV report builder - waiting for review feedback; Task56: Keyboard shortcuts - Started: setting up the branch'
+  problems: 'Task54: timeout when calling third-party service'
 - !NoteEntry
   date: '11. Jun. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task70: Working on code; Task71: Working on code'
-  problems:
+  done: 'Monitoring dashboard tweaks'
+  in_progress: 'Task54: Settings page - writing migration script; Task55: CSV report builder - cleaning up the code; Task56: Keyboard shortcuts - cleaning up the code'
+  problems: 'Build times creeping up'
 - !NoteEntry
   date: '12. Jun. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task70: Working on code; Task71: Working on code; Task72: Started with task'
-  problems:
+  done: 'Updated documentation'
+  in_progress: 'Task54: Settings page - handling edge cases; Task55: CSV report builder - writing unit tests; Task56: Keyboard shortcuts - preparing for release'
+  problems: 'Task55: inconsistent behavior across browsers'
 - !NoteEntry
   date: '13. Jun. 2026'
-  done: 'Task71: Finished development and testing'
-  in_progress: 'neki; Task70: Working on code; Task72: Working on code'
-  problems: 'Task70: Bug found in production'
+  done: 'Task56: Keyboard shortcuts - Completed, tests green'
+  in_progress: 'Task54: Settings page - integrating with backend; Task55: CSV report builder - waiting for review feedback; Task57: Email templates - Kicked off with scoping'
+  problems: 'Task54: slow query on large dataset'
 - !NoteEntry
   date: '14. Jun. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task70: Working on code; Task72: Working on code'
-  problems:
+  done: 'Pair programming session'
+  in_progress: 'Task54: Settings page - preparing for release; Task55: CSV report builder - polishing error messages; Task57: Email templates - tuning performance'
+  problems: 'Task57: API contract changed upstream'
 - !NoteEntry
   date: '15. Jun. 2026'
-  done: 'Task70: Finished development and testing'
-  in_progress: 'neki; Task72: Working on code; Task73: Started with task'
-  problems:
+  done: 'Task54: Settings page - Completed, tests green'
+  in_progress: 'Task55: CSV report builder - cleaning up the code; Task57: Email templates - tuning performance; Task58: Slack integration - Started: reading existing code'
+  problems: 'Database migration took longer than planned'
 - !NoteEntry
   date: '16. Jun. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task72: Working on code; Task73: Working on code'
-  problems:
+  done: 'Fixed flaky tests'
+  in_progress: 'Task55: CSV report builder - writing unit tests; Task57: Email templates - handling edge cases; Task58: Slack integration - wiring up the UI'
+  problems: 'Task58: blocked waiting for design assets'
 - !NoteEntry
   date: '17. Jun. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task72: Working on code; Task73: Working on code; Task74: Started with task'
-  problems:
+  done: 'Log cleanup'
+  in_progress: 'Task55: CSV report builder - last review round; Task57: Email templates - writing unit tests; Task58: Slack integration - polishing error messages'
+  problems: 'Task58: bug found in production'
 - !NoteEntry
   date: '18. Jun. 2026'
-  done: 'Task73: Finished development and testing'
-  in_progress: 'neki; Task72: Working on code; Task74: Working on code'
-  problems:
+  done: 'Task55: CSV report builder - Finished development and testing'
+  in_progress: 'Task57: Email templates - tuning performance; Task58: Slack integration - writing unit tests'
+  problems: 'Task57: slow query on large dataset'
 - !NoteEntry
   date: '19. Jun. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task72: Working on code; Task74: Working on code'
-  problems: 'Konflikt pri spajanju'
+  done: 'Mentoring a junior colleague'
+  in_progress: 'Task57: Email templates - handling edge cases; Task58: Slack integration - testing on staging; Task59: Localization support - Kicked off with scoping'
+  problems: 'Staging environment down for an hour'
 - !NoteEntry
   date: '20. Jun. 2026'
-  done: 'Task72: Finished development and testing'
-  in_progress: 'neki; Task74: Working on code; Task75: Started with task'
-  problems:
+  done: 'Cleaned up old branches'
+  in_progress: 'Task57: Email templates - waiting for review feedback; Task58: Slack integration - wiring up the UI; Task59: Localization support - writing migration script'
+  problems: 'Task59: memory leak under load'
 - !NoteEntry
   date: '21. Jun. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task74: Working on code; Task75: Working on code'
-  problems:
+  done: 'CI pipeline fixes'
+  in_progress: 'Task57: Email templates - writing migration script; Task58: Slack integration - integrating with backend; Task59: Localization support - polishing error messages'
+  problems: 'Task57: missing test coverage'
 - !NoteEntry
   date: '22. Jun. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task74: Working on code; Task75: Working on code; Task76: Started with task'
-  problems:
+  done: 'Security patch rollout'
+  in_progress: 'Task57: Email templates - final testing; Task58: Slack integration - writing unit tests; Task59: Localization support - waiting for review feedback'
+  problems: 'Task59: review taking longer than expected'
 - !NoteEntry
   date: '23. Jun. 2026'
-  done: 'Task75: Finished development and testing'
-  in_progress: 'neki; Task74: Working on code; Task76: Working on code'
-  problems:
+  done: 'Task57: Email templates - Finished and deployed'
+  in_progress: 'Task58: Slack integration - final testing; Task59: Localization support - last review round; Task60: Health check endpoint - Kicked off with scoping'
+  problems: 'Task60: merge conflict with main'
 - !NoteEntry
   date: '24. Jun. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task74: Working on code; Task76: Working on code'
-  problems: 'Napačni testi'
+  done: 'Task58: Slack integration - Released to staging, approved; Task59: Localization support - Completed, tests green'
+  in_progress: 'Task60: Health check endpoint - waiting for review feedback; Task61: OAuth provider setup - Started: skeleton implementation'
+  problems: 'Task61: rate limit hit on external API'
 - !NoteEntry
   date: '25. Jun. 2026'
-  done: 'Task74: Finished development and testing'
-  in_progress: 'neki; Task76: Working on code; Task77: Started with task'
-  problems:
+  done: 'Team meeting'
+  in_progress: 'Task60: Health check endpoint - cleaning up the code; Task61: OAuth provider setup - handling edge cases'
+  problems: 'Task61: review taking longer than expected'
 - !NoteEntry
   date: '26. Jun. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task76: Working on code; Task77: Working on code'
-  problems:
+  done: 'Code review'
+  in_progress: 'Task60: Health check endpoint - waiting for review feedback; Task61: OAuth provider setup - implementing core logic'
+  problems: 'Task60: bug found in production'
 - !NoteEntry
   date: '27. Jun. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task76: Working on code; Task77: Working on code; Task78: Started with task'
-  problems:
+  done: 'Interview with a candidate'
+  in_progress: 'Task60: Health check endpoint - writing migration script; Task61: OAuth provider setup - writing migration script'
+  problems: 'Task60: memory leak under load'
 - !NoteEntry
   date: '28. Jun. 2026'
-  done: 'Task76: Finished development and testing'
-  in_progress: 'neki; Task77: Working on code; Task78: Working on code'
-  problems:
+  done: 'Refactoring legacy module'
+  in_progress: 'Task60: Health check endpoint - fixing review comments; Task61: OAuth provider setup - handling edge cases; Task62: Admin impersonation - Started: reading existing code'
+  problems: 'VPN connection dropping'
 - !NoteEntry
   date: '29. Jun. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task77: Working on code; Task78: Working on code'
-  problems: 'Počasen API'
+  done: 'Sprint planning'
+  in_progress: 'Task60: Health check endpoint - preparing for release; Task61: OAuth provider setup - polishing error messages; Task62: Admin impersonation - integrating with backend'
+  problems: 'Slow API response times'
 - !NoteEntry
   date: '30. Jun. 2026'
-  done: 'Task77: Finished development and testing'
-  in_progress: 'neki; Task78: Working on code; Task79: Started with task'
-  problems:
+  done: 'Task60: Health check endpoint - Finished and deployed'
+  in_progress: 'Task61: OAuth provider setup - waiting for review feedback; Task62: Admin impersonation - polishing error messages; Task63: Query optimization - Started: setting up the branch'
+  problems: 'Task61: regression reported by support'
 - !NoteEntry
   date: '01. Jul. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task78: Working on code; Task79: Working on code'
-  problems:
+  done: 'Monitoring dashboard tweaks'
+  in_progress: 'Task61: OAuth provider setup - tuning performance; Task62: Admin impersonation - handling edge cases; Task63: Query optimization - waiting for review feedback'
+  problems: 'Laptop update interrupted work'
 - !NoteEntry
   date: '02. Jul. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task78: Working on code; Task79: Working on code; Task80: Started with task'
-  problems:
+  done: 'Dependency updates'
+  in_progress: 'Task61: OAuth provider setup - handling edge cases; Task62: Admin impersonation - handling edge cases; Task63: Query optimization - preparing for release'
+  problems: 'Task62: API contract changed upstream'
 - !NoteEntry
   date: '03. Jul. 2026'
-  done: 'Task78: Finished development and testing'
-  in_progress: 'neki; Task79: Working on code; Task80: Working on code'
-  problems:
+  done: 'Task63: Query optimization - Finished development and testing'
+  in_progress: 'Task61: OAuth provider setup - preparing for release; Task62: Admin impersonation - writing unit tests'
+  problems: 'Overlapping meetings ate focus time'
 - !NoteEntry
   date: '04. Jul. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task79: Working on code; Task80: Working on code'
-  problems: 'Težave s povezavo'
+  done: 'Task61: OAuth provider setup - Shipped to production'
+  in_progress: 'Task62: Admin impersonation - handling edge cases'
+  problems: 'Task62: regression reported by support'
 - !NoteEntry
   date: '05. Jul. 2026'
-  done: 'Task79: Finished development and testing'
-  in_progress: 'neki; Task80: Working on code; Task81: Started with task'
-  problems:
+  done: 'Database index review'
+  in_progress: 'Task62: Admin impersonation - implementing core logic'
+  problems: 'Task62: memory leak under load'
 - !NoteEntry
   date: '06. Jul. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task80: Working on code; Task81: Working on code'
-  problems:
+  done: 'Server maintenance'
+  in_progress: 'Task62: Admin impersonation - final testing'
+  problems: 'Task62: unclear acceptance criteria'
 - !NoteEntry
   date: '07. Jul. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task80: Working on code; Task81: Working on code; Task82: Started with task'
-  problems:
+  done: 'Task62: Admin impersonation - Finished and deployed'
+  in_progress: 'Task64: Password reset flow - Started: reading existing code'
+  problems: 'Task64: API contract changed upstream'
 - !NoteEntry
   date: '08. Jul. 2026'
-  done: 'Task80: Finished development and testing'
-  in_progress: 'neki; Task81: Working on code; Task82: Working on code'
-  problems: 'Task81: Bug found in production'
+  done: 'Mentoring a junior colleague'
+  in_progress: 'Task64: Password reset flow - polishing error messages; Task65: Login rate limiting - Started: skeleton implementation'
+  problems: 'Task64: timeout when calling third-party service'
 - !NoteEntry
   date: '09. Jul. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task81: Working on code; Task82: Working on code'
-  problems:
+  done: 'Retrospective'
+  in_progress: 'Task64: Password reset flow - wiring up the UI; Task65: Login rate limiting - fixing review comments'
+  problems: 'Task64: bug found in production'
 - !NoteEntry
   date: '10. Jul. 2026'
-  done: 'Task81: Finished development and testing'
-  in_progress: 'neki; Task82: Working on code; Task83: Started with task'
-  problems:
+  done: 'Pair programming session'
+  in_progress: 'Task64: Password reset flow - cleaning up the code; Task65: Login rate limiting - polishing error messages'
+  problems: 'Task64: slow query on large dataset'
 - !NoteEntry
   date: '11. Jul. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task82: Working on code; Task83: Working on code'
-  problems:
+  done: 'Fixed flaky tests'
+  in_progress: 'Task64: Password reset flow - preparing for release; Task65: Login rate limiting - fixing review comments; Task66: Inventory sync - Started: reading existing code'
+  problems: 'Task64: missing test coverage'
 - !NoteEntry
   date: '12. Jul. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task82: Working on code; Task83: Working on code; Task84: Started with task'
-  problems:
+  done: 'Task64: Password reset flow - Finished and deployed'
+  in_progress: 'Task65: Login rate limiting - writing unit tests; Task66: Inventory sync - fixing review comments; Task67: Mobile layout fixes - Started: reading existing code'
+  problems: 'Task66: inconsistent behavior across browsers'
 - !NoteEntry
   date: '13. Jul. 2026'
-  done: 'Task82: Finished development and testing'
-  in_progress: 'neki; Task83: Working on code; Task84: Working on code'
-  problems:
+  done: 'CI pipeline fixes'
+  in_progress: 'Task65: Login rate limiting - integrating with backend; Task66: Inventory sync - fixing review comments; Task67: Mobile layout fixes - waiting for review feedback'
+  problems: 'Outdated documentation caused confusion'
 - !NoteEntry
   date: '14. Jul. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task83: Working on code; Task84: Working on code'
-  problems: 'Konflikt pri spajanju'
+  done: 'Cleaned up old branches'
+  in_progress: 'Task65: Login rate limiting - writing unit tests; Task66: Inventory sync - implementing core logic; Task67: Mobile layout fixes - polishing error messages'
+  problems: 'Task65: environment config mismatch'
 - !NoteEntry
   date: '15. Jul. 2026'
-  done: 'Task83: Finished development and testing'
-  in_progress: 'neki; Task84: Working on code; Task85: Started with task'
-  problems:
+  done: 'Code review'
+  in_progress: 'Task65: Login rate limiting - fixing review comments; Task66: Inventory sync - cleaning up the code; Task67: Mobile layout fixes - tuning performance'
+  problems: 'Task67: review taking longer than expected'
 - !NoteEntry
   date: '16. Jul. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task84: Working on code; Task85: Working on code'
-  problems:
+  done: 'Team meeting'
+  in_progress: 'Task65: Login rate limiting - fixing review comments; Task66: Inventory sync - polishing error messages; Task67: Mobile layout fixes - tuning performance'
+  problems: 'Task67: inconsistent behavior across browsers'
 - !NoteEntry
   date: '17. Jul. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task84: Working on code; Task85: Working on code; Task86: Started with task'
-  problems:
+  done: 'Log cleanup'
+  in_progress: 'Task65: Login rate limiting - preparing for release; Task66: Inventory sync - handling edge cases; Task67: Mobile layout fixes - writing migration script'
+  problems: 'Task66: review taking longer than expected'
 - !NoteEntry
   date: '18. Jul. 2026'
-  done: 'Task84: Finished development and testing'
-  in_progress: 'neki; Task85: Working on code; Task86: Working on code'
-  problems:
+  done: 'Task65: Login rate limiting - Merged after review'
+  in_progress: 'Task66: Inventory sync - tuning performance; Task67: Mobile layout fixes - final testing; Task68: Notification center - Kicked off with scoping'
+  problems: 'Task66: regression reported by support'
 - !NoteEntry
   date: '19. Jul. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task85: Working on code; Task86: Working on code'
-  problems: 'Napačni testi'
+  done: 'Task67: Mobile layout fixes - Merged after review'
+  in_progress: 'Task66: Inventory sync - last review round; Task68: Notification center - fixing review comments'
+  problems: 'Task68: blocked waiting for design assets'
 - !NoteEntry
   date: '20. Jul. 2026'
-  done: 'Task85: Finished development and testing'
-  in_progress: 'neki; Task86: Working on code; Task87: Started with task'
-  problems:
+  done: 'Task66: Inventory sync - Merged after review'
+  in_progress: 'Task68: Notification center - preparing for release; Task69: Two-factor authentication - Started: skeleton implementation'
+  problems: 'Task69: blocked waiting for design assets'
 - !NoteEntry
   date: '21. Jul. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task86: Working on code; Task87: Working on code'
-  problems:
+  done: 'Task68: Notification center - Finished and deployed'
+  in_progress: 'Task69: Two-factor authentication - implementing core logic; Task70: Report scheduler - Started: drafting the design'
+  problems: 'Task70: rate limit hit on external API'
 - !NoteEntry
   date: '22. Jul. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task86: Working on code; Task87: Working on code; Task88: Started with task'
-  problems:
+  done: 'Monitoring dashboard tweaks'
+  in_progress: 'Task69: Two-factor authentication - preparing for release; Task70: Report scheduler - integrating with backend'
+  problems: 'Task70: flaky integration test'
 - !NoteEntry
   date: '23. Jul. 2026'
-  done: 'Task86: Finished development and testing'
-  in_progress: 'neki; Task87: Working on code; Task88: Working on code'
-  problems: 'Počasen API'
+  done: 'Task69: Two-factor authentication - Completed, tests green'
+  in_progress: 'Task70: Report scheduler - tuning performance'
+  problems: 'Noisy alerts overnight'
 - !NoteEntry
   date: '24. Jul. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task87: Working on code; Task88: Working on code'
-  problems:
+  done: 'Sprint planning'
+  in_progress: 'Task70: Report scheduler - last review round; Task71: Comment threads - Started: drafting the design'
+  problems: 'Task71: flaky integration test'
 - !NoteEntry
   date: '25. Jul. 2026'
-  done: 'Task88: Finished development and testing'
-  in_progress: 'neki; Task87: Working on code; Task89: Started with task'
-  problems:
+  done: 'Task70: Report scheduler - Finished development and testing'
+  in_progress: 'Task71: Comment threads - tuning performance; Task72: Bulk edit tool - Started: skeleton implementation'
+  problems: 'Task71: merge conflict with main'
 - !NoteEntry
   date: '26. Jul. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task87: Working on code; Task89: Working on code'
-  problems:
+  done: 'Refactoring legacy module'
+  in_progress: 'Task71: Comment threads - integrating with backend; Task72: Bulk edit tool - wiring up the UI'
+  problems: 'Task72: environment config mismatch'
 - !NoteEntry
   date: '27. Jul. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task87: Working on code; Task89: Working on code; Task90: Started with task'
-  problems:
+  done: 'Server maintenance'
+  in_progress: 'Task71: Comment threads - tuning performance; Task72: Bulk edit tool - cleaning up the code; Task73: Release notes page - Started: setting up the branch'
+  problems: 'Task72: merge conflict with main'
 - !NoteEntry
   date: '28. Jul. 2026'
-  done: 'Task87: Finished development and testing'
-  in_progress: 'neki; Task89: Working on code; Task90: Working on code'
-  problems:
+  done: 'Interview with a candidate'
+  in_progress: 'Task71: Comment threads - integrating with backend; Task72: Bulk edit tool - writing unit tests; Task73: Release notes page - writing unit tests'
+  problems: 'Task71: environment config mismatch'
 - !NoteEntry
   date: '29. Jul. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task89: Working on code; Task90: Working on code'
-  problems: 'Težave s povezavo'
+  done: 'Security patch rollout'
+  in_progress: 'Task71: Comment threads - handling edge cases; Task72: Bulk edit tool - writing unit tests; Task73: Release notes page - preparing for release'
+  problems: 'Staging environment down for an hour'
 - !NoteEntry
   date: '30. Jul. 2026'
-  done: 'Task89: Finished development and testing'
-  in_progress: 'neki; Task90: Working on code; Task91: Started with task'
-  problems:
+  done: 'Task73: Release notes page - Released to staging, approved'
+  in_progress: 'Task71: Comment threads - preparing for release; Task72: Bulk edit tool - tuning performance; Task74: Dashboard caching - Started: setting up the branch'
+  problems: 'Task74: API contract changed upstream'
 - !NoteEntry
   date: '31. Jul. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task90: Working on code; Task91: Working on code'
-  problems:
+  done: 'Task71: Comment threads - Merged after review'
+  in_progress: 'Task72: Bulk edit tool - writing migration script; Task74: Dashboard caching - writing unit tests'
+  problems: 'Task74: memory leak under load'
 - !NoteEntry
   date: '01. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task90: Working on code; Task91: Working on code; Task92: Started with task'
-  problems:
+  done: 'Dependency updates'
+  in_progress: 'Task72: Bulk edit tool - preparing for release; Task74: Dashboard caching - waiting for review feedback; Task75: Feature flag service - Started: skeleton implementation'
+  problems: 'VPN connection dropping'
 - !NoteEntry
   date: '02. Aug. 2026'
-  done: 'Task90: Finished development and testing'
-  in_progress: 'neki; Task91: Working on code; Task92: Working on code'
-  problems: 'Task91: Bug found in production'
+  done: 'Task72: Bulk edit tool - Finished development and testing'
+  in_progress: 'Task74: Dashboard caching - handling edge cases; Task75: Feature flag service - wiring up the UI; Task76: Pagination refactor - Started: skeleton implementation'
+  problems: 'Task75: inconsistent behavior across browsers'
 - !NoteEntry
   date: '03. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task91: Working on code; Task92: Working on code'
-  problems:
+  done: 'Fixed flaky tests'
+  in_progress: 'Task74: Dashboard caching - preparing for release; Task75: Feature flag service - writing unit tests; Task76: Pagination refactor - integrating with backend'
+  problems: 'Task76: slow query on large dataset'
 - !NoteEntry
   date: '04. Aug. 2026'
-  done: 'Task91: Finished development and testing'
-  in_progress: 'neki; Task92: Working on code; Task93: Started with task'
-  problems:
+  done: 'Task74: Dashboard caching - Finished and deployed'
+  in_progress: 'Task75: Feature flag service - handling edge cases; Task76: Pagination refactor - writing migration script'
+  problems: 'Flaky CI runner'
 - !NoteEntry
   date: '05. Aug. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task92: Working on code; Task93: Working on code'
-  problems:
+  done: 'Updated documentation'
+  in_progress: 'Task75: Feature flag service - implementing core logic; Task76: Pagination refactor - writing unit tests'
+  problems: 'Slow API response times'
 - !NoteEntry
   date: '06. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task92: Working on code; Task93: Working on code; Task94: Started with task'
-  problems:
+  done: 'Database index review'
+  in_progress: 'Task75: Feature flag service - handling edge cases; Task76: Pagination refactor - tuning performance'
+  problems: 'Task75: slow query on large dataset'
 - !NoteEntry
   date: '07. Aug. 2026'
-  done: 'Task92: Finished development and testing'
-  in_progress: 'neki; Task93: Working on code; Task94: Working on code'
-  problems:
+  done: 'Code review'
+  in_progress: 'Task75: Feature flag service - final testing; Task76: Pagination refactor - final testing'
+  problems: 'Task75: regression reported by support'
 - !NoteEntry
   date: '08. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task93: Working on code; Task94: Working on code'
-  problems: 'Konflikt pri spajanju'
+  done: 'Task75: Feature flag service - Merged after review; Task76: Pagination refactor - Finished development and testing'
+  in_progress: 'Task77: Drag-and-drop uploads - Kicked off with scoping'
+  problems: 'Task77: review taking longer than expected'
 - !NoteEntry
   date: '09. Aug. 2026'
-  done: 'Task93: Finished development and testing'
-  in_progress: 'neki; Task94: Working on code; Task95: Started with task'
-  problems:
+  done: 'Team meeting'
+  in_progress: 'Task77: Drag-and-drop uploads - writing migration script; Task78: Invoice PDF export - Kicked off with scoping'
+  problems: 'Disk space low on build server'
 - !NoteEntry
   date: '10. Aug. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task94: Working on code; Task95: Working on code'
-  problems:
+  done: 'Cleaned up old branches'
+  in_progress: 'Task77: Drag-and-drop uploads - testing on staging; Task78: Invoice PDF export - fixing review comments'
+  problems: 'Task77: slow query on large dataset'
 - !NoteEntry
   date: '11. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task94: Working on code; Task95: Working on code; Task96: Started with task'
-  problems:
+  done: 'Retrospective'
+  in_progress: 'Task77: Drag-and-drop uploads - implementing core logic; Task78: Invoice PDF export - handling edge cases; Task79: Contact form spam filter - Started: skeleton implementation'
+  problems: 'Task79: timeout when calling third-party service'
 - !NoteEntry
   date: '12. Aug. 2026'
-  done: 'Task94: Finished development and testing'
-  in_progress: 'neki; Task95: Working on code; Task96: Working on code'
-  problems: 'Napačni testi'
+  done: 'CI pipeline fixes'
+  in_progress: 'Task77: Drag-and-drop uploads - polishing error messages; Task78: Invoice PDF export - writing migration script; Task79: Contact form spam filter - handling edge cases'
+  problems: 'Task77: unclear acceptance criteria'
 - !NoteEntry
   date: '13. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task95: Working on code; Task96: Working on code'
-  problems:
+  done: 'Pair programming session'
+  in_progress: 'Task77: Drag-and-drop uploads - preparing for release; Task78: Invoice PDF export - integrating with backend; Task79: Contact form spam filter - writing migration script'
+  problems: 'Task77: regression reported by support'
 - !NoteEntry
   date: '14. Aug. 2026'
-  done: 'Task95: Finished development and testing'
-  in_progress: 'neki; Task96: Working on code; Task97: Started with task'
-  problems:
+  done: 'Task77: Drag-and-drop uploads - Finished and deployed'
+  in_progress: 'Task78: Invoice PDF export - writing unit tests; Task79: Contact form spam filter - handling edge cases'
+  problems: 'Incorrect test fixtures'
 - !NoteEntry
   date: '15. Aug. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task96: Working on code; Task97: Working on code'
-  problems:
+  done: 'Refactoring legacy module'
+  in_progress: 'Task78: Invoice PDF export - final testing; Task79: Contact form spam filter - preparing for release'
+  problems: 'Task79: inconsistent behavior across browsers'
 - !NoteEntry
   date: '16. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task96: Working on code; Task97: Working on code; Task98: Started with task'
-  problems:
+  done: 'Task78: Invoice PDF export - Released to staging, approved; Task79: Contact form spam filter - Finished development and testing'
+  in_progress: 'Task80: Data archiving job - Started: drafting the design'
+  problems: 'Task80: slow query on large dataset'
 - !NoteEntry
   date: '17. Aug. 2026'
-  done: 'Task96: Finished development and testing'
-  in_progress: 'neki; Task97: Working on code; Task98: Working on code'
-  problems:
+  done: 'Mentoring a junior colleague'
+  in_progress: 'Task80: Data archiving job - integrating with backend'
+  problems: 'Task80: missing test coverage'
 - !NoteEntry
   date: '18. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task97: Working on code; Task98: Working on code'
-  problems: 'Počasen API'
+  done: 'Security patch rollout'
+  in_progress: 'Task80: Data archiving job - writing migration script; Task81: Scheduled exports - Started: skeleton implementation'
+  problems: 'Task80: blocked waiting for design assets'
 - !NoteEntry
   date: '19. Aug. 2026'
-  done: 'Task97: Finished development and testing'
-  in_progress: 'neki; Task98: Working on code; Task99: Started with task'
-  problems:
+  done: 'Log cleanup'
+  in_progress: 'Task80: Data archiving job - integrating with backend; Task81: Scheduled exports - integrating with backend; Task82: Billing page redesign - Kicked off with scoping'
+  problems: 'License renewal pending for IDE'
 - !NoteEntry
   date: '20. Aug. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task98: Working on code; Task99: Working on code'
-  problems:
+  done: 'Sprint planning'
+  in_progress: 'Task80: Data archiving job - fixing review comments; Task81: Scheduled exports - writing migration script; Task82: Billing page redesign - handling edge cases'
+  problems: 'Missing access to monitoring tools'
 - !NoteEntry
   date: '21. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task98: Working on code; Task99: Working on code; Task100: Started with task'
-  problems:
+  done: 'Interview with a candidate'
+  in_progress: 'Task80: Data archiving job - integrating with backend; Task81: Scheduled exports - handling edge cases; Task82: Billing page redesign - implementing core logic'
+  problems: 'Task80: bug found in production'
 - !NoteEntry
   date: '22. Aug. 2026'
-  done: 'Task98: Finished development and testing'
-  in_progress: 'neki; Task99: Working on code; Task100: Working on code'
-  problems:
+  done: 'Fixed flaky tests'
+  in_progress: 'Task80: Data archiving job - integrating with backend; Task81: Scheduled exports - writing unit tests; Task82: Billing page redesign - writing unit tests'
+  problems: 'Task82: timeout when calling third-party service'
 - !NoteEntry
   date: '23. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task99: Working on code; Task100: Working on code'
-  problems: 'Težave s povezavo'
+  done: 'Updated documentation'
+  in_progress: 'Task80: Data archiving job - fixing review comments; Task81: Scheduled exports - tuning performance; Task82: Billing page redesign - wiring up the UI'
+  problems: 'Task80: unclear acceptance criteria'
 - !NoteEntry
   date: '24. Aug. 2026'
-  done: 'Task99: Finished development and testing'
-  in_progress: 'neki; Task100: Working on code; Task101: Started with task'
-  problems:
+  done: 'Backlog grooming'
+  in_progress: 'Task80: Data archiving job - implementing core logic; Task81: Scheduled exports - last review round; Task82: Billing page redesign - wiring up the UI'
+  problems: 'Overlapping meetings ate focus time'
 - !NoteEntry
   date: '25. Aug. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task100: Working on code; Task101: Working on code'
-  problems:
+  done: 'Task81: Scheduled exports - Finished development and testing'
+  in_progress: 'Task80: Data archiving job - writing unit tests; Task82: Billing page redesign - testing on staging'
+  problems: 'Task82: bug found in production'
 - !NoteEntry
   date: '26. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task100: Working on code; Task101: Working on code; Task102: Started with task'
-  problems:
+  done: 'Dependency updates'
+  in_progress: 'Task80: Data archiving job - final testing; Task82: Billing page redesign - final testing'
+  problems: 'Task82: staging data out of date'
 - !NoteEntry
   date: '27. Aug. 2026'
-  done: 'Task100: Finished development and testing'
-  in_progress: 'neki; Task101: Working on code; Task102: Working on code'
-  problems: 'Task101: Bug found in production'
+  done: 'Task80: Data archiving job - Completed, tests green; Task82: Billing page redesign - Finished and deployed'
+  in_progress: 'Task83: Template editor - Started: setting up the branch'
+  problems: 'Task83: API contract changed upstream'
 - !NoteEntry
   date: '28. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task101: Working on code; Task102: Working on code'
-  problems:
+  done: 'Monitoring dashboard tweaks'
+  in_progress: 'Task83: Template editor - waiting for review feedback; Task84: Tag management - Started: drafting the design'
+  problems: 'Task83: slow query on large dataset'
 - !NoteEntry
   date: '29. Aug. 2026'
-  done: 'Task101: Finished development and testing'
-  in_progress: 'neki; Task102: Working on code; Task103: Started with task'
-  problems:
+  done: 'Team meeting'
+  in_progress: 'Task83: Template editor - tuning performance; Task84: Tag management - fixing review comments'
+  problems: 'Staging environment down for an hour'
 - !NoteEntry
   date: '30. Aug. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task102: Working on code; Task103: Working on code'
-  problems:
+  done: 'Pair programming session'
+  in_progress: 'Task83: Template editor - integrating with backend; Task84: Tag management - writing unit tests'
+  problems: 'Build times creeping up'
 - !NoteEntry
   date: '31. Aug. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task102: Working on code; Task103: Working on code; Task104: Started with task'
-  problems:
+  done: 'CI pipeline fixes'
+  in_progress: 'Task83: Template editor - final testing; Task84: Tag management - writing migration script'
+  problems: 'Task84: unclear acceptance criteria'
 - !NoteEntry
   date: '01. Sep. 2026'
-  done: 'Task102: Finished development and testing'
-  in_progress: 'neki; Task103: Working on code; Task104: Working on code'
-  problems: 'Konflikt pri spajanju'
+  done: 'Task83: Template editor - Completed, tests green'
+  in_progress: 'Task84: Tag management - testing on staging'
+  problems: 'Noisy alerts overnight'
 - !NoteEntry
   date: '02. Sep. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task103: Working on code; Task104: Working on code'
-  problems:
+  done: 'Refactoring legacy module'
+  in_progress: 'Task84: Tag management - last review round'
+  problems: 'Task84: slow query on large dataset'
 - !NoteEntry
   date: '03. Sep. 2026'
-  done: 'Task103: Finished development and testing'
-  in_progress: 'neki; Task104: Working on code; Task105: Started with task'
-  problems:
+  done: 'Task84: Tag management - Completed, tests green'
+  in_progress: 'Task85: Backup verification - Started: setting up the branch'
+  problems: 'Task85: environment config mismatch'
 - !NoteEntry
   date: '04. Sep. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task104: Working on code; Task105: Working on code'
-  problems:
+  done: 'Code review'
+  in_progress: 'Task85: Backup verification - handling edge cases; Task86: Webhook retries - Started: drafting the design'
+  problems: 'Database migration took longer than planned'
 - !NoteEntry
   date: '05. Sep. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task104: Working on code; Task105: Working on code; Task106: Started with task'
-  problems:
+  done: 'Mentoring a junior colleague'
+  in_progress: 'Task85: Backup verification - writing migration script; Task86: Webhook retries - implementing core logic'
+  problems: 'Task86: memory leak under load'
 - !NoteEntry
   date: '06. Sep. 2026'
-  done: 'Task104: Finished development and testing'
-  in_progress: 'neki; Task105: Working on code; Task106: Working on code'
-  problems: 'Napačni testi'
+  done: 'Database index review'
+  in_progress: 'Task85: Backup verification - cleaning up the code; Task86: Webhook retries - writing migration script; Task87: Search autocomplete - Started: skeleton implementation'
+  problems: 'Task86: environment config mismatch'
 - !NoteEntry
   date: '07. Sep. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task105: Working on code; Task106: Working on code'
-  problems:
+  done: 'Retrospective'
+  in_progress: 'Task85: Backup verification - waiting for review feedback; Task86: Webhook retries - testing on staging; Task87: Search autocomplete - handling edge cases'
+  problems: 'Task86: inconsistent behavior across browsers'
 - !NoteEntry
   date: '08. Sep. 2026'
-  done: 'Task105: Finished development and testing'
-  in_progress: 'neki; Task106: Working on code; Task107: Started with task'
-  problems:
+  done: 'Cleaned up old branches'
+  in_progress: 'Task85: Backup verification - writing migration script; Task86: Webhook retries - preparing for release; Task87: Search autocomplete - tuning performance'
+  problems: 'Task87: unclear acceptance criteria'
 - !NoteEntry
   date: '09. Sep. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task106: Working on code; Task107: Working on code'
-  problems:
+  done: 'Task86: Webhook retries - Completed, tests green'
+  in_progress: 'Task85: Backup verification - testing on staging; Task87: Search autocomplete - tuning performance; Task88: File upload chunking - Started: reading existing code'
+  problems: 'Task87: regression reported by support'
 - !NoteEntry
   date: '10. Sep. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task106: Working on code; Task107: Working on code; Task108: Started with task'
-  problems: 'Počasen API'
+  done: 'Log cleanup'
+  in_progress: 'Task85: Backup verification - testing on staging; Task87: Search autocomplete - tuning performance; Task88: File upload chunking - wiring up the UI'
+  problems: 'Task88: flaky integration test'
 - !NoteEntry
   date: '11. Sep. 2026'
-  done: 'Task106: Finished development and testing'
-  in_progress: 'neki; Task107: Working on code; Task108: Working on code'
-  problems:
+  done: 'Server maintenance'
+  in_progress: 'Task85: Backup verification - preparing for release; Task87: Search autocomplete - writing unit tests; Task88: File upload chunking - final testing'
+  problems: 'Task87: timeout when calling third-party service'
 - !NoteEntry
   date: '12. Sep. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task107: Working on code; Task108: Working on code'
-  problems:
+  done: 'Task85: Backup verification - Finished development and testing; Task88: File upload chunking - Released to staging, approved'
+  in_progress: 'Task87: Search autocomplete - tuning performance; Task89: Activity feed - Started: setting up the branch'
+  problems: 'Task87: API contract changed upstream'
 - !NoteEntry
   date: '13. Sep. 2026'
-  done: 'Task108: Finished development and testing'
-  in_progress: 'neki; Task107: Working on code; Task109: Started with task'
-  problems:
+  done: 'Backlog grooming'
+  in_progress: 'Task87: Search autocomplete - writing unit tests; Task89: Activity feed - polishing error messages; Task90: Offline mode - Started: skeleton implementation'
+  problems: 'Flaky CI runner'
 - !NoteEntry
   date: '14. Sep. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task107: Working on code; Task109: Working on code'
-  problems:
+  done: 'Monitoring dashboard tweaks'
+  in_progress: 'Task87: Search autocomplete - cleaning up the code; Task89: Activity feed - writing unit tests; Task90: Offline mode - implementing core logic'
+  problems: 'Task90: blocked waiting for design assets'
 - !NoteEntry
   date: '15. Sep. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task107: Working on code; Task109: Working on code; Task110: Started with task'
-  problems:
+  done: 'Team meeting'
+  in_progress: 'Task87: Search autocomplete - preparing for release; Task89: Activity feed - last review round; Task90: Offline mode - wiring up the UI'
+  problems: 'Incorrect test fixtures'
 - !NoteEntry
   date: '16. Sep. 2026'
-  done: 'Task107: Finished development and testing'
-  in_progress: 'neki; Task109: Working on code; Task110: Working on code'
-  problems: 'Težave s povezavo'
+  done: 'Task87: Search autocomplete - Shipped to production; Task89: Activity feed - Merged after review'
+  in_progress: 'Task90: Offline mode - handling edge cases; Task91: Image thumbnails - Started: drafting the design'
+  problems: 'Task90: review taking longer than expected'
 - !NoteEntry
   date: '17. Sep. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task109: Working on code; Task110: Working on code'
-  problems:
+  done: 'Updated documentation'
+  in_progress: 'Task90: Offline mode - last review round; Task91: Image thumbnails - handling edge cases'
+  problems: 'Task91: timeout when calling third-party service'
 - !NoteEntry
   date: '18. Sep. 2026'
-  done: 'Task109: Finished development and testing'
-  in_progress: 'neki; Task110: Working on code; Task111: Started with task'
-  problems:
+  done: 'Task90: Offline mode - Completed, tests green'
+  in_progress: 'Task91: Image thumbnails - waiting for review feedback'
+  problems: 'Task91: review taking longer than expected'
 - !NoteEntry
   date: '19. Sep. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task110: Working on code; Task111: Working on code'
-  problems:
+  done: 'CI pipeline fixes'
+  in_progress: 'Task91: Image thumbnails - preparing for release'
+  problems: 'Slow API response times'
 - !NoteEntry
   date: '20. Sep. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task110: Working on code; Task111: Working on code; Task112: Started with task'
-  problems: 'Task110: Bug found in production'
+  done: 'Task91: Image thumbnails - Finished development and testing'
+  in_progress: 'Task92: Calendar sync - Started: skeleton implementation'
+  problems: 'Laptop update interrupted work'
 - !NoteEntry
   date: '21. Sep. 2026'
-  done: 'Task111: Finished development and testing'
-  in_progress: 'neki; Task110: Working on code; Task112: Working on code'
-  problems:
+  done: 'Interview with a candidate'
+  in_progress: 'Task92: Calendar sync - testing on staging'
+  problems: 'Overlapping meetings ate focus time'
 - !NoteEntry
   date: '22. Sep. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task110: Working on code; Task112: Working on code'
-  problems:
+  done: 'Dependency updates'
+  in_progress: 'Task92: Calendar sync - fixing review comments'
+  problems: 'Task92: flaky integration test'
 - !NoteEntry
   date: '23. Sep. 2026'
-  done: 'Task110: Finished development and testing'
-  in_progress: 'neki; Task112: Working on code; Task113: Started with task'
-  problems:
+  done: 'Pair programming session'
+  in_progress: 'Task92: Calendar sync - wiring up the UI; Task93: User import wizard - Started: skeleton implementation'
+  problems: 'Task93: memory leak under load'
 - !NoteEntry
   date: '24. Sep. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task112: Working on code; Task113: Working on code'
-  problems:
+  done: 'Code review'
+  in_progress: 'Task92: Calendar sync - final testing; Task93: User import wizard - waiting for review feedback'
+  problems: 'Missing access to monitoring tools'
 - !NoteEntry
   date: '25. Sep. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task112: Working on code; Task113: Working on code; Task114: Started with task'
-  problems: 'Konflikt pri spajanju'
+  done: 'Task92: Calendar sync - Finished development and testing'
+  in_progress: 'Task93: User import wizard - tuning performance; Task94: Currency conversion - Started: setting up the branch'
+  problems: 'VPN connection dropping'
 - !NoteEntry
   date: '26. Sep. 2026'
-  done: 'Task113: Finished development and testing'
-  in_progress: 'neki; Task112: Working on code; Task114: Working on code'
-  problems:
+  done: 'Security patch rollout'
+  in_progress: 'Task93: User import wizard - writing unit tests; Task94: Currency conversion - waiting for review feedback'
+  problems: 'Outdated documentation caused confusion'
 - !NoteEntry
   date: '27. Sep. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task112: Working on code; Task114: Working on code'
-  problems:
+  done: 'Retrospective'
+  in_progress: 'Task93: User import wizard - polishing error messages; Task94: Currency conversion - fixing review comments'
+  problems: 'Task94: missing test coverage'
 - !NoteEntry
   date: '28. Sep. 2026'
-  done: 'Task112: Finished development and testing'
-  in_progress: 'neki; Task114: Working on code; Task115: Started with task'
-  problems:
+  done: 'Fixed flaky tests'
+  in_progress: 'Task93: User import wizard - testing on staging; Task94: Currency conversion - wiring up the UI'
+  problems: 'Task94: merge conflict with main'
 - !NoteEntry
   date: '29. Sep. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task114: Working on code; Task115: Working on code'
-  problems: 'Napačni testi'
+  done: 'Server maintenance'
+  in_progress: 'Task93: User import wizard - tuning performance; Task94: Currency conversion - handling edge cases'
+  problems: 'Task93: API contract changed upstream'
 - !NoteEntry
   date: '30. Sep. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task114: Working on code; Task115: Working on code; Task116: Started with task'
-  problems:
+  done: 'Mentoring a junior colleague'
+  in_progress: 'Task93: User import wizard - waiting for review feedback; Task94: Currency conversion - waiting for review feedback; Task95: Dark mode theme - Started: setting up the branch'
+  problems: 'Task94: staging data out of date'
 - !NoteEntry
   date: '01. Oct. 2026'
-  done: 'Task115: Finished development and testing'
-  in_progress: 'neki; Task114: Working on code; Task116: Working on code'
-  problems:
+  done: 'Refactoring legacy module'
+  in_progress: 'Task93: User import wizard - last review round; Task94: Currency conversion - implementing core logic; Task95: Dark mode theme - polishing error messages'
+  problems: 'Task94: unclear acceptance criteria'
 - !NoteEntry
   date: '02. Oct. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task114: Working on code; Task116: Working on code'
-  problems: 'Počasen API'
+  done: 'Task93: User import wizard - Finished and deployed'
+  in_progress: 'Task94: Currency conversion - preparing for release; Task95: Dark mode theme - cleaning up the code; Task96: Audit log viewer - Started: skeleton implementation'
+  problems: 'Task94: environment config mismatch'
 - !NoteEntry
   date: '03. Oct. 2026'
-  done: 'Task114: Finished development and testing'
-  in_progress: 'neki; Task116: Working on code; Task117: Started with task'
-  problems:
+  done: 'Task94: Currency conversion - Finished and deployed'
+  in_progress: 'Task95: Dark mode theme - testing on staging; Task96: Audit log viewer - writing migration script'
+  problems: 'Task95: flaky integration test'
 - !NoteEntry
   date: '04. Oct. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task116: Working on code; Task117: Working on code'
-  problems:
+  done: 'Cleaned up old branches'
+  in_progress: 'Task95: Dark mode theme - waiting for review feedback; Task96: Audit log viewer - writing unit tests; Task97: Cost report - Started: setting up the branch'
+  problems: 'Task97: API contract changed upstream'
 - !NoteEntry
   date: '05. Oct. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task116: Working on code; Task117: Working on code; Task118: Started with task'
-  problems:
+  done: 'Sprint planning'
+  in_progress: 'Task95: Dark mode theme - handling edge cases; Task96: Audit log viewer - integrating with backend; Task97: Cost report - testing on staging'
+  problems: 'Task97: staging data out of date'
 - !NoteEntry
   date: '06. Oct. 2026'
-  done: 'Task116: Finished development and testing'
-  in_progress: 'neki; Task117: Working on code; Task118: Working on code'
-  problems:
+  done: 'Monitoring dashboard tweaks'
+  in_progress: 'Task95: Dark mode theme - wiring up the UI; Task96: Audit log viewer - handling edge cases; Task97: Cost report - fixing review comments'
+  problems: 'Build times creeping up'
 - !NoteEntry
   date: '07. Oct. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task117: Working on code; Task118: Working on code'
-  problems: 'Težave s povezavo'
+  done: 'Team meeting'
+  in_progress: 'Task95: Dark mode theme - tuning performance; Task96: Audit log viewer - wiring up the UI; Task97: Cost report - wiring up the UI'
+  problems: 'Disk space low on build server'
 - !NoteEntry
   date: '08. Oct. 2026'
-  done: 'Task117: Finished development and testing'
-  in_progress: 'neki; Task118: Working on code; Task119: Started with task'
-  problems:
+  done: 'Database index review'
+  in_progress: 'Task95: Dark mode theme - handling edge cases; Task96: Audit log viewer - polishing error messages; Task97: Cost report - wiring up the UI'
+  problems: 'Task95: staging data out of date'
 - !NoteEntry
   date: '09. Oct. 2026'
-  done: 'Refaktoriranje'
-  in_progress: 'neki; Task118: Working on code; Task119: Working on code'
-  problems:
+  done: 'CI pipeline fixes'
+  in_progress: 'Task95: Dark mode theme - writing unit tests; Task96: Audit log viewer - writing migration script; Task97: Cost report - wiring up the UI'
+  problems: 'Task97: regression reported by support'
 - !NoteEntry
   date: '10. Oct. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task118: Working on code; Task119: Working on code; Task120: Started with task'
-  problems:
+  done: 'Code review'
+  in_progress: 'Task95: Dark mode theme - preparing for release; Task96: Audit log viewer - preparing for release; Task97: Cost report - waiting for review feedback'
+  problems: 'Task95: blocked waiting for design assets'
 - !NoteEntry
   date: '11. Oct. 2026'
-  done: 'Task118: Finished development and testing'
-  in_progress: 'neki; Task119: Working on code; Task120: Working on code'
-  problems: 'Task119: Bug found in production'
+  done: 'Task95: Dark mode theme - Merged after review; Task96: Audit log viewer - Finished development and testing'
+  in_progress: 'Task97: Cost report - last review round'
+  problems: 'Flaky CI runner'
 - !NoteEntry
   date: '12. Oct. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task119: Working on code; Task120: Working on code'
-  problems:
+  done: 'Task97: Cost report - Finished development and testing'
+  in_progress: 'Task98: API versioning - Started: setting up the branch'
+  problems: 'Database migration took longer than planned'
 - !NoteEntry
   date: '13. Oct. 2026'
-  done: 'Task119: Finished development and testing'
-  in_progress: 'neki; Task120: Working on code; Task121: Started with task'
-  problems:
+  done: 'Updated documentation'
+  in_progress: 'Task98: API versioning - wiring up the UI'
+  problems: 'Task98: flaky integration test'
 - !NoteEntry
   date: '14. Oct. 2026'
-  done: 'Pregled kode'
-  in_progress: 'neki; Task120: Working on code; Task121: Working on code'
-  problems:
+  done: 'Interview with a candidate'
+  in_progress: 'Task98: API versioning - integrating with backend; Task99: Role permissions matrix - Started: drafting the design'
+  problems: 'Task98: review taking longer than expected'
 - !NoteEntry
   date: '15. Oct. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task120: Working on code; Task121: Working on code; Task122: Started with task'
-  problems:
+  done: 'Backlog grooming'
+  in_progress: 'Task98: API versioning - implementing core logic; Task99: Role permissions matrix - testing on staging; Task100: Order status tracking - Started: setting up the branch'
+  problems: 'Task98: regression reported by support'
 - !NoteEntry
   date: '16. Oct. 2026'
-  done: 'Task120: Finished development and testing'
-  in_progress: 'neki; Task121: Working on code; Task122: Working on code'
-  problems: 'Konflikt pri spajanju'
+  done: 'Security patch rollout'
+  in_progress: 'Task98: API versioning - wiring up the UI; Task99: Role permissions matrix - preparing for release; Task100: Order status tracking - handling edge cases'
+  problems: 'Task100: missing test coverage'
 - !NoteEntry
   date: '17. Oct. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task121: Working on code; Task122: Working on code'
-  problems:
+  done: 'Task99: Role permissions matrix - Shipped to production'
+  in_progress: 'Task98: API versioning - writing migration script; Task100: Order status tracking - writing migration script'
+  problems: 'License renewal pending for IDE'
 - !NoteEntry
   date: '18. Oct. 2026'
-  done: 'Task121: Finished development and testing'
-  in_progress: 'neki; Task122: Working on code; Task123: Started with task'
-  problems:
+  done: 'Mentoring a junior colleague'
+  in_progress: 'Task98: API versioning - writing unit tests; Task100: Order status tracking - preparing for release; Task101: Onboarding checklist - Kicked off with scoping'
+  problems: 'Slow API response times'
 - !NoteEntry
   date: '19. Oct. 2026'
-  done: 'Sestanek z ekipo'
-  in_progress: 'neki; Task122: Working on code; Task123: Working on code'
-  problems:
+  done: 'Task100: Order status tracking - Shipped to production'
+  in_progress: 'Task98: API versioning - cleaning up the code; Task101: Onboarding checklist - implementing core logic'
+  problems: 'Task101: regression reported by support'
 - !NoteEntry
   date: '20. Oct. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task122: Working on code; Task123: Working on code; Task124: Started with task'
-  problems:
+  done: 'Pair programming session'
+  in_progress: 'Task98: API versioning - tuning performance; Task101: Onboarding checklist - writing unit tests'
+  problems: 'Staging environment down for an hour'
 - !NoteEntry
   date: '21. Oct. 2026'
-  done: 'Task122: Finished development and testing'
-  in_progress: 'neki; Task123: Working on code; Task124: Working on code'
-  problems: 'Napačni testi'
+  done: 'Refactoring legacy module'
+  in_progress: 'Task98: API versioning - preparing for release; Task101: Onboarding checklist - handling edge cases; Task102: Error reporting hook - Kicked off with scoping'
+  problems: 'Task101: timeout when calling third-party service'
 - !NoteEntry
   date: '22. Oct. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task123: Working on code; Task124: Working on code'
-  problems:
+  done: 'Task98: API versioning - Released to staging, approved'
+  in_progress: 'Task101: Onboarding checklist - polishing error messages; Task102: Error reporting hook - waiting for review feedback'
+  problems: 'Task101: API contract changed upstream'
 - !NoteEntry
   date: '23. Oct. 2026'
-  done: 'Task123: Finished development and testing'
-  in_progress: 'neki; Task124: Working on code; Task125: Started with task'
-  problems:
+  done: 'Sprint planning'
+  in_progress: 'Task101: Onboarding checklist - writing migration script; Task102: Error reporting hook - integrating with backend; Task103: Session timeout handling - Started: setting up the branch'
+  problems: 'Task102: memory leak under load'
 - !NoteEntry
   date: '24. Oct. 2026'
-  done: 'Dokumentacija'
-  in_progress: 'neki; Task124: Working on code; Task125: Working on code'
-  problems:
+  done: 'Cleaned up old branches'
+  in_progress: 'Task101: Onboarding checklist - last review round; Task102: Error reporting hook - final testing; Task103: Session timeout handling - writing unit tests'
+  problems: 'Task101: unclear acceptance criteria'
 - !NoteEntry
   date: '25. Oct. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task124: Working on code; Task125: Working on code; Task126: Started with task'
-  problems:
+  done: 'Task101: Onboarding checklist - Completed, tests green; Task102: Error reporting hook - Released to staging, approved'
+  in_progress: 'Task103: Session timeout handling - polishing error messages; Task104: Settings page - Started: drafting the design'
+  problems: 'Task104: blocked waiting for design assets'
 - !NoteEntry
   date: '26. Oct. 2026'
-  done: 'Task124: Finished development and testing'
-  in_progress: 'neki; Task125: Working on code; Task126: Working on code'
-  problems: 'Počasen API'
+  done: 'Retrospective'
+  in_progress: 'Task103: Session timeout handling - fixing review comments; Task104: Settings page - testing on staging; Task105: CSV report builder - Started: drafting the design'
+  problems: 'Noisy alerts overnight'
 - !NoteEntry
   date: '27. Oct. 2026'
-  done: 'Regular maintenance'
-  in_progress: 'neki; Task125: Working on code; Task126: Working on code'
-  problems: 'neki'
+  done: 'Log cleanup'
+  in_progress: 'Task103: Session timeout handling - writing migration script; Task104: Settings page - polishing error messages; Task105: CSV report builder - writing migration script'
+  problems: 'Task105: API contract changed upstream'
