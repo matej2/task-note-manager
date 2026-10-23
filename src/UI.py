@@ -5,6 +5,7 @@ from tkinter import BaseWidget
 from customtkinter import LEFT, CTkFrame as Frame, CTk as Tk, CTkButton as Button, CTkLabel as Label, \
     CTkToplevel as Toplevel, CTkTextbox as Text
 
+from Loader import Loader
 from manager.ConfigFileManager import ConfigFileManager
 from models.Config import Config
 from src.manager.ConfigManager import ConfigManager
@@ -31,8 +32,11 @@ class UI(Frame):
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
         self.root.grid_columnconfigure(1, weight=1)
-
         self.root.grid(row=0, column=0, padx=20, pady=20 , sticky="nsew")
+
+
+        self.loader = Loader(self.root_container, self.config_manager)
+        self.loader.show()
 
         # Buttons
         self.submit_button = Button(None)
@@ -61,7 +65,6 @@ class UI(Frame):
         self.__configure_input_widgets()
         self.__configure_status_widgets()
         self.__configure_scheduler_widgets()
-
 
     def __configure_button_widgets(self):
         self.submit_button = self.ui_helper.display_button("Submit",self.input_container,6,0, True)

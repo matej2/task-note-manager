@@ -29,6 +29,7 @@ class Application(UI):
         super().__init__(self.config_manager, self.config_data)
 
         self.current_data = NoteList(list())
+        self.root_container.after(0, self.loader.hide())
 
         asyncio.run(self.__init_wrapper())
 
