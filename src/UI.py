@@ -1,3 +1,4 @@
+import platform
 from datetime import datetime, timezone
 from tkinter import BaseWidget
 
@@ -20,6 +21,7 @@ class UI(Frame):
         self.root_container = Tk()
         self.root_container.title("Task note manager")
         self.root_container.configure(fg_color=self.config_manager.FRAME_BACKGROUND)
+        self.__maximize_window()
 
         self.root_container.grid_rowconfigure(0, weight=1)
         self.root_container.grid_columnconfigure(0, weight=1)
@@ -173,3 +175,14 @@ class UI(Frame):
         about_frame = self.ui_helper.display_frame(top, 0, 0, "About")
 
         self.ui_helper.display_label(f"Task Note Manager is a streamlined tool designed to help you effortlessly track and log your daily work activities.\n\nKey Features & Benefits:\n• Automated Reminders: The app automatically prompts you for input after 6 hours of runtime.\n• Structured Insights: Answer 3 simple questions to capture crucial details about your workday.\n• Meeting & Report Ready: Generated notes are perfect for daily standups, status updates, or personal tracking.\n• Local Storage: All data is saved safely in a clean, human-readable YAML format.\n• Full Control: Click the 'Open file' button to view, edit, or copy entries directly. Every log is marked with '!NoteEntry' for easy customization.\n\nData is saved in YAML file at {self.config_data.save_directory}", about_frame, 0, 0)
+
+    def __maximize_window(self):
+        system = platform.system()
+        if system == "Windows":
+            self.root_container.state("zoomed")
+        elif system == "Linux":
+            self.root_container.attributes("-zoomed", True)
+        else:  # macOS or others
+            # macOS has no true maximize in Tk; fall back to screen size
+            w, h = self.root_container.winfo_screenwidth(), self.root_container.winfo_screenheight()
+            self.root_container.geometry(f"{w}x{h}+0+0")
