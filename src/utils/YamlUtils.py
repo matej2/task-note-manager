@@ -17,7 +17,8 @@ class YamlUtils:
     }
 
     __allowed_config_note_entry = {
-        "save_directory"
+        "save_directory",
+        "export_file_path"
     }
 
     __allowed_nodes_note_list = {

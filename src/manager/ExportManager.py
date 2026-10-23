@@ -1,3 +1,4 @@
+from models.Config import Config
 from src.export.NoteByStatusByDate import NoteByStatusByDate
 from src.export.NoteByTaskNameByDate import NoteByTaskNameByDate
 from src.export.OdsTabExportBase import OdsTabExportBase
@@ -11,12 +12,13 @@ class ExportManager:
 
     def __init__(self, config_manager: ConfigManager,
                  data_manager: DataManager,
-                 task_manager: TaskManager) -> None:
+                 task_manager: TaskManager,
+                 config_data: Config) -> None:
         self.config_manager = config_manager
         self.data_manager = data_manager
         self.task_manager = task_manager
 
-        OdsTabExportBase.set_dependencies(config_manager, data_manager)
+        OdsTabExportBase.set_dependencies(config_manager, data_manager, config_data)
 
         self.registered_export_types = [
             NoteByStatusByDate(config_manager, data_manager),

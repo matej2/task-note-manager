@@ -51,7 +51,7 @@ class Application(UI):
             self.current_data
         )
         self.task_manager = TaskManager(self.config_manager)
-        self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager)
+        self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager, self.config_data)
 
         self._update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency_hours))
         self.scheduler = Scheduler(self.__trigger_notification, self._update_time_until_next_run, self.config_manager)
@@ -81,7 +81,7 @@ class Application(UI):
         await self.data_manager.process_save_input(self.current_data)
         await self.export_manager.export_data(self.current_data)
         await self.notification_manager.send_info_notification(
-            f"Exported data to {self.config_manager.EXPORT_FILE_PATH}")
+            f"Exported data to {self.config_data.export_file_path}")
 
 
     def __after_submit(self, note_list: NoteList):

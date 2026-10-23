@@ -26,4 +26,3 @@ class NoteByStatusByDate(IOdsTabExport):
                 self.config_manager.EXPORT_TAB_NAME_DEFAULT)
 
         OdsTabExportBase.save_as_ordered_dict()
-        self.logger.debug(f"Exported saved content to {self.config_manager.EXPORT_FILE_PATH}")

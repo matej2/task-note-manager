@@ -1,10 +1,6 @@
 import logging
-import os
-import platform
 
 from customtkinter import CTkFont as Font
-
-from utils.FileUtils import FileUtils
 
 
 class ConfigManager:
@@ -23,7 +19,6 @@ class ConfigManager:
 
         # Excel export
         self.EXPORT_EMPTY_ROW = ["No data", ]
-        self.EXPORT_FILE_PATH = os.path.join(FileUtils.get_working_dir(), "task_notes.ods")
         self.EXPORT_TAB_NAME_DEFAULT = "Default"
         self.EXPORT_TAB_NAME_TASK_NAMES = "Task names"
 
@@ -62,13 +57,11 @@ class ConfigManager:
 Font family: {}
 Font size: {}
 Date format: {}
-Frequency hours: {}
-Excel file: {}""".format(
+Frequency hours: {}""".format(
             self.FONT_FAMILY,
             self.FONT_SIZE_NORMAL,
             self.DATE_FORMAT,
-            self.frequency_hours,
-            self.EXPORT_FILE_PATH)
+            self.frequency_hours)
 
     def rem(self, val: float):
         return int(val * self.REM_MULT)
