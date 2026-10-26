@@ -21,7 +21,7 @@ class NoteByTaskNameByDate(IOdsTabExport):
 
         date_list = [
             LocalizedDate(self.config_manager.DATE_FORMAT, today_date - timedelta(days=i))
-            for i in range(7)
+            for i in range(365)
         ]
 
         return list(reversed(date_list))
@@ -34,6 +34,7 @@ class NoteByTaskNameByDate(IOdsTabExport):
             for note in notes_in_list:
                 self.__process_data_for_date(note, date_index, date_value)
 
+        OdsTabExportBase.save_as_ordered_dict()
 
     def add_header(self):
         date_list = self.__get_week_dates()
@@ -53,5 +54,3 @@ class NoteByTaskNameByDate(IOdsTabExport):
                     result.insert(1, '')
                 result.append(task.description)
                 OdsTabExportBase.add_sheet_row(result, self.config_manager.EXPORT_TAB_NAME_TASK_NAMES)
-
-        OdsTabExportBase.save_as_ordered_dict()
