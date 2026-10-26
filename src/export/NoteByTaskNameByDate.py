@@ -16,20 +16,22 @@ class NoteByTaskNameByDate(IOdsTabExport):
         self.data_manager = data_manager
         self.task_manager = task_manager
 
-    def __get_week_dates(self) -> list[date]:
-        date_list = []
+    def __get_week_dates(self) -> list[LocalizedDate]:
         today_date = datetime.now()
 
-        for i in range(0, 7):
-            week_day = LocalizedDate(self.config_manager.DATE_FORMAT, today_date - timedelta(days=i))
-            date_list.append(week_day.date_instance)
+        date_list = [
+            LocalizedDate(self.config_manager.DATE_FORMAT, today_date - timedelta(days=i))
+            for i in range(7)
+        ]
+
         return list(reversed(date_list))
 
     async def run_export(self, current_data: NoteList) -> None:
         first_row = self.add_header()
+        notes_in_list = list(current_data.notes)
 
         for date_index, date_value in enumerate(first_row):
-            for note in current_data.notes:
+            for note in notes_in_list:
                 self.__process_data_for_date(note, date_index, date_value)
 
 
@@ -38,7 +40,7 @@ class NoteByTaskNameByDate(IOdsTabExport):
 
         first_row = list(map(lambda x: str(x), date_list))
         first_row.insert(0,'')
-        OdsTabExportBase.add_sheet_row(first_row, self.config_manager.EXPORT_TAB_NAME_TASK_NAMES)
+        OdsTabExportBase.add_sheet_row(list(first_row), self.config_manager.EXPORT_TAB_NAME_TASK_NAMES)
         return first_row
 
 
