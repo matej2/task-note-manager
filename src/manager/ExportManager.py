@@ -1,3 +1,5 @@
+from export.AISummaryExport import AISummaryExport
+from manager.AISummaryManager import AISummaryManager
 from models.Config import Config
 from src.export.NoteByStatusByDate import NoteByStatusByDate
 from src.export.NoteByTaskNameByDate import NoteByTaskNameByDate
@@ -13,16 +15,19 @@ class ExportManager:
     def __init__(self, config_manager: ConfigManager,
                  data_manager: DataManager,
                  task_manager: TaskManager,
-                 config_data: Config) -> None:
+                 config_data: Config,
+                 ai_summary_manager: AISummaryManager) -> None:
         self.config_manager = config_manager
         self.data_manager = data_manager
         self.task_manager = task_manager
+        self.ai_summary_manager = ai_summary_manager
 
         OdsTabExportBase.set_dependencies(config_manager, data_manager, config_data)
 
         self.registered_export_types = [
             NoteByStatusByDate(config_manager, data_manager),
             NoteByTaskNameByDate(config_manager, data_manager, task_manager),
+            AISummaryExport(config_manager, data_manager, ai_summary_manager),
         ]
 
     async def export_data(self, current_data: NoteList) -> None:

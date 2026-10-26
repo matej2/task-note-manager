@@ -53,7 +53,9 @@ class Application(UI):
             self.current_data
         )
         self.task_manager = TaskManager(self.config_manager)
-        self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager, self.config_data)
+        self.ai_summary_manager = AISummaryManager(self.config_data, self.file_manager)
+
+        self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager, self.config_data, self.ai_summary_manager)
 
         self._update_time_until_next_run(datetime.now(timezone.utc) + timedelta(hours=self.config_manager.frequency_hours))
         self.scheduler = Scheduler(self.__trigger_notification, self._update_time_until_next_run, self.config_manager)
@@ -61,7 +63,6 @@ class Application(UI):
         self.__configure_buttons()
         self.__configure_bindings()
 
-        self.ai_summary_manager = AISummaryManager(self.config_data, self.file_manager)
 
     async def __after_setup(self):
         self.current_data = await self.data_manager.read_data_from_file_async_direct()
@@ -86,10 +87,6 @@ class Application(UI):
         await self.export_manager.export_data(self.current_data)
         await self.notification_manager.send_info_notification(
             f"Exported data to {self.config_data.export_file_path}")
-
-        # TODO: Summary should be saved in csv file.
-        self.ai_summary_manager.generate(self.current_data)
-
 
     def __after_submit(self, note_list: NoteList):
         self.notification.configure(text="")

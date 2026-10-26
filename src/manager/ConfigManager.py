@@ -21,12 +21,15 @@ class ConfigManager:
         self.EXPORT_EMPTY_ROW = ["No data", ]
         self.EXPORT_TAB_NAME_DEFAULT = "Default"
         self.EXPORT_TAB_NAME_TASK_NAMES = "Task names"
+        self.EXPORT_TAB_NAME_AI_SUMMARY = "AI summary"
 
         #  Excel export headers
         self.EXPORT_TH_DATE = "Date"
         self.EXPORT_TH_DONE = "Done"
         self.EXPORT_TH_IN_PROGRESS = "In progress"
         self.EXPORT_TH_PROBLEMS = "Problems"
+        self.EXPORT_TH_TASK_NAMES = "Task names"
+        self.EXPORT_TH_AI_SUMMARY = "AI summary"
 
         # Default padding
         self.NEW_NOTE_INPUT_PADX = 20

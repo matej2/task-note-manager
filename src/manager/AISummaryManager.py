@@ -110,10 +110,13 @@ class AISummaryManager:
             ],
         )
 
+        response = []
+
         for chunk in self.__CLIENT.models.generate_content_stream(
                 model=model,
                 contents=contents,
                 config=generate_content_config,
         ):
             if text := chunk.text:
-                print(text, end="")
+                response.append(text)
+        return "".join(response)
