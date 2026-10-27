@@ -12,10 +12,10 @@ class NoteByStatusByDate(IOdsTabExport):
 
     def add_header(self):
         OdsTabExportBase.add_sheet_row( [
-            self.config_manager.EXPORT_TH_DATE,
-            self.config_manager.EXPORT_TH_DONE,
-            self.config_manager.EXPORT_TH_IN_PROGRESS,
-            self.config_manager.EXPORT_TH_PROBLEMS
+            self.config_manager.TASK_DATA_DATE.get("identifier"),
+            self.config_manager.TASK_DATA_DONE.get("identifier"),
+            self.config_manager.TASK_DATA_IN_PROGRESS.get("identifier"),
+            self.config_manager.TASK_DATA_PROBLEMS.get("identifier"),
         ], self.config_manager.EXPORT_TAB_NAME_DEFAULT)
 
     async def run_export(self, current_data: NoteList) -> None:

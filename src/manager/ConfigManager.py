@@ -5,6 +5,11 @@ from customtkinter import CTkFont as Font
 
 class ConfigManager:
     def __init__(self):
+        # Task data properties
+        self.TASK_DATA_DONE = "done"
+        self.TASK_DATA_IN_PROGRESS = "in_progress"
+        self.TASK_DATA_PROBLEMS = "problems"
+
         # Font
         self.FONT_FAMILY = "TkDefaultFont"
         self.REM_MULT = 14

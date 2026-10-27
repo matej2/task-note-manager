@@ -14,7 +14,7 @@ class AISummaryExport(IOdsTabExport):
 
     def add_header(self, *args):
         OdsTabExportBase.add_sheet_row( [
-            self.config_manager.EXPORT_TH_TASK_NAMES,
+            self.config_manager.TASK_DATA_TASK_NAMES.get("identifier"),
             self.config_manager.EXPORT_TH_AI_SUMMARY
         ], self.config_manager.EXPORT_TAB_NAME_AI_SUMMARY)
 
