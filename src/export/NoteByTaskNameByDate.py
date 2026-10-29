@@ -26,7 +26,7 @@ class NoteByTaskNameByDate(IOdsTabExport):
 
         return list(reversed(date_list))
 
-    async def run_export(self, current_data: NoteList) -> None:
+    def run_export(self, current_data: NoteList) -> None:
         first_row = self.add_header()
         notes_in_list = list(current_data.notes)
 

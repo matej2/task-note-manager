@@ -5,10 +5,27 @@ from customtkinter import CTkFont as Font
 
 class ConfigManager:
     def __init__(self):
+        self.TASK_DATA_DATE = {
+            "identifier": "date",
+            "label": "Date"
+        }
         # Task data properties
-        self.TASK_DATA_DONE = "done"
-        self.TASK_DATA_IN_PROGRESS = "in_progress"
-        self.TASK_DATA_PROBLEMS = "problems"
+        self.TASK_DATA_DONE = {
+            "identifier": "done",
+            "label": "Done"
+        }
+        self.TASK_DATA_IN_PROGRESS = {
+            "identifier": "in_progress",
+            "label": "In progress"
+        }
+        self.TASK_DATA_PROBLEMS = {
+            "identifier": "problems",
+            "label": "Problems"
+        }
+        self.TASK_DATA_TASK_NAMES = {
+            "identifier": "task_names",
+            "label": "Task names"
+        }
 
         # Font
         self.FONT_FAMILY = "TkDefaultFont"
@@ -29,11 +46,6 @@ class ConfigManager:
         self.EXPORT_TAB_NAME_AI_SUMMARY = "AI summary"
 
         #  Excel export headers
-        self.EXPORT_TH_DATE = "Date"
-        self.EXPORT_TH_DONE = "Done"
-        self.EXPORT_TH_IN_PROGRESS = "In progress"
-        self.EXPORT_TH_PROBLEMS = "Problems"
-        self.EXPORT_TH_TASK_NAMES = "Task names"
         self.EXPORT_TH_AI_SUMMARY = "AI summary"
 
         # Default padding

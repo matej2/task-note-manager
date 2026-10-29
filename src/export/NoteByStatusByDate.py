@@ -18,11 +18,28 @@ class NoteByStatusByDate(IOdsTabExport):
             self.config_manager.TASK_DATA_PROBLEMS.get("identifier"),
         ], self.config_manager.EXPORT_TAB_NAME_DEFAULT)
 
-    async def run_export(self, current_data: NoteList) -> None:
+    def save_as_table_status_by_date(self) -> None:
+        """
+            self.config_manager.EXPORT_TH_DATE,
+            self.config_manager.EXPORT_TH_DONE,
+            self.config_manager.EXPORT_TH_IN_PROGRESS,
+            self.config_manager.EXPORT_TH_PROBLEMS
+        :return:
+        """
+        lines = list()
+        for date, task_type in OdsTabExportBase.get_sheet_data_grouped().items():
+            lines.append([
+                date,
+                str(task_type.get(self.config_manager.TASK_DATA_DONE.get("identifier"))),
+                str(task_type.get(self.config_manager.TASK_DATA_IN_PROGRESS.get("identifier"))),
+                str(task_type.get(self.config_manager.TASK_DATA_PROBLEMS.get("identifier")))
+            ])
+
+        OdsTabExportBase.save_lines(self.config_manager.EXPORT_TAB_NAME_DEFAULT, lines)
+
+    def run_export(self, current_data: NoteList) -> None:
         self.add_header()
         for note in current_data.notes:
-            OdsTabExportBase.add_sheet_row(
-                [note.date, note.done, note.in_progress, note.problems],
-                self.config_manager.EXPORT_TAB_NAME_DEFAULT)
+            OdsTabExportBase.add_task_data(note)
 
-        OdsTabExportBase.save_as_ordered_dict()
+        self.save_as_table_status_by_date()

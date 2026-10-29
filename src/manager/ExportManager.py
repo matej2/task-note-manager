@@ -22,17 +22,17 @@ class ExportManager:
         self.task_manager = task_manager
         self.ai_summary_manager = ai_summary_manager
 
-        OdsTabExportBase.set_dependencies(config_manager, data_manager, config_data)
+        OdsTabExportBase.set_dependencies(config_manager, data_manager, config_data, task_manager)
 
         self.registered_export_types = [
             NoteByStatusByDate(config_manager, data_manager),
             NoteByTaskNameByDate(config_manager, data_manager, task_manager),
-            AISummaryExport(config_manager, data_manager, ai_summary_manager),
+            #AISummaryExport(config_manager, data_manager, ai_summary_manager),
         ]
 
     async def export_data(self, current_data: NoteList) -> None:
         OdsTabExportBase.delete_data()
 
         for registered_type in self.registered_export_types:
-            await registered_type.run_export(current_data)
+            registered_type.run_export(current_data)
 

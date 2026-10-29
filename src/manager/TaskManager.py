@@ -1,4 +1,5 @@
 import re
+from typing import Any
 
 from src.manager.ConfigManager import ConfigManager
 from src.models.NoteEntry import NoteEntry
@@ -17,8 +18,14 @@ class TaskManager:
         return result
 
     def get_tasks_from_note_entry(self, note_entry: NoteEntry) -> list[Task]:
-        result = re.findall(self.config_manager.TASK_NAME_REGEX, str(note_entry.done))
-        result.extend(re.findall(self.config_manager.TASK_NAME_REGEX, str(note_entry.in_progress)))
-        result.extend(re.findall(self.config_manager.TASK_NAME_REGEX, str(note_entry.problems)))
+        result = self.get_tasks_from_field("done", note_entry)
+        result.extend(self.get_tasks_from_field("in_progress", note_entry))
+        result.extend(self.get_tasks_from_field("problems", note_entry))
 
+        return result
+
+    def get_tasks_from_field(self, field: str, note_entry: NoteEntry) -> list[Task]:
+        result = re.findall(self.config_manager.TASK_NAME_REGEX, str(getattr(note_entry, field)))
         return [Task(r[0], r[1]) for r in result]
+
+
