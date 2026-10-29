@@ -12,7 +12,7 @@ class AISummaryExport(IOdsTabExport):
         self.data_manager = data_manager
         self.ai_summary_manager = ai_summary_manager
 
-    def add_header(self, *args):
+    def get_header(self, *args):
         OdsTabExportBase.add_sheet_row( [
             self.config_manager.TASK_DATA_TASK_NAMES.get("identifier"),
             self.config_manager.EXPORT_TH_AI_SUMMARY
@@ -21,7 +21,7 @@ class AISummaryExport(IOdsTabExport):
 
     def run_export(self, current_data: NoteList) -> None:
         summary_by_tasks = self.ai_summary_manager.generate(current_data)
-        self.add_header()
+        self.get_header()
         for task_name, task_description in summary_by_tasks:
             OdsTabExportBase.add_sheet_row(
                 [task_name, task_description],

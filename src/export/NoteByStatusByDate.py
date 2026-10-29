@@ -10,13 +10,29 @@ class NoteByStatusByDate(IOdsTabExport):
         self.config_manager = config_manager
         self.data_manager = data_manager
 
-    def add_header(self):
-        OdsTabExportBase.add_sheet_row( [
+        self.done_label = self.config_manager.TASK_DATA_DONE.get("identifier")
+        self.in_progress_label = self.config_manager.TASK_DATA_IN_PROGRESS.get("identifier")
+        self.problems_label = self.config_manager.TASK_DATA_PROBLEMS.get("identifier")
+
+    def get_header(self):
+        return [
             self.config_manager.TASK_DATA_DATE.get("identifier"),
             self.config_manager.TASK_DATA_DONE.get("identifier"),
             self.config_manager.TASK_DATA_IN_PROGRESS.get("identifier"),
             self.config_manager.TASK_DATA_PROBLEMS.get("identifier"),
-        ], self.config_manager.EXPORT_TAB_NAME_DEFAULT)
+        ]
+
+    # TODO: Change  to set
+    @staticmethod
+    def format_task(task: dict) -> str:
+        result = ""
+        if len(task.keys()) == 0:
+            return result
+
+        for key, val in task.items():
+            result += f"{key}: {val}; "
+
+        return result
 
     def save_as_table_status_by_date(self) -> None:
         """
@@ -27,18 +43,20 @@ class NoteByStatusByDate(IOdsTabExport):
         :return:
         """
         lines = list()
+        lines.append(self.get_header())
+
         for date, task_type in OdsTabExportBase.get_sheet_data_grouped().items():
             lines.append([
                 date,
-                str(task_type.get(self.config_manager.TASK_DATA_DONE.get("identifier"))),
-                str(task_type.get(self.config_manager.TASK_DATA_IN_PROGRESS.get("identifier"))),
-                str(task_type.get(self.config_manager.TASK_DATA_PROBLEMS.get("identifier")))
+                self.format_task(task_type.get(self.done_label)),
+                self.format_task(task_type.get(self.in_progress_label)),
+                self.format_task(task_type.get(self.problems_label)),
             ])
 
         OdsTabExportBase.save_lines(self.config_manager.EXPORT_TAB_NAME_DEFAULT, lines)
 
     def run_export(self, current_data: NoteList) -> None:
-        self.add_header()
+        self.get_header()
         for note in current_data.notes:
             OdsTabExportBase.add_task_data(note)
 

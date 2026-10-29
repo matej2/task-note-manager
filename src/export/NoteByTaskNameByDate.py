@@ -27,16 +27,16 @@ class NoteByTaskNameByDate(IOdsTabExport):
         return list(reversed(date_list))
 
     def run_export(self, current_data: NoteList) -> None:
-        first_row = self.add_header()
+        first_row = self.get_header()
         notes_in_list = list(current_data.notes)
 
         for date_index, date_value in enumerate(first_row):
             for note in notes_in_list:
                 self.__process_data_for_date(note, date_index, date_value)
 
-        OdsTabExportBase.save_as_ordered_dict()
+        #OdsTabExportBase.save_as_ordered_dict()
 
-    def add_header(self):
+    def get_header(self):
         date_list = self.__get_week_dates()
 
         first_row = list(map(lambda x: str(x), date_list))

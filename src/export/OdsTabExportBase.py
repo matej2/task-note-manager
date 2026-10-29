@@ -57,7 +57,7 @@ class OdsTabExportBase:
     @classmethod
     def add_task_data(cls, note_entry: NoteEntry) -> None:
         done_id = cls.config_manager.TASK_DATA_DONE.get("identifier")
-        in_progress_id = cls.config_manager.TASK_DATA_DONE.get("identifier")
+        in_progress_id = cls.config_manager.TASK_DATA_IN_PROGRESS.get("identifier")
         problems_id = cls.config_manager.TASK_DATA_PROBLEMS.get("identifier")
 
         tasks_done = cls.task_manager.get_tasks_from_field("done", note_entry)
@@ -102,4 +102,5 @@ class OdsTabExportBase:
     @classmethod
     def delete_data(cls) -> None:
         cls._sheet_data = {}
+        cls.__sheet_data_grouped = {}
 
