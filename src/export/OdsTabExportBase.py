@@ -6,7 +6,6 @@ from pyexcel_ods3 import save_data
 from manager.TaskManager import TaskManager
 from models.Config import Config
 from models.NoteEntry import NoteEntry
-from models.NoteList import NoteList
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
 
@@ -18,6 +17,7 @@ class OdsTabExportBase:
     _sheet_data: dict[str, list[list[str]]] = {}
     # Sheet data grouped by date - type - tasks - description
     __sheet_data_grouped: dict[str, dict[str, list[list[str]]]] = {}
+    __sheet_lines: dict[str, list[list[str]]] = {}
     config_data = Config()
 
     @classmethod
@@ -40,11 +40,11 @@ class OdsTabExportBase:
 
     @classmethod
     def save_lines(cls, tab_name: str, lines: list[list[str]]) -> None:
-        input_data = OrderedDict({
+        cls.__sheet_lines.update({
             tab_name: lines
         })
-        save_data(cls.config_data.export_file_path, input_data)
-        cls.logger.debug(f"Exported saved content to {cls.config_data.export_file_path}")
+        save_data(cls.config_data.export_file_path, cls.__sheet_lines)
+        cls.logger.debug(f"Exported saved content to {cls.config_data.export_file_path}, tab namme: {tab_name}")
 
 
     @classmethod

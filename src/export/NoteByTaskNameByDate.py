@@ -63,7 +63,6 @@ class NoteByTaskNameByDate(IOdsTabExport):
             lines.append(line)
             line = list()
 
-
         OdsTabExportBase.save_lines(self.config_manager.EXPORT_TAB_NAME_TASK_NAMES, lines)
 
 
