@@ -57,6 +57,7 @@ class NoteByStatusByDate(IOdsTabExport):
 
     def run_export(self, current_data: NoteList) -> None:
         self.get_header()
+        # Do this just once
         for note in current_data.notes:
             OdsTabExportBase.add_task_data(note)
 

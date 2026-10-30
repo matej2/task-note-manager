@@ -27,22 +27,66 @@ class NoteByTaskNameByDate(IOdsTabExport):
         return list(reversed(date_list))
 
     def run_export(self, current_data: NoteList) -> None:
-        first_row = self.get_header()
-        notes_in_list = list(current_data.notes)
+        task_name_to_date = dict(dict(str()))
 
-        for date_index, date_value in enumerate(first_row):
-            for note in notes_in_list:
-                self.__process_data_for_date(note, date_index, date_value)
 
-        #OdsTabExportBase.save_as_ordered_dict()
+        for date, task_types in OdsTabExportBase.get_sheet_data_grouped().items():
+
+            for task_type_name, task_type in task_types.items():
+                for task_name, task_description in task_type.items():
+                    if task_name not in task_name_to_date.keys():
+                        task_name_to_date[task_name] = dict()
+                    if date not in task_name_to_date[task_name]:
+                        task_name_to_date[task_name][date] = f"{task_type_name}: {''.join(task_description)}\n\n"
+                    else:
+                        task_name_to_date[task_name][date] += f"{task_type_name}: {''.join(task_description)}\n\n"
+
+
+
+        lines = list(list())
+        key_index = 1
+        all_date_values = [
+            x for x in OdsTabExportBase.get_sheet_data_grouped().keys()]
+        all_date_values.insert(0, '')
+        lines.append(all_date_values)
+
+        for task_name, task_dates in task_name_to_date.items():
+            line = ['' for _ in all_date_values]
+            line[0] = task_name
+
+            for task_date, description in task_dates.items():
+                if task_date not in all_date_values:
+                    raise RuntimeError(f'Task date {task_date} not available')
+                date_index = all_date_values.index(task_date)
+                line[date_index] = description
+                key_index += 1
+            lines.append(line)
+            line = list()
+
+
+        OdsTabExportBase.save_lines(self.config_manager.EXPORT_TAB_NAME_TASK_NAMES, lines)
+
 
     def get_header(self):
         date_list = self.__get_week_dates()
 
         first_row = list(map(lambda x: str(x), date_list))
         first_row.insert(0,'')
-        OdsTabExportBase.add_sheet_row(list(first_row), self.config_manager.EXPORT_TAB_NAME_TASK_NAMES)
         return first_row
+
+    def save_as_table_status_by_date(self) -> None:
+        lines = list()
+        lines.append(self.get_header())
+
+        for date, task_type in OdsTabExportBase.get_sheet_data_grouped().items():
+            lines.append([
+                date,
+                self.format_task(task_type.get(self.done_label)),
+                self.format_task(task_type.get(self.in_progress_label)),
+                self.format_task(task_type.get(self.problems_label)),
+            ])
+
+        OdsTabExportBase.save_lines(self.config_manager.EXPORT_TAB_NAME_DEFAULT, lines)
 
 
     def __process_data_for_date(self, note: NoteEntry, date_index: int, date_value: str) -> None:
