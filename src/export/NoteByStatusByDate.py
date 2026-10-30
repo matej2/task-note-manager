@@ -29,8 +29,12 @@ class NoteByStatusByDate(IOdsTabExport):
         if len(task.keys()) == 0:
             return result
 
-        for key, val in task.items():
-            result += f"{key}: {val}; "
+        for name, desc in task.items():
+
+            if name == "":
+                name = "None"
+
+            result += f"{name}: {desc};\n"
 
         return result
 

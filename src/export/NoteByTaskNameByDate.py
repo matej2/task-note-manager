@@ -37,9 +37,9 @@ class NoteByTaskNameByDate(IOdsTabExport):
                     if task_name not in task_name_to_date.keys():
                         task_name_to_date[task_name] = dict()
                     if date not in task_name_to_date[task_name]:
-                        task_name_to_date[task_name][date] = f"{task_type_name}: {''.join(task_description)}\n\n"
+                        task_name_to_date[task_name][date] = f"{task_type_name}: {''.join(task_description)}\n"
                     else:
-                        task_name_to_date[task_name][date] += f"{task_type_name}: {''.join(task_description)}\n\n"
+                        task_name_to_date[task_name][date] += f"{task_type_name}: {''.join(task_description)}\n"
 
 
 
