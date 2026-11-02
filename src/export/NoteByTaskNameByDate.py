@@ -26,10 +26,11 @@ class NoteByTaskNameByDate(IOdsTabExport):
 
         return list(reversed(date_list))
 
+
     def run_export(self, current_data: NoteList) -> None:
         task_name_to_date = dict(dict(str()))
 
-
+        # Map data to task name -> date. Value is description. Group by task name
         for date, task_types in OdsTabExportBase.get_sheet_data_grouped().items():
 
             for task_type_name, task_type in task_types.items():
@@ -37,9 +38,9 @@ class NoteByTaskNameByDate(IOdsTabExport):
                     if task_name not in task_name_to_date.keys():
                         task_name_to_date[task_name] = dict()
                     if date not in task_name_to_date[task_name]:
-                        task_name_to_date[task_name][date] = f"{task_type_name}: {''.join(task_description)}\n"
+                        task_name_to_date[task_name][date] = f"{task_type_name}: {''.join(task_description)}"
                     else:
-                        task_name_to_date[task_name][date] += f"{task_type_name}: {''.join(task_description)}\n"
+                        task_name_to_date[task_name][date] += f";\n{task_type_name}: {''.join(task_description)}"
 
 
 
