@@ -30,11 +30,12 @@ class NoteByStatusByDate(IOdsTabExport):
             return result
 
         for name, desc in task.items():
-
+            if result != "":
+                result += ";\n"
             if name == "":
-                name = "None"
-
-            result += f"{name}: {desc};\n"
+                result += f"{desc}"
+            else:
+                result += f"{name}: {desc}"
 
         return result
 

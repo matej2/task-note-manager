@@ -26,6 +26,11 @@ class TaskManager:
 
     def get_tasks_from_field(self, field: str, note_entry: NoteEntry) -> list[Task]:
         result = re.findall(self.config_manager.TASK_NAME_REGEX, str(getattr(note_entry, field)))
-        return [Task(r[0], r[1]) for r in result]
+
+        mapped_tasks = []
+        for r in result:
+            if r[0] != "" or r[1] != "":
+                mapped_tasks.append(Task(r[0], r[1]))
+        return mapped_tasks
 
 

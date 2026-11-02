@@ -37,7 +37,7 @@ class ConfigManager:
         # Date, time
         self.DATE_FORMAT = "%d. %b. %Y"
         self.frequency_hours = 6
-        self.TASK_NAME_REGEX = r"\s*([^:;]*)\s*:\s*([^:;]*)"
+        self.TASK_NAME_REGEX = r"(?:^|;)\s*(?:(\w+):\s*)?([^;\s][^;]*)"
 
         # Excel export
         self.EXPORT_EMPTY_ROW = ["No data", ]
