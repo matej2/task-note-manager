@@ -1,12 +1,8 @@
-from datetime import datetime, date, timedelta
-
 from src.export.IOdsTabExport import IOdsTabExport
 from src.export.OdsTabExportBase import OdsTabExportBase
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManager import DataManager
 from src.manager.TaskManager import TaskManager
-from src.models.LocalizedDate import LocalizedDate
-from src.models.NoteEntry import NoteEntry
 from src.models.NoteList import NoteList
 
 
@@ -16,15 +12,6 @@ class NoteByTaskNameByDate(IOdsTabExport):
         self.data_manager = data_manager
         self.task_manager = task_manager
 
-    def __get_week_dates(self) -> list[LocalizedDate]:
-        today_date = datetime.now()
-
-        date_list = [
-            LocalizedDate(self.config_manager.DATE_FORMAT, today_date - timedelta(days=i))
-            for i in range(365)
-        ]
-
-        return list(reversed(date_list))
 
     @staticmethod
     def process_task_types(task_type_name: str, task_name: str, task_date: str, task_description: str,  task_name_to_date: dict[str,dict[str,str]]):
@@ -48,17 +35,17 @@ class NoteByTaskNameByDate(IOdsTabExport):
 
         return task_name_to_date
 
-    @staticmethod
-    def get_header_dates() -> list[str]:
-        return [
+    def get_header(self) -> list[str]:
+        all_dates = [
             x for x in OdsTabExportBase.get_sheet_data_grouped().keys()]
+        all_dates.insert(0, '')
+        return all_dates
 
-    def run_export(self, current_data: NoteList) -> None:
+    def run_export(self, current_data: NoteList):
         task_name_to_date = self.get_data_mapped_by_name_and_date()
 
         lines = list(list())
-        all_date_values = self.get_header_dates()
-        all_date_values.insert(0, '')
+        all_date_values = self.get_header()
         lines.append(all_date_values)
 
         for task_name, task_dates in task_name_to_date.items():
@@ -71,36 +58,3 @@ class NoteByTaskNameByDate(IOdsTabExport):
             lines.append(line)
 
         OdsTabExportBase.save_lines(self.config_manager.EXPORT_TAB_NAME_TASK_NAMES, lines)
-
-
-    def get_header(self):
-        date_list = self.__get_week_dates()
-
-        first_row = list(map(lambda x: str(x), date_list))
-        first_row.insert(0,'')
-        return first_row
-
-    def save_as_table_status_by_date(self) -> None:
-        lines = list()
-        lines.append(self.get_header())
-
-        for date, task_type in OdsTabExportBase.get_sheet_data_grouped().items():
-            lines.append([
-                date,
-                self.format_task(task_type.get(self.done_label)),
-                self.format_task(task_type.get(self.in_progress_label)),
-                self.format_task(task_type.get(self.problems_label)),
-            ])
-
-        OdsTabExportBase.save_lines(self.config_manager.EXPORT_TAB_NAME_DEFAULT, lines)
-
-
-    def __process_data_for_date(self, note: NoteEntry, date_index: int, date_value: str) -> None:
-        for task in self.task_manager.get_tasks_from_note_entry(note):
-            result = [task.name]
-
-            if note.date == date_value:
-                for _ in range(date_index-1):
-                    result.insert(1, '')
-                result.append(task.description)
-                OdsTabExportBase.add_sheet_row(result, self.config_manager.EXPORT_TAB_NAME_TASK_NAMES)

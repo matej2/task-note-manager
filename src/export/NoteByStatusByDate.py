@@ -60,7 +60,7 @@ class NoteByStatusByDate(IOdsTabExport):
 
         OdsTabExportBase.save_lines(self.config_manager.EXPORT_TAB_NAME_DEFAULT, lines)
 
-    def run_export(self, current_data: NoteList) -> None:
+    def run_export(self, current_data: NoteList):
         self.get_header()
         # Do this just once
         for note in current_data.notes:
