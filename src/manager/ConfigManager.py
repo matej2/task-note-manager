@@ -42,9 +42,9 @@ class ConfigManager:
 
         # Excel export
         self.EXPORT_EMPTY_ROW = ["No data", ]
-        self.EXPORT_TAB_NAME_DEFAULT = "Default"
-        self.EXPORT_TAB_NAME_TASK_NAMES = "Task names"
-        self.EXPORT_TAB_NAME_AI_SUMMARY = "AI summary"
+        self.EXPORT_TAB_NAME_DEFAULT = "Report by status and date"
+        self.EXPORT_TAB_NAME_TASK_NAMES = "Report by task name and date"
+        self.EXPORT_TAB_NAME_AI_SUMMARY = "Monthly task summary"
 
         #  Excel export headers
         self.EXPORT_TH_AI_SUMMARY = "Task summary"
