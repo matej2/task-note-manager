@@ -3,7 +3,6 @@ from google import genai
 from google.genai import types
 
 from manager.FileManager import FileManager
-from models.AISummary import AISummary
 from models.AISummaryResponse import AISummaryResponse
 from models.Config import Config
 from models.NoteEntry import NoteEntry
@@ -48,7 +47,7 @@ class AISummaryManager:
                       problems:
                 </input>
                 
-                You will have a meeting with your superiors and you need to write report. In this report, you will mention notes, grouped by task names. You need to focus on value that this work adds towards business goals. You will respond with a json format. Tone of your response should be professional and easy to read.  
+                You will have a meeting with your superiors and you need to write report. In this report, you will mention notes, grouped by task names. You need to focus on value that this work adds towards business goals. You will respond with a json format. Tone of your response should be professional and easy to read. Do NOT use repeated words between sentences. Highlights the impact  of the work for the business. 
                 
                 Example of output:
                 
@@ -80,6 +79,7 @@ class AISummaryManager:
                 - form complete sentences, do not just copy from input
                 - sentences should be easy to follow and read
                 - mention task descriptions that do not have task names
+                - output should be the same language as input
                 
                 Do not:
                 
@@ -87,7 +87,6 @@ class AISummaryManager:
                 - make things up
                 - mention dates in sentences
                 - make things up
-                - repeat yourself
                 
             """
 
