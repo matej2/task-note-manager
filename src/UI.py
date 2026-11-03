@@ -179,6 +179,15 @@ class UI(Frame):
 
         self.ui_helper.display_label(f"Task Note Manager is a streamlined tool designed to help you effortlessly track and log your daily work activities.\n\nKey Features & Benefits:\n• Automated Reminders: The app automatically prompts you for input after 6 hours of runtime.\n• Structured Insights: Answer 3 simple questions to capture crucial details about your workday.\n• Meeting & Report Ready: Generated notes are perfect for daily standups, status updates, or personal tracking.\n• Local Storage: All data is saved safely in a clean, human-readable YAML format.\n• Full Control: Click the 'Open file' button to view, edit, or copy entries directly. Every log is marked with '!NoteEntry' for easy customization.\n\nData is saved in YAML file at {self.config_data.save_directory}", about_frame, 0, 0)
 
+    def _open_error_popup(self, title: str, error: str):
+        top = Toplevel(self.root)
+        top.title(title)
+        top.configure(padx=10, pady=10)
+
+        about_frame = self.ui_helper.display_frame(top, 0, 0, "Error")
+
+        self.ui_helper.display_label(f"Error while loading app: \n\n{error}", about_frame, 0, 0)
+
     def __maximize_window(self):
         system = platform.system()
         if system == "Windows":

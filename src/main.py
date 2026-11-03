@@ -2,10 +2,12 @@
 
 import asyncio
 import re
+import traceback
 from collections import OrderedDict
 from datetime import datetime, timedelta, timezone
 
 from customtkinter import END, NORMAL, DISABLED, CTkTextbox as Text, CTkFont as Font
+from yaml.scanner import ScannerError
 
 from manager.AISummaryManager import AISummaryManager
 from manager.ConfigFileManager import ConfigFileManager
@@ -65,7 +67,10 @@ class Application(UI):
 
 
     async def __after_setup(self):
-        self.current_data = await self.data_manager.read_data_from_file_async_direct()
+        try:
+            self.current_data = await self.data_manager.read_data_from_file_async_direct()
+        except ScannerError as e:
+            self._open_error_popup("YAML File error", str(e))
         Application.setup_tags(self.task_list)
         await self.__update_data()
         await self.initialize_data_fields()
