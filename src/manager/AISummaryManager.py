@@ -87,6 +87,7 @@ class AISummaryManager:
                 - make things up
                 - mention dates in sentences
                 - make things up
+                - repeat yourself
                 
             """
 

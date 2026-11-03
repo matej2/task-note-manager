@@ -7,7 +7,8 @@ from src.models.NoteList import NoteList
 
 
 class NoteByTaskNameByDate(IOdsTabExport):
-    def __init__(self, config_manager: ConfigManager, data_manager: DataManager, task_manager: TaskManager) -> None:
+    def __init__(self, export_context: OdsTabExportBase, config_manager: ConfigManager, data_manager: DataManager, task_manager: TaskManager) -> None:
+        self.export_context = export_context
         self.config_manager = config_manager
         self.data_manager = data_manager
         self.task_manager = task_manager
@@ -23,11 +24,10 @@ class NoteByTaskNameByDate(IOdsTabExport):
         else:
             task_name_to_date[task_name][task_date] += f";\n{task_type_name}: {''.join(task_description)}"
 
-    @staticmethod
-    def get_data_mapped_by_name_and_date() -> dict[str,dict[str,str]]:
+    def get_data_mapped_by_name_and_date(self) -> dict[str,dict[str,str]]:
         task_name_to_date: dict[str,dict[str,str]] = dict()
 
-        for task_date, task_types in OdsTabExportBase.get_sheet_data_grouped().items():
+        for task_date, task_types in self.export_context.get_sheet_data_grouped().items():
 
             for task_type_name, task_type in task_types.items():
                 for task_name, task_description in task_type.items():
@@ -37,7 +37,7 @@ class NoteByTaskNameByDate(IOdsTabExport):
 
     def get_header(self) -> list[str]:
         all_dates = [
-            x for x in OdsTabExportBase.get_sheet_data_grouped().keys()]
+            x for x in self.export_context.get_sheet_data_grouped().keys()]
         all_dates.insert(0, '')
         return all_dates
 
@@ -57,4 +57,4 @@ class NoteByTaskNameByDate(IOdsTabExport):
                 line[date_index] = description
             lines.append(line)
 
-        OdsTabExportBase.save_lines(self.config_manager.EXPORT_TAB_NAME_TASK_NAMES, lines)
+        self.export_context.save_lines(self.config_manager.EXPORT_TAB_NAME_TASK_NAMES, lines)

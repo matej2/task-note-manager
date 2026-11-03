@@ -23,8 +23,8 @@ class ConfigManager:
             "label": "Problems"
         }
         self.TASK_DATA_TASK_NAMES = {
-            "identifier": "task_names",
-            "label": "Task names"
+            "identifier": "task_name",
+            "label": "Task name"
         }
 
         # Font
@@ -46,7 +46,7 @@ class ConfigManager:
         self.EXPORT_TAB_NAME_AI_SUMMARY = "AI summary"
 
         #  Excel export headers
-        self.EXPORT_TH_AI_SUMMARY = "AI summary"
+        self.EXPORT_TH_AI_SUMMARY = "Task summary"
 
         # Default padding
         self.NEW_NOTE_INPUT_PADX = 20

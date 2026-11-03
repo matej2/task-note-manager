@@ -6,7 +6,8 @@ from src.models.NoteList import NoteList
 
 
 class NoteByStatusByDate(IOdsTabExport):
-    def __init__(self, config_manager: ConfigManager, data_manager: DataManager):
+    def __init__(self, export_context: OdsTabExportBase, config_manager: ConfigManager, data_manager: DataManager):
+        self.export_context = export_context
         self.config_manager = config_manager
         self.data_manager = data_manager
 
@@ -50,7 +51,7 @@ class NoteByStatusByDate(IOdsTabExport):
         lines = list()
         lines.append(self.get_header())
 
-        for date, task_type in OdsTabExportBase.get_sheet_data_grouped().items():
+        for date, task_type in self.export_context.get_sheet_data_grouped().items():
             lines.append([
                 date,
                 self.format_task(task_type.get(self.done_label)),
@@ -58,12 +59,12 @@ class NoteByStatusByDate(IOdsTabExport):
                 self.format_task(task_type.get(self.problems_label)),
             ])
 
-        OdsTabExportBase.save_lines(self.config_manager.EXPORT_TAB_NAME_DEFAULT, lines)
+        self.export_context.save_lines(self.config_manager.EXPORT_TAB_NAME_DEFAULT, lines)
 
     def run_export(self, current_data: NoteList):
         self.get_header()
         # Do this just once
         for note in current_data.notes:
-            OdsTabExportBase.add_task_data(note)
+            self.export_context.add_task_data(note)
 
         self.save_as_table_status_by_date()
