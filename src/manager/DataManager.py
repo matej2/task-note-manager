@@ -6,6 +6,7 @@ import yaml
 from customtkinter import CTkTextbox as Text, CTkLabel as Label
 
 from models.Config import Config
+from models.NoteEntry import NoteEntry
 from src.manager.ConfigManager import ConfigManager
 from src.manager.DataManagerBase import DataManagerBase
 from src.manager.FileManager import FileManager
@@ -52,6 +53,18 @@ class DataManager(DataManagerBase):
             if note.date == str(LocalizedDate(self.config_manager.DATE_FORMAT)):
                 result = note
                 break
+        return result
+
+    def extract_monthly_notes(self, note_list : NoteList) -> list[NoteEntry]:
+        result: list[NoteEntry] = []
+        if note_list is None:
+            return result
+
+        month_date_format = LocalizedDate(self.config_manager.DATE_FORMAT_SHORT)
+
+        for note in note_list.notes:
+            if str(month_date_format) in note.date:
+                result.append(note)
         return result
 
     @staticmethod

@@ -36,6 +36,7 @@ class ConfigManager:
 
         # Date, time
         self.DATE_FORMAT = "%d. %b. %Y"
+        self.DATE_FORMAT_SHORT = "%b. %Y"
         self.frequency_hours = 6
         self.TASK_NAME_REGEX = r"(?:^|;)\s*(?:(\w+):\s*)?([^;\s][^;]*)"
 

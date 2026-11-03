@@ -21,7 +21,8 @@ class AISummaryExport(IOdsTabExport):
         ]
 
     def run_export(self, current_data: NoteList):
-        json_response = self.ai_summary_manager.generate(current_data)
+        monthly_data = self.data_manager.extract_monthly_notes(current_data)
+        json_response = self.ai_summary_manager.generate(monthly_data)
         ai_summary_response = AISummaryResponse.model_validate_json(json_response)
         lines: list[list[str]] = [self.get_header()]
 

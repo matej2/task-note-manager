@@ -97,9 +97,8 @@ class AISummaryManager:
         return yaml.dump(note_list, allow_unicode=True)
 
     # TODO: Generate summary for date range
-    def generate(self, note_list: NoteList):
-
-        new_note_list = NoteList(note_list.notes[-10:])
+    def generate(self, note_entries: list[NoteEntry]):
+        new_note_list = NoteList(note_entries)
         input_yaml = self.__get_yaml(new_note_list)
 
         model = "gemini-flash-lite-latest"
