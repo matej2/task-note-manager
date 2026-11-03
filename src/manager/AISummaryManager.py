@@ -3,6 +3,8 @@ from google import genai
 from google.genai import types
 
 from manager.FileManager import FileManager
+from models.AISummary import AISummary
+from models.AISummaryResponse import AISummaryResponse
 from models.Config import Config
 from models.NoteEntry import NoteEntry
 from models.NoteList import NoteList
@@ -21,7 +23,7 @@ class AISummaryManager:
         }
 
         self.instructions = """
-                You are a programmer. At the end of each working day you made notes in yaml file. In these notes you wrote what you did, what needs to be done and if any problems occurred. Each data entity is marked with exclamation mark. Task name is described with \"TaskName: TaskDescription;\" 
+                You are a programmer. At the end of each working day you made notes in yaml file. In these notes you wrote what you did, what needs to be done and if any problems occurred. Each data entity is marked with exclamation mark. Your notes include different work types: done, in progress and problems. Inside those notes, you add task with their descriptions. Task is labeled as \"TaskName1:TaskDescription; TaskName: TaskDescription;\". Some notes can also be without task name, suck as \"TaskName1: TaskDescription;TaskDescription\" 
                 
 
                 Example of input: 
@@ -46,7 +48,7 @@ class AISummaryManager:
                       problems:
                 </input>
                 
-                You will have a meeting with your superiors and you need to write report. In this report, you will mention notes, grouped by task names and dates. You will respond with a json format. Tone of your response should be professional and easy to read. Do not make things up.
+                You will have a meeting with your superiors and you need to write report. In this report, you will mention notes, grouped by task names. You need to focus on value that this work adds towards business goals. You will respond with a json format. Tone of your response should be professional and easy to read.  
                 
                 Example of output:
                 
@@ -55,6 +57,10 @@ class AISummaryManager:
                 [
                     {
                         "task_name": "<name>",
+                        "task_description: "<description>"
+                    },
+                    {
+                        "task_name": "",
                         "task_description: "<description>"
                     }
                 ]
@@ -73,8 +79,14 @@ class AISummaryManager:
                 - sentences should follow chronological order
                 - form complete sentences, do not just copy from input
                 - sentences should be easy to follow and read
-                - do not make things up
-                - do not mention dates in sentences
+                - mention task descriptions that do not have task names
+                
+                Do not:
+                
+                - include malformed run-on statements
+                - make things up
+                - mention dates in sentences
+                - make things up
                 
             """
 
@@ -108,6 +120,8 @@ class AISummaryManager:
             system_instruction=[
                 types.Part.from_text(text=self.instructions),
             ],
+            response_mime_type="application/json",
+            response_json_schema=AISummaryResponse.model_json_schema()
         )
 
         response = []

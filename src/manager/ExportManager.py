@@ -27,7 +27,7 @@ class ExportManager:
         self.registered_export_types = [
             NoteByStatusByDate(config_manager, data_manager),
             NoteByTaskNameByDate(config_manager, data_manager, task_manager),
-            #AISummaryExport(config_manager, data_manager, ai_summary_manager),
+            AISummaryExport(config_manager, data_manager, ai_summary_manager),
         ]
 
     async def export_data(self, current_data: NoteList) -> None:
