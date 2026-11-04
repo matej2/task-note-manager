@@ -17,5 +17,5 @@ class Notification(NotificationInterface):
             message=text
         )
 
-    def send_notification(self) -> None:
-        asyncio.run(self.send_info_notification(text="Daily notification to enter data"))
+    async def send_notification(self) -> None:
+        await self.send_info_notification(text="Daily notification to enter data")

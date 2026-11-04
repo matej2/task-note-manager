@@ -2,13 +2,13 @@
 
 import asyncio
 import re
-import traceback
 from collections import OrderedDict
 from datetime import datetime, timedelta, timezone
 
 from customtkinter import END, NORMAL, DISABLED, CTkTextbox as Text, CTkFont as Font
 from yaml.scanner import ScannerError
 
+from AsyncThread import AsyncThread
 from manager.AISummaryManager import AISummaryManager
 from manager.ConfigFileManager import ConfigFileManager
 from src.Scheduler import Scheduler
@@ -23,18 +23,21 @@ from src.models.NoteList import NoteList
 from src.notification.Notification import Notification
 
 
-class Application(UI):
+class Application(UI, AsyncThread):
     def __init__(self):
+        AsyncThread.__init__(self)
         config_file_manager = ConfigFileManager()
         self.config_data = config_file_manager.config
 
         self.config_manager = ConfigManager()
-        super().__init__(self.config_manager, config_file_manager)
+        UI.__init__(self, self.config_manager, config_file_manager)
 
         self.current_data = NoteList(list())
         self.root_container.after(0, self.loader.hide())
 
-        asyncio.run(self.__init_wrapper())
+        self.root_container.protocol("WM_DELETE_WINDOW", lambda: self._stop_async_loop())
+
+        asyncio.run_coroutine_threadsafe(self.__init_wrapper(), self.async_loop)
 
     async def __init_wrapper(self):
         self.__setup()
@@ -85,12 +88,12 @@ class Application(UI):
         self.export_button.configure(command=self.__on_click_export_button)
 
     def __on_click_export_button(self):
-        asyncio.run(self.process_export())
+        asyncio.run_coroutine_threadsafe(self.process_export(), self.async_loop)
 
     async def process_export(self):
         await self.data_manager.process_save_input(self.current_data)
         await self.export_manager.export_data(self.current_data)
-        #await self.notification_manager.send_info_notification(f"Exported data to {self.config_data.export_file_path}")
+        await self.notification_manager.send_info_notification(f"Exported data to {self.config_data.export_file_path}")
 
     def __after_submit(self, note_list: NoteList):
         self.notification.configure(text="")
@@ -101,13 +104,12 @@ class Application(UI):
         Application.__set_text_and_disable(self.task_name_list, f"{task_names}")
 
     def __on_click_submit_button(self, *args):
-        asyncio.run(self.save_data())
-        return "break"
+        asyncio.run_coroutine_threadsafe(self.save_data(), self.async_loop)
 
     async def save_data(self):
         self.current_data = await self.data_manager.process_save_input(self.current_data)
         await self.__update_data()
-        self.notification.send_info_notification(f"Data saved to file {self.config_data.save_directory}")
+        await self.notification.send_info_notification(f"Data saved to file {self.config_data.save_directory}")
 
     def __set_note_input_text(self, entry: NoteEntry):
         self.__set_text(self.done_field, entry.done)
@@ -170,7 +172,7 @@ class Application(UI):
         self.__after_submit(self.current_data)
 
     def __trigger_notification(self):
-        self.notification_manager.send_notification()
+        asyncio.run_coroutine_threadsafe(self.notification_manager.send_notification(), self.async_loop)
         self.root.focus_force()
         self.notification.configure(text="Daily notification to enter data")
 
