@@ -20,6 +20,9 @@ class ConfigFileManager:
 
         self.read_config_from_file_async_direct()
 
+    def get_config_full_path(self):
+        return self.__CONFIG_FULL_PATH
+
     @staticmethod
     def config_representer(dumper, data: Config):
         return dumper.represent_mapping("!Config", data.__dict__)

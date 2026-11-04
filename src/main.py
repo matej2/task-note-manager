@@ -29,7 +29,7 @@ class Application(UI):
         self.config_data = config_file_manager.config
 
         self.config_manager = ConfigManager()
-        super().__init__(self.config_manager, self.config_data)
+        super().__init__(self.config_manager, config_file_manager)
 
         self.current_data = NoteList(list())
         self.root_container.after(0, self.loader.hide())
