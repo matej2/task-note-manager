@@ -2,6 +2,7 @@ import yaml
 from google import genai
 from google.genai import types
 
+from manager.DataManager import DataManager
 from manager.FileManager import FileManager
 from models.AISummaryResponse import AISummaryResponse
 from models.Config import Config
@@ -11,8 +12,9 @@ from utils.YamlUtils import YamlUtils
 
 
 class AISummaryManager:
-    def __init__(self, config_data: Config, file_manager: FileManager):
+    def __init__(self, config_data: Config, file_manager: FileManager, data_manager: DataManager):
         self.file_manager = file_manager
+        self.data_manager = data_manager
         self.__CLIENT =  genai.Client(
             api_key=config_data.gemini_api_key,
         )
@@ -98,7 +100,16 @@ class AISummaryManager:
 
     # TODO: Generate summary for date range
     def generate(self, note_entries: list[NoteEntry]):
-        new_note_list = NoteList(note_entries)
+        filtered_notes = list(
+            filter(self.data_manager.filter_empty_notes, note_entries)
+        )
+        
+        if len(filtered_notes) == 0:
+            return "[{\"task_name\": \"No tasks for current month\", \"task_description\": \"\"}]"
+
+        new_note_list = NoteList(
+            filtered_notes
+        )
         input_yaml = self.__get_yaml(new_note_list)
 
         model = "gemini-flash-lite-latest"

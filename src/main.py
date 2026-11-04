@@ -55,7 +55,7 @@ class Application(UI):
             self.current_data
         )
         self.task_manager = TaskManager(self.config_manager)
-        self.ai_summary_manager = AISummaryManager(self.config_data, self.file_manager)
+        self.ai_summary_manager = AISummaryManager(self.config_data, self.file_manager, self.data_manager)
 
         self.export_manager = ExportManager(self.config_manager, self.data_manager, self.task_manager, self.config_data, self.ai_summary_manager)
 

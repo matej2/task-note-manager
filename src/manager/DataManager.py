@@ -55,10 +55,11 @@ class DataManager(DataManagerBase):
                 break
         return result
 
+    def filter_empty_notes(self, note: NoteEntry) -> bool:
+        return note.done != "" or note.in_progress != "" or note.problems != ""
+
     def extract_monthly_notes(self, note_list : NoteList) -> list[NoteEntry]:
         result: list[NoteEntry] = []
-        if note_list is None:
-            return result
 
         month_date_format = LocalizedDate(self.config_manager.DATE_FORMAT_SHORT)
 
