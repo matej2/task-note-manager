@@ -30,6 +30,6 @@ class AISummaryExport(IOdsTabExport):
             lines.append([task_name[1], task_description[1]])
 
         self.export_context.save_lines(
-            self.config_manager.EXPORT_TH_AI_SUMMARY,
+            self.config_manager.EXPORT_TAB_NAME_AI_SUMMARY,
             lines
         )
