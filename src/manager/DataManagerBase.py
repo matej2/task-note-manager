@@ -16,7 +16,7 @@ class DataManagerBase:
         if data is not None and len(data.notes) != 0:
             return data
         else:
-            return NoteList()
+            return NoteList(notes=[])
 
     async def _write_data_to_file_direct(self, note_list: NoteList):
         with self.file_manager.get_write_wrapper() as file:
